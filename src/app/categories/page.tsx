@@ -46,6 +46,7 @@ export const metadata: Metadata = {
     'I’ve spoken at events all around the world and been interviewed for many podcasts.',
 }
 
+import iconProgram from"@/images/program.png"
 const mock = [
   {
     name: 'Dalle',
@@ -86,7 +87,7 @@ export default function Speaking() {
     <Card
       as="div"
       key={object.name}
-      className={`w-1/2 flex-none p-4 hover:bg-zinc-50 lg:w-1/3 shadow`}
+      className={`w-1/2 flex-none p-4 hover:bg-zinc-50 lg:w-1/3 border-l-4 border-white hover:border-l-zinc-200`}
     >
       <h2 className="text-base font-semibold text-zinc-800 dark:text-zinc-100">
         {object.name}

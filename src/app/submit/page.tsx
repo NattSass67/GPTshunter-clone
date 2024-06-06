@@ -20,7 +20,7 @@ export default function Submit() {
             <h2 className="mx-auto max-w-2xl text-center text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl">
               Submit GPTs
             </h2>
-            <div onClick={()=>{router.push("https://gapier.com/?utm_source=gptshunter")}} className="mx-auto my-4 max-w-xl text-center text-lg leading-8 text-teal-500 hover:text-zinc-700">
+            <div onClick={()=>{router.push("https://gapier.com/?utm_source=gptshunter")}} className="mx-auto my-4 max-w-xl text-center text-lg leading-8 text-zinc-400 hover:text-zinc-700">
               The true uniqueness of GPT applications lies in the use of
               Actions, try gapier. ↗
             </div>

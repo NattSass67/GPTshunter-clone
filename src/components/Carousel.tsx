@@ -5,6 +5,8 @@ import logoCosmos from '@/images/logos/cosmos.svg'
 import logoHelioStream from '@/images/logos/helio-stream.svg'
 import logoOpenShuttle from '@/images/logos/open-shuttle.svg'
 import logoPlanetaria from '@/images/logos/planetaria.svg'
+import logoStar from '@/images/logos/star.svg'
+import logoComment from '@/images/logos/comment.svg'
 import { Card } from '@/components/Card'
 import Image from 'next/image'
 
@@ -53,7 +55,7 @@ interface data {
   rate: number
   comments: number
 }
-export function Carousel(props: { content: data[]|null; title: string }) {
+export function Carousel(props: { content: data[] | null; title: string }) {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
 
   const scrollLeft = () => {
@@ -78,7 +80,7 @@ export function Carousel(props: { content: data[]|null; title: string }) {
     <Card
       as="div"
       key={project.name}
-      className={`lg:w-1/3 w-1/2 flex-none p-4 hover:bg-zinc-50`}
+      className={`w-1/2 flex-none p-4 hover:bg-zinc-50 lg:w-1/3`}
     >
       <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white">
         <Image src={project.logo} alt="" className="h-8 w-8" unoptimized />
@@ -87,20 +89,28 @@ export function Carousel(props: { content: data[]|null; title: string }) {
         {project.name}
       </h2>
       <Card.Description>{project.description}</Card.Description>
+      <div className="flex gap-x-4">
+        <div className="mt-2 flex items-center gap-x-1">
+          <Image src={logoStar} alt="" className="h-4 w-4" unoptimized /> 5.0
+        </div>
+        <div className="mt-2 flex items-center gap-x-1">
+          <Image src={logoComment} alt="" className="h-4 w-4" unoptimized /> 2.3K
+        </div>
+      </div>
     </Card>
   ))
 
   return (
     <>
       <div className="relative mt-8 flex w-full flex-col">
-        <h2 className="absolute left-0 top-0 z-10 text-lg w-[250px] sm:w-full font-bold tracking-tight text-gray-900 sm:text-xl">
+        <h2 className="absolute left-0 top-0 z-10 w-[250px] text-lg font-bold tracking-tight text-gray-900 sm:w-full sm:text-xl">
           {props.title}
         </h2>
 
         <button
           onClick={scrollLeft}
           aria-label="Save"
-          className="absolute right-10 top-0 z-10 rounded-full px-2 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur flex"
+          className="absolute right-10 top-0 z-10 flex rounded-full px-2 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur"
         >
           <svg
             width="16px"
@@ -135,7 +145,7 @@ export function Carousel(props: { content: data[]|null; title: string }) {
         <button
           onClick={scrollRight}
           aria-label="Save"
-          className="absolute right-0 top-0 z-10 rounded-full px-2 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur flex"
+          className="absolute right-0 top-0 z-10 flex rounded-full px-2 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur"
         >
           <svg
             width="16px"
