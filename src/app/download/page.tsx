@@ -16,7 +16,7 @@ export default function Example() {
             <h1 className="mt-2 text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl">
               Download Daily GPTs Data on the GPT Store
             </h1>
-            <div className="mt-10 grid max-w-xl grid-cols-1 gap-8 text-base leading-7 text-zinc-800 lg:max-w-none lg:grid-cols-2">
+            <div className="mt-10 grid max-w-xl grid-cols-1 gap-8 text-sm sm:text-base leading-7 text-zinc-800 lg:max-w-none lg:grid-cols-2">
               <div>
                 <p>
                   GPTs Hunter stands as the most extensive GPTs directory to
@@ -45,7 +45,7 @@ export default function Example() {
                 <Image src={sample} alt="" className="h-auto w-full" />
               </div>
             </div>
-            <div className="mt-10 flex">
+            <div className="mt-10 flex text-sm sm:text-base">
               <div>
                 <p className="mt-8 text-2xl font-semibold">
                   Download the Complete GPTs Dataset
@@ -91,7 +91,7 @@ export default function Example() {
                   <div>
                     <textarea
                       rows={40}
-                      className="mt-4 no-scrollbar resize-none rounded-md bg-zinc-800 p-4 w-full text-zinc-50 ring-1 ring-inset ring-gray-200 focus:outline-none "
+                      className="mt-4 no-scrollbar resize-none text-sm sm:text-base rounded-md bg-zinc-800 p-4 w-full text-zinc-50 ring-1 ring-inset ring-gray-200 focus:outline-none "
                       readOnly
                       value={jsonString}
                     />

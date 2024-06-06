@@ -293,7 +293,7 @@ export default function Home() {
             <h1 className="inline-block align-middle text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
               Discover GPT Store <SearchBar />
             </h1>
-            <div className="mt-3 flex flex-col px-4 text-sm text-zinc-600 sm:text-base">
+            <div className="mt-3 flex flex-col px-4 text-zinc-600 text-sm sm:text-base">
               <a
                 href="#"
                 className="flex items-center gap-x-2 hover:text-zinc-500"
