@@ -33,6 +33,10 @@ const navigation = {
     { name: 'd.id', href: '#' },
     { name: 'OKDID', href: '#' },
     { name: 'Monica', href: '#' },
+    { name: 'Podwise', href: '#' },
+    { name: 'Gemini Pro Chat', href: '#' },
+    { name: 'gapier', href: '#' },
+    { name: 'OpenSource LLM Guide', href: '#' },
     { name: 'MagicAnimate', href: '#' },
     { name: 'OutfitAnyone', href: '#' },
     { name: 'ChatGPT Sora', href: '#' },
@@ -41,7 +45,7 @@ const navigation = {
 
 export default function FooterGPT() {
   return (
-    <footer className="bg-white shadow mt-32" aria-labelledby="footer-heading">
+    <footer className="bg-white shadow mt-24" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
@@ -50,11 +54,11 @@ export default function FooterGPT() {
           <div className="col-span-1 flex flex-col xl:col-span-1 sm:col-span-3">
             <div className="flex gap-2 sm:gap-3">
               <img
-                className="h-9 w-auto"
+                className="h-9 w-auto rounded-full"
                 src="https://www.gptshunter.com/_nuxt/logo.DQOOruJz.png"
                 alt="Your Company"
               />
-              <span className="text-lg font-semibold text-orange-500 sm:text-xl">
+              <span className="text-lg font-semibold text-zinc-800 sm:text-xl">
                 GPTs Hunter
               </span>
             </div>
@@ -62,30 +66,30 @@ export default function FooterGPT() {
               Share and discover the best custom GPTs on the GPT Store and use
               with ChatGPT.
             </span>
-            <ul role="list" className="mt-4 space-y-3">
+            <div className="mt-4 sm:grid sm:grid-cols-3 xl:flex xl:flex-col gap-x-8">
               {navigation.solutions.map((item) => (
-                <li key={item.name}>
+                <div key={item.name} className="mb-2">
                   <a
                     href={item.href}
-                    className="text-sm leading-6 text-zinc-700 hover:text-orange-500"
+                    className="text-sm text-zinc-700 hover:text-teal-500 align-baseline"
                   >
                     {item.name}
                   </a>
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
 
           <div className="col-span-1">
-            <h3 className="text-md font-semibold leading-6 text-zinc-500 ">
+            <h3 className="text-sm font-semibold leading-6 text-zinc-400 ">
               Policy
             </h3>
-            <ul role="list" className="mt-4 space-y-3">
+            <ul role="list" className="mt-4 space-y-2">
               {navigation.support.map((item) => (
                 <li key={item.name}>
                   <a
                     href={item.href}
-                    className="text-sm leading-6 text-zinc-700 hover:text-orange-500"
+                    className="text-sm leading-6 text-zinc-700 hover:text-teal-500"
                   >
                     {item.name}
                   </a>
@@ -95,15 +99,15 @@ export default function FooterGPT() {
           </div>
 
           <div className="col-span-1">
-            <h3 className="text-md font-semibold leading-6 text-zinc-500 ">
+            <h3 className="text-sm font-semibold leading-6 text-zinc-400 ">
               Products
             </h3>
-            <ul role="list" className="mt-4 space-y-3">
+            <ul role="list" className="mt-4 space-y-2">
               {navigation.products.map((item) => (
                 <li key={item.name}>
                   <a
                     href={item.href}
-                    className="text-sm leading-6 text-zinc-700 hover:text-orange-500"
+                    className="text-sm leading-6 text-zinc-700 hover:text-teal-500"
                   >
                     {item.name}
                   </a>
@@ -113,15 +117,15 @@ export default function FooterGPT() {
           </div>
 
           <div className="col-span-1">
-            <h3 className="text-md font-semibold leading-6 text-zinc-500 ">
+            <h3 className="text-sm font-semibold leading-6 text-zinc-400 ">
               Friends
             </h3>
-            <ul role="list" className="mt-4 space-y-3">
+            <ul role="list" className="mt-4 space-y-2">
               {navigation.friends.map((item) => (
                 <li key={item.name}>
                   <a
                     href={item.href}
-                    className="text-sm leading-6 text-zinc-700 hover:text-orange-500"
+                    className="text-sm leading-6 text-zinc-700 hover:text-teal-500"
                   >
                     {item.name}
                   </a>

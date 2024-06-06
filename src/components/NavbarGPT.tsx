@@ -28,7 +28,7 @@ export default function NavbarGPT() {
                     src="https://www.gptshunter.com/_nuxt/logo.DQOOruJz.png"
                     alt="Your Company"
                   />
-                  <span className="text-lg font-semibold text-zinc-900 max-[370px]:hidden sm:text-xl">
+                  <span className="text-lg font-semibold text-zinc-900 max-[370px]:hidden md:flex sm:text-xl">
                     {' '}
                     GPTs Hunter{' '}
                   </span>

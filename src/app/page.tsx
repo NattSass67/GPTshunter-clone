@@ -270,7 +270,7 @@ function Photos() {
 export default function Home() {
   return (
     <>
-      <Container className="bg-white pt-6">
+      <Container className="pt-32">
         <div className="flex w-full flex-col items-center justify-center">
           <div className="flex w-full max-w-2xl flex-col">
             <img
