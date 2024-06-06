@@ -17,6 +17,10 @@ import logoAirbnb from '@/images/logos/airbnb.svg'
 import logoFacebook from '@/images/logos/facebook.svg'
 import logoPlanetaria from '@/images/logos/planetaria.svg'
 import logoStarbucks from '@/images/logos/starbucks.svg'
+import logoSubmit from '@/images/logos/submit.svg'
+import logoApply from '@/images/logos/apply.svg'
+import logoAdd from '@/images/logos/add.svg'
+
 import image1 from '@/images/photos/image-1.jpg'
 import image2 from '@/images/photos/image-2.jpg'
 import image3 from '@/images/photos/image-3.jpg'
@@ -271,37 +275,59 @@ export default function Home() {
   return (
     <>
       <Container className="pt-32">
-        <div className="flex w-full flex-col items-center justify-center">
-          <div className="flex w-full max-w-2xl flex-col">
-            <img
-              src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=424020&theme=light"
-              alt=""
-              className="my-3 h-12 w-auto"
-            />
-            <h1 className="text-center text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
+        <div className="flex flex-wrap w-full gap-x-2 md:grid md:grid-cols-2">
+          <div className="mb-4">
+            <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
               Discover GPT Store
             </h1>
-            <div className="my-3 flex flex-row justify-center gap-x-2 text-center text-base text-zinc-600 dark:text-zinc-400">
-              <p className="font-semibold text-orange-500">677K</p>
-              <p>GPTs found and counting</p>
-            </div>
-            <input
-              className="mt-1 flex h-full w-full rounded-full px-4 py-4 text-sm text-zinc-800 ring-1 ring-inset ring-zinc-400 focus:outline-none focus:ring-orange-500 md:text-base dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10"
-              placeholder="Enter to Search within the largest GPTs directory"
-              onChange={() => {}}
-            />
-            <div className="mt-3 flex justify-center px-12 text-xs text-zinc-600">
-              <a href="#">Submit your awesome GPT</a>
-              <div className="hidden sm:flex px-2">|</div>
-              <a href="#" className="hidden sm:flex">
+            <div className="mt-3 flex flex-col px-4 text-sm text-zinc-600 sm:text-base">
+              <a
+                href="#"
+                className="flex items-center gap-x-2 hover:text-zinc-500"
+              >
+                <Image
+                  src={logoSubmit}
+                  alt=""
+                  className="h-6 w-6"
+                  unoptimized
+                />
+                Submit your awesome GPT
+              </a>
+              <a
+                href="#"
+                className="flex items-center gap-x-2 hover:text-zinc-500"
+              >
+                <Image src={logoApply} alt="" className="h-6 w-6" unoptimized />
                 Apply to our search API
               </a>
-              <div className="hidden md:flex px-2">|</div>
-              <a href="#" className="hidden md:flex">
+              <a
+                href="#"
+                className="flex items-center gap-x-2 hover:text-zinc-500"
+              >
+                <Image src={logoAdd} alt="" className="h-6 w-6" unoptimized />
                 Add WebPilot to your GPTs in 30s
               </a>
             </div>
           </div>
+
+          <div className="mx-auto flex max-w-xs flex-col mt-2">
+            <img
+              alt="GPTs Hunter - Share and discover custom GPTs | Product Hunt"
+              src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=424020&amp;theme=light"
+              className="h-auto w-auto mb-4"
+            />
+            <dd className="text-center text-3xl font-semibold tracking-tight text-zinc-800 sm:text-5xl">
+              678K+
+            </dd>
+            <dt className="text-center text-sm leading-7 text-zinc-500 sm:text-base">
+              GPTs found and counting
+            </dt>
+          </div>
+          {/* <input
+            className="mt-1 flex h-full w-full rounded-full px-4 py-4 text-sm text-zinc-800 ring-1 ring-inset ring-zinc-400 focus:outline-none focus:ring-orange-500 md:text-base dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10"
+            placeholder="Enter to Search within the largest GPTs directory"
+            onChange={() => {}}
+          /> */}
         </div>
       </Container>
       <Photos />
