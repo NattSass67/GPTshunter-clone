@@ -72,7 +72,7 @@ function ButtonNavbar(props: { children: React.ReactNode }) {
   )
 }
 
-function SearchBar() {
+export function SearchBar() {
   const [query, setQuery] = useState('')
   const [open, setOpen] = useState(false)
   const [filterData, setFilterData] = useState<Filter | null>(null)

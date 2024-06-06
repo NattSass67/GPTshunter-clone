@@ -20,6 +20,7 @@ import logoStarbucks from '@/images/logos/starbucks.svg'
 import logoSubmit from '@/images/logos/submit.svg'
 import logoApply from '@/images/logos/apply.svg'
 import logoAdd from '@/images/logos/add.svg'
+import { SearchBar } from '@/components/HeaderPantip'
 
 import image1 from '@/images/photos/image-1.jpg'
 import image2 from '@/images/photos/image-2.jpg'
@@ -277,8 +278,8 @@ export default function Home() {
       <Container className="pt-32">
         <div className="flex flex-wrap w-full gap-x-2 md:grid md:grid-cols-2">
           <div className="mb-4">
-            <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-              Discover GPT Store
+            <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100 flex gap-x-2">
+              Discover GPT Store <div className="-translate-y-1"><SearchBar /></div>
             </h1>
             <div className="mt-3 flex flex-col px-4 text-sm text-zinc-600 sm:text-base">
               <a
