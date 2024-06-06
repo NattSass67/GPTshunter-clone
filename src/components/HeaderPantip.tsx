@@ -286,7 +286,7 @@ function MobileNavigation(
               <ul className="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
                 <MobileNavItem href="/submit">Submit</MobileNavItem>
                 <MobileNavItem href="/categories">Categories</MobileNavItem>
-                <MobileNavItem href="/pantip/room">Download</MobileNavItem>
+                <MobileNavItem href="/download">Download</MobileNavItem>
               </ul>
             </nav>
           </PopoverPanel>
