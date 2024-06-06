@@ -351,7 +351,7 @@ export default function Home() {
           <br></br>
           <hr></hr>
           <Carousel content={null} title={"Featured GPTs on GPT Store"}/>
-          <Carousel content={null} title={"Trending GPTs on GPT Store"}/>Best DALL·E GPTs on GPT Store
+          <Carousel content={null} title={"Trending GPTs on GPT Store"}/>
           <Carousel content={null} title={"Best DALL·E GPTs on GPT Store"}/>
           <Carousel content={null} title={"Best Writing GPTs on GPT Store"}/>
           <Carousel content={null} title={"Best Productivity GPTs on GPT Store"}/>
