@@ -5,11 +5,12 @@ import Image, { type ImageProps } from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
 
+import { Carousel } from '@/components/Carousel'
 import { FilterSelect } from '@/components/Button'
 import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
-import { useAppDispatch } from '@/session/store'
+import { useAppDispatch, useAppSelector } from '@/session/store'
 import { fetchContent } from '@/session/my-state'
 import {
   GitHubIcon,
@@ -279,6 +280,8 @@ function Photos() {
 
 export default function Home() {
   const dispatch = useAppDispatch()
+  const selectedFilter=useAppSelector((state)=>state.homeSession.filterChoosen)
+
   useEffect(() => {
     dispatch(fetchContent())
   }, [])
@@ -298,7 +301,7 @@ export default function Home() {
                 <Image
                   src={logoSubmit}
                   alt=""
-                  className="h-6 w-6"
+                  className="h-5 w-5"
                   unoptimized
                 />
                 Submit your awesome GPT
@@ -307,14 +310,14 @@ export default function Home() {
                 href="#"
                 className="flex items-center gap-x-2 hover:text-zinc-500"
               >
-                <Image src={logoApply} alt="" className="h-6 w-6" unoptimized />
+                <Image src={logoApply} alt="" className="h-5 w-5" unoptimized />
                 Apply to our search API
               </a>
               <a
                 href="#"
                 className="flex items-center gap-x-2 hover:text-zinc-500"
               >
-                <Image src={logoAdd} alt="" className="h-6 w-6" unoptimized />
+                <Image src={logoAdd} alt="" className="h-5 w-5" unoptimized />
                 Add WebPilot to your GPTs in 30s
               </a>
             </div>
@@ -334,11 +337,33 @@ export default function Home() {
             </dt>
           </div>
         </div>
-        <div className="border-t mt-8">
+        <div className="mt-8 border-t w-full">
           <FilterSelect />
+          {/* <div className="mx-auto mt-4 max-w-2xl lg:mx-0">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              {selectedFilter}
+            </h2>
+            <p className="mt-2 text-lg leading-8 text-gray-600">
+              Learn how to grow your business with our expert advice.
+            </p>
+          </div> */}
+          <Carousel content={null} title={selectedFilter}/>
+          <br></br>
+          <hr></hr>
+          <Carousel content={null} title={"Featured GPTs on GPT Store"}/>
+          <Carousel content={null} title={"Trending GPTs on GPT Store"}/>Best DALL·E GPTs on GPT Store
+          <Carousel content={null} title={"Best DALL·E GPTs on GPT Store"}/>
+          <Carousel content={null} title={"Best Writing GPTs on GPT Store"}/>
+          <Carousel content={null} title={"Best Productivity GPTs on GPT Store"}/>
+          <Carousel content={null} title={"Best Research & Analysis GPTs on GPT Store"}/>
+          <Carousel content={null} title={"Best Programming GPTs on GPT Store"}/>
+          <Carousel content={null} title={"Best Education GPTs on GPT Store"}/>
+          <Carousel content={null} title={"Best Lifestyle GPTs on GPT Store"}/>
+          <Carousel content={null} title={"Best Programming GPTs on GPT Store"}/>
+          <Carousel content={null} title={"Best Programming GPTs on GPT Store"}/>
         </div>
       </Container>
-      <Photos />
+      {/* <Photos /> */}
     </>
   )
 }

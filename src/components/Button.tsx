@@ -89,7 +89,7 @@ export function FilterSelect() {
     <>
       {' '}
       <div className="relative mt-4 flex flex-col">
-        <div className="absolute left-0 top-0 z-10 h-12 w-12 bg-gradient-to-r from-white md:left-6">
+        <div className="absolute left-0 top-0 z-10 h-12 w-12 -translate-x-1 bg-gradient-to-r from-white md:left-6">
           {' '}
         </div>
         <button
@@ -127,7 +127,7 @@ export function FilterSelect() {
           {filterList}
         </div>
 
-        <div className="absolute right-0 top-0 z-10 h-20 w-12 bg-gradient-to-l from-white md:right-6">
+        <div className="absolute right-0 top-0 z-10 h-12 w-12 translate-x-1 bg-gradient-to-l from-white md:right-6">
           {' '}
         </div>
         <button
