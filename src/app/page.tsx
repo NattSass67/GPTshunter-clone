@@ -278,8 +278,8 @@ export default function Home() {
       <Container className="pt-32">
         <div className="flex flex-wrap w-full gap-x-2 md:grid md:grid-cols-2">
           <div className="mb-4">
-            <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100 flex gap-x-2">
-              Discover GPT Store <div className="-translate-y-1"><SearchBar /></div>
+            <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
+              Discover GPT Store <SearchBar />
             </h1>
             <div className="mt-3 flex flex-col px-4 text-sm text-zinc-600 sm:text-base">
               <a
