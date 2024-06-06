@@ -2,7 +2,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { Container } from '@/components/Container'
 import Image from 'next/image'
-import sample from '@/images/trending-data.png'
+import sample from '@/images/500.png'
+import sample1 from '@/images/trending-data.png'
 
 export default function Example() {
   return (
@@ -13,17 +14,17 @@ export default function Example() {
             <p className="text-base font-semibold leading-7 text-zinc-400">
               Posted on Feb 18, 2024
             </p>
-            <h1 className="mt-2 text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl">
+            <h1 className="mt-2 text-4xl max-w-2xl font-bold tracking-tight text-zinc-800 sm:text-5xl">
               Download Daily GPTs Data on the GPT Store
             </h1>
-            <div className="mt-10 grid max-w-xl grid-cols-1 gap-8 text-sm leading-7 text-zinc-800 sm:text-base lg:max-w-none lg:grid-cols-2">
+            <p className="max-w-lg mt-2 mb-4 text-zinc-800 text-sm sm:text-base">
+              GPTs Hunter stands as the most extensive GPTs directory to date.
+              We're proud to present two major open-source data projects
+            </p>
+            <hr />
+            <div className="my-10 grid max-w-xl grid-cols-1 gap-8 text-sm leading-7 text-zinc-800 sm:text-base lg:max-w-none lg:grid-cols-2">
               <div>
-                <p>
-                  GPTs Hunter stands as the most extensive GPTs directory to
-                  date. We're proud to present two major open-source data
-                  projects:
-                </p>
-                <p className="mt-8 text-2xl font-semibold">
+                <p className="text-2xl font-semibold">
                   GPT Store Daily Trending Data Backup
                 </p>
                 <p className="mt-4">
@@ -31,7 +32,7 @@ export default function Example() {
                   GitHub. This allows you to explore the daily GPTs trends in
                   the archive folder.
                 </p>
-                <p className="mt-4">
+                <p className="my-4">
                   For detailed insights and historical trends, visit:{' '}
                   <a
                     href="https://github.com/AINativeLab/gptstore-data-backup"
@@ -40,8 +41,14 @@ export default function Example() {
                     Here
                   </a>
                 </p>
-
-                <p className="mt-8 text-2xl font-semibold">
+                <Image
+                  src={sample1}
+                  alt=""
+                  className="h-auto w-full rounded-lg shadow"
+                />
+              </div>
+              <div>
+                <p className="text-2xl font-semibold">
                   Top 500 GPTs Daily Session Data Backup from GPT Store
                 </p>
                 <p className="mt-4">
@@ -51,7 +58,7 @@ export default function Example() {
                   the ever-evolving landscape of best GPTs and their usage
                   patterns.
                 </p>
-                <p className="mt-4">
+                <p className="my-4">
                   Access this repository for in-depth analysis:{' '}
                   <a
                     href="https://github.com/AINativeLab/gptstore-data-backup"
@@ -60,12 +67,15 @@ export default function Example() {
                     Here
                   </a>
                 </p>
-              </div>
-              <div>
-                <Image src={sample} alt="" className="h-auto w-full shadow rounded-lg" />
+                <Image
+                  src={sample}
+                  alt=""
+                  className="h-auto w-full rounded-lg shadow"
+                />
               </div>
             </div>
-            <div className="mt-10 flex text-sm sm:text-base">
+            <hr />
+            <div className="mt-2 flex text-sm sm:text-base">
               <div>
                 <p className="mt-8 text-2xl font-semibold">
                   Download the Complete GPTs Dataset
