@@ -1,12 +1,16 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 'use client'
 import Image, { type ImageProps } from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
 
+import { FilterSelect } from '@/components/Button'
 import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
+import { useAppDispatch } from '@/session/store'
+import { fetchContent } from '@/session/my-state'
 import {
   GitHubIcon,
   InstagramIcon,
@@ -29,6 +33,7 @@ import image4 from '@/images/photos/image-4.jpg'
 import image5 from '@/images/photos/image-5.jpg'
 import { type ArticleWithSlug, getAllArticles } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
+import { useEffect } from 'react'
 
 function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -273,12 +278,16 @@ function Photos() {
 }
 
 export default function Home() {
+  const dispatch = useAppDispatch()
+  useEffect(() => {
+    dispatch(fetchContent())
+  }, [])
   return (
     <>
       <Container className="pt-32">
-        <div className="flex flex-wrap w-full gap-x-2 md:grid md:grid-cols-2">
+        <div className="flex w-full flex-wrap gap-x-2 md:grid md:grid-cols-2">
           <div className="mb-4">
-            <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
+            <h1 className="inline-block align-middle text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
               Discover GPT Store <SearchBar />
             </h1>
             <div className="mt-3 flex flex-col px-4 text-sm text-zinc-600 sm:text-base">
@@ -311,11 +320,11 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mx-auto flex max-w-xs flex-col mt-2">
+          <div className="mx-auto mt-2 flex max-w-xs flex-col">
             <img
               alt="GPTs Hunter - Share and discover custom GPTs | Product Hunt"
               src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=424020&amp;theme=light"
-              className="h-auto w-auto mb-4"
+              className="mb-4 h-auto w-auto"
             />
             <dd className="text-center text-3xl font-semibold tracking-tight text-zinc-800 sm:text-5xl">
               678K+
@@ -324,11 +333,9 @@ export default function Home() {
               GPTs found and counting
             </dt>
           </div>
-          {/* <input
-            className="mt-1 flex h-full w-full rounded-full px-4 py-4 text-sm text-zinc-800 ring-1 ring-inset ring-zinc-400 focus:outline-none focus:ring-orange-500 md:text-base dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10"
-            placeholder="Enter to Search within the largest GPTs directory"
-            onChange={() => {}}
-          /> */}
+        </div>
+        <div className="border-t mt-8">
+          <FilterSelect />
         </div>
       </Container>
       <Photos />

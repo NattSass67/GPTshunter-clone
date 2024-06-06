@@ -1,5 +1,9 @@
+'use client'
 import Link from 'next/link'
 import clsx from 'clsx'
+import { useAppDispatch, useAppSelector } from '@/session/store'
+import { useRef } from 'react'
+import { setFilterChoosen } from '@/session/home'
 
 const variantStyles = {
   primary:
@@ -30,5 +34,131 @@ export function Button({
     <button className={className} {...props} />
   ) : (
     <Link className={className} {...props} />
+  )
+}
+
+
+
+export function FilterSelect() {
+  const content: string[]= useAppSelector(
+    (state) => state.homeSession.filterSelect.title
+  )
+
+  const dispatch = useAppDispatch()
+  const choosedFilter = useAppSelector((state) => state.homeSession.filterChoosen)
+
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
+  const onFilterClick = (name: string) => {
+    dispatch(setFilterChoosen(name))
+  }
+
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: -160, behavior: 'smooth' })
+    }
+  }
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: 160, behavior: 'smooth' })
+    }
+  }
+
+  const filterList = content?.map((object) => {
+    return (
+      <button
+        onClick={() => {
+          onFilterClick(object)
+        }}
+        aria-hidden="true"
+        key={object}
+        className={`flex-none rounded-full px-3 py-1.5 ${
+          choosedFilter === object
+            ? 'bg-zinc-800 text-white'
+            : 'bg-zinc-100 text-zinc-800'
+        }`}
+      >
+        <p className="text-center text-[14px] ">
+          {object}
+        </p>
+      </button>
+    )
+  })
+
+  return (
+    <>
+      {' '}
+      <div className="relative mt-4 flex flex-col">
+        <div className="absolute left-0 top-0 z-10 h-12 w-12 bg-gradient-to-r from-white md:left-6">
+          {' '}
+        </div>
+        <button
+          onClick={scrollLeft}
+          aria-label="Save"
+          className="absolute left-0 top-0 z-10 hidden rounded-full px-2 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur md:flex"
+        >
+          <svg
+            width="16px"
+            height="16px"
+            viewBox="0 0 1024 1024"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="#000000"
+          >
+            <g id="SVGRepo_bgCarrier" strokeWidth="0" />
+            <g
+              id="SVGRepo_tracerCarrier"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M768 903.232l-50.432 56.768L256 512l461.568-448 50.432 56.768L364.928 512z"
+                fill="#000000"
+              />
+            </g>
+          </svg>
+        </button>
+
+        <div
+          ref={scrollContainerRef}
+          className="no-scrollbar mx-0 flex flex-row gap-x-2 overflow-x-auto px-4 md:mx-8 "
+        >
+          {filterList}
+        </div>
+
+        <div className="absolute right-0 top-0 z-10 h-20 w-12 bg-gradient-to-l from-white md:right-6">
+          {' '}
+        </div>
+        <button
+          onClick={scrollRight}
+          aria-label="Save"
+          className="absolute right-0 top-0 z-10 hidden rounded-full px-2 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur md:flex"
+        >
+          <svg
+            width="16px"
+            height="16px"
+            viewBox="0 0 1024 1024"
+            className="icon"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="#000000"
+          >
+            <g id="SVGRepo_bgCarrier" strokeWidth="0" />
+            <g
+              id="SVGRepo_tracerCarrier"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"
+                fill="#000000"
+              />
+            </g>
+          </svg>
+        </button>
+      </div>
+    </>
   )
 }
