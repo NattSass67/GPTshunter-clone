@@ -46,13 +46,64 @@ export const metadata: Metadata = {
     'I’ve spoken at events all around the world and been interviewed for many podcasts.',
 }
 
+const mock = [
+  {
+    name: 'Dalle',
+    count: '17K+',
+  },
+  {
+    name: 'Education',
+    count: '69K+',
+  },
+  {
+    name: 'Lifestyle',
+    count: '53K+',
+  },
+  {
+    name: 'Productivity',
+    count: '55K+',
+  },
+  {
+    name: 'Programming',
+    count: '29K+',
+  },
+  {
+    name: 'Research',
+    count: '44K+',
+  },
+  {
+    name: 'Writing',
+    count: '44K+',
+  },
+  {
+    name: 'Other',
+    count: '151K+',
+  },
+]
+
 export default function Speaking() {
+  const cardList = mock.map((object) => (
+    <Card
+      as="div"
+      key={object.name}
+      className={`w-1/2 flex-none p-4 hover:bg-zinc-50 lg:w-1/3 shadow`}
+    >
+      <h2 className="text-base font-semibold text-zinc-800 dark:text-zinc-100">
+        {object.name}
+      </h2>
+      <Card.Description>{object.count}</Card.Description>
+    </Card>
+  ))
+
   return (
     <SimpleLayout
       title="GPT Store Categories"
       intro="Explore GPT Store's Categories"
     >
-      
+      <p className="text-xl font-semibold mb-2 text-zinc-800">All GPT Categories</p>
+      <div className="w-full flex flex-row flex-wrap">
+        {cardList}
+      </div>
     </SimpleLayout>
   )
 }
