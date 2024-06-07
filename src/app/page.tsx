@@ -280,7 +280,17 @@ function Photos() {
 
 export default function Home() {
   const dispatch = useAppDispatch()
-  const selectedFilter=useAppSelector((state)=>state.homeSession.filterChoosen)
+  const selectedFilter = useAppSelector(
+    (state) => state.homeSession.filterChoosen,
+  )
+  const selectedFilterContent = useAppSelector(
+    (state) => state.homeSession.filteredContent,
+  )
+  const categories = useAppSelector((state) => state.homeSession.homeCategory)
+
+  const carouselList = categories.map((object) => (
+    <Carousel key={object.name} title={object.name} content={object.content} />
+  ))
 
   useEffect(() => {
     dispatch(fetchContent())
@@ -293,7 +303,7 @@ export default function Home() {
             <h1 className="inline-block align-middle text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
               Discover GPT Store <SearchBar />
             </h1>
-            <div className="mt-3 flex flex-col px-4 text-zinc-600 text-sm sm:text-base">
+            <div className="mt-3 flex flex-col px-4 text-sm text-zinc-600 sm:text-base">
               <a
                 href="#"
                 className="flex items-center gap-x-2 hover:text-zinc-500"
@@ -337,22 +347,12 @@ export default function Home() {
             </dt>
           </div>
         </div>
-        <div className="mt-16 border-t w-full">
+        <div className="mt-16 w-full border-t">
           <FilterSelect />
-          <Carousel content={null} title={selectedFilter}/>
+          <Carousel content={selectedFilterContent} title={selectedFilter} />
           <br></br>
           <hr></hr>
-          <Carousel content={null} title={"Featured GPTs on GPT Store"}/>
-          <Carousel content={null} title={"Trending GPTs on GPT Store"}/>
-          <Carousel content={null} title={"Best DALL·E GPTs on GPT Store"}/>
-          <Carousel content={null} title={"Best Writing GPTs on GPT Store"}/>
-          <Carousel content={null} title={"Best Productivity GPTs on GPT Store"}/>
-          <Carousel content={null} title={"Best Research & Analysis GPTs on GPT Store"}/>
-          <Carousel content={null} title={"Best Programming GPTs on GPT Store"}/>
-          <Carousel content={null} title={"Best Education GPTs on GPT Store"}/>
-          <Carousel content={null} title={"Best Lifestyle GPTs on GPT Store"}/>
-          <Carousel content={null} title={"Best Programming GPTs on GPT Store"}/>
-          <Carousel content={null} title={"Best Programming GPTs on GPT Store"}/>
+          {carouselList}
         </div>
       </Container>
       {/* <Photos /> */}

@@ -76,7 +76,7 @@ export function Carousel(props: { content: data[] | null; title: string }) {
     }
   }
 
-  let CardList = mock.map((project) => (
+  let CardList = props.content?.map((project) => (
     <Card
       as="div"
       key={project.name}

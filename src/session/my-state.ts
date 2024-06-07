@@ -1,6 +1,6 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-plusplus */
-import { getAllFilter } from '@/service/request'
+import { getAllFilter, getByDefaultCategory, getByFilterSelected} from '@/service/request'
 
 import {
   fetchFilterSelect,
@@ -8,7 +8,9 @@ import {
   fetchSecondSuccess,
   fetchStart,
   fetchSuccess,
-  setFilterChoosen
+  setFilterChoosen,
+  setFilteredContent,
+  setHomeCategory
 } from './home'
 
 export const fetchContent = () => {
@@ -16,11 +18,15 @@ export const fetchContent = () => {
     dispatch(fetchStart()) // Dispatch loginStart action to set loading state
     try {
       const filter = await getAllFilter()
+      const category = await getByDefaultCategory()
+      const homeFiltered = await getByFilterSelected('Featured')
       if (filter === null) {
         throw new Error('One or more required variables are null.')
       } else {
         dispatch(fetchFilterSelect(filter))
         dispatch(setFilterChoosen('Featured'))
+        dispatch(setHomeCategory(category.data))
+        dispatch(setFilteredContent(homeFiltered.data))
         setTimeout(async () => {
           dispatch(fetchSuccess())
           // Set success after 2000 milliseconds
