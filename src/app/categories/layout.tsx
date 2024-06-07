@@ -51,7 +51,7 @@ function Dropdown() {
   return (
     <>
       <button
-        className="inline-flex items-center rounded-lg px-5 py-2.5 text-center text-sm font-medium text-zinc-600 hover:text-zinc-800 focus:outline-none"
+        className="inline-flex items-center rounded-lg px-5 py-2.5 text-center text-sm sm:text-base font-medium text-zinc-600 hover:text-zinc-800 focus:outline-none"
         type="button"
         onClick={() => {
           if (clicked) {
