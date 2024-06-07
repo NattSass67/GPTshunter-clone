@@ -1,21 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-interface HomeState {
+interface CategoryState {
   loading: boolean
   secondaryLoading: boolean
-  filterSelect: string[] 
-  filterChoosen: string
+  dropSelect: { name: string; count: number }[]
+  dropChoosen: string
   filteredContent: any
-  homeCategory: { name: string; content: any }[]
+  page: number
 }
 
-const initialState: HomeState = {
+const initialState: CategoryState = {
   loading: false,
   secondaryLoading: false,
-  filterSelect: [],
-  filterChoosen: '',
+  dropSelect: [],
+  dropChoosen: '',
   filteredContent: null,
-  homeCategory: [],
+  page: 1
 }
 
 /* eslint no-param-reassign: ["error", { "props": true, "ignorePropertyModificationsFor": ["state"] }] */
@@ -35,30 +35,21 @@ const sessionSlice = createSlice({
     fetchSecondSuccess(state) {
       state.secondaryLoading = false // Set loading state to false when login succeeds
     },
-    fetchFilterSelect(state, action) {
-      state.filterSelect = action.payload
+    setFilteredContent(state, action) {
+      state.filteredContent = action.payload
     },
-    setFilterChoosen(state, action) {
-      state.filterChoosen = action.payload
+    setDropChoosen(state, action) {
+      state.dropChoosen = action.payload
     },
-    setHomeCategory(state, action) {
-      state.homeCategory = action.payload
+    setExistCategory(state, action) {
+      state.dropSelect = action.payload
     },
-    setFilteredContent(state, action){
-      state.filteredContent =action.payload
-    }
+    setPage(state, action) {
+        state.page = action.payload
+      },
   },
 })
 
-export const {
-  fetchStart,
-  fetchSuccess,
-  fetchSecondStart,
-  fetchSecondSuccess,
-  fetchFilterSelect,
-  setFilterChoosen,
-  setHomeCategory,
-  setFilteredContent
-} = sessionSlice.actions
+export const categoryFunction = sessionSlice.actions
 
 export default sessionSlice.reducer

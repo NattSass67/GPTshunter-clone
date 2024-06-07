@@ -38,10 +38,9 @@ export function Button({
 }
 
 
-
 export function FilterSelect() {
   const content: string[]= useAppSelector(
-    (state) => state.homeSession.filterSelect.title
+    (state) => state.homeSession.filterSelect
   )
 
   const dispatch = useAppDispatch()

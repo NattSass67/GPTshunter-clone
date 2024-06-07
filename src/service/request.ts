@@ -8,7 +8,7 @@ import logoComment from '@/images/logos/comment.svg'
 
 export async function getAllFilter() {
   return {
-    title: [
+    data: [
       'Featured',
       'Newest',
       'By ChatGPT',
@@ -47,6 +47,8 @@ const mockContent = [
       'Creating technology to empower civilians to explore space on their own terms.',
     link: { href: 'http://planetaria.tech', label: 'planetaria.tech' },
     logo: logoPlanetaria,
+    rate: 5,
+    comments: 2.3
   },
   {
     name: 'Animaginary',
@@ -54,6 +56,8 @@ const mockContent = [
       'High performance web animation library, hand-written in optimized WASM.',
     link: { href: '#', label: 'github.com' },
     logo: logoAnimaginary,
+    rate: 5,
+    comments: 2.3
   },
   {
     name: 'HelioStream',
@@ -61,6 +65,8 @@ const mockContent = [
       'Real-time video streaming library, optimized for interstellar transmission.',
     link: { href: '#', label: 'github.com' },
     logo: logoHelioStream,
+    rate: 5,
+    comments: 2.3
   },
   {
     name: 'cosmOS',
@@ -68,6 +74,8 @@ const mockContent = [
       'The operating system that powers our Planetaria space shuttles.',
     link: { href: '#', label: 'github.com' },
     logo: logoCosmos,
+    rate: 5,
+    comments: 2.3
   },
   {
     name: 'OpenShuttle',
@@ -75,6 +83,8 @@ const mockContent = [
       'The schematics for the first rocket I designed that successfully made it to orbit.',
     link: { href: '#', label: 'github.com' },
     logo: logoOpenShuttle,
+    rate: 5,
+    comments: 2.3
   },
   {
     name: 'Planetaria',
@@ -82,6 +92,8 @@ const mockContent = [
       'Creating technology to empower civilians to explore space on their own terms.',
     link: { href: 'http://planetaria.tech', label: 'planetaria.tech' },
     logo: logoPlanetaria,
+    rate: 5,
+    comments: 2.3
   },
   {
     name: 'Animaginary',
@@ -89,6 +101,8 @@ const mockContent = [
       'High performance web animation library, hand-written in optimized WASM.',
     link: { href: '#', label: 'github.com' },
     logo: logoAnimaginary,
+    rate: 5,
+    comments: 2.3
   },
   {
     name: 'HelioStream',
@@ -96,6 +110,8 @@ const mockContent = [
       'Real-time video streaming library, optimized for interstellar transmission.',
     link: { href: '#', label: 'github.com' },
     logo: logoHelioStream,
+    rate: 5,
+    comments: 2.3
   },
   {
     name: 'cosmOS',
@@ -103,6 +119,8 @@ const mockContent = [
       'The operating system that powers our Planetaria space shuttles.',
     link: { href: '#', label: 'github.com' },
     logo: logoCosmos,
+    rate: 5,
+    comments: 2.3
   },
   {
     name: 'OpenShuttle',
@@ -110,6 +128,8 @@ const mockContent = [
       'The schematics for the first rocket I designed that successfully made it to orbit.',
     link: { href: '#', label: 'github.com' },
     logo: logoOpenShuttle,
+    rate: 5,
+    comments: 2.3
   },
   {
     name: 'cosmOS',
@@ -117,6 +137,8 @@ const mockContent = [
       'The operating system that powers our Planetaria space shuttles.',
     link: { href: '#', label: 'github.com' },
     logo: logoCosmos,
+    rate: 5,
+    comments: 2.3
   },
   {
     name: 'OpenShuttle',
@@ -124,10 +146,12 @@ const mockContent = [
       'The schematics for the first rocket I designed that successfully made it to orbit.',
     link: { href: '#', label: 'github.com' },
     logo: logoOpenShuttle,
+    rate: 5,
+    comments: 2.3
   },
 ]
 
-export async function getByDefaultCategory() {
+export async function getByDefaultCategory() { //every category with content exist
   return {
     data: [
       {
@@ -156,43 +180,7 @@ export async function getByDefaultCategory() {
 
 export async function getByCategoryName(name: string) {
   return {
-    data: [
-      {
-        name: 'Planetaria',
-        description:
-          'Creating technology to empower civilians to explore space on their own terms.',
-        link: { href: 'http://planetaria.tech', label: 'planetaria.tech' },
-        logo: logoPlanetaria,
-      },
-      {
-        name: 'Animaginary',
-        description:
-          'High performance web animation library, hand-written in optimized WASM.',
-        link: { href: '#', label: 'github.com' },
-        logo: logoAnimaginary,
-      },
-      {
-        name: 'HelioStream',
-        description:
-          'Real-time video streaming library, optimized for interstellar transmission.',
-        link: { href: '#', label: 'github.com' },
-        logo: logoHelioStream,
-      },
-      {
-        name: 'cosmOS',
-        description:
-          'The operating system that powers our Planetaria space shuttles.',
-        link: { href: '#', label: 'github.com' },
-        logo: logoCosmos,
-      },
-      {
-        name: 'OpenShuttle',
-        description:
-          'The schematics for the first rocket I designed that successfully made it to orbit.',
-        link: { href: '#', label: 'github.com' },
-        logo: logoOpenShuttle,
-      },
-    ],
+    data: mockContent
   }
 }
 

@@ -14,18 +14,20 @@ import storage from 'redux-persist/lib/storage';
 
 import sessionReducer from './sessionReducers';
 import homeReducer from './home';
+import categoryReducer from './category';
 
 // Combine all reducers into the rootReducer
 const rootReducer = combineReducers({
   mySession: sessionReducer,
-  homeSession: homeReducer
+  homeSession: homeReducer,
+  categorySession: categoryReducer
   // Add other reducers here if needed
 });
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['mySession', 'homeSession'], // List of reducers to persist
+  whitelist: ['mySession', 'homeSession', 'categorySession'], // List of reducers to persist
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

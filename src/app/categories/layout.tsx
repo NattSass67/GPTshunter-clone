@@ -1,34 +1,41 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-unescaped-entities */
 'use client'
 
 import { Container } from '@/components/Container'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Transition } from '@headlessui/react'
+import { useAppDispatch, useAppSelector } from '@/session/store'
+import { loadCategoryPage } from '@/session/my-state'
+import { categoryFunction } from '@/session/category'
 
 function Dropdown() {
-  const router = useRouter();
+  const dispatch = useAppDispatch()
+  const dropChoosen = useAppSelector(
+    (state) => state.categorySession.dropChoosen,
+  )
+
+  const router = useRouter()
   const [clicked, setClicked] = useState(false)
-  const [selected, setSelected] = useState('Category')
   const checkList = mock.map((object) => (
     <li key={object.name}>
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           <input
             onChange={() => {
-              setSelected(object.name)
-              router.push(`/categories/selected/?selected=${object.name}&page=1`)
+              dispatch(categoryFunction.setDropChoosen(object.name))
+              dispatch(categoryFunction.setPage(1))
+              setTimeout(async () => {
+                router.push(`/categories/selected`)
+                // Set success after 2000 milliseconds
+              }, 100)
             }}
-            id="default-radio-1"
             type="radio"
-            checked={selected == object.name}
-            name="default-radio"
+            checked={dropChoosen == object.name}
             className="h-4 w-4 border-gray-300 bg-gray-100 accent-zinc-600 focus:outline-none"
           />
-          <label
-            htmlFor="default-radio-1"
-            className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-          >
+          <label className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
             {object.name}
           </label>
         </div>
@@ -46,16 +53,15 @@ function Dropdown() {
         className="inline-flex items-center rounded-lg px-5 py-2.5 text-center text-sm font-medium text-zinc-600 hover:text-zinc-800 focus:outline-none"
         type="button"
         onClick={() => {
-          setClicked(true)
-        }}
-        onBlur={() => {
-          setTimeout(async () => {
+          if (clicked) {
             setClicked(false)
-            // Set success after 2000 milliseconds
-          }, 100)
+          } else {
+            setClicked(true)
+          }
         }}
+        onBlur={() => {}}
       >
-        {selected}
+        {dropChoosen == '' ? 'Category' : dropChoosen}
         <svg
           className="ms-3 h-2.5 w-2.5 translate-y-0.5"
           aria-hidden="true"
@@ -83,7 +89,15 @@ function Dropdown() {
         leaveTo="opacity-0 scale-95"
       >
         <div className="z-10 w-48 divide-y divide-gray-100 rounded-lg bg-white shadow dark:divide-gray-600 dark:bg-gray-700">
-          <ul className="no-scrollbar max-h-48 space-y-3 overflow-y-auto p-3 text-sm text-gray-700 dark:text-gray-200">
+          <ul
+            className="no-scrollbar max-h-48 space-y-3 overflow-y-auto p-3 text-sm text-gray-700 dark:text-gray-200"
+            onBlur={() => {
+              setTimeout(async () => {
+                setClicked(false)
+                // Set success after 2000 milliseconds
+              }, 100)
+            }}
+          >
             {checkList}
           </ul>
         </div>
@@ -126,9 +140,7 @@ const mock = [
   },
 ]
 
-
 export default function CategoriesLayout(props: { children: React.ReactNode }) {
-
   return (
     <Container className="mt-16">
       <div className="w-full py-16 text-center">
@@ -144,7 +156,7 @@ export default function CategoriesLayout(props: { children: React.ReactNode }) {
           aria-labelledby="filter-heading"
           className="relative border-t border-gray-200"
         >
-          <div className="absolute left-0 top-0">
+          <div className="absolute left-0 top-0 z-20">
             <Dropdown />
           </div>
         </section>

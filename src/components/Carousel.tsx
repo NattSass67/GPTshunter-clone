@@ -9,44 +9,8 @@ import logoStar from '@/images/logos/star.svg'
 import logoComment from '@/images/logos/comment.svg'
 import { Card } from '@/components/Card'
 import Image from 'next/image'
-
-const mock = [
-  {
-    name: 'Planetaria',
-    description:
-      'Creating technology to empower civilians to explore space on their own terms.',
-    link: { href: 'http://planetaria.tech', label: 'planetaria.tech' },
-    logo: logoPlanetaria,
-  },
-  {
-    name: 'Animaginary',
-    description:
-      'High performance web animation library, hand-written in optimized WASM.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoAnimaginary,
-  },
-  {
-    name: 'HelioStream',
-    description:
-      'Real-time video streaming library, optimized for interstellar transmission.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoHelioStream,
-  },
-  {
-    name: 'cosmOS',
-    description:
-      'The operating system that powers our Planetaria space shuttles.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoCosmos,
-  },
-  {
-    name: 'OpenShuttle',
-    description:
-      'The schematics for the first rocket I designed that successfully made it to orbit.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoOpenShuttle,
-  },
-]
+import { formatNumber } from '@/service/format'
+import { object } from 'zod'
 
 interface data {
   logo: any
@@ -91,10 +55,10 @@ export function Carousel(props: { content: data[] | null; title: string }) {
       <Card.Description>{project.description}</Card.Description>
       <div className="flex gap-x-4">
         <div className="mt-2 flex items-center gap-x-1">
-          <Image src={logoStar} alt="" className="h-4 w-4" unoptimized /> 5.0
+          <Image src={logoStar} alt="" className="h-4 w-4" unoptimized /> {formatNumber(project.rate)}
         </div>
         <div className="mt-2 flex items-center gap-x-1">
-          <Image src={logoComment} alt="" className="h-4 w-4" unoptimized /> 2.3K
+          <Image src={logoComment} alt="" className="h-4 w-4" unoptimized /> {formatNumber(project.comments)}K
         </div>
       </div>
     </Card>
