@@ -27,6 +27,7 @@ function Dropdown() {
               dispatch(categoryFunction.setDropChoosen(object.name))
               dispatch(categoryFunction.setPage(1))
               setTimeout(async () => {
+                setClicked(false)
                 router.push(`/categories/selected`)
                 // Set success after 2000 milliseconds
               }, 100)
