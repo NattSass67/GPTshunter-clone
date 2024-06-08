@@ -102,26 +102,38 @@ function ButtonChangeLang(props: { children: React.ReactNode }) {
           />
         </svg>
       </button>
-      {clicked && (
-        <div className="absolute top-12 z-20 flex flex-col rounded-lg bg-white shadow">
-          <div className='hover:bg-zinc-100 w-12 flex justify-center'
-            onClick={() => {
-              router.push('/th')
-              setClicked(false)
-            }}
-          >
-            TH
+      {
+        <Transition
+          show={clicked}
+          enter="transition ease-out duration-75"
+          enterFrom="opacity-0 scale-95"
+          enterTo="opacity-100 scale-100"
+          leave="transition ease-in duration-100"
+          leaveFrom="opacity-100 scale-100"
+          leaveTo="opacity-0 scale-95"
+        >
+          <div className="absolute top-12 z-20 flex flex-col rounded-lg bg-white shadow">
+            <div
+              className="flex w-12 justify-center hover:bg-zinc-100"
+              onClick={() => {
+                router.push('/th')
+                setClicked(false)
+              }}
+            >
+              TH
+            </div>
+            <div
+              className="flex w-12 justify-center hover:bg-zinc-100 "
+              onClick={() => {
+                router.push('/en')
+                setClicked(false)
+              }}
+            >
+              EN
+            </div>
           </div>
-          <div className='hover:bg-zinc-100 w-12 flex justify-center '
-            onClick={() => {
-              router.push('/en')
-              setClicked(false)
-            }}
-          >
-            EN
-          </div>
-        </div>
-      )}
+        </Transition>
+      }
     </div>
   )
 }
