@@ -388,7 +388,6 @@ export default function Home() {
       dispatch(fetchCategoryContent(dropChoosen))
       window.scrollBy({
         top: -window.scrollY,
-        behavior: 'smooth',
       });      
     }
   }, [dropChoosen,page])
