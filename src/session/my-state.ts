@@ -40,6 +40,26 @@ export const fetchContent = () => {
   }
 }
 
+export const fetchHomeFilterContent = (name: string) => {
+  return async (dispatch: any) => {
+    dispatch(fetchSecondStart()) // Dispatch loginStart action to set loading state
+    try {
+      const content = await getByFilterSelected(name)
+      if (content === null) {
+        throw new Error('One or more required variables are null.')
+      } else {
+        dispatch(setFilteredContent(content.data))
+        setTimeout(async () => {
+          dispatch(fetchSecondSuccess())
+          // Set success after 2000 milliseconds
+        }, 2000)
+      }
+    } catch (error) {
+      dispatch(fetchSecondSuccess()) // Dispatch loginFailure action if login encounters an error
+    }
+  }
+}
+
 export const fetchCategoryContent = (name: string) => {
   return async (dispatch: any) => {
     dispatch(categoryFunction.fetchSecondStart()) // Dispatch loginStart action to set loading state

@@ -278,8 +278,16 @@ function Photos() {
   )
 }
 
+import { Transition } from '@headlessui/react'
+import { useState } from 'react'
+import { Loader } from '@/components/Loader'
+
 export default function Home() {
   const dispatch = useAppDispatch()
+  const loading = useAppSelector((state) => state.homeSession.loading)
+  const secondaryLoading = useAppSelector(
+    (state) => state.homeSession.secondaryLoading,
+  )
   const selectedFilter = useAppSelector(
     (state) => state.homeSession.filterChoosen,
   )
@@ -289,73 +297,114 @@ export default function Home() {
   const categories = useAppSelector((state) => state.homeSession.homeCategory)
 
   const carouselList = categories.map((object) => (
-    <Carousel key={object.name} title={object.name} content={object.content} />
+    <Carousel
+      key={object.name}
+      title={object.name}
+      content={object.content}
+      isLoading={false}
+    />
   ))
 
   useEffect(() => {
     dispatch(fetchContent())
   }, [])
+  //------------------loadingPage
+  const [initLoading, setInitLoading] = useState(true)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setInitLoading(false)
+    }, 200) // Set the delay to 1 second
+
+    // Cleanup the timer on component unmount
+    return () => clearTimeout(timer)
+  }, [])
+
+  if (initLoading) {
+    return <><Container className="pt-48"><Loader /></Container></>
+  }
+
   return (
     <>
-      <Container className="pt-32">
-        <div className="flex w-full flex-wrap gap-x-2 md:grid md:grid-cols-2">
-          <div className="mb-4">
-            <h1 className="inline-block align-middle text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-              Discover GPT Store <SearchBar />
-            </h1>
-            <div className="mt-3 flex flex-col px-4 text-sm text-zinc-600 sm:text-base">
-              <a
-                href="#"
-                className="flex items-center gap-x-2 hover:text-zinc-500"
-              >
-                <Image
-                  src={logoSubmit}
-                  alt=""
-                  className="h-5 w-5"
-                  unoptimized
-                />
-                Submit your awesome GPT
-              </a>
-              <a
-                href="#"
-                className="flex items-center gap-x-2 hover:text-zinc-500"
-              >
-                <Image src={logoApply} alt="" className="h-5 w-5" unoptimized />
-                Apply to our search API
-              </a>
-              <a
-                href="#"
-                className="flex items-center gap-x-2 hover:text-zinc-500"
-              >
-                <Image src={logoAdd} alt="" className="h-5 w-5" unoptimized />
-                Add WebPilot to your GPTs in 30s
-              </a>
+      <Transition
+        show={!loading}
+        enter="transition-opacity duration-300"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+        leave="transition-opacity duration-150"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
+      >
+        <Container className="pt-32">
+          <div className="flex w-full flex-wrap gap-x-2 md:grid md:grid-cols-2">
+            <div className="mb-4">
+              <h1 className="inline-block align-middle text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
+                Discover GPT Store <SearchBar />
+              </h1>
+              <div className="mt-3 flex flex-col px-4 text-sm text-zinc-600 sm:text-base">
+                <a
+                  href="#"
+                  className="flex items-center gap-x-2 hover:text-zinc-500"
+                >
+                  <Image
+                    src={logoSubmit}
+                    alt=""
+                    className="h-5 w-5"
+                    unoptimized
+                  />
+                  Submit your awesome GPT
+                </a>
+                <a
+                  href="#"
+                  className="flex items-center gap-x-2 hover:text-zinc-500"
+                >
+                  <Image
+                    src={logoApply}
+                    alt=""
+                    className="h-5 w-5"
+                    unoptimized
+                  />
+                  Apply to our search API
+                </a>
+                <a
+                  href="#"
+                  className="flex items-center gap-x-2 hover:text-zinc-500"
+                >
+                  <Image src={logoAdd} alt="" className="h-5 w-5" unoptimized />
+                  Add WebPilot to your GPTs in 30s
+                </a>
+              </div>
+            </div>
+
+            <div className="mx-auto mt-2 flex max-w-xs flex-col">
+              <img
+                alt="GPTs Hunter - Share and discover custom GPTs | Product Hunt"
+                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=424020&amp;theme=light"
+                className="mb-4 h-auto w-auto"
+              />
+              <dd className="text-center text-3xl font-semibold tracking-tight text-zinc-800 sm:text-5xl">
+                678K+
+              </dd>
+              <dt className="text-center text-sm leading-7 text-zinc-500 sm:text-base">
+                GPTs found and counting
+              </dt>
             </div>
           </div>
-
-          <div className="mx-auto mt-2 flex max-w-xs flex-col">
-            <img
-              alt="GPTs Hunter - Share and discover custom GPTs | Product Hunt"
-              src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=424020&amp;theme=light"
-              className="mb-4 h-auto w-auto"
+          <div className="mt-16 w-full border-t">
+            <FilterSelect />
+            <Carousel
+              content={selectedFilterContent}
+              title={selectedFilter}
+              isLoading={secondaryLoading}
             />
-            <dd className="text-center text-3xl font-semibold tracking-tight text-zinc-800 sm:text-5xl">
-              678K+
-            </dd>
-            <dt className="text-center text-sm leading-7 text-zinc-500 sm:text-base">
-              GPTs found and counting
-            </dt>
+            <br></br>
+            <hr></hr>
+            {carouselList}
           </div>
-        </div>
-        <div className="mt-16 w-full border-t">
-          <FilterSelect />
-          <Carousel content={selectedFilterContent} title={selectedFilter} />
-          <br></br>
-          <hr></hr>
-          {carouselList}
-        </div>
-      </Container>
-      {/* <Photos /> */}
+        </Container>
+        {/* <Photos /> */}
+      </Transition>
+      {loading && <Container className="pt-48"><Loader /></Container>}
     </>
   )
 }

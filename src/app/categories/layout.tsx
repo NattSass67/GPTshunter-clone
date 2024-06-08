@@ -7,18 +7,20 @@ import { useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { Transition } from '@headlessui/react'
 import { useAppDispatch, useAppSelector } from '@/session/store'
-import { loadCategoryPage } from '@/session/my-state'
 import { categoryFunction } from '@/session/category'
 
 function Dropdown() {
   const dispatch = useAppDispatch()
+  const allCategories = useAppSelector(
+    (state) => state.categorySession.dropSelect,
+  )
   const dropChoosen = useAppSelector(
     (state) => state.categorySession.dropChoosen,
   )
 
   const router = useRouter()
   const [clicked, setClicked] = useState(false)
-  const checkList = mock.map((object) => (
+  const checkList = allCategories?.map((object) => (
     <li key={object.name}>
       <div className="flex items-center justify-between">
         <div className="flex items-center">
@@ -51,7 +53,7 @@ function Dropdown() {
   return (
     <>
       <button
-        className="inline-flex items-center rounded-lg px-5 py-2.5 text-center text-sm sm:text-base font-medium text-zinc-600 hover:text-zinc-800 focus:outline-none"
+        className="inline-flex items-center rounded-lg px-5 py-2.5 text-center text-sm font-medium text-zinc-600 hover:text-zinc-800 focus:outline-none sm:text-base"
         type="button"
         onClick={() => {
           if (clicked) {
@@ -106,63 +108,58 @@ function Dropdown() {
     </>
   )
 }
-const mock = [
-  {
-    name: 'Dalle',
-    count: '17K+',
-  },
-  {
-    name: 'Education',
-    count: '69K+',
-  },
-  {
-    name: 'Lifestyle',
-    count: '53K+',
-  },
-  {
-    name: 'Productivity',
-    count: '55K+',
-  },
-  {
-    name: 'Programming',
-    count: '29K+',
-  },
-  {
-    name: 'Research',
-    count: '44K+',
-  },
-  {
-    name: 'Writing',
-    count: '44K+',
-  },
-  {
-    name: 'Other',
-    count: '151K+',
-  },
-]
 
+import { Loader } from '@/components/Loader'
 export default function CategoriesLayout(props: { children: React.ReactNode }) {
+  const [initLoading, setInitLoading] = useState(true)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setInitLoading(false)
+    }, 2000) // Set the delay to 1 second
+
+    // Cleanup the timer on component unmount
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
-    <Container className="mt-16">
-      <div className="w-full py-16 text-center">
-        <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl">
-          GPT Store Categories
-        </h1>
-        <p className="mx-auto mt-4 max-w-3xl text-base text-zinc-500">
-          Explore GPT Store's Categories
-        </p>
-      </div>
-      <div className="w-full">
-        <section
-          aria-labelledby="filter-heading"
-          className="relative border-t border-gray-200"
-        >
-          <div className="absolute left-0 top-0 z-20">
-            <Dropdown />
+    <>
+      <Transition
+        show={!initLoading}
+        enter="transition-opacity duration-300"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+        leave="transition-opacity duration-150"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
+      >
+        <Container className="mt-16">
+          <div className="w-full py-16 text-center">
+            <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl">
+              GPT Store Categories
+            </h1>
+            <p className="mx-auto mt-4 max-w-3xl text-base text-zinc-500">
+              Explore GPT Store's Categories
+            </p>
           </div>
-        </section>
-        <div className="mt-12">{props.children}</div>
-      </div>
-    </Container>
+          <div className="w-full">
+            <section
+              aria-labelledby="filter-heading"
+              className="relative border-t border-gray-200"
+            >
+              <div className="absolute left-0 top-0 z-20">
+                <Dropdown />
+              </div>
+            </section>
+            <div className="mt-12 relative">{props.children}</div>
+          </div>
+        </Container>
+      </Transition>
+      {initLoading && (
+        <Container className="pt-48">
+          <Loader />
+        </Container>
+      )}
+    </>
   )
 }

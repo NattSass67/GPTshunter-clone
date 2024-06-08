@@ -5,11 +5,12 @@ import logoStar from '@/images/logos/star.svg'
 import logoComment from '@/images/logos/comment.svg'
 import { Card } from '@/components/Card'
 import Image from 'next/image'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { fetchCategoryContent } from '@/session/my-state'
 import { formatNumber } from '@/service/format'
 import { categoryFunction } from '@/session/category'
+import { Loader } from '@/components/Loader'
 
 function Pagination() {
   const page = useAppSelector((state) => state.categorySession.page)
@@ -33,7 +34,7 @@ function Pagination() {
             onClick={() => {
               switchPage(1)
             }}
-            className="flex select-none items-center gap-2 rounded-full px-3 sm:px-6 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-gray-400 transition-all disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            className="flex select-none items-center gap-2 rounded-full px-3 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-gray-400 transition-all disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none sm:px-6"
             type="button"
           >
             <svg
@@ -111,7 +112,7 @@ function Pagination() {
             onClick={() => {
               foward()
             }}
-            className="flex select-none items-center gap-2 rounded-full px-3 sm:px-6 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            className="flex select-none items-center gap-2 rounded-full px-3 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none sm:px-6"
             type="button"
           >
             <div className="hidden sm:flex">Next</div>
@@ -144,7 +145,7 @@ function Pagination() {
             onClick={() => {
               switchPage(1)
             }}
-            className="flex select-none items-center gap-2 rounded-full px-3 sm:px-6 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            className="flex select-none items-center gap-2 rounded-full px-3 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none sm:px-6"
             type="button"
           >
             <svg
@@ -222,7 +223,7 @@ function Pagination() {
             onClick={() => {
               foward()
             }}
-            className="flex select-none items-center gap-2 rounded-full px-3 sm:px-6 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            className="flex select-none items-center gap-2 rounded-full px-3 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none sm:px-6"
             type="button"
           >
             <div className="hidden sm:flex">Next</div>
@@ -254,7 +255,7 @@ function Pagination() {
           onClick={() => {
             switchPage(page - 1)
           }}
-          className="flex select-none items-center gap-2 rounded-full px-3 sm:px-6 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          className="flex select-none items-center gap-2 rounded-full px-3 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none sm:px-6"
           type="button"
         >
           <svg
@@ -332,7 +333,7 @@ function Pagination() {
           onClick={() => {
             switchPage(page + 1)
           }}
-          className="flex select-none items-center gap-2 rounded-full px-3 sm:px-6 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          className="flex select-none items-center gap-2 rounded-full px-3 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none sm:px-6"
           type="button"
         >
           <div className="hidden sm:flex">Next</div>
@@ -368,6 +369,9 @@ interface content {
 export default function Home() {
   const router = useRouter()
   const dispatch = useAppDispatch()
+  const isLoading = useAppSelector(
+    (state) => state.categorySession.secondaryLoading,
+  )
   const dropChoosen = useAppSelector(
     (state) => state.categorySession.dropChoosen,
   )
@@ -411,10 +415,27 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex w-full flex-wrap text-center">{CardList}</div>
-      <div className="mt-6 flex w-full justify-center">
-        <Pagination />
+      {isLoading ? (
+        <div className="top-0 mx-0 mt-24 flex flex w-full justify-center ">
+          <Loader />
+        </div>
+      ) : (
+        <></>
+      )}
+
+      <div
+        className={`flex w-full flex-wrap text-center transition delay-300 ${
+          isLoading ? 'opacity-0' : 'opacity-100'
+        }`}
+      >
+        {!isLoading && CardList}
       </div>
+
+      {!isLoading && (
+        <div className="mt-6 flex w-full justify-center">
+          <Pagination />
+        </div>
+      )}
     </>
   )
 }

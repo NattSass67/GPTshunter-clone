@@ -4,6 +4,7 @@ import clsx from 'clsx'
 import { useAppDispatch, useAppSelector } from '@/session/store'
 import { useRef } from 'react'
 import { setFilterChoosen } from '@/session/home'
+import { fetchHomeFilterContent } from '@/session/my-state'
 
 const variantStyles = {
   primary:
@@ -49,6 +50,7 @@ export function FilterSelect() {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const onFilterClick = (name: string) => {
     dispatch(setFilterChoosen(name))
+    dispatch(fetchHomeFilterContent(name))
   }
 
   const scrollLeft = () => {

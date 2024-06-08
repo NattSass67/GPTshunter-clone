@@ -11,6 +11,8 @@ import { Card } from '@/components/Card'
 import Image from 'next/image'
 import { formatNumber } from '@/service/format'
 import { object } from 'zod'
+import { Transition } from '@headlessui/react'
+import { Loader } from './Loader'
 
 interface data {
   logo: any
@@ -19,7 +21,11 @@ interface data {
   rate: number
   comments: number
 }
-export function Carousel(props: { content: data[] | null; title: string }) {
+export function Carousel(props: {
+  content: data[] | null
+  title: string
+  isLoading: boolean
+}) {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
 
   const scrollLeft = () => {
@@ -55,10 +61,12 @@ export function Carousel(props: { content: data[] | null; title: string }) {
       <Card.Description>{project.description}</Card.Description>
       <div className="flex gap-x-4">
         <div className="mt-2 flex items-center gap-x-1">
-          <Image src={logoStar} alt="" className="h-4 w-4" unoptimized /> {formatNumber(project.rate)}
+          <Image src={logoStar} alt="" className="h-4 w-4" unoptimized />{' '}
+          {formatNumber(project.rate)}
         </div>
         <div className="mt-2 flex items-center gap-x-1">
-          <Image src={logoComment} alt="" className="h-4 w-4" unoptimized /> {formatNumber(project.comments)}K
+          <Image src={logoComment} alt="" className="h-4 w-4" unoptimized />{' '}
+          {formatNumber(project.comments)}K
         </div>
       </div>
     </Card>
@@ -99,12 +107,20 @@ export function Carousel(props: { content: data[] | null; title: string }) {
           </svg>
         </button>
 
-        <div
-          ref={scrollContainerRef}
-          className="no-scrollbar mx-0 mt-12 flex w-full flex-row overflow-x-auto "
-        >
-          {CardList}
-        </div>
+
+
+        {props.isLoading ? <div
+            className="absolute top-0 no-scrollbar mx-0 mt-28 flex w-full flex justify-center "
+          >
+            <Loader />
+          </div>:<></>}
+
+          {<div
+            ref={scrollContainerRef}
+            className={`no-scrollbar mx-0 mt-12 transition ${props.isLoading ? "opacity-0":"opacity-100"} flex w-full flex-row overflow-x-auto`}
+          >
+            {CardList}
+          </div>}
 
         <button
           onClick={scrollRight}

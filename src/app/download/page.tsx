@@ -1,138 +1,167 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @next/next/no-img-element */
+'use client'
 import { Container } from '@/components/Container'
 import Image from 'next/image'
 import sample from '@/images/500.png'
 import sample1 from '@/images/trending-data.png'
+import { useState, useEffect } from 'react'
+import { Transition } from '@headlessui/react'
+import { Loader } from '@/components/Loader'
 
 export default function Example() {
-  return (
-    <Container className="pt-32">
-      <div className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
-            <p className="text-base font-semibold leading-7 text-zinc-400">
-              Posted on Feb 18, 2024
-            </p>
-            <h1 className="mt-2 text-4xl max-w-2xl font-bold tracking-tight text-zinc-800 sm:text-5xl">
-              Download Daily GPTs Data on the GPT Store
-            </h1>
-            <p className="max-w-lg mt-2 mb-4 text-zinc-800 text-sm sm:text-base">
-              GPTs Hunter stands as the most extensive GPTs directory to date.
-              We're proud to present two major open-source data projects
-            </p>
-            <hr />
-            <div className="my-10 grid max-w-xl grid-cols-1 gap-8 text-sm leading-7 text-zinc-800 sm:text-base lg:max-w-none lg:grid-cols-2">
-              <div>
-                <p className="text-2xl font-semibold">
-                  GPT Store Daily Trending Data Backup
-                </p>
-                <p className="mt-4">
-                  GPT Store's daily data is meticulously scraped and saved on
-                  GitHub. This allows you to explore the daily GPTs trends in
-                  the archive folder.
-                </p>
-                <p className="my-4">
-                  For detailed insights and historical trends, visit:{' '}
-                  <a
-                    href="https://github.com/AINativeLab/gptstore-data-backup"
-                    className="underline underline-offset-2 hover:text-zinc-400"
-                  >
-                    Here
-                  </a>
-                </p>
-                <Image
-                  src={sample1}
-                  alt=""
-                  className="h-auto w-full rounded-lg shadow"
-                />
-              </div>
-              <div>
-                <p className="text-2xl font-semibold">
-                  Top 500 GPTs Daily Session Data Backup from GPT Store
-                </p>
-                <p className="mt-4">
-                  We consistently gather and back up data from our database to
-                  provide a comprehensive view of the top 500 GPTs based on
-                  daily session counts. This data is crucial for understanding
-                  the ever-evolving landscape of best GPTs and their usage
-                  patterns.
-                </p>
-                <p className="my-4">
-                  Access this repository for in-depth analysis:{' '}
-                  <a
-                    href="https://github.com/AINativeLab/gptstore-data-backup"
-                    className="underline underline-offset-2 hover:text-zinc-400"
-                  >
-                    Here
-                  </a>
-                </p>
-                <Image
-                  src={sample}
-                  alt=""
-                  className="h-auto w-full rounded-lg shadow"
-                />
-              </div>
-            </div>
-            <hr />
-            <div className="mt-2 flex text-sm sm:text-base">
-              <div>
-                <p className="mt-8 text-2xl font-semibold">
-                  Download the Complete GPTs Dataset
-                </p>
-                <p className="mt-4">
-                  For those requiring access to the entire dataset of All GPTs
-                  from our website, we offer a comprehensive solution.
-                </p>
-                <p className="mt-4">
-                  You can buy it for 1 month($99):{' '}
-                  <a
-                    href="https://store.ai.ls/checkout/buy/a9f28827-21c2-4d0f-9605-0a921ac2e44d"
-                    className="underline underline-offset-2 hover:text-zinc-400"
-                  >
-                    Here
-                  </a>
-                </p>
+  const [initLoading, setInitLoading] = useState(true)
 
-                <p className="mt-4">
-                  You can also opt for a monthly payment ($90/mo) with automatic
-                  renewal:{' '}
-                  <a
-                    href="https://store.ai.ls/buy/dc7c96a6-95c6-4b9b-9369-1861a060bfb1"
-                    className="underline underline-offset-2 hover:text-zinc-400"
-                  >
-                    Here
-                  </a>
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setInitLoading(false)
+    }, 2000) // Set the delay to 1 second
+
+    // Cleanup the timer on component unmount
+    return () => clearTimeout(timer)
+  }, [])
+
+  return (
+    <>
+      <Transition
+        show={!initLoading}
+        enter="transition-opacity duration-300"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+        leave="transition-opacity duration-150"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
+      >
+        <Container className="pt-32">
+          <div className="bg-white">
+            <div className="mx-auto max-w-7xl px-6 lg:px-8">
+              <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
+                <p className="text-base font-semibold leading-7 text-zinc-400">
+                  Posted on Feb 18, 2024
                 </p>
-                <p className="mt-4">
-                  It should be noted that this product does not support refunds.
-                  Please send your GitHub id to{' '}
-                  <a
-                    href="https://store.ai.ls/buy/dc7c96a6-95c6-4b9b-9369-1861a060bfb1"
-                    className="underline underline-offset-2 hover:text-zinc-400"
-                  >
-                    hi@ai.ci
-                  </a>{' '}
-                  to get invited to our GitHub data repo before downloading
-                  data.
+                <h1 className="mt-2 max-w-2xl text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl">
+                  Download Daily GPTs Data on the GPT Store
+                </h1>
+                <p className="mb-4 mt-2 max-w-lg text-sm text-zinc-800 sm:text-base">
+                  GPTs Hunter stands as the most extensive GPTs directory to
+                  date. We're proud to present two major open-source data
+                  projects
                 </p>
-                <div>
-                  <p className="mt-8 text-2xl font-semibold">Sample</p>
+                <hr />
+                <div className="my-10 grid max-w-xl grid-cols-1 gap-8 text-sm leading-7 text-zinc-800 sm:text-base lg:max-w-none lg:grid-cols-2">
                   <div>
-                    <textarea
-                      rows={40}
-                      className="no-scrollbar mt-4 w-full resize-none rounded-2xl bg-zinc-800 p-4 text-sm text-zinc-50 focus:outline-none sm:text-base "
-                      readOnly
-                      value={jsonString}
+                    <p className="text-2xl font-semibold">
+                      GPT Store Daily Trending Data Backup
+                    </p>
+                    <p className="mt-4">
+                      GPT Store's daily data is meticulously scraped and saved
+                      on GitHub. This allows you to explore the daily GPTs
+                      trends in the archive folder.
+                    </p>
+                    <p className="my-4">
+                      For detailed insights and historical trends, visit:{' '}
+                      <a
+                        href="https://github.com/AINativeLab/gptstore-data-backup"
+                        className="underline underline-offset-2 hover:text-zinc-400"
+                      >
+                        Here
+                      </a>
+                    </p>
+                    <Image
+                      src={sample1}
+                      alt=""
+                      className="h-auto w-full rounded-lg shadow"
                     />
+                  </div>
+                  <div>
+                    <p className="text-2xl font-semibold">
+                      Top 500 GPTs Daily Session Data Backup from GPT Store
+                    </p>
+                    <p className="mt-4">
+                      We consistently gather and back up data from our database
+                      to provide a comprehensive view of the top 500 GPTs based
+                      on daily session counts. This data is crucial for
+                      understanding the ever-evolving landscape of best GPTs and
+                      their usage patterns.
+                    </p>
+                    <p className="my-4">
+                      Access this repository for in-depth analysis:{' '}
+                      <a
+                        href="https://github.com/AINativeLab/gptstore-data-backup"
+                        className="underline underline-offset-2 hover:text-zinc-400"
+                      >
+                        Here
+                      </a>
+                    </p>
+                    <Image
+                      src={sample}
+                      alt=""
+                      className="h-auto w-full rounded-lg shadow"
+                    />
+                  </div>
+                </div>
+                <hr />
+                <div className="mt-2 flex text-sm sm:text-base">
+                  <div>
+                    <p className="mt-8 text-2xl font-semibold">
+                      Download the Complete GPTs Dataset
+                    </p>
+                    <p className="mt-4">
+                      For those requiring access to the entire dataset of All
+                      GPTs from our website, we offer a comprehensive solution.
+                    </p>
+                    <p className="mt-4">
+                      You can buy it for 1 month($99):{' '}
+                      <a
+                        href="https://store.ai.ls/checkout/buy/a9f28827-21c2-4d0f-9605-0a921ac2e44d"
+                        className="underline underline-offset-2 hover:text-zinc-400"
+                      >
+                        Here
+                      </a>
+                    </p>
+
+                    <p className="mt-4">
+                      You can also opt for a monthly payment ($90/mo) with
+                      automatic renewal:{' '}
+                      <a
+                        href="https://store.ai.ls/buy/dc7c96a6-95c6-4b9b-9369-1861a060bfb1"
+                        className="underline underline-offset-2 hover:text-zinc-400"
+                      >
+                        Here
+                      </a>
+                    </p>
+                    <p className="mt-4">
+                      It should be noted that this product does not support
+                      refunds. Please send your GitHub id to{' '}
+                      <a
+                        href="https://store.ai.ls/buy/dc7c96a6-95c6-4b9b-9369-1861a060bfb1"
+                        className="underline underline-offset-2 hover:text-zinc-400"
+                      >
+                        hi@ai.ci
+                      </a>{' '}
+                      to get invited to our GitHub data repo before downloading
+                      data.
+                    </p>
+                    <div>
+                      <p className="mt-8 text-2xl font-semibold">Sample</p>
+                      <div>
+                        <textarea
+                          rows={40}
+                          className="no-scrollbar mt-4 w-full resize-none rounded-2xl bg-zinc-800 p-4 text-sm text-zinc-50 focus:outline-none sm:text-base "
+                          readOnly
+                          value={jsonString}
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </Container>
+        </Container>
+      </Transition>
+      {initLoading && <Container className="pt-48"><Loader /></Container>}
+    </>
   )
 }
 
