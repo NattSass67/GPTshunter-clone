@@ -31,7 +31,6 @@ export function Carousel(props: {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({
         left: -scrollContainerRef.current.scrollWidth,
-        behavior: 'smooth',
       })
     }
   }
