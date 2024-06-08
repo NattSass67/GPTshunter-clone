@@ -12,7 +12,6 @@ import {
 
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 //import { getSerch } from '@/services/request'
-
 import {
   Popover,
   PopoverButton,
@@ -69,6 +68,61 @@ function ButtonNavbar(props: { children: React.ReactNode }) {
         {props.children}
       </button>
     </>
+  )
+}
+
+function ButtonChangeLang(props: { children: React.ReactNode }) {
+  const [clicked, setClicked] = useState(false)
+  const local = usePathname().split('/')[1]
+  const router = useRouter()
+  return (
+    <div className="relative z-50 flex flex-col">
+      <button
+        className="group rounded-full bg-white/90 px-3 py-3 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
+        onClick={() => {
+          if (!clicked) {
+            setClicked(true)
+          } else {
+            setClicked(false)
+          }
+        }}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={2.0}
+          stroke="#3f3f46"
+          className="size-4"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="m10.5 21 5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 0 1 6-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 0 1-3.827-5.802"
+          />
+        </svg>
+      </button>
+      {clicked && (
+        <div className="absolute top-12 z-20 flex flex-col rounded-lg bg-white shadow">
+          <div className='hover:bg-zinc-100 w-12 flex justify-center'
+            onClick={() => {
+              router.push('/th')
+              setClicked(false)
+            }}
+          >
+            TH
+          </div>
+          <div className='hover:bg-zinc-100 w-12 flex justify-center '
+            onClick={() => {
+              router.push('/en')
+              setClicked(false)
+            }}
+          >
+            EN
+          </div>
+        </div>
+      )}
+    </div>
   )
 }
 
@@ -246,6 +300,7 @@ function MobileNavItem({
 function MobileNavigation(
   props: React.ComponentPropsWithoutRef<typeof Popover>,
 ) {
+  const local = usePathname().split('/')[1]
   return (
     <Popover {...props}>
       <PopoverButton className="group rounded-full bg-white/90 px-3 py-3 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20">
@@ -284,10 +339,16 @@ function MobileNavigation(
             </div>
             <nav className="mt-6">
               <ul className="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
-                <MobileNavItem href="/">Home</MobileNavItem>
-                <MobileNavItem href="/submit">Submit</MobileNavItem>
-                <MobileNavItem href="/categories">Categories</MobileNavItem>
-                <MobileNavItem href="/download">Download</MobileNavItem>
+                <MobileNavItem href={'/' + local}>Home</MobileNavItem>
+                <MobileNavItem href={'/' + local + '/submit'}>
+                  Submit
+                </MobileNavItem>
+                <MobileNavItem href={'/' + local + '/categories'}>
+                  Categories
+                </MobileNavItem>
+                <MobileNavItem href={'/' + local + '/download'}>
+                  Download
+                </MobileNavItem>
               </ul>
             </nav>
           </PopoverPanel>
@@ -328,13 +389,14 @@ function NavItem({
 
 function DesktopNavigation(props: React.ComponentPropsWithoutRef<'nav'>) {
   const [search, setSearchString] = useState('')
+  const local = usePathname().split('/')[1]
   return (
     <nav {...props}>
       <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
-      <NavItem href="/">Home</NavItem>
-        <NavItem href="/submit">Submit</NavItem>
-        <NavItem href="/categories">Categories</NavItem>
-        <NavItem href="/download">Download</NavItem>
+        <NavItem href={'/' + local}>Home</NavItem>
+        <NavItem href={'/' + local + '/submit'}>Submit</NavItem>
+        <NavItem href={'/' + local + '/categories'}>Categories</NavItem>
+        <NavItem href={'/' + local + '/download'}>Download</NavItem>
       </ul>
     </nav>
   )
@@ -560,22 +622,7 @@ export function HeaderPantip() {
               </div>
               <div className="flex justify-end md:flex-1">
                 <div className="pointer-events-auto flex gap-x-2">
-                  <ButtonNavbar>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={2.0}
-                      stroke="#3f3f46"
-                      className="size-4"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="m10.5 21 5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 0 1 6-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 0 1-3.827-5.802"
-                      />
-                    </svg>
-                  </ButtonNavbar>
+                  <ButtonChangeLang />
                   <ButtonNavbar>
                     <svg
                       width="64px"

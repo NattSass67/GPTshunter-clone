@@ -1,6 +1,9 @@
 import rehypePrism from '@mapbox/rehype-prism'
 import nextMDX from '@next/mdx'
 import remarkGfm from 'remark-gfm'
+import createNextIntlPlugin from 'next-intl/plugin';
+ 
+const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -14,5 +17,5 @@ const withMDX = nextMDX({
     rehypePlugins: [rehypePrism],
   },
 })
-
-export default withMDX(nextConfig)
+export default withNextIntl(withMDX(nextConfig));
+//export default withMDX(nextConfig)
