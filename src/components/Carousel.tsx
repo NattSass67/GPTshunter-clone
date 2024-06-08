@@ -27,6 +27,18 @@ export function Carousel(props: {
   isLoading: boolean
 }) {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
+  const reset = ()=>{
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: -scrollContainerRef.current.scrollWidth,
+        behavior: 'smooth',
+      })
+    }
+  }
+
+  useEffect(()=>{
+    reset()
+  },[props.isLoading])
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {

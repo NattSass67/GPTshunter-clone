@@ -369,6 +369,8 @@ interface content {
 export default function Home() {
   const router = useRouter()
   const dispatch = useAppDispatch()
+
+  const page = useAppSelector((state) => state.categorySession.page)
   const isLoading = useAppSelector(
     (state) => state.categorySession.secondaryLoading,
   )
@@ -384,8 +386,12 @@ export default function Home() {
       router.push('/categories')
     } else {
       dispatch(fetchCategoryContent(dropChoosen))
+      window.scrollBy({
+        top: -window.scrollY,
+        behavior: 'smooth',
+      });      
     }
-  }, [dropChoosen])
+  }, [dropChoosen,page])
 
   const CardList = data?.map((project) => (
     <Card
