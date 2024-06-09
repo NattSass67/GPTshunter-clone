@@ -35,7 +35,7 @@ import image5 from '@/images/photos/image-5.jpg'
 import { type ArticleWithSlug, getAllArticles } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
 import { useEffect } from 'react'
-import {useTranslations} from 'next-intl';
+import { useTranslations } from 'next-intl'
 
 function Article({ article }: { article: ArticleWithSlug }) {
   return (
@@ -51,9 +51,6 @@ function Article({ article }: { article: ArticleWithSlug }) {
     </Card>
   )
 }
-
-
-
 
 interface Role {
   company: string
@@ -100,7 +97,6 @@ function Role({ role }: { role: Role }) {
   )
 }
 
-
 function Photos() {
   let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
 
@@ -131,13 +127,12 @@ function Photos() {
 import { Transition } from '@headlessui/react'
 import { useState } from 'react'
 import { Loader } from '@/components/Loader'
-import { useRouter, usePathname} from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 
 export default function Home() {
+  const path = usePathname()
 
-  const path=usePathname()
-  
-  const t = useTranslations('Home');
+  const t = useTranslations('Home')
 
   const dispatch = useAppDispatch()
   const loading = useAppSelector((state) => state.homeSession.loading)
@@ -152,7 +147,7 @@ export default function Home() {
   )
   const categories = useAppSelector((state) => state.homeSession.homeCategory)
 
-  const carouselList = categories.map((object,index) => (
+  const carouselList = categories.map((object, index) => (
     <Carousel
       key={index}
       title={object.name}
@@ -177,7 +172,13 @@ export default function Home() {
   }, [])
 
   if (initLoading) {
-    return <><Container className="pt-48"><Loader /></Container></>
+    return (
+      <>
+        <Container className="pt-48">
+          <Loader />
+        </Container>
+      </>
+    )
   }
 
   return (
@@ -208,7 +209,7 @@ export default function Home() {
                     className="h-5 w-5"
                     unoptimized
                   />
-                  Submit your awesome GPT
+                  {t('submit')}
                 </a>
                 <a
                   href="#"
@@ -220,14 +221,14 @@ export default function Home() {
                     className="h-5 w-5"
                     unoptimized
                   />
-                  Apply to our search API
+                  {t('apply')}
                 </a>
                 <a
                   href="#"
                   className="flex items-center gap-x-2 hover:text-zinc-500"
                 >
                   <Image src={logoAdd} alt="" className="h-5 w-5" unoptimized />
-                  Add WebPilot to your GPTs in 30s
+                  {t('pilot')}
                 </a>
               </div>
             </div>
@@ -236,13 +237,13 @@ export default function Home() {
               <img
                 alt="GPTs Hunter - Share and discover custom GPTs | Product Hunt"
                 src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=424020&amp;theme=light"
-                className="mb-4 h-auto w-auto z-0"
+                className="z-0 mb-4 h-auto w-auto"
               />
               <dd className="text-center text-3xl font-semibold tracking-tight text-zinc-800 sm:text-5xl">
                 678K+
               </dd>
               <dt className="text-center text-sm leading-7 text-zinc-500 sm:text-base">
-                GPTs found and counting
+                {t('count')}
               </dt>
             </div>
           </div>
@@ -260,7 +261,11 @@ export default function Home() {
         </Container>
         {/* <Photos /> */}
       </Transition>
-      {loading && <Container className="pt-48"><Loader /></Container>}
+      {loading && (
+        <Container className="pt-48">
+          <Loader />
+        </Container>
+      )}
     </>
   )
 }

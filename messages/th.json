@@ -1,5 +1,24 @@
 {
-    "Home": {
-      "title": "Discover GPT Store"
-    }
+  "Home": {
+    "title": "ค้นพบ GPT Store",
+    "description": "",
+    "count": "พบ GPT และกำลังเพิ่มขึ้น!",
+    "submit": "ส่งต่อ GPT ที่ยอดเยี่ยมของคุณ",
+    "apply": "สมัครใช้ API ค้นหาของเรา",
+    "pilot": "เพิ่ม WebPilot ให้กับ GPT ของคุณใน 30 วินาที"
+  },
+  "Category": {
+    "title": "หมวดหมู่ของ GPT Store",
+    "description": "สำรวจหมวดหมู่ของ GPT Store",
+    "message": "กรุณาเลือกหมวดหมู่ของ GPT"
+  },
+  "Download": {
+    "title": "ดาวน์โหลดข้อมูล GPT รายวันจาก GPT Store",
+    "description": "GPTs Hunter เป็นคลัง GPT ที่ครอบคลุมที่สุดในปัจจุบัน เราภูมิใจนำเสนอสองโครงการข้อมูล Open-source หลัก"
+  },
+  "Submit": {
+    "title": "ส่งต่อ GPTs",
+    "description": "ความเป็นเอกลักษณ์ที่แท้จริงของแอปพลิเคชัน GPT อยู่ที่การใช้ Actions ลองใช้ gapier. ↗",
+    "message": "หนึ่ง URL ต่อบรรทัด กรุณาหลีกเลี่ยงการส่งเนื้อหาที่เกี่ยวข้องกับการเมือง สื่อลามก หรือความรุนแรง"
   }
+}

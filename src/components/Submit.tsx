@@ -2,12 +2,14 @@
 import { useState, useEffect } from 'react'
 import { emailSchema, linksSchema, submitSchema } from '@/types/submit'
 import { z } from 'zod'
+import { useTranslations } from 'next-intl'
 
 export function SubmitSimple() {
   const [email, setEmail] = useState('')
   const [links, setLinks] = useState('')
   const [isValidEmail, setIsValidEmail] = useState(true)
   const [isValidLinks, setIsValidLinks] = useState(true)
+  const t =useTranslations('Submit')
 
   const validEmail = () => {
     try {
@@ -56,7 +58,7 @@ export function SubmitSimple() {
           rows={8}
           name="comment"
           id="comment"
-          placeholder="One url per line. Please avoid submitting content related to politics, pornography, or violence."
+          placeholder={t('message')}
           className="w-full resize-none rounded-md border-0 px-3 py-2 text-sm text-zinc-800 ring-1 ring-inset ring-gray-200 focus:outline-none focus:ring-gray-400"
           defaultValue={''}
           onBlur={validLinks}

@@ -1,5 +1,26 @@
 {
     "Home": {
-      "title": "Discover GPT Store"
+      "title": "Discover GPT Store",
+      "description": "",
+      "count": "GPTs found and counting",
+      "submit": "Submit your awesome GPT",
+      "apply": "Apply to our search API",
+      "pilot": "Add WebPilot to your GPTs in 30s"
+    },
+    "Category": {
+      "title": "GPT Store Category",
+      "description": "Explore GPT Store's Categories",
+      "message": "Please select GPT Categories"
+    }
+    ,
+    "Download": {
+      "title": "Download Daily GPTs Data on the GPT Store",
+      "description": "GPTs Hunter stands as the most extensive GPTs directory to date. We're proud to present two major open-source data projects"
+    }
+    ,
+    "Submit": {
+      "title": "Submit GPTs",
+      "description": "The true uniqueness of GPT applications lies in the use of Actions, try gapier. ↗",
+      "message": "One url per line. Please avoid submitting content related to politics, pornography, or violence."
     }
   }

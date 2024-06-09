@@ -3,14 +3,15 @@
 'use client'
 
 import { Container } from '@/components/Container'
-import { useRouter,usePathname } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { Transition } from '@headlessui/react'
 import { useAppDispatch, useAppSelector } from '@/session/store'
 import { categoryFunction } from '@/session/category'
+import { useTranslations } from 'next-intl'
 
 function Dropdown() {
-  const local = usePathname().split("/")[1]
+  const local = usePathname().split('/')[1]
   const dispatch = useAppDispatch()
   const allCategories = useAppSelector(
     (state) => state.categorySession.dropSelect,
@@ -113,6 +114,7 @@ function Dropdown() {
 import { Loader } from '@/components/Loader'
 export default function CategoriesLayout(props: { children: React.ReactNode }) {
   const [initLoading, setInitLoading] = useState(true)
+  const t = useTranslations('Category')
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -137,10 +139,10 @@ export default function CategoriesLayout(props: { children: React.ReactNode }) {
         <Container className="mt-16">
           <div className="w-full py-16 text-center">
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl">
-              GPT Store Categories
+              {t('title')}
             </h1>
             <p className="mx-auto mt-4 max-w-3xl text-base text-zinc-500">
-              Explore GPT Store's Categories
+              {t('description')}
             </p>
           </div>
           <div className="w-full">
@@ -152,7 +154,7 @@ export default function CategoriesLayout(props: { children: React.ReactNode }) {
                 <Dropdown />
               </div>
             </section>
-            <div className="mt-12 relative">{props.children}</div>
+            <div className="relative mt-12">{props.children}</div>
           </div>
         </Container>
       </Transition>

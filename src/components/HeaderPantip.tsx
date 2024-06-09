@@ -58,13 +58,15 @@ interface Filter {
     title: string
   }[]
 }
-function ButtonNavbar(props: { children: React.ReactNode ,href: string}) {
-  const router=useRouter()
+function ButtonNavbar(props: { children: React.ReactNode; href: string }) {
+  const router = useRouter()
   return (
     <>
       <button
         className="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
-        onClick={() => {router.push(props.href)}}
+        onClick={() => {
+          router.push(props.href)
+        }}
       >
         {props.children}
       </button>
@@ -77,64 +79,62 @@ function ButtonChangeLang() {
   const local = usePathname().split('/')[1]
   const router = useRouter()
   return (
-    <div className="relative z-50 flex flex-col" onBlur={()=>{setClicked(false)}}>
-      <button
-        className="group rounded-full bg-white/90 px-3 py-3 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
-        onClick={() => {
-          if (!clicked) {
-            setClicked(true)
-          } else {
-            setClicked(false)
-          }
-        }}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={2.0}
-          stroke="#3f3f46"
-          className="size-4"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="m10.5 21 5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 0 1 6-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 0 1-3.827-5.802"
-          />
-        </svg>
-      </button>
-      {
+    <div
+      className="relative z-50 flex flex-col"
+      onBlur={() => {
+        setClicked(false)
+      }}
+    >
+      <Popover>
+        <PopoverButton className="group rounded-full bg-white/90 px-3 py-3 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition focus:outline-none dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2.0}
+            stroke="#3f3f46"
+            className="size-4"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m10.5 21 5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 0 1 6-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 0 1-3.827-5.802"
+            />
+          </svg>
+        </PopoverButton>
         <Transition
-          show={clicked}
-          enter="transition ease-out duration-75"
-          enterFrom="opacity-0 scale-95"
-          enterTo="opacity-100 scale-100"
-          leave="transition ease-in duration-100"
-          leaveFrom="opacity-100 scale-100"
-          leaveTo="opacity-0 scale-95"
+          enter="transition ease-out duration-200"
+          enterFrom="opacity-0 translate-y-1"
+          enterTo="opacity-100 translate-y-0"
+          leave="transition ease-in duration-150"
+          leaveFrom="opacity-100 translate-y-0"
+          leaveTo="opacity-0 translate-y-1"
         >
-          <div className="absolute top-12 z-20 flex flex-col rounded-lg bg-white shadow">
-            <div
-              className="flex w-12 justify-center hover:bg-zinc-100"
-              onClick={() => {
-                router.push('/th')
-                setClicked(false)
-              }}
-            >
-              TH
+          <PopoverPanel
+            anchor="bottom"
+            className="z-50 divide-y divide-white/5 rounded-xl shadow-lg mt-2 bg-white/5 text-sm/6 [--anchor-gap:var(--spacing-5)]"
+          >
+            <div className="z-20 flex flex-col rounded-lg bg-white">
+              <a
+                className="flex w-12 justify-center hover:bg-zinc-100"
+                onClick={() => {
+                  router.push('/th')
+                }}
+              >
+                TH
+              </a>
+              <a
+                className="flex w-12 justify-center hover:bg-zinc-100 "
+                onClick={() => {
+                  router.push('/en')
+                }}
+              >
+                EN
+              </a>
             </div>
-            <div
-              className="flex w-12 justify-center hover:bg-zinc-100 "
-              onClick={() => {
-                router.push('/en')
-                setClicked(false)
-              }}
-            >
-              EN
-            </div>
-          </div>
+          </PopoverPanel>
         </Transition>
-      }
+      </Popover>
     </div>
   )
 }
@@ -636,7 +636,7 @@ export function HeaderPantip() {
               <div className="flex justify-end md:flex-1">
                 <div className="pointer-events-auto flex gap-x-2">
                   <ButtonChangeLang />
-                  <ButtonNavbar href='https://t.me/+rWwel19j-So2OWYx'>
+                  <ButtonNavbar href="https://t.me/+rWwel19j-So2OWYx">
                     <svg
                       width="64px"
                       height="64px"
@@ -662,7 +662,7 @@ export function HeaderPantip() {
                       </g>
                     </svg>
                   </ButtonNavbar>
-                  <ButtonNavbar href='https://x.com/iamairyland'>
+                  <ButtonNavbar href="https://x.com/iamairyland">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       x="0px"
@@ -676,7 +676,7 @@ export function HeaderPantip() {
                       <path d="M26.37,26l-8.795-12.822l0.015,0.012L25.52,4h-2.65l-6.46,7.48L11.28,4H4.33l8.211,11.971L12.54,15.97L3.88,26h2.65 l7.182-8.322L19.42,26H26.37z M10.23,6l12.34,18h-2.1L8.12,6H10.23z"></path>
                     </svg>
                   </ButtonNavbar>
-                  <ButtonNavbar href='https://buymeacoffee.com/iamairyland'>
+                  <ButtonNavbar href="https://buymeacoffee.com/iamairyland">
                     <svg
                       width="64px"
                       height="64px"

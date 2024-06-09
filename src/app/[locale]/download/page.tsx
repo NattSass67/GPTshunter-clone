@@ -8,9 +8,11 @@ import sample1 from '@/images/trending-data.png'
 import { useState, useEffect } from 'react'
 import { Transition } from '@headlessui/react'
 import { Loader } from '@/components/Loader'
+import { useTranslations } from 'next-intl'
 
 export default function Example() {
   const [initLoading, setInitLoading] = useState(true)
+  const t = useTranslations('Download')
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -40,12 +42,10 @@ export default function Example() {
                   Posted on Feb 18, 2024
                 </p>
                 <h1 className="mt-2 max-w-2xl text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl">
-                  Download Daily GPTs Data on the GPT Store
+                  {t('title')}
                 </h1>
                 <p className="mb-4 mt-2 max-w-lg text-sm text-zinc-800 sm:text-base">
-                  GPTs Hunter stands as the most extensive GPTs directory to
-                  date. We're proud to present two major open-source data
-                  projects
+                  {t('description')}
                 </p>
                 <hr />
                 <div className="my-10 grid max-w-xl grid-cols-1 gap-8 text-sm leading-7 text-zinc-800 sm:text-base lg:max-w-none lg:grid-cols-2">
@@ -160,7 +160,11 @@ export default function Example() {
           </div>
         </Container>
       </Transition>
-      {initLoading && <Container className="pt-48"><Loader /></Container>}
+      {initLoading && (
+        <Container className="pt-48">
+          <Loader />
+        </Container>
+      )}
     </>
   )
 }

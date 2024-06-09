@@ -11,11 +11,13 @@ import { useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { Transition } from '@headlessui/react'
 import { Loader } from '@/components/Loader'
+import { useTranslations } from 'next-intl'
 
 export default function Submit() {
   const router = useRouter()
 
   const [initLoading, setInitLoading] = useState(true)
+  const t = useTranslations('Submit')
 
   useEffect(() => {
     const timer = setTimeout(
@@ -44,7 +46,7 @@ export default function Submit() {
             <div className="w-full max-w-2xl">
               <div className="mb-6">
                 <h2 className="mx-auto max-w-2xl text-center text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl">
-                  Submit GPTs
+                  {t('title')}
                 </h2>
                 <div
                   onClick={() => {
@@ -52,8 +54,7 @@ export default function Submit() {
                   }}
                   className="mx-auto my-4 max-w-xl text-center text-lg leading-8 text-zinc-400 hover:text-zinc-700"
                 >
-                  The true uniqueness of GPT applications lies in the use of
-                  Actions, try gapier. ↗
+                  {t('description')}
                 </div>
               </div>
               <SubmitSimple />
@@ -61,7 +62,11 @@ export default function Submit() {
           </div>
         </Container>
       </Transition>
-      {initLoading && <Container className="pt-48"><Loader /></Container>}
+      {initLoading && (
+        <Container className="pt-48">
+          <Loader />
+        </Container>
+      )}
     </>
   )
 }
