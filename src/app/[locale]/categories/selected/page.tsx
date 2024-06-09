@@ -6,7 +6,7 @@ import logoComment from '@/images/logos/comment.svg'
 import { Card } from '@/components/Card'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import { fetchCategoryContent } from '@/session/my-state'
 import { formatNumber } from '@/service/format'
 import { categoryFunction } from '@/session/category'
@@ -358,6 +358,8 @@ function Pagination() {
   )
 }
 
+import { Transition } from '@headlessui/react'
+
 interface content {
   logo: any
   description: string
@@ -380,17 +382,17 @@ export default function Home() {
   const data: content[] = useAppSelector(
     (state) => state.categorySession.filteredContent,
   )
-
+  const local = usePathname().split("/")[1]
   useEffect(() => {
     if (dropChoosen == '') {
-      router.push('/categories')
+      router.push('/'+local+'/categories')
     } else {
       dispatch(fetchCategoryContent(dropChoosen))
       window.scrollBy({
         top: -window.scrollY,
-      });      
+      })
     }
-  }, [dropChoosen,page])
+  }, [dropChoosen, page])
 
   const CardList = data?.map((project) => (
     <Card
@@ -428,13 +430,14 @@ export default function Home() {
         <></>
       )}
 
-      <div
-        className={`flex w-full flex-wrap text-center transition delay-300 ${
-          isLoading ? 'opacity-0' : 'opacity-100'
-        }`}
+      <Transition
+        show={!isLoading}
+        enter="transition-opacity duration-300"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
       >
-        {!isLoading && CardList}
-      </div>
+        <div className={`flex w-full flex-wrap text-center`}>{CardList}</div>
+      </Transition>
 
       {!isLoading && (
         <div className="mt-6 flex w-full justify-center">

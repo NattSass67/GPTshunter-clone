@@ -27,7 +27,7 @@ export function Carousel(props: {
   isLoading: boolean
 }) {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
-  const reset = ()=>{
+  const reset = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({
         left: -scrollContainerRef.current.scrollWidth,
@@ -35,9 +35,9 @@ export function Carousel(props: {
     }
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     reset()
-  },[props.isLoading])
+  }, [props.isLoading])
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
@@ -118,20 +118,27 @@ export function Carousel(props: {
           </svg>
         </button>
 
-
-
-        {props.isLoading ? <div
-            className="absolute top-0 no-scrollbar mx-0 mt-28 flex w-full flex justify-center "
-          >
+        {props.isLoading ? (
+          <div className="no-scrollbar mx-0 my-28 flex flex w-full justify-center ">
             <Loader />
-          </div>:<></>}
+          </div>
+        ) : (
+          <></>
+        )}
 
-          {<div
+        <Transition
+          show={!props.isLoading}
+          enter="transition-opacity duration-300"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+        >
+          <div
             ref={scrollContainerRef}
-            className={`no-scrollbar mx-0 mt-12 transition ${props.isLoading ? "opacity-0":"opacity-100"} flex w-full flex-row overflow-x-auto`}
+            className={`no-scrollbar mx-0 mt-12 flex w-full flex-row overflow-x-auto`}
           >
             {CardList}
-          </div>}
+          </div>
+        </Transition>
 
         <button
           onClick={scrollRight}
