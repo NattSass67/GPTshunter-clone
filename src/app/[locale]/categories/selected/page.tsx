@@ -359,14 +359,8 @@ function Pagination() {
 }
 
 import { Transition } from '@headlessui/react'
+import { CardBanner } from '@/types/category'
 
-interface content {
-  logo: any
-  description: string
-  name: string
-  rate: number
-  comments: number
-}
 
 export default function Home() {
   const router = useRouter()
@@ -379,7 +373,7 @@ export default function Home() {
   const dropChoosen = useAppSelector(
     (state) => state.categorySession.dropChoosen,
   )
-  const data: content[] = useAppSelector(
+  const data: CardBanner[]|null = useAppSelector(
     (state) => state.categorySession.filteredContent,
   )
   const local = usePathname().split('/')[1]

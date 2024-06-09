@@ -1,12 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { Category,CardBanner } from '@/types/category'
+import { HomeCarousel } from '@/types/home'
+
 
 interface HomeState {
   loading: boolean
   secondaryLoading: boolean
   filterSelect: string[] 
   filterChoosen: string
-  filteredContent: any
-  homeCategory: { name: string; content: any }[]
+  filteredContent: CardBanner[]|null
+  homeCategory: HomeCarousel[]
 }
 
 const initialState: HomeState = {

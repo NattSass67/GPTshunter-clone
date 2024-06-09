@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { Category,CardBanner } from '@/types/category'
 
 interface CategoryState {
   loading: boolean
   secondaryLoading: boolean
-  dropSelect: { name: string; count: number }[]
+  dropSelect: Category[]
   dropChoosen: string
-  filteredContent: any
+  filteredContent: CardBanner[]|null            
   page: number
 }
 

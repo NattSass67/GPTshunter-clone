@@ -128,9 +128,11 @@ import { Transition } from '@headlessui/react'
 import { useState } from 'react'
 import { Loader } from '@/components/Loader'
 import { useRouter, usePathname } from 'next/navigation'
+import { CardBanner } from '@/types/category'
+import { HomeCarousel } from '@/types/home'
 
 export default function Home() {
-  const path = usePathname()
+  const local = usePathname().split('/')[1]
 
   const t = useTranslations('Home')
 
@@ -142,10 +144,10 @@ export default function Home() {
   const selectedFilter = useAppSelector(
     (state) => state.homeSession.filterChoosen,
   )
-  const selectedFilterContent = useAppSelector(
+  const selectedFilterContent:CardBanner[]|null = useAppSelector(
     (state) => state.homeSession.filteredContent,
   )
-  const categories = useAppSelector((state) => state.homeSession.homeCategory)
+  const categories:HomeCarousel[] = useAppSelector((state) => state.homeSession.homeCategory)
 
   const carouselList = categories.map((object, index) => (
     <Carousel
@@ -200,7 +202,7 @@ export default function Home() {
               </h1>
               <div className="mt-3 flex flex-col px-4 text-sm text-zinc-600 sm:text-base">
                 <a
-                  href="#"
+                  href={'/'+local+"/submit"}
                   className="flex items-center gap-x-2 hover:text-zinc-500"
                 >
                   <Image
@@ -212,7 +214,7 @@ export default function Home() {
                   {t('submit')}
                 </a>
                 <a
-                  href="#"
+                  href="https://docs.google.com/forms/d/e/1FAIpQLScVIeiFq4TBx3R-rkR0oOaatZdJ3rKxNC1t9Qr9oXUmeCh8JQ/viewform"
                   className="flex items-center gap-x-2 hover:text-zinc-500"
                 >
                   <Image
@@ -224,7 +226,7 @@ export default function Home() {
                   {t('apply')}
                 </a>
                 <a
-                  href="#"
+                  href="https://www.webpilot.ai/post-gpts/"
                   className="flex items-center gap-x-2 hover:text-zinc-500"
                 >
                   <Image src={logoAdd} alt="" className="h-5 w-5" unoptimized />
