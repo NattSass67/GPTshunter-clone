@@ -53,13 +53,16 @@ export function Providers({ children }: { children: React.ReactNode }) {
       <ThemeProvider attribute="class" disableTransitionOnChange>
         <ThemeWatcher />
         <Provider store={store}>
-          <PersistGate loading={null} persistor={persistor}>
+         
             {children}
-          </PersistGate>
+      
         </Provider>
       </ThemeProvider>
     </AppContext.Provider>
   )
 }
 
+{/* <PersistGate loading={null} persistor={persistor}>
+{children}
+</PersistGate> */}
 
