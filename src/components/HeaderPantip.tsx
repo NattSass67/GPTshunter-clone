@@ -81,9 +81,6 @@ function ButtonChangeLang() {
   return (
     <div
       className="relative z-50 flex flex-col"
-      onBlur={() => {
-        setClicked(false)
-      }}
     >
       <Popover>
         <PopoverButton className="group rounded-full bg-white/90 px-3 py-3 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition focus:outline-none dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20">
@@ -116,17 +113,21 @@ function ButtonChangeLang() {
           >
             <div className="z-20 flex flex-col rounded-lg bg-white">
               <a
-                className="flex w-12 justify-center hover:bg-zinc-100"
+                className={`flex w-12 justify-center hover:bg-zinc-100 ${local=='th' ? "text-zinc-400":"text-zinc-800"}`}
                 onClick={() => {
-                  router.push('/th')
+                  if(local!='th'){
+                    router.push('/th')
+                  }
                 }}
               >
                 TH
               </a>
               <a
-                className="flex w-12 justify-center hover:bg-zinc-100 "
+                className={`flex w-12 justify-center hover:bg-zinc-100 ${local=='en' ? "text-zinc-400":"text-zinc-800"}`}
                 onClick={() => {
-                  router.push('/en')
+                  if(local!='en'){
+                    router.push('/en')
+                  }
                 }}
               >
                 EN
