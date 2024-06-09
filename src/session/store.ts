@@ -1,5 +1,5 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { useDispatch, useSelector } from 'react-redux';
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import { useDispatch, useSelector } from 'react-redux'
 import {
   FLUSH,
   PAUSE,
@@ -9,32 +9,32 @@ import {
   PURGE,
   REGISTER,
   REHYDRATE,
-} from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+} from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 
-import sessionReducer from './sessionReducers';
-import homeReducer from './home';
-import categoryReducer from './category';
+import sessionReducer from './sessionReducers'
+import homeReducer from './home'
+import categoryReducer from './category'
 
 // Combine all reducers into the rootReducer
 const rootReducer = combineReducers({
   mySession: sessionReducer,
   homeSession: homeReducer,
-  categorySession: categoryReducer
+  categorySession: categoryReducer,
   // Add other reducers here if needed
-});
+})
 
 const persistConfig = {
   key: 'root',
   storage,
   whitelist: ['mySession', 'homeSession', 'categorySession'], // List of reducers to persist
-};
+}
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 const store = configureStore({
   reducer: rootReducer,
-});
+})
 
 // Create the Redux store
 // const store = configureStore({
@@ -47,14 +47,14 @@ const store = configureStore({
 //     }),
 // });
 
-export { store };
-export const persistor = persistStore(store);
+export { store }
+export const persistor = persistStore(store)
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
-type RootState = ReturnType<typeof store.getState>;
+type RootState = ReturnType<typeof store.getState>
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
-type AppDispatch = typeof store.dispatch;
+type AppDispatch = typeof store.dispatch
 
 // Use throughout your app instead of plain `useDispatch` and `useSelector`
-export const useAppDispatch = useDispatch.withTypes<AppDispatch>();
-export const useAppSelector = useSelector.withTypes<RootState>();
+export const useAppDispatch = useDispatch.withTypes<AppDispatch>()
+export const useAppSelector = useSelector.withTypes<RootState>()

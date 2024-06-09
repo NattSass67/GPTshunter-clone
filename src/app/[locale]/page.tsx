@@ -152,9 +152,9 @@ export default function Home() {
   )
   const categories = useAppSelector((state) => state.homeSession.homeCategory)
 
-  const carouselList = categories.map((object) => (
+  const carouselList = categories.map((object,index) => (
     <Carousel
-      key={object.name}
+      key={index}
       title={object.name}
       content={object.content}
       isLoading={false}

@@ -65,14 +65,14 @@ export function FilterSelect() {
     }
   }
 
-  const filterList = content?.map((object) => {
+  const filterList = content?.map((object,index) => {
     return (
       <button
         onClick={() => {
           onFilterClick(object)
         }}
         aria-hidden="true"
-        key={object}
+        key={index}
         className={`flex-none rounded-full px-3 py-1.5 ${
           choosedFilter === object
             ? 'bg-zinc-800 text-white'

@@ -13,6 +13,7 @@ import { formatNumber } from '@/service/format'
 import { object } from 'zod'
 import { Transition } from '@headlessui/react'
 import { Loader } from './Loader'
+import { useRouter } from 'next/navigation'
 
 interface data {
   logo: any
@@ -56,13 +57,15 @@ export function Carousel(props: {
       })
     }
   }
+  const router = useRouter()
 
-  let CardList = props.content?.map((project) => (
+  let CardList = props.content?.map((project, index) => (
     <Card
       as="div"
-      key={project.name}
+      key={index}
       className={`w-1/2 flex-none p-4 hover:bg-zinc-50 lg:w-1/3`}
     >
+      <Card.Link href="https://www.gptshunter.com/gpt-store/MzUwODMyNTYxYjM0NTIwYTJl"></Card.Link>
       <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white">
         <Image src={project.logo} alt="" className="h-8 w-8" unoptimized />
       </div>

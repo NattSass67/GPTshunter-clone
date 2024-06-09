@@ -382,10 +382,10 @@ export default function Home() {
   const data: content[] = useAppSelector(
     (state) => state.categorySession.filteredContent,
   )
-  const local = usePathname().split("/")[1]
+  const local = usePathname().split('/')[1]
   useEffect(() => {
     if (dropChoosen == '') {
-      router.push('/'+local+'/categories')
+      router.push('/' + local + '/categories')
     } else {
       dispatch(fetchCategoryContent(dropChoosen))
       window.scrollBy({
@@ -394,12 +394,13 @@ export default function Home() {
     }
   }, [dropChoosen, page])
 
-  const CardList = data?.map((project) => (
+  const CardList = data?.map((project,index) => (
     <Card
       as="div"
-      key={project.name}
+      key={index}
       className={`w-1/2 flex-none p-4 hover:bg-zinc-50 lg:w-1/3`}
     >
+      <Card.Link href="https://www.gptshunter.com/gpt-store/MzUwODMyNTYxYjM0NTIwYTJl"></Card.Link>
       <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white">
         <Image src={project.logo} alt="" className="h-8 w-8" unoptimized />
       </div>

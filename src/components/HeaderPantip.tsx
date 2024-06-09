@@ -58,12 +58,13 @@ interface Filter {
     title: string
   }[]
 }
-function ButtonNavbar(props: { children: React.ReactNode }) {
+function ButtonNavbar(props: { children: React.ReactNode ,href: string}) {
+  const router=useRouter()
   return (
     <>
       <button
         className="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
-        onClick={() => {}}
+        onClick={() => {router.push(props.href)}}
       >
         {props.children}
       </button>
@@ -635,7 +636,7 @@ export function HeaderPantip() {
               <div className="flex justify-end md:flex-1">
                 <div className="pointer-events-auto flex gap-x-2">
                   <ButtonChangeLang />
-                  <ButtonNavbar>
+                  <ButtonNavbar href='https://t.me/+rWwel19j-So2OWYx'>
                     <svg
                       width="64px"
                       height="64px"
@@ -661,7 +662,7 @@ export function HeaderPantip() {
                       </g>
                     </svg>
                   </ButtonNavbar>
-                  <ButtonNavbar>
+                  <ButtonNavbar href='https://x.com/iamairyland'>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       x="0px"
@@ -675,7 +676,7 @@ export function HeaderPantip() {
                       <path d="M26.37,26l-8.795-12.822l0.015,0.012L25.52,4h-2.65l-6.46,7.48L11.28,4H4.33l8.211,11.971L12.54,15.97L3.88,26h2.65 l7.182-8.322L19.42,26H26.37z M10.23,6l12.34,18h-2.1L8.12,6H10.23z"></path>
                     </svg>
                   </ButtonNavbar>
-                  <ButtonNavbar>
+                  <ButtonNavbar href='https://buymeacoffee.com/iamairyland'>
                     <svg
                       width="64px"
                       height="64px"
