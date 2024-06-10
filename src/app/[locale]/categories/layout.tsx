@@ -24,7 +24,7 @@ function Dropdown() {
   const [clicked, setClicked] = useState(false)
   const checkList = allCategories?.map((object, index) => (
     <li key={index}>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between z-50">
         <div className="flex items-center">
           <input
             onChange={() => {

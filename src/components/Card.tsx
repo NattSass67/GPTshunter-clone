@@ -41,8 +41,8 @@ Card.Link = function CardLink({
     <>
       <div className="absolute inset-0 z-0 dark:bg-zinc-800/50" />
       <Link {...props}>
-        <span className="absolute inset-0 z-20 sm:rounded-2xl" />
-        <span className="relative z-10">{children}</span>
+        <span className="absolute inset-0 sm:rounded-2xl" />
+        <span className="relative">{children}</span>
       </Link>
     </>
   )
