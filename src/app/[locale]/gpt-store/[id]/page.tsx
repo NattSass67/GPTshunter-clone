@@ -4,8 +4,6 @@
 'use client'
 import { Container } from '@/components/Container'
 import Image from 'next/image'
-import sample from '@/images/500.png'
-import sample1 from '@/images/trending-data.png'
 import { useState, useEffect } from 'react'
 import { Transition } from '@headlessui/react'
 import { Loader } from '@/components/Loader'
@@ -20,13 +18,6 @@ import {
 } from '@headlessui/react'
 import { PlusIcon, MinusIcon } from '@heroicons/react/20/solid'
 import { CardBanner } from '@/types/category'
-
-const stats = [
-  { name: 'Number of deploys', value: '405' },
-  { name: 'Average deploy time', value: '3.65', unit: 'mins' },
-  { name: 'Number of servers', value: '3' },
-  { name: 'Success rate', value: '98.5%' },
-]
 
 function Stats(props: { rate: number; rank: number }) {
   return (
@@ -59,10 +50,10 @@ function Stats(props: { rate: number; rank: number }) {
   )
 }
 
-export default function Example(props: {
+export default function Store(props: {
   params: { locale: string; id: string }
 }) {
-  const [initLoading, setInitLoading] = useState(true)
+
   const loading = useAppSelector((state) => state.storeSession.loading)
   const t = useTranslations('Download')
   const info = useAppSelector((state) => state.storeSession.info)
