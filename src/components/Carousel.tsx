@@ -14,19 +14,16 @@ import { object } from 'zod'
 import { Transition } from '@headlessui/react'
 import { Loader } from './Loader'
 import { useRouter } from 'next/navigation'
+import { CardBanner } from '@/types/category'
+import { usePathname } from 'next/navigation'
 
-interface data {
-  logo: any
-  description: string
-  name: string
-  rate: number
-  comments: number
-}
+
 export function Carousel(props: {
-  content: data[] | null
+  content: CardBanner[] | null
   title: string
   isLoading: boolean
 }) {
+  const local = usePathname().split('/')[1]
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const reset = () => {
     if (scrollContainerRef.current) {
@@ -65,7 +62,7 @@ export function Carousel(props: {
       key={index}
       className={`w-1/2 flex-none p-4 hover:bg-zinc-50 lg:w-1/3`}
     >
-      <Card.Link href="https://www.gptshunter.com/gpt-store/MzUwODMyNTYxYjM0NTIwYTJl"></Card.Link>
+      <Card.Link href={"/"+local+"/gpt-store/"+project.id}></Card.Link>
       <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white">
         <Image src={project.logo} alt="" className="h-8 w-8" unoptimized />
       </div>
@@ -89,7 +86,7 @@ export function Carousel(props: {
   return (
     <>
       <div className="relative mt-8 flex w-full flex-col">
-        <h2 className="absolute left-0 top-0 z-10 w-[250px] text-lg font-bold tracking-tight text-gray-900 sm:w-full sm:text-xl">
+        <h2 className="absolute left-0 top-0 z-10 w-[250px] text-lg font-bold tracking-tight text-gray-900 sm:w-full sm:text-xl truncate">
           {props.title}
         </h2>
 

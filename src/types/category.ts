@@ -16,6 +16,11 @@ const cardSchema = z.object({
   comments: z.number().nonnegative(), // Assuming comments is a non-negative number
 })
 
+const categorySchema = z.object({
+  name: z.string(),
+  count: z.number(),
+});
+
 // Define the interface for the link object
 export interface Link {
   href: string
@@ -24,6 +29,7 @@ export interface Link {
 
 // Define the interface for the main object
 export interface CardBanner {
+  id: string
   name: string
   description: string
   link: Link
@@ -37,4 +43,4 @@ export interface Category {
   count: number
 }
 
-export { linkSchema, cardSchema }
+export { linkSchema, cardSchema, categorySchema }

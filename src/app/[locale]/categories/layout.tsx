@@ -110,16 +110,18 @@ function Dropdown() {
     </>
   )
 }
-
+import { loadCategoryPage } from '@/session/my-state'
 import { Loader } from '@/components/Loader'
 export default function CategoriesLayout(props: { children: React.ReactNode }) {
   const [initLoading, setInitLoading] = useState(true)
+  const dispatch= useAppDispatch()
   const t = useTranslations('Category')
 
   useEffect(() => {
+    dispatch(loadCategoryPage())
     const timer = setTimeout(() => {
       setInitLoading(false)
-    }, 2000) // Set the delay to 1 second
+    }, 1000) // Set the delay to 1 second
 
     // Cleanup the timer on component unmount
     return () => clearTimeout(timer)

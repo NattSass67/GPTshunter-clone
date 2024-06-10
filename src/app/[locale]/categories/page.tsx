@@ -9,10 +9,6 @@ export default function Home() {
   const dispatch = useAppDispatch()
   const t = useTranslations('Category')
 
-  useEffect(() => {
-    dispatch(loadCategoryPage())
-  }, [])
-
   return (
     <div className="flex w-full flex-col text-center">
       <h1 className="text-2xl font-semibold tracking-tight text-zinc-500">

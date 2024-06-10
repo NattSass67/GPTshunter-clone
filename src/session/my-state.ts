@@ -1,6 +1,6 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-plusplus */
-import { getAllFilter, getByDefaultCategory, getByFilterSelected, getByCategoryName, getExistCategory} from '@/service/request'
+import { getAllFilter, getByDefaultCategory, getByFilterSelected, getByCategoryName, getExistCategory, getGptByID} from '@/service/request'
 
 import {
   fetchFilterSelect,
@@ -14,6 +14,7 @@ import {
 } from './home'
 
 import { categoryFunction } from './category'
+import { gptStoreFunction } from './info-gpt'
 
 export const fetchContent = () => {
   return async (dispatch: any) => {
@@ -89,7 +90,8 @@ export const loadCategoryPage = () => {
         throw new Error('One or more required variables are null.')
       } else {
         dispatch(categoryFunction.setExistCategory(filter.data))
-        dispatch(categoryFunction.setDropChoosen(''))
+        dispatch(categoryFunction.setPage(1))
+        dispatch(categoryFunction.setDropChoosen('All'))
         dispatch(categoryFunction.setFilteredContent(null))
         setTimeout(async () => {
           dispatch(categoryFunction.fetchSuccess())
@@ -98,6 +100,27 @@ export const loadCategoryPage = () => {
       }
     } catch (error) {
       dispatch(categoryFunction.fetchSuccess()) // Dispatch loginFailure action if login encounters an error
+    }
+  }
+}
+
+
+export const loadStoreInfoPage = (id:string) => {
+  return async (dispatch: any) => {
+    dispatch(gptStoreFunction.fetchStart()) // Dispatch loginStart action to set loading state
+    try {
+      const res = await getGptByID(id)
+      if (res === null) {
+        throw new Error('One or more required variables are null.')
+      } else {
+        dispatch(gptStoreFunction.setInfo(res.data))
+        setTimeout(async () => {
+          dispatch(gptStoreFunction.fetchSuccess())
+          // Set success after 2000 milliseconds
+        }, 2000)
+      }
+    } catch (error) {
+      dispatch(gptStoreFunction.fetchSuccess()) // Dispatch loginFailure action if login encounters an error
     }
   }
 }

@@ -15,12 +15,14 @@ import storage from 'redux-persist/lib/storage'
 import sessionReducer from './sessionReducers'
 import homeReducer from './home'
 import categoryReducer from './category'
+import storeReducer from './info-gpt'
 
 // Combine all reducers into the rootReducer
 const rootReducer = combineReducers({
   mySession: sessionReducer,
   homeSession: homeReducer,
   categorySession: categoryReducer,
+  storeSession: storeReducer
   // Add other reducers here if needed
 })
 
@@ -32,20 +34,20 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
-const store = configureStore({
-  reducer: rootReducer,
-})
+// const store = configureStore({
+//   reducer: rootReducer,
+// })
 
 // Create the Redux store
-// const store = configureStore({
-//   reducer: persistedReducer,
-//   middleware: (getDefaultMiddleware) =>
-//     getDefaultMiddleware({
-//       serializableCheck: {
-//         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-//       },
-//     }),
-// });
+const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
+});
 
 export { store }
 export const persistor = persistStore(store)

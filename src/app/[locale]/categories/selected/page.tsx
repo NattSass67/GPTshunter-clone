@@ -361,9 +361,12 @@ function Pagination() {
 import { Transition } from '@headlessui/react'
 import { CardBanner } from '@/types/category'
 
-export default function Home() {
+export default function Home(props:{params:{locale:string}}) {
   const router = useRouter()
   const dispatch = useAppDispatch()
+  const switchPage = (nextPage: number) => {
+    dispatch(categoryFunction.setPage(nextPage))
+  }
 
   const page = useAppSelector((state) => state.categorySession.page)
   const isLoading = useAppSelector(
@@ -377,6 +380,7 @@ export default function Home() {
   )
   const local = usePathname().split('/')[1]
   useEffect(() => {
+
     if (dropChoosen == '') {
       router.push('/' + local + '/categories')
     } else {
@@ -385,6 +389,7 @@ export default function Home() {
         top: -window.scrollY,
       })
     }
+    console.log(props)
   }, [dropChoosen, page])
 
   const CardList = data?.map((project, index) => (
@@ -393,7 +398,7 @@ export default function Home() {
       key={index}
       className={`w-1/2 flex-none p-4 hover:bg-zinc-50 lg:w-1/3`}
     >
-      <Card.Link href="https://www.gptshunter.com/gpt-store/MzUwODMyNTYxYjM0NTIwYTJl"></Card.Link>
+      <Card.Link href={"/"+props.params.locale+"/gpt-store/"+project.id}></Card.Link>
       <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white">
         <Image src={project.logo} alt="" className="h-8 w-8" unoptimized />
       </div>

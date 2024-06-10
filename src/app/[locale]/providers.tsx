@@ -52,16 +52,22 @@ export function Providers({ children }: { children: React.ReactNode }) {
     <AppContext.Provider value={{ previousPathname }}>
       <ThemeProvider attribute="class" disableTransitionOnChange>
         <ThemeWatcher />
-        <Provider store={store}>{children}</Provider>
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            {children}
+          </PersistGate>
+        </Provider>
       </ThemeProvider>
     </AppContext.Provider>
   )
 }
 
-{/*
+{
+  /*
 <Provider store={store}>
   <PersistGate loading={null} persistor={persistor}>
     {children}
   </PersistGate>
 </Provider> 
-*/}
+*/
+}
