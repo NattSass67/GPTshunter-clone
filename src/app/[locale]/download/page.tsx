@@ -36,7 +36,7 @@ export default function Example() {
       >
         <Container className="pt-32">
           <div className="bg-white">
-            <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="mx-auto max-w-7xl">
               <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
                 <p className="text-base font-semibold leading-7 text-zinc-400">
                   Posted on Feb 18, 2024
