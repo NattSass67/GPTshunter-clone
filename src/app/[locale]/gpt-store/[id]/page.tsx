@@ -104,7 +104,7 @@ export default function Example(props: {
             </DisclosureButton>
           </dt>
           <DisclosurePanel as="dd" className="mt-2 pr-12">
-            <p className="text-base leading-7 text-gray-600">{object.answer}</p>
+            <p className="text-sm sm:text-base leading-7 text-gray-600">{object.answer}</p>
           </DisclosurePanel>
         </>
       )}
@@ -131,7 +131,7 @@ export default function Example(props: {
       >
         <Container className="pt-32">
           <div className="bg-white">
-            <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="mx-auto max-w-7xl">
               <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
                 <Image
                   src={info?.logo}
