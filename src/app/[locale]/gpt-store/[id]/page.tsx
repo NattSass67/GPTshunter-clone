@@ -188,7 +188,7 @@ export default function Example(props: {
             <p className="mt-4 text-lg font-bold tracking-tight text-gray-900">
               Tags
             </p>
-            <div className="mx-0 mt-2 flex flex-row gap-x-2 ">{tags}</div>
+            <div className="mx-0 mt-2 flex flex-row gap-x-2 no-scrollbar overflow-x-auto">{tags}</div>
             <Carousel
               content={info?.more as CardBanner[]}
               title={`More custom GPTs by ${info?.by}`}
