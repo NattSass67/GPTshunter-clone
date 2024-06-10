@@ -361,7 +361,6 @@ function Pagination() {
 import { Transition } from '@headlessui/react'
 import { CardBanner } from '@/types/category'
 
-
 export default function Home() {
   const router = useRouter()
   const dispatch = useAppDispatch()
@@ -373,7 +372,7 @@ export default function Home() {
   const dropChoosen = useAppSelector(
     (state) => state.categorySession.dropChoosen,
   )
-  const data: CardBanner[]|null = useAppSelector(
+  const data: CardBanner[] | null = useAppSelector(
     (state) => state.categorySession.filteredContent,
   )
   const local = usePathname().split('/')[1]
@@ -388,7 +387,7 @@ export default function Home() {
     }
   }, [dropChoosen, page])
 
-  const CardList = data?.map((project,index) => (
+  const CardList = data?.map((project, index) => (
     <Card
       as="div"
       key={index}
@@ -431,14 +430,13 @@ export default function Home() {
         enterFrom="opacity-0"
         enterTo="opacity-100"
       >
-        <div className={`flex w-full flex-wrap text-center`}>{CardList}</div>
-      </Transition>
-
-      {!isLoading && (
-        <div className="mt-6 flex w-full justify-center">
-          <Pagination />
+        <div className="w-full">
+          <div className={`flex w-full flex-wrap text-center`}>{CardList}</div>
+          <div className="mt-6 flex w-full justify-center">
+            <Pagination />
+          </div>
         </div>
-      )}
+      </Transition>
     </>
   )
 }
