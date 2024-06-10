@@ -169,23 +169,23 @@ export async function getByDefaultCategory() {
   return {
     data: [
       {
-        name: 'Featured GPTs ',
+        name: 'Featured GPTs on GPT Store',
         content: mockContent,
       },
       {
-        name: 'Trending GPTs ',
+        name: 'Trending GPTs on GPT Store',
         content: mockContent,
       },
       {
-        name: 'Best DALL·E GPTs ',
+        name: 'Best DALL·E GPTs on GPT Store',
         content: mockContent,
       },
       {
-        name: 'Best Writing GPTs ',
+        name: 'Best Writing GPTs on GPT Store',
         content: mockContent,
       },
       {
-        name: 'Best Productivity GPTs ',
+        name: 'Best Productivity GPTs on GPT Store',
         content: mockContent,
       },
     ],
