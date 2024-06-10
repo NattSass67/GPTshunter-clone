@@ -436,7 +436,7 @@ export default function Home(props:{params:{locale:string}}) {
         enterTo="opacity-100"
       >
         <div className="w-full">
-          <div className={`flex w-full flex-wrap text-center`}>{CardList}</div>
+          <div className={`flex w-full flex-wrap`}>{CardList}</div>
           <div className="mt-6 flex w-full justify-center">
             <Pagination />
           </div>
