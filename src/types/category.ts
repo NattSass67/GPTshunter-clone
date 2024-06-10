@@ -7,7 +7,7 @@ const linkSchema = z.object({
 })
 
 // Define the schema for the main object
-const cardSchema = z.object({
+const cardBannerSchema = z.object({
   name: z.string(),
   description: z.string(),
   link: linkSchema,
@@ -43,4 +43,4 @@ export interface Category {
   count: number
 }
 
-export { linkSchema, cardSchema, categorySchema }
+export { linkSchema, cardBannerSchema, categorySchema }
