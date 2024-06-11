@@ -16,20 +16,22 @@ import sessionReducer from './sessionReducers'
 import homeReducer from './home'
 import categoryReducer from './category'
 import storeReducer from './info-gpt'
+import searchReducer from './search'
 
 // Combine all reducers into the rootReducer
 const rootReducer = combineReducers({
   mySession: sessionReducer,
   homeSession: homeReducer,
   categorySession: categoryReducer,
-  storeSession: storeReducer
+  storeSession: storeReducer,
+  searchSession: searchReducer
   // Add other reducers here if needed
 })
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['mySession', 'homeSession', 'categorySession'], // List of reducers to persist
+  whitelist: ['mySession', 'homeSession', 'categorySession', 'searchSession'], // List of reducers to persist
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

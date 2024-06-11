@@ -357,3 +357,10 @@ export async function getSearchKeyword(key: string){
 
   return { data: sampleData[key] || sampleData['default'] };
 }
+
+
+export async function getBySearchQuery(query: string, page: number) {
+  return {
+    data: mockContent,
+  }
+}

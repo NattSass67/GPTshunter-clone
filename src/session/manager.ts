@@ -7,6 +7,7 @@ import {
   getByCategoryName,
   getExistCategory,
   getGptByID,
+  getBySearchQuery,
 } from '@/service/request'
 
 import {
@@ -20,6 +21,7 @@ import {
   setHomeCategory,
 } from './home'
 
+import { searchFunction } from './search'
 import { categoryFunction } from './category'
 import { gptStoreFunction } from './info-gpt'
 
@@ -126,6 +128,27 @@ export const loadStoreInfoPage = (id: string) => {
       }
     } catch (error) {
       dispatch(gptStoreFunction.fetchSuccess()) // Dispatch loginFailure action if login encounters an error
+    }
+  }
+}
+
+
+export const loadSearchPage = (query: string, page: number) => {
+  return async (dispatch: any) => {
+    dispatch(searchFunction.fetchStart()) // Dispatch loginStart action to set loading state
+    try {
+      const res = await getBySearchQuery(query, page)
+      if (res === null) {
+        throw new Error('One or more required variables are null.')
+      } else {
+        dispatch(searchFunction.setContent(res.data))
+        setTimeout(async () => {
+          dispatch(searchFunction.fetchSuccess())
+          // Set success after 2000 milliseconds
+        }, 2000)
+      }
+    } catch (error) {
+      dispatch(searchFunction.fetchSuccess()) // Dispatch loginFailure action if login encounters an error
     }
   }
 }

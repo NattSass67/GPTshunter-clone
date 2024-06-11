@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { useAppDispatch, useAppSelector } from '@/session/store'
 import { KeyboardEvent, MouseEvent, useRef } from 'react'
 import { setFilterChoosen } from '@/session/home'
-import { fetchHomeFilterContent } from '@/session/my-state'
+import { fetchHomeFilterContent } from '@/session/manager'
 
 const variantStyles = {
   primary:
@@ -166,7 +166,7 @@ import { getSearchKeyword } from '@/service/request'
 import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
 
-export function SearchBar() {
+export function SearchBarRedirect() {
   const router = useRouter()
   const local = usePathname().split('/')[1]
   const [query, setQuery] = useState<string>('')
@@ -182,7 +182,7 @@ export function SearchBar() {
       onClick={() => {
         setQuery(object)
         console.log(object)
-        router.push('/' + local + '/search/' + object)
+        router.push('/' + local + '/search/' + object+"?page=1")
       }}
       className="search z-50 p-2 hover:bg-zinc-50"
     >
@@ -193,7 +193,7 @@ export function SearchBar() {
   const handleKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'Enter') {
       // Your function or code to execute when Enter is pressed
-      router.push('/' + local + '/search/' + query)
+      router.push('/' + local + '/search/' + query+"?page=1")
     }
   }
 
@@ -227,7 +227,7 @@ export function SearchBar() {
             onKeyDown={handleKeyDown}
           />
           <a
-            href={`https://pantip.com/search?q=${query}`}
+            href={'/' + local + '/search/' + query+"?page=1"}
             className="group my-2 rounded-full px-3 py-0.5 transition hover:scale-110 sm:py-1.5 dark:bg-zinc-800/90 "
           >
             <MagnifyingGlassIcon
@@ -592,3 +592,6 @@ export function Pagination(props: { url: string; page: number }) {
     </>
   )
 }
+
+
+

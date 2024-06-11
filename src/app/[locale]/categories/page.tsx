@@ -110,7 +110,7 @@ function Dropdown() {
     </>
   )
 }
-import { loadCategoryPage } from '@/session/my-state'
+import { loadCategoryPage } from '@/session/manager'
 import { Loader } from '@/components/Loader'
 
 export default function Categories() {

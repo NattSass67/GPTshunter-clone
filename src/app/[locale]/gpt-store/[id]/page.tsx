@@ -9,7 +9,7 @@ import { Transition } from '@headlessui/react'
 import { Loader } from '@/components/Loader'
 import { useTranslations } from 'next-intl'
 import { useAppSelector, useAppDispatch } from '@/session/store'
-import { loadStoreInfoPage } from '@/session/my-state'
+import { loadStoreInfoPage } from '@/session/manager'
 import { Carousel } from '@/components/Carousel'
 import {
   Disclosure,
