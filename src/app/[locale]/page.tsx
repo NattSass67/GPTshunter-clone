@@ -244,20 +244,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-
-            {/* <div className="mx-auto mt-2 flex max-w-xs flex-col">
-              <img
-                alt="GPTs Hunter - Share and discover custom GPTs | Product Hunt"
-                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=424020&amp;theme=light"
-                className="z-0 mb-4 h-auto w-auto"
-              />
-              <dd className="text-center text-3xl font-semibold tracking-tight text-zinc-800 sm:text-5xl">
-                678K+
-              </dd>
-              <dt className="text-center text-sm leading-7 text-zinc-500 sm:text-base">
-                {t('count')}
-              </dt>
-            </div> */}
           </div>
           <div className="mt-16 w-full border-t">
             <FilterSelect />

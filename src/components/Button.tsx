@@ -165,32 +165,50 @@ export function FilterSelect() {
 
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 import { useState } from 'react'
+import { getSearchKeyword } from '@/service/request'
 
 export function SearchBar() {
   const [query, setQuery] = useState<string>('')
+  const [keyword, setKeyword] = useState<string[]>([])
+  const onSearchChange = async (key: string) => {
+    const res = await getSearchKeyword(key)
+    setKeyword(res.data)
+  }
+
+  const keywordList = keyword.map((object, index) => (
+    <div key={index} className="p-2 hover:bg-zinc-50">
+      {object}
+    </div>
+  ))
 
   return (
-    <div className="my-4 flex w-full justify-center">
-      <div className="flex w-full max-w-2xl rounded-3xl border border-zinc-300 px-2 shadow">
-        <input
-          autoFocus
-          className="flex w-full rounded-full bg-white/90 pl-3 text-sm text-zinc-800 focus:outline-none sm:text-base dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10"
-          placeholder="Search..."
-          value={query}
-          onChange={(event) => {
-            setQuery(event.target.value)
-          }}
-          onBlur={() => {}}
-        />
-        <a
-          href={`https://pantip.com/search?q=${query}`}
-          className="group my-2 rounded-full px-3 py-0.5 transition hover:scale-110 sm:py-1.5 dark:bg-zinc-800/90 "
-        >
-          <MagnifyingGlassIcon
-            className="pointer-events-none h-5 w-5 text-zinc-500 group-hover:text-zinc-700"
-            aria-hidden="true"
+    <div className="relative relative mb-16 mt-4 flex w-full flex-col items-center">
+      <div className="absolute top-0 flex w-full max-w-2xl flex-col overflow-hidden rounded-3xl border border-zinc-300 bg-white shadow">
+        <div className="flex">
+          <input
+            autoFocus
+            className="flex w-full rounded-full bg-white/90 pl-3 text-sm text-zinc-800 focus:outline-none sm:text-base dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10"
+            placeholder="Search..."
+            value={query}
+            onChange={(event) => {
+              setQuery(event.target.value)
+              onSearchChange(event.target.value)
+            }}
+            onBlur={() => {
+              setKeyword([])
+            }}
           />
-        </a>
+          <a
+            href={`https://pantip.com/search?q=${query}`}
+            className="group my-2 rounded-full px-3 py-0.5 transition hover:scale-110 sm:py-1.5 dark:bg-zinc-800/90 "
+          >
+            <MagnifyingGlassIcon
+              className="pointer-events-none h-5 w-5 text-zinc-500 group-hover:text-zinc-700"
+              aria-hidden="true"
+            />
+          </a>
+        </div>
+        <div className="w-full flex-col border-t">{keywordList}</div>
       </div>
     </div>
   )
@@ -205,14 +223,14 @@ export function Pagination(props: { url: string; page: number }) {
   const dispatch = useAppDispatch()
   const url = props.url
   const switchPage = (nextPage: number) => {
-    router.push(url+"/?page="+nextPage.toString())
+    router.push(url + '/?page=' + nextPage.toString())
   }
 
   const foward = () => {
-    router.push(url+"/?page="+(page+1).toString())
+    router.push(url + '/?page=' + (page + 1).toString())
   }
   const backward = () => {
-    router.push(url+"/?page="+(page-1).toString())
+    router.push(url + '/?page=' + (page - 1).toString())
   }
 
   if (page == 1) {

@@ -345,3 +345,15 @@ export async function getGptByID(id: string) {
 
   return { data: sampleGptInfo }
 }
+
+
+export async function getSearchKeyword(key: string){
+  const sampleData:{ [key: string]: string[] } = {
+    'apple': ['apple pie', 'apple cider', 'apple store', 'apple watch'],
+    'banana': ['banana bread', 'banana smoothie', 'banana split', 'banana pudding'],
+    'car': ['car insurance', 'car rental', 'car wash', 'car repair'],
+    'default': ['search term 1', 'search term 2', 'search term 3', 'search term 4']
+  };
+
+  return { data: sampleData[key] || sampleData['default'] };
+}
