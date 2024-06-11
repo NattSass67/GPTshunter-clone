@@ -25,7 +25,7 @@ import logoStarbucks from '@/images/logos/starbucks.svg'
 import logoSubmit from '@/images/logos/submit.svg'
 import logoApply from '@/images/logos/apply.svg'
 import logoAdd from '@/images/logos/add.svg'
-import { SearchBar } from '@/components/HeaderPantip'
+import { SearchBar } from '@/components/Button'
 
 import image1 from '@/images/photos/image-1.jpg'
 import image2 from '@/images/photos/image-2.jpg'
@@ -144,10 +144,12 @@ export default function Home() {
   const selectedFilter = useAppSelector(
     (state) => state.homeSession.filterChoosen,
   )
-  const selectedFilterContent:CardBanner[]|null = useAppSelector(
+  const selectedFilterContent: CardBanner[] | null = useAppSelector(
     (state) => state.homeSession.filteredContent,
   )
-  const categories:HomeCarousel[] = useAppSelector((state) => state.homeSession.homeCategory)
+  const categories: HomeCarousel[] = useAppSelector(
+    (state) => state.homeSession.homeCategory,
+  )
 
   const carouselList = categories.map((object, index) => (
     <Carousel
@@ -195,47 +197,55 @@ export default function Home() {
         leaveTo="opacity-0"
       >
         <Container className="pt-32">
-          <div className="flex w-full flex-wrap gap-x-2 md:grid md:grid-cols-2">
-            <div className="mb-4">
-              <h1 className="inline-block align-middle text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-                {t('title')} <SearchBar />
+          <div className="flex w-full flex-wrap justify-center gap-x-2">
+            <div className="mb-4 flex w-full flex-col">
+              <h1 className="inline-block text-center text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
+                {t('title')}
               </h1>
-              <div className="mt-3 flex flex-col px-4 text-sm text-zinc-600 sm:text-base">
-                <a
-                  href={'/'+local+"/submit"}
-                  className="flex items-center gap-x-2 hover:text-zinc-500"
-                >
-                  <Image
-                    src={logoSubmit}
-                    alt=""
-                    className="h-5 w-5"
-                    unoptimized
-                  />
-                  {t('submit')}
-                </a>
-                <a
-                  href="https://docs.google.com/forms/d/e/1FAIpQLScVIeiFq4TBx3R-rkR0oOaatZdJ3rKxNC1t9Qr9oXUmeCh8JQ/viewform"
-                  className="flex items-center gap-x-2 hover:text-zinc-500"
-                >
-                  <Image
-                    src={logoApply}
-                    alt=""
-                    className="h-5 w-5"
-                    unoptimized
-                  />
-                  {t('apply')}
-                </a>
-                <a
-                  href="https://www.webpilot.ai/post-gpts/"
-                  className="flex items-center gap-x-2 hover:text-zinc-500"
-                >
-                  <Image src={logoAdd} alt="" className="h-5 w-5" unoptimized />
-                  {t('pilot')}
-                </a>
+              <SearchBar />
+              <div className="flex justify-center">
+                <div className="flex flex-col px-4 text-sm text-zinc-600 sm:text-base">
+                  <a
+                    href={'/' + local + '/submit'}
+                    className="flex items-center gap-x-2 hover:text-zinc-500"
+                  >
+                    <Image
+                      src={logoSubmit}
+                      alt=""
+                      className="h-5 w-5"
+                      unoptimized
+                    />
+                    {t('submit')}
+                  </a>
+                  <a
+                    href="https://docs.google.com/forms/d/e/1FAIpQLScVIeiFq4TBx3R-rkR0oOaatZdJ3rKxNC1t9Qr9oXUmeCh8JQ/viewform"
+                    className="flex items-center gap-x-2 hover:text-zinc-500"
+                  >
+                    <Image
+                      src={logoApply}
+                      alt=""
+                      className="h-5 w-5"
+                      unoptimized
+                    />
+                    {t('apply')}
+                  </a>
+                  <a
+                    href="https://www.webpilot.ai/post-gpts/"
+                    className="flex items-center gap-x-2 hover:text-zinc-500"
+                  >
+                    <Image
+                      src={logoAdd}
+                      alt=""
+                      className="h-5 w-5"
+                      unoptimized
+                    />
+                    {t('pilot')}
+                  </a>
+                </div>
               </div>
             </div>
 
-            <div className="mx-auto mt-2 flex max-w-xs flex-col">
+            {/* <div className="mx-auto mt-2 flex max-w-xs flex-col">
               <img
                 alt="GPTs Hunter - Share and discover custom GPTs | Product Hunt"
                 src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=424020&amp;theme=light"
@@ -247,7 +257,7 @@ export default function Home() {
               <dt className="text-center text-sm leading-7 text-zinc-500 sm:text-base">
                 {t('count')}
               </dt>
-            </div>
+            </div> */}
           </div>
           <div className="mt-16 w-full border-t">
             <FilterSelect />

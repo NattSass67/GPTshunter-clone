@@ -55,7 +55,6 @@ export default function Store(props: {
 }) {
 
   const loading = useAppSelector((state) => state.storeSession.loading)
-  const t = useTranslations('Download')
   const info = useAppSelector((state) => state.storeSession.info)
   const dispatch = useAppDispatch()
 

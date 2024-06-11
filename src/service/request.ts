@@ -192,7 +192,7 @@ export async function getByDefaultCategory() {
   }
 }
 
-export async function getByCategoryName(name: string) {
+export async function getByCategoryName(name: string, page:number) {
   return {
     data: mockContent,
   }
@@ -201,10 +201,6 @@ export async function getByCategoryName(name: string) {
 export async function getExistCategory() {
   return {
     data: [
-      {
-        name: 'All',
-        count: '',
-      },
       {
         name: 'Dalle',
         count: '17K+',

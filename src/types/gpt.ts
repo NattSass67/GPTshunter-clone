@@ -70,7 +70,7 @@ const gptInformationSchema = z.object({
 // Define GptInfo schema
 const gptInfoSchema = z.object({
   name: z.string(),
-  logo: z.any(), // Adjust this type as needed
+  logo: z.any(), 
   by: z.string(),
   rate: z.number(),
   totalRate: z.number(),

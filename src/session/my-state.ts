@@ -1,6 +1,13 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-plusplus */
-import { getAllFilter, getByDefaultCategory, getByFilterSelected, getByCategoryName, getExistCategory, getGptByID} from '@/service/request'
+import {
+  getAllFilter,
+  getByDefaultCategory,
+  getByFilterSelected,
+  getByCategoryName,
+  getExistCategory,
+  getGptByID,
+} from '@/service/request'
 
 import {
   fetchFilterSelect,
@@ -10,7 +17,7 @@ import {
   fetchSuccess,
   setFilterChoosen,
   setFilteredContent,
-  setHomeCategory
+  setHomeCategory,
 } from './home'
 
 import { categoryFunction } from './category'
@@ -61,11 +68,11 @@ export const fetchHomeFilterContent = (name: string) => {
   }
 }
 
-export const fetchCategoryContent = (name: string) => {
+export const fetchCategoryContent = (name: string, page: number) => {
   return async (dispatch: any) => {
     dispatch(categoryFunction.fetchSecondStart()) // Dispatch loginStart action to set loading state
     try {
-      const category = await getByCategoryName(name)
+      const category = await getByCategoryName(name,page)
       if (category === null) {
         throw new Error('One or more required variables are null.')
       } else {
@@ -91,7 +98,6 @@ export const loadCategoryPage = () => {
       } else {
         dispatch(categoryFunction.setExistCategory(filter.data))
         dispatch(categoryFunction.setPage(1))
-        dispatch(categoryFunction.setDropChoosen('All'))
         dispatch(categoryFunction.setFilteredContent(null))
         setTimeout(async () => {
           dispatch(categoryFunction.fetchSuccess())
@@ -104,8 +110,7 @@ export const loadCategoryPage = () => {
   }
 }
 
-
-export const loadStoreInfoPage = (id:string) => {
+export const loadStoreInfoPage = (id: string) => {
   return async (dispatch: any) => {
     dispatch(gptStoreFunction.fetchStart()) // Dispatch loginStart action to set loading state
     try {
@@ -124,5 +129,3 @@ export const loadStoreInfoPage = (id:string) => {
     }
   }
 }
-
-
