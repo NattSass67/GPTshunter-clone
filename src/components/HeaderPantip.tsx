@@ -75,7 +75,6 @@ function ButtonNavbar(props: { children: React.ReactNode; href: string }) {
 }
 
 function ButtonChangeLang() {
-  const [clicked, setClicked] = useState(false)
   const local = usePathname().split('/')[1]
   const router = useRouter()
   return (

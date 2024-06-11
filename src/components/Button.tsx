@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import clsx from 'clsx'
 import { useAppDispatch, useAppSelector } from '@/session/store'
-import { useRef } from 'react'
+import { KeyboardEvent, MouseEvent, useRef } from 'react'
 import { setFilterChoosen } from '@/session/home'
 import { fetchHomeFilterContent } from '@/session/my-state'
 
@@ -87,11 +87,8 @@ export function FilterSelect() {
 
   return (
     <>
-      {' '}
       <div className="relative mt-4 flex flex-col">
-        <div className="absolute left-0 top-0 z-10 h-12 w-12 -translate-x-1 bg-gradient-to-r from-white md:left-6">
-          {' '}
-        </div>
+        <div className="absolute left-0 top-0 z-10 h-12 w-12 -translate-x-1 bg-gradient-to-r from-white md:left-6"></div>
         <button
           onClick={scrollLeft}
           aria-label="Save"
@@ -166,8 +163,12 @@ export function FilterSelect() {
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 import { useState } from 'react'
 import { getSearchKeyword } from '@/service/request'
+import { usePathname } from 'next/navigation'
+import { useEffect } from 'react'
 
 export function SearchBar() {
+  const router = useRouter()
+  const local = usePathname().split('/')[1]
   const [query, setQuery] = useState<string>('')
   const [keyword, setKeyword] = useState<string[]>([])
   const onSearchChange = async (key: string) => {
@@ -175,11 +176,40 @@ export function SearchBar() {
     setKeyword(res.data)
   }
 
-  const keywordList = keyword.map((object, index) => (
-    <div key={index} className="p-2 hover:bg-zinc-50">
+  let keywordList = keyword.map((object, index) => (
+    <div
+      key={index}
+      onClick={() => {
+        setQuery(object)
+        console.log(object)
+        router.push('/' + local + '/search/' + object)
+      }}
+      className="search z-50 p-2 hover:bg-zinc-50"
+    >
       {object}
     </div>
   ))
+
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'Enter') {
+      // Your function or code to execute when Enter is pressed
+      router.push('/' + local + '/search/' + query)
+    }
+  }
+
+  const handleOutsideClick = (event: any) => {
+    if (!event.target.closest('.search')) {
+      setKeyword([])
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('click', handleOutsideClick)
+
+    return () => {
+      document.removeEventListener('click', handleOutsideClick)
+    }
+  }, [])
 
   return (
     <div className="relative relative mb-16 mt-4 flex w-full flex-col items-center">
@@ -187,16 +217,14 @@ export function SearchBar() {
         <div className="flex">
           <input
             autoFocus
-            className="flex w-full rounded-full bg-white/90 pl-3 text-sm text-zinc-800 focus:outline-none sm:text-base dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10"
+            className="search flex w-full rounded-full bg-white/90 pl-3 text-sm text-zinc-800 focus:outline-none sm:text-base dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10"
             placeholder="Search..."
             value={query}
             onChange={(event) => {
               setQuery(event.target.value)
               onSearchChange(event.target.value)
             }}
-            onBlur={() => {
-              setKeyword([])
-            }}
+            onKeyDown={handleKeyDown}
           />
           <a
             href={`https://pantip.com/search?q=${query}`}
@@ -208,19 +236,19 @@ export function SearchBar() {
             />
           </a>
         </div>
-        <div className="w-full flex-col border-t">{keywordList}</div>
+        {keywordList.length != 0 && (
+          <div className="search w-full flex-col border-t">{keywordList}</div>
+        )}
       </div>
     </div>
   )
 }
 
-import { categoryFunction } from '@/session/category'
 import { useRouter } from 'next/navigation'
 
 export function Pagination(props: { url: string; page: number }) {
   const page = props.page
   const router = useRouter()
-  const dispatch = useAppDispatch()
   const url = props.url
   const switchPage = (nextPage: number) => {
     router.push(url + '/?page=' + nextPage.toString())
