@@ -183,7 +183,7 @@ export function SearchBarRedirect() {
         setQuery(object)
         router.push('/' + local + '/search/' + object + '?page=1')
       }}
-      className="relative search z-50 p-2 hover:bg-zinc-50 bg-white"
+      className="relative search z-50 p-2 hover:bg-zinc-50 bg-white text-sm sm:text-base"
     >
       {object}
     </div>
