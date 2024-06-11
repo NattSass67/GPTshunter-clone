@@ -244,7 +244,7 @@ export function SearchBarRedirect() {
           </a>
         </div>
         {keywordList.length != 0 && (
-          <div className="search w-full flex-col border-t">{keywordList}</div>
+          <div className="search w-full flex-col border-t bg-white">{keywordList}</div>
         )}
       </div>
     </div>
