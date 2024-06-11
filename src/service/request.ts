@@ -352,7 +352,7 @@ export async function getSearchKeyword(key: string){
     'apple': ['applepie', 'applecider', 'applestore', 'applewatch'],
     'banana': ['bananabread', 'bananasmoothie', 'bananasplit', 'bananapudding'],
     'car': ['carinsurance', 'carrental', 'carwash', 'carrepair'],
-    'default': ['search1', 'search2', 'search3', 'search4']
+    'default': ['search1', 'search2', 'search3', 'search4', 'search5']
   };
 
   return { data: sampleData[key] || sampleData['default'] };

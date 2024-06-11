@@ -183,7 +183,7 @@ export function SearchBarRedirect() {
         setQuery(object)
         router.push('/' + local + '/search/' + object + '?page=1')
       }}
-      className="relative search z-50 p-2 hover:bg-zinc-50 bg-white text-sm sm:text-base"
+      className="search p-2 hover:bg-zinc-50 bg-white text-sm sm:text-base"
     >
       {object}
     </div>
@@ -215,7 +215,7 @@ export function SearchBarRedirect() {
 
   return (
     <div className="relative relative mb-16 mt-4 flex w-full flex-col items-center">
-      <div className="absolute top-0 flex w-full max-w-2xl flex-col overflow-hidden rounded-3xl border border-zinc-300 bg-white shadow">
+      <div className="absolute z-50 top-0 flex w-full max-w-2xl flex-col overflow-hidden rounded-3xl border border-zinc-300 bg-white shadow">
         <div className="flex">
           <input
             autoFocus
