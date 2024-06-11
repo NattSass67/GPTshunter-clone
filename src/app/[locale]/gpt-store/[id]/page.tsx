@@ -18,6 +18,7 @@ import {
 } from '@headlessui/react'
 import { PlusIcon, MinusIcon } from '@heroicons/react/20/solid'
 import { CardBanner } from '@/types/category'
+import { BasicSparkLine } from '@/components/Chart'
 
 function Stats(props: { rate: number; rank: number }) {
   return (
@@ -111,6 +112,15 @@ export default function Store(props: {
     </a>
   ))
 
+  const tools = info?.tools?.map((object, index) => (
+    <div
+      key={index}
+      className="flex-none rounded-full bg-zinc-100 px-3 py-1.5 text-zinc-800"
+    >
+      <p className="text-center text-[14px]">{object}</p>
+    </div>
+  ))
+
   return (
     <>
       <Transition
@@ -140,7 +150,7 @@ export default function Store(props: {
                 </div>
 
                 <hr />
-                <div className="my-10 grid max-w-xl grid-cols-1 gap-8 text-sm leading-7 text-zinc-800 sm:text-base lg:max-w-none lg:grid-cols-2">
+                <div className="my-10 grid max-w-2xl grid-cols-1 gap-8 text-sm leading-7 text-zinc-800 sm:text-base lg:max-w-none lg:grid-cols-2">
                   {content}
                   <div>
                     <p className="text-2xl font-semibold">
@@ -152,15 +162,19 @@ export default function Store(props: {
                     <p className="text-2xl font-semibold">{info?.name} FAQs</p>
                     {faqs}
                   </div>
-                  {/* <div>
-                    <p className="text-2xl font-semibold">GPT Information</p>
-                    <p>• GPT Hunted: {info?.information.hunted}</p>
-                    <p>• GPT Updated: {info?.information.updated}</p>
-                    <p>• GPT Crawled: {info?.information.crawled}</p>
-                    <p>• GPT Category: {info?.information.category}</p>
-                    <p>• GPT Chats: {info?.information.chat}+</p>
-                    <a href="#" className="hover:text-gray-400"> <p>• GPT Builder Profile</p> </a>
-                  </div> */}
+                  <div className="gap-y-2 grid grid-cols-2">
+                    <p className="text-2xl font-semibold col-span-2"> GPT Information</p>
+                    <p className="text-sm sm:text-base "> • Hunted: {info?.information.hunted}</p>
+                    <p className="text-sm sm:text-base "> • Updated: {info?.information.updated}</p>
+                    <p className="text-sm sm:text-base "> • Crawled: {info?.information.crawled}</p>
+                    <p className="text-sm sm:text-base "> • Category: {info?.information.category}</p>
+                    <p className="text-sm sm:text-base "> • Chats: {(info?.information.chat) ? Math.floor(info?.information.chat/1000):0}K+</p>
+                    <a href="#" className="hover:text-gray-400 text-sm sm:text-base "> <p className=""> • Builder Profile</p> </a>
+                  </div>
+                  <div className='w-full flex flex-col justify-end gap-y-1 '>
+                    <p className="text-2xl font-semibold col-span-2"> GPT Conversation Trend</p>
+                    <BasicSparkLine data={null}/>
+                  </div>
                 </div>
                 <Stats
                   rank={info?.rank as number}
@@ -179,6 +193,10 @@ export default function Store(props: {
               Tags
             </p>
             <div className="mx-0 mt-2 flex flex-row gap-x-2 no-scrollbar overflow-x-auto">{tags}</div>
+            <p className="mt-4 text-lg font-bold tracking-tight text-gray-900">
+              Tools
+            </p>
+            <div className="mx-0 mt-2 flex flex-row gap-x-2 no-scrollbar overflow-x-auto">{tools}</div>
             <Carousel
               content={info?.more as CardBanner[]}
               title={`More custom GPTs by ${info?.by}`}

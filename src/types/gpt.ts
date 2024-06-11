@@ -9,6 +9,7 @@ export interface GptInfo {
   rate: number
   totalRate: number
   tags: string[]
+  tools: string[]
   content: GptContentTopic[]
   promptStarter: string[]
   faq: GptFaq[]
@@ -75,6 +76,7 @@ const gptInfoSchema = z.object({
   rate: z.number(),
   totalRate: z.number(),
   tags: z.array(z.string()),
+  tools: z.array(z.string()),
   content: z.array(gptContentTopicSchema),
   promptStarter: z.array(z.string()), // Assuming promptStarter is an array of strings
   faq: z.array(gptFaqSchema),

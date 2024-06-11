@@ -245,6 +245,7 @@ export async function getGptByID(id: string) {
     rate: 4.9,
     totalRate: 1000,
     tags: ['AI', 'Machine Learning', 'Natural Language Processing'],
+    tools:  ['browser', 'dalle', 'python'],
     content: [
       {
         name: 'Introduction to AI Humanizer Pro',
@@ -295,6 +296,7 @@ export async function getGptByID(id: string) {
     rate: 4.5,
     totalRate: 1000,
     tags: ['AI', 'Machine Learning', 'Natural Language Processing'],
+    tools:  ['browser', 'dalle', 'python'],
     content: [
       {
         name: 'Introduction to AI Humanizer Pro',

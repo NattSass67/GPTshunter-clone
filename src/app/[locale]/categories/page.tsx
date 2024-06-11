@@ -140,7 +140,7 @@ export default function Categories() {
         leaveTo="opacity-0"
       >
         <Container className="mt-16">
-          <div className="w-full py-16 text-center">
+          <div className="w-full pt-16 text-center">
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl">
               {t('title')}
             </h1>
@@ -148,7 +148,7 @@ export default function Categories() {
               {t('description')}
             </p>
           </div>
-          <div className="w-full">
+          <div className="w-full mt-12">
             <div className="relative"><Home /></div>
           </div>
         </Container>
