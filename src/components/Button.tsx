@@ -181,10 +181,9 @@ export function SearchBarRedirect() {
       key={index}
       onClick={() => {
         setQuery(object)
-        console.log(object)
-        router.push('/' + local + '/search/' + object+"?page=1")
+        router.push('/' + local + '/search/' + object + '?page=1')
       }}
-      className="search z-50 p-2 hover:bg-zinc-50"
+      className="relative search z-50 p-2 hover:bg-zinc-50 bg-white"
     >
       {object}
     </div>
@@ -193,7 +192,10 @@ export function SearchBarRedirect() {
   const handleKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'Enter') {
       // Your function or code to execute when Enter is pressed
-      router.push('/' + local + '/search/' + query+"?page=1")
+      if (query.length == 0) {
+        return
+      }
+      router.push('/' + local + '/search/' + query + '?page=1')
     }
   }
 
@@ -227,7 +229,12 @@ export function SearchBarRedirect() {
             onKeyDown={handleKeyDown}
           />
           <a
-            href={'/' + local + '/search/' + query+"?page=1"}
+            onClick={() => {
+              if (query.length == 0) {
+                return
+              }
+              router.push('/' + local + '/search/' + query + '?page=1')
+            }}
             className="group my-2 rounded-full px-3 py-0.5 transition hover:scale-110 sm:py-1.5 dark:bg-zinc-800/90 "
           >
             <MagnifyingGlassIcon
@@ -592,6 +599,3 @@ export function Pagination(props: { url: string; page: number }) {
     </>
   )
 }
-
-
-
