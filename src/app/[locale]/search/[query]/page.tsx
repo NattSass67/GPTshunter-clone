@@ -80,10 +80,10 @@ export default function Home(props: {
         <Container className="mt-16">
           <div className="w-full pb-12 pt-16 ">
             <h1 className="text-center text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl">
-              {props.params.query}
+              {decodeURIComponent(props.params.query)}
             </h1>
             <p className="mx-auto mt-4 max-w-3xl text-center text-base text-zinc-500">
-              Discover The Best GPTs For {props.params.query}
+              Discover The Best GPTs For {decodeURIComponent(props.params.query)}
             </p>
             <SearchBarRedirect />
           </div>
