@@ -215,7 +215,7 @@ export function SearchBarRedirect() {
 
   return (
     <div className="relative relative mb-16 mt-4 flex w-full flex-col items-center">
-      <div className="absolute z-50 top-0 flex w-full max-w-2xl flex-col overflow-hidden rounded-3xl border border-zinc-300 bg-white shadow">
+      <div className="absolute z-20 top-0 flex w-full max-w-2xl flex-col overflow-hidden rounded-3xl border border-zinc-300 bg-white shadow">
         <div className="flex">
           <input
             autoFocus
