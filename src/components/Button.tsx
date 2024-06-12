@@ -1,16 +1,13 @@
 'use client'
-import Link from 'next/link'
-import clsx from 'clsx'
-import { useAppDispatch, useAppSelector } from '@/session/store'
-import { KeyboardEvent, MouseEvent, useRef } from 'react'
+import { getSearchKeyword } from '@/service/request'
 import { setFilterChoosen } from '@/session/home'
 import { fetchHomeFilterContent } from '@/session/manager'
+import { useAppDispatch, useAppSelector } from '@/session/store'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
-import { useState } from 'react'
-import { getSearchKeyword } from '@/service/request'
-import { usePathname } from 'next/navigation'
-import { useEffect } from 'react'
-import { useRouter } from 'next/navigation'
+import clsx from 'clsx'
+import Link from 'next/link'
+import { usePathname, useRouter } from 'next/navigation'
+import { KeyboardEvent, useEffect, useRef, useState } from 'react'
 
 const variantStyles = {
   primary:
@@ -253,13 +250,14 @@ export function SearchBarRedirect() {
 }
 
 
-export function Pagination(props: { url: string; page: number }) {
+export function Pagination(props: { url: string; page: number; totalBanner: number; bannerPerPage: number}) {
   const page = props.page
   const router = useRouter()
   const url = props.url
   const switchPage = (nextPage: number) => {
     router.push(url + '/?page=' + nextPage.toString())
   }
+  const totalPage = Math.ceil(props.totalBanner / props.bannerPerPage);
 
   const foward = () => {
     router.push(url + '/?page=' + (page + 1).toString())
@@ -272,10 +270,8 @@ export function Pagination(props: { url: string; page: number }) {
     return (
       <>
         <div className="flex items-center gap-1">
-          <button
-            onClick={() => {
-              switchPage(1)
-            }}
+        {((page-1)>0) && <button
+            onClick={() => {}}
             className="flex select-none items-center gap-2 rounded-full px-3 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-gray-400 transition-all disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none sm:px-6"
             type="button"
           >
@@ -295,17 +291,17 @@ export function Pagination(props: { url: string; page: number }) {
               ></path>
             </svg>
             <div className="hidden sm:flex">Previous</div>
-          </button>
+          </button>}
           <div className="flex items-center gap-2">
-            <button
+            {(page<=totalPage) && <button
               className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full bg-zinc-800 text-center align-middle font-sans text-xs font-medium uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
               type="button"
             >
               <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
                 1
               </span>
-            </button>
-            <button
+            </button>}
+            {((page+1)<=totalPage) && <button
               onClick={() => {
                 switchPage(2)
               }}
@@ -315,8 +311,8 @@ export function Pagination(props: { url: string; page: number }) {
               <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
                 2
               </span>
-            </button>
-            <button
+            </button>}
+            {((page+2)<=totalPage) && <button
               onClick={() => {
                 switchPage(3)
               }}
@@ -326,8 +322,8 @@ export function Pagination(props: { url: string; page: number }) {
               <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
                 3
               </span>
-            </button>
-            <button
+            </button>}
+            {((page+3)<=totalPage) && <button
               onClick={() => {
                 switchPage(4)
               }}
@@ -337,8 +333,8 @@ export function Pagination(props: { url: string; page: number }) {
               <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
                 4
               </span>
-            </button>
-            <button
+            </button>}
+            {((page+4)<=totalPage) && <button
               onClick={() => {
                 switchPage(5)
               }}
@@ -348,9 +344,9 @@ export function Pagination(props: { url: string; page: number }) {
               <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
                 5
               </span>
-            </button>
+            </button>}
           </div>
-          <button
+          {((page+1)<=totalPage) && <button
             onClick={() => {
               foward()
             }}
@@ -373,7 +369,7 @@ export function Pagination(props: { url: string; page: number }) {
                 d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
               ></path>
             </svg>
-          </button>
+          </button>}
         </div>
       </>
     )
@@ -383,7 +379,7 @@ export function Pagination(props: { url: string; page: number }) {
     return (
       <>
         <div className="flex items-center gap-1">
-          <button
+        {((page-1)>0) && <button
             onClick={() => {
               switchPage(1)
             }}
@@ -406,9 +402,9 @@ export function Pagination(props: { url: string; page: number }) {
               ></path>
             </svg>
             <div className="hidden sm:flex">Previous</div>
-          </button>
+          </button>}
           <div className="flex items-center gap-2">
-            <button
+          {((page-1)>0) && <button
               onClick={() => {
                 switchPage(1)
               }}
@@ -418,7 +414,7 @@ export function Pagination(props: { url: string; page: number }) {
               <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
                 1
               </span>
-            </button>
+            </button>}
             <button
               className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full bg-zinc-800 text-center align-middle font-sans text-xs font-medium uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
               type="button"
@@ -427,7 +423,7 @@ export function Pagination(props: { url: string; page: number }) {
                 2
               </span>
             </button>
-            <button
+            {((page+1)<=totalPage) && <button
               onClick={() => {
                 switchPage(3)
               }}
@@ -437,8 +433,8 @@ export function Pagination(props: { url: string; page: number }) {
               <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
                 3
               </span>
-            </button>
-            <button
+            </button>}
+            {((page+2)<=totalPage) &&<button
               onClick={() => {
                 switchPage(4)
               }}
@@ -448,8 +444,8 @@ export function Pagination(props: { url: string; page: number }) {
               <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
                 4
               </span>
-            </button>
-            <button
+            </button>}
+            {((page+3)<=totalPage) &&<button
               onClick={() => {
                 switchPage(5)
               }}
@@ -459,9 +455,9 @@ export function Pagination(props: { url: string; page: number }) {
               <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
                 5
               </span>
-            </button>
+            </button>}
           </div>
-          <button
+          {((page+1)<=totalPage) && <button
             onClick={() => {
               foward()
             }}
@@ -484,7 +480,7 @@ export function Pagination(props: { url: string; page: number }) {
                 d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
               ></path>
             </svg>
-          </button>
+          </button>}
         </div>
       </>
     )
@@ -493,7 +489,7 @@ export function Pagination(props: { url: string; page: number }) {
   return (
     <>
       <div className="flex items-center gap-1">
-        <button
+      {((page-1)>0) && <button
           onClick={() => {
             switchPage(page - 1)
           }}
@@ -516,9 +512,9 @@ export function Pagination(props: { url: string; page: number }) {
             ></path>
           </svg>
           <div className="hidden sm:flex">Previous</div>
-        </button>
+        </button>}
         <div className="flex items-center gap-2">
-          <button
+        {((page-2)>0) && <button
             onClick={() => {
               switchPage(page - 2)
             }}
@@ -528,8 +524,8 @@ export function Pagination(props: { url: string; page: number }) {
             <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
               {page - 2}
             </span>
-          </button>
-          <button
+          </button>}
+          {((page-1)>0) && <button
             onClick={() => {
               switchPage(page - 1)
             }}
@@ -539,7 +535,7 @@ export function Pagination(props: { url: string; page: number }) {
             <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
               {page - 1}
             </span>
-          </button>
+          </button>}
           <button
             className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full bg-zinc-800 text-center align-middle font-sans text-xs font-medium uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
             type="button"
@@ -548,7 +544,7 @@ export function Pagination(props: { url: string; page: number }) {
               {page}
             </span>
           </button>
-          <button
+          {((page+1)<=totalPage) && <button
             onClick={() => {
               switchPage(page + 1)
             }}
@@ -558,8 +554,8 @@ export function Pagination(props: { url: string; page: number }) {
             <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
               {page + 1}
             </span>
-          </button>
-          <button
+          </button>}
+          {((page+2)<=totalPage) &&<button
             onClick={() => {
               switchPage(page + 2)
             }}
@@ -569,9 +565,9 @@ export function Pagination(props: { url: string; page: number }) {
             <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
               {page + 2}
             </span>
-          </button>
+          </button>}
         </div>
-        <button
+        {((page+1)<=totalPage) && <button
           onClick={() => {
             switchPage(page + 1)
           }}
@@ -594,7 +590,7 @@ export function Pagination(props: { url: string; page: number }) {
               d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
             ></path>
           </svg>
-        </button>
+        </button>}
       </div>
     </>
   )

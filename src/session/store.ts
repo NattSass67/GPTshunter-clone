@@ -17,6 +17,8 @@ import homeReducer from './home'
 import categoryReducer from './category'
 import storeReducer from './info-gpt'
 import searchReducer from './search'
+import tagsReducer from './tags'
+import profileReducer from './profile'
 
 // Combine all reducers into the rootReducer
 const rootReducer = combineReducers({
@@ -24,7 +26,9 @@ const rootReducer = combineReducers({
   homeSession: homeReducer,
   categorySession: categoryReducer,
   storeSession: storeReducer,
-  searchSession: searchReducer
+  searchSession: searchReducer,
+  tagsSession: tagsReducer,
+  profileSession: profileReducer
   // Add other reducers here if needed
 })
 

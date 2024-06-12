@@ -2,23 +2,21 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @next/next/no-img-element */
 'use client'
-import { Container } from '@/components/Container'
-import Image from 'next/image'
-import { useState, useEffect } from 'react'
-import { Transition } from '@headlessui/react'
-import { Loader } from '@/components/Loader'
-import { useTranslations } from 'next-intl'
-import { useAppSelector, useAppDispatch } from '@/session/store'
-import { loadStoreInfoPage } from '@/session/manager'
 import { Carousel } from '@/components/Carousel'
+import { BasicSparkLine } from '@/components/Chart'
+import { Container } from '@/components/Container'
+import { Loader } from '@/components/Loader'
+import { loadStoreInfoPage } from '@/session/manager'
+import { useAppDispatch, useAppSelector } from '@/session/store'
+import { CardBanner } from '@/types/category'
 import {
   Disclosure,
   DisclosureButton,
-  DisclosurePanel,
+  DisclosurePanel, Transition
 } from '@headlessui/react'
-import { PlusIcon, MinusIcon } from '@heroicons/react/20/solid'
-import { CardBanner } from '@/types/category'
-import { BasicSparkLine } from '@/components/Chart'
+import { MinusIcon, PlusIcon } from '@heroicons/react/20/solid'
+import Image from 'next/image'
+import { useEffect } from 'react'
 
 function Stats(props: { rate: number; rank: number }) {
   return (
@@ -54,13 +52,13 @@ function Stats(props: { rate: number; rank: number }) {
 export default function Store(props: {
   params: { locale: string; id: string }
 }) {
-
   const loading = useAppSelector((state) => state.storeSession.loading)
   const info = useAppSelector((state) => state.storeSession.info)
   const dispatch = useAppDispatch()
+  const { locale, id } = props.params
 
   useEffect(() => {
-    dispatch(loadStoreInfoPage(props.params.id))
+    dispatch(loadStoreInfoPage(id))
   }, [])
 
   const content = info?.content.map((object, index) => (
@@ -95,7 +93,9 @@ export default function Store(props: {
             </DisclosureButton>
           </dt>
           <DisclosurePanel as="dd" className="mt-2 pr-12">
-            <p className="text-sm sm:text-base leading-7 text-gray-600">{object.answer}</p>
+            <p className="text-sm leading-7 text-gray-600 sm:text-base">
+              {object.answer}
+            </p>
           </DisclosurePanel>
         </>
       )}
@@ -105,7 +105,7 @@ export default function Store(props: {
   const tags = info?.tags.map((object, index) => (
     <a
       key={index}
-      href="#"
+      href={'/' + locale + '/tags/' + object + '?page=1'}
       className="flex-none rounded-full bg-zinc-100 px-3 py-1.5 text-zinc-800 hover:bg-zinc-200"
     >
       <p className="text-center text-[14px]">{object}</p>
@@ -142,7 +142,10 @@ export default function Store(props: {
                   {info?.name}
                 </h1>
                 <div className="flex">
-                  <a href="#" className="flex hover:text-gray-400">
+                  <a
+                    href={'/' + locale + '/profile/' + info?.userId}
+                    className="flex hover:text-gray-400"
+                  >
                     <p className="mb-4 mt-2 text-sm sm:text-base">
                       By {info?.by}
                     </p>
@@ -162,18 +165,47 @@ export default function Store(props: {
                     <p className="text-2xl font-semibold">{info?.name} FAQs</p>
                     {faqs}
                   </div>
-                  <div className="gap-y-2 grid grid-cols-2">
-                    <p className="text-2xl font-semibold col-span-2"> GPT Information</p>
-                    <p className="text-sm sm:text-base "> • Hunted: {info?.information.hunted}</p>
-                    <p className="text-sm sm:text-base "> • Updated: {info?.information.updated}</p>
-                    <p className="text-sm sm:text-base "> • Crawled: {info?.information.crawled}</p>
-                    <p className="text-sm sm:text-base "> • Category: {info?.information.category}</p>
-                    <p className="text-sm sm:text-base "> • Chats: {(info?.information.chat) ? Math.floor(info?.information.chat/1000):0}K+</p>
-                    <a href="#" className="hover:text-gray-400 text-sm sm:text-base "> <p className=""> • Builder Profile</p> </a>
+                  <div className="grid grid-cols-2 gap-y-2">
+                    <p className="col-span-2 text-2xl font-semibold">
+                      {' '}
+                      GPT Information
+                    </p>
+                    <p className="text-sm sm:text-base ">
+                      {' '}
+                      • Hunted: {info?.information.hunted}
+                    </p>
+                    <p className="text-sm sm:text-base ">
+                      {' '}
+                      • Updated: {info?.information.updated}
+                    </p>
+                    <p className="text-sm sm:text-base ">
+                      {' '}
+                      • Crawled: {info?.information.crawled}
+                    </p>
+                    <p className="text-sm sm:text-base ">
+                      {' '}
+                      • Category: {info?.information.category}
+                    </p>
+                    <p className="text-sm sm:text-base ">
+                      {' '}
+                      • Chats:{' '}
+                      {info?.information.chat
+                        ? Math.floor(info?.information.chat / 1000)
+                        : 0}
+                      K+
+                    </p>
+                    <a
+                      href={'/' + locale + '/profile/' + info?.userId}
+                      className="text-sm hover:text-gray-400 sm:text-base "
+                    >
+                      <p className=""> • Builder Profile</p>
+                    </a>
                   </div>
-                  <div className='w-full flex flex-col justify-end gap-y-1 '>
-                    <p className="text-2xl font-semibold col-span-2"> GPT Conversation Trend</p>
-                    <BasicSparkLine data={null}/>
+                  <div className="flex w-full flex-col justify-end gap-y-1 ">
+                    <p className="col-span-2 text-2xl font-semibold">
+                      GPT Conversation Trend
+                    </p>
+                    <BasicSparkLine data={null} />
                   </div>
                 </div>
                 <Stats
@@ -192,11 +224,15 @@ export default function Store(props: {
             <p className="mt-4 text-lg font-bold tracking-tight text-gray-900">
               Tags
             </p>
-            <div className="mx-0 mt-2 flex flex-row gap-x-2 no-scrollbar overflow-x-auto">{tags}</div>
+            <div className="no-scrollbar mx-0 mt-2 flex flex-row gap-x-2 overflow-x-auto">
+              {tags}
+            </div>
             <p className="mt-4 text-lg font-bold tracking-tight text-gray-900">
               Tools
             </p>
-            <div className="mx-0 mt-2 flex flex-row gap-x-2 no-scrollbar overflow-x-auto">{tools}</div>
+            <div className="no-scrollbar mx-0 mt-2 flex flex-row gap-x-2 overflow-x-auto">
+              {tools}
+            </div>
             <Carousel
               content={info?.more as CardBanner[]}
               title={`More custom GPTs by ${info?.by}`}

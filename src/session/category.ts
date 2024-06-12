@@ -7,7 +7,7 @@ interface CategoryState {
   dropSelect: Category[]
   dropChoosen: string
   filteredContent: CardBanner[]|null            
-  page: number
+  totalBanner: number
 }
 
 const initialState: CategoryState = {
@@ -16,7 +16,7 @@ const initialState: CategoryState = {
   dropSelect: [],
   dropChoosen: '',
   filteredContent: null,
-  page: 1
+  totalBanner: 0
 }
 
 /* eslint no-param-reassign: ["error", { "props": true, "ignorePropertyModificationsFor": ["state"] }] */
@@ -45,8 +45,8 @@ const sessionSlice = createSlice({
     setExistCategory(state, action) {
       state.dropSelect = action.payload
     },
-    setPage(state, action) {
-        state.page = action.payload
+    setTotalBanner(state, action) {
+        state.totalBanner = action.payload
       },
   },
 })

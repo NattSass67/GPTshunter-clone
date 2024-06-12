@@ -1,18 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { Category, CardBanner } from '@/types/category'
+import { RelatedTags } from '@/types/tags'
+import { Profile } from '@/types/profile'
 
-interface InfoState {
+interface ProfileState {
   loading: boolean
   secondaryLoading: boolean
-  content: CardBanner[] | null
-  totalBanner: number
+  profile: Profile|null
 }
 
-const initialState: InfoState = {
+const initialState: ProfileState = {
   loading: false,
   secondaryLoading: false,
-  content: null,
-  totalBanner: 0,
+  profile: null,
 }
 
 /* eslint no-param-reassign: ["error", { "props": true, "ignorePropertyModificationsFor": ["state"] }] */
@@ -32,15 +32,12 @@ const sessionSlice = createSlice({
     fetchSecondSuccess(state) {
       state.secondaryLoading = false // Set loading state to false when login succeeds
     },
-    setContent(state, action) {
-      state.content = action.payload
-    },
-    setTotalBanner(state, action) {
-      state.totalBanner = action.payload
+    setProfile(state, action) {
+      state.profile = action.payload
     },
   },
 })
 
-export const searchFunction = sessionSlice.actions
+export const profileFunction = sessionSlice.actions
 
 export default sessionSlice.reducer

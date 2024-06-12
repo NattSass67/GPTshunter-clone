@@ -1,17 +1,20 @@
+import { CardBanner } from '@/types/category'
+import { RelatedTags } from '@/types/tags'
 import { createSlice } from '@reduxjs/toolkit'
-import { Category, CardBanner } from '@/types/category'
 
-interface InfoState {
+interface TagsState {
   loading: boolean
   secondaryLoading: boolean
-  content: CardBanner[] | null
+  filteredContent: CardBanner[] | null
+  relatedTags: RelatedTags | null
   totalBanner: number
 }
 
-const initialState: InfoState = {
+const initialState: TagsState = {
   loading: false,
   secondaryLoading: false,
-  content: null,
+  filteredContent: null,
+  relatedTags: null,
   totalBanner: 0,
 }
 
@@ -32,8 +35,11 @@ const sessionSlice = createSlice({
     fetchSecondSuccess(state) {
       state.secondaryLoading = false // Set loading state to false when login succeeds
     },
-    setContent(state, action) {
-      state.content = action.payload
+    setFilteredContent(state, action) {
+      state.filteredContent = action.payload
+    },
+    setRelatedTags(state, action) {
+      state.relatedTags = action.payload
     },
     setTotalBanner(state, action) {
       state.totalBanner = action.payload
@@ -41,6 +47,6 @@ const sessionSlice = createSlice({
   },
 })
 
-export const searchFunction = sessionSlice.actions
+export const tagsFunction = sessionSlice.actions
 
 export default sessionSlice.reducer

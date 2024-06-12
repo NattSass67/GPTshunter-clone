@@ -23,6 +23,8 @@ export default function Home(props: {
   const dispatch = useAppDispatch()
   const isLoading = useAppSelector((state) => state.searchSession.loading)
   const content = useAppSelector((state) => state.searchSession.content)
+  const pathName = usePathname()
+  const totalBanner = useAppSelector((state) => state.searchSession.totalBanner)
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -32,9 +34,13 @@ export default function Home(props: {
     // Cleanup the timer on component unmount
     return () => clearTimeout(timer)
   }, [])
-  
+
   useEffect(() => {
-    dispatch(loadSearchPage(props.params.query, parseInt(props.searchParams.page)))
+    if(props.searchParams.page) {
+      dispatch(loadSearchPage(props.params.query, parseInt(props.searchParams.page)))
+    }else{
+      dispatch(loadSearchPage(props.params.query, 1))
+    }
   }, [props.searchParams.page])
 
   const cardList = content?.map((project, index) => (
@@ -73,9 +79,6 @@ export default function Home(props: {
         enter="transition-opacity duration-300"
         enterFrom="opacity-0"
         enterTo="opacity-100"
-        leave="transition-opacity duration-150"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
       >
         <Container className="mt-16">
           <div className="w-full pb-12 pt-16 ">
@@ -83,7 +86,8 @@ export default function Home(props: {
               {decodeURIComponent(props.params.query)}
             </h1>
             <p className="mx-auto mt-4 max-w-3xl text-center text-base text-zinc-500">
-              Discover The Best GPTs For {decodeURIComponent(props.params.query)}
+              Discover The Best GPTs For{' '}
+              {decodeURIComponent(props.params.query)}
             </p>
             <SearchBarRedirect />
           </div>
@@ -95,7 +99,15 @@ export default function Home(props: {
               enterFrom="opacity-0"
               enterTo="opacity-100"
             >
-              <div className="relative flex flex-wrap">{cardList}</div>
+              <div className="relative flex flex-wrap">
+                {cardList ? (
+                  cardList
+                ) : (
+                  <div className="mt-12 w-full text-center text-xl font-semibold text-zinc-400">
+                    No results found
+                  </div>
+                )}
+              </div>
             </Transition>
             <Transition
               show={!isLoading}
@@ -104,14 +116,20 @@ export default function Home(props: {
               enterTo="opacity-100"
             >
               <div className="relative mt-4 flex justify-center">
-                <Pagination
-                  page={
-                    props.searchParams.page
-                      ? parseInt(props.searchParams.page)
-                      : 1
-                  }
-                  url={usePathname()}
-                />
+                {cardList ? (
+                  <Pagination
+                    page={
+                      props.searchParams.page
+                        ? parseInt(props.searchParams.page)
+                        : 1
+                    }
+                    bannerPerPage={12}
+                    totalBanner={totalBanner}
+                    url={pathName}
+                  />
+                ) : (
+                  <></>
+                )}
               </div>
             </Transition>
             {isLoading && (

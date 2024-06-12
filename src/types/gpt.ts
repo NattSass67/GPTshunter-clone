@@ -27,6 +27,7 @@ const gptInformationSchema = z.object({
 
 // Define GptInfo schema
 const gptInfoSchema = z.object({
+  userId: z.string(),
   name: z.string(),
   logo: z.any(), 
   by: z.string(),

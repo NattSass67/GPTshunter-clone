@@ -8,6 +8,8 @@ import {
   getExistCategory,
   getGptByID,
   getBySearchQuery,
+  getByTagName,
+  getByUserId
 } from '@/service/request'
 
 import {
@@ -24,6 +26,8 @@ import {
 import { searchFunction } from './search'
 import { categoryFunction } from './category'
 import { gptStoreFunction } from './info-gpt'
+import { tagsFunction } from './tags'
+import { profileFunction } from './profile'
 
 export const fetchContent = () => {
   return async (dispatch: any) => {
@@ -80,7 +84,8 @@ export const fetchCategoryContent = (name: string, page: number) => {
       if (category === null) {
         throw new Error('One or more required variables are null.')
       } else {
-        dispatch(categoryFunction.setFilteredContent(category.data))
+        dispatch(categoryFunction.setFilteredContent(category.data.content))
+        dispatch(categoryFunction.setTotalBanner(category.data.totalContent))
         setTimeout(async () => {
           dispatch(categoryFunction.fetchSecondSuccess())
           // Set success after 2000 milliseconds
@@ -102,7 +107,6 @@ export const loadCategoryPage = () => {
         throw new Error('One or more required variables are null.')
       } else {
         dispatch(categoryFunction.setExistCategory(filter.data))
-        dispatch(categoryFunction.setPage(1))
         dispatch(categoryFunction.setFilteredContent(null))
         setTimeout(async () => {
           dispatch(categoryFunction.fetchSuccess())
@@ -146,7 +150,8 @@ export const loadSearchPage = (query: string, page: number) => {
       if (res === null) {
         throw new Error('One or more required variables are null.')
       } else {
-        dispatch(searchFunction.setContent(res.data))
+        dispatch(searchFunction.setContent(res.data.content))
+        dispatch(searchFunction.setTotalBanner(res.data.totalContent))
         setTimeout(async () => {
           dispatch(searchFunction.fetchSuccess())
           // Set success after 2000 milliseconds
@@ -155,6 +160,52 @@ export const loadSearchPage = (query: string, page: number) => {
     } catch (error) {
       console.error('Failed to fetch data:', error);
       dispatch(searchFunction.fetchSuccess()) // Dispatch loginFailure action if login encounters an error
+    }
+  }
+}
+
+
+export const loadTagsPage = (selected: string, page: number) => {
+  return async (dispatch: any) => {
+    dispatch(tagsFunction.fetchStart()) // Dispatch loginStart action to set loading state
+    try {
+      const filter = await getByTagName(selected,page)
+      if (filter === null) {
+        throw new Error('One or more required variables are null.')
+      } else {
+        dispatch(tagsFunction.setFilteredContent(filter.data.content))
+        dispatch(tagsFunction.setRelatedTags(filter.data.relatedTags))
+        dispatch(tagsFunction.setTotalBanner(filter.data.totalBanner))
+        setTimeout(async () => {
+          dispatch(tagsFunction.fetchSuccess())
+          // Set success after 2000 milliseconds
+        }, 2000)
+      }
+    } catch (error) {
+      console.error('Failed to fetch data:', error);
+      dispatch(tagsFunction.fetchSuccess()) // Dispatch loginFailure action if login encounters an error
+    }
+  }
+}
+
+
+export const loadProfilePage = (id: string) => {
+  return async (dispatch: any) => {
+    dispatch(profileFunction.fetchStart()) // Dispatch loginStart action to set loading state
+    try {
+      const res = await getByUserId(id)
+      if (res === null) {
+        throw new Error('One or more required variables are null.')
+      } else {
+        dispatch(profileFunction.setProfile(res.data))
+        setTimeout(async () => {
+          dispatch(profileFunction.fetchSuccess())
+          // Set success after 2000 milliseconds
+        }, 2000)
+      }
+    } catch (error) {
+      console.error('Failed to fetch data:', error);
+      dispatch(profileFunction.fetchSuccess()) // Dispatch loginFailure action if login encounters an error
     }
   }
 }

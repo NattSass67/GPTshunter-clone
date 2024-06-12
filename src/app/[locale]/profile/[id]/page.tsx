@@ -1,13 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client'
-import { Pagination } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import { Loader } from '@/components/Loader'
 import logoComment from '@/images/logos/comment.svg'
 import logoStar from '@/images/logos/star.svg'
 import { formatNumber } from '@/service/format'
-import { fetchCategoryContent } from '@/session/manager'
+import { loadProfilePage } from '@/session/manager'
 import { useAppDispatch, useAppSelector } from '@/session/store'
 import { CardBanner } from '@/types/category'
 import { Transition } from '@headlessui/react'
@@ -16,11 +15,13 @@ import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 export default function Home(props: {
-  params: { locale: string; selected: string }
+  params: { locale: string; id: string }
   searchParams: { page: string }
 }) {
+  const pathName = usePathname()
+  const { id, locale } = props.params
   const dispatch = useAppDispatch()
-  const [initLoading, setInitLoading] = useState(true)
+  const [initLoading, setInitLoading] = useState<boolean>(true)
   useEffect(() => {
     const timer = setTimeout(() => {
       setInitLoading(false)
@@ -30,24 +31,18 @@ export default function Home(props: {
     return () => clearTimeout(timer)
   }, [])
 
-  const totalBanner = useAppSelector(
-    (state) => state.categorySession.totalBanner,
-  )
-  const isLoading = useAppSelector(
-    (state) => state.categorySession.secondaryLoading,
-  )
+  const isLoading = useAppSelector((state) => state.profileSession.loading)
+  const username = useAppSelector((state) => state.profileSession.profile?.name)
+  const totalBanner = useAppSelector((state) => state.profileSession.profile?.totalBanner)
 
-  const data: CardBanner[] | null = useAppSelector(
-    (state) => state.categorySession.filteredContent,
+  const data: CardBanner[] | undefined = useAppSelector(
+    (state) => state.profileSession.profile?.content,
   )
 
   useEffect(() => {
-    if(props.searchParams.page){
-      dispatch(fetchCategoryContent(props.params.selected, parseInt(props.searchParams.page)))
-    } else {
-      dispatch(fetchCategoryContent(props.params.selected, 1))
-    }
-  }, [props.searchParams.page])
+    dispatch(loadProfilePage(id))
+  }, [])
+
 
   const cardList = data?.map((project, index) => (
     <Card
@@ -55,9 +50,7 @@ export default function Home(props: {
       key={index}
       className={`w-1/2 flex-none p-4 hover:bg-zinc-50 lg:w-1/3`}
     >
-      <Card.Link
-        href={'/' + props.params.locale + '/gpt-store/' + project.id}
-      ></Card.Link>
+      <Card.Link href={'/' + locale + '/gpt-store/' + project.id}></Card.Link>
       <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white">
         <Image src={project.logo} alt="" className="h-8 w-8" unoptimized />
       </div>
@@ -89,11 +82,8 @@ export default function Home(props: {
         <Container className="mt-16">
           <div className="w-full pb-12 pt-16 text-center">
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl">
-              {props.params.selected}
+              All {totalBanner} GPTs built by {decodeURIComponent(username as string)} 
             </h1>
-            <p className="mx-auto mt-4 max-w-3xl text-base text-zinc-500">
-              Best GPTs For {props.params.selected} On The GPT Store
-            </p>
           </div>
           <div className="w-full">
             <hr />
@@ -104,25 +94,6 @@ export default function Home(props: {
               enterTo="opacity-100"
             >
               <div className="relative flex flex-wrap">{cardList}</div>
-            </Transition>
-            <Transition
-              show={!isLoading}
-              enter="transition-opacity duration-300"
-              enterFrom="opacity-0"
-              enterTo="opacity-100"
-            >
-              <div className="relative mt-4 flex justify-center">
-                <Pagination
-                  page={
-                    props.searchParams.page
-                      ? parseInt(props.searchParams.page)
-                      : 1
-                  }
-                  url={usePathname()}
-                  bannerPerPage={12}
-                  totalBanner={totalBanner}
-                />
-              </div>
             </Transition>
             {isLoading && (
               <div className="mt-20">

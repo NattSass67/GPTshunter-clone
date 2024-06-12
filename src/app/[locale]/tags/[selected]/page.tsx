@@ -1,26 +1,28 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client'
-import { Pagination } from '@/components/Button'
-import { Card } from '@/components/Card'
-import { Container } from '@/components/Container'
-import { Loader } from '@/components/Loader'
-import logoComment from '@/images/logos/comment.svg'
-import logoStar from '@/images/logos/star.svg'
-import { formatNumber } from '@/service/format'
-import { fetchCategoryContent } from '@/session/manager'
 import { useAppDispatch, useAppSelector } from '@/session/store'
-import { CardBanner } from '@/types/category'
-import { Transition } from '@headlessui/react'
+import logoStar from '@/images/logos/star.svg'
+import logoComment from '@/images/logos/comment.svg'
+import { Card } from '@/components/Card'
 import Image from 'next/image'
-import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
+import { loadTagsPage } from '@/session/manager'
+import { formatNumber } from '@/service/format'
+import { Loader } from '@/components/Loader'
+import { Container } from '@/components/Container'
+import { Transition } from '@headlessui/react'
+import { CardBanner } from '@/types/category'
+import { Pagination } from '@/components/Button'
 
 export default function Home(props: {
   params: { locale: string; selected: string }
   searchParams: { page: string }
 }) {
+  const pathName = usePathname()
+  const { selected, locale } = props.params
   const dispatch = useAppDispatch()
-  const [initLoading, setInitLoading] = useState(true)
+  const [initLoading, setInitLoading] = useState<boolean>(true)
   useEffect(() => {
     const timer = setTimeout(() => {
       setInitLoading(false)
@@ -30,24 +32,32 @@ export default function Home(props: {
     return () => clearTimeout(timer)
   }, [])
 
-  const totalBanner = useAppSelector(
-    (state) => state.categorySession.totalBanner,
-  )
-  const isLoading = useAppSelector(
-    (state) => state.categorySession.secondaryLoading,
-  )
+  const isLoading = useAppSelector((state) => state.tagsSession.loading)
+  const relatedTags = useAppSelector((state) => state.tagsSession.relatedTags)
+  const totalBanner = useAppSelector((state) => state.tagsSession.totalBanner)
+
 
   const data: CardBanner[] | null = useAppSelector(
-    (state) => state.categorySession.filteredContent,
+    (state) => state.tagsSession.filteredContent,
   )
 
   useEffect(() => {
     if(props.searchParams.page){
-      dispatch(fetchCategoryContent(props.params.selected, parseInt(props.searchParams.page)))
-    } else {
-      dispatch(fetchCategoryContent(props.params.selected, 1))
+      dispatch(loadTagsPage(selected, parseInt(props.searchParams.page)))
+    }else{
+      dispatch(loadTagsPage(selected, 1))
     }
   }, [props.searchParams.page])
+
+  const tags = relatedTags?.map((object, index) => (
+    <a
+      key={index}
+      href={"/"+locale+"/tags/"+object+"?page=1"}
+      className="flex-none rounded-full bg-zinc-100 px-3 py-1.5 text-zinc-800 hover:bg-zinc-200"
+    >
+      <p className="text-center text-[14px]">{object}</p>
+    </a>
+  ))
 
   const cardList = data?.map((project, index) => (
     <Card
@@ -55,9 +65,7 @@ export default function Home(props: {
       key={index}
       className={`w-1/2 flex-none p-4 hover:bg-zinc-50 lg:w-1/3`}
     >
-      <Card.Link
-        href={'/' + props.params.locale + '/gpt-store/' + project.id}
-      ></Card.Link>
+      <Card.Link href={'/' + locale + '/gpt-store/' + project.id}></Card.Link>
       <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white">
         <Image src={project.logo} alt="" className="h-8 w-8" unoptimized />
       </div>
@@ -89,10 +97,10 @@ export default function Home(props: {
         <Container className="mt-16">
           <div className="w-full pb-12 pt-16 text-center">
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl">
-              {props.params.selected}
+              The {totalBanner} best {decodeURIComponent(selected)} GPTs for 2024
             </h1>
             <p className="mx-auto mt-4 max-w-3xl text-base text-zinc-500">
-              Best GPTs For {props.params.selected} On The GPT Store
+              Discover the {totalBanner} best GPTs for {decodeURIComponent(selected)} on the official GPT store
             </p>
           </div>
           <div className="w-full">
@@ -111,17 +119,28 @@ export default function Home(props: {
               enterFrom="opacity-0"
               enterTo="opacity-100"
             >
-              <div className="relative mt-4 flex justify-center">
-                <Pagination
-                  page={
-                    props.searchParams.page
-                      ? parseInt(props.searchParams.page)
-                      : 1
-                  }
-                  url={usePathname()}
-                  bannerPerPage={12}
-                  totalBanner={totalBanner}
-                />
+              <div>
+                <div className="relative mt-4 flex justify-center">
+                  <Pagination
+                    page={
+                      props.searchParams.page
+                        ? parseInt(props.searchParams.page)
+                        : 1
+                    }
+                    url={pathName}
+                    totalBanner={totalBanner}
+                    bannerPerPage={12}
+
+                  />
+                </div>
+                <div>
+                  <p className="mt-4 text-lg font-bold tracking-tight text-gray-900">
+                    You may also want to explore the related {decodeURIComponent(selected)} on the GPT store
+                  </p>
+                  <div className="no-scrollbar mx-0 mt-2 flex flex-row gap-x-2 overflow-x-auto">
+                    {tags}
+                  </div>
+                </div>
               </div>
             </Transition>
             {isLoading && (

@@ -26,6 +26,7 @@ const cardBannerArraySchema = z.array(cardBannerSchema)
 // Define the schema for the category
 const categoryWithContentSchema = z.object({
   name: z.string(),
+  totalContent: z.number().min(0),
   content: z.array(cardBannerSchema),
 })
 
@@ -48,4 +49,5 @@ export {
   cardBannerArraySchema,
   categoriesSchema,
   categoriesForSelect,
+  categoryWithContentSchema
 }

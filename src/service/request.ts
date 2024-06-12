@@ -1,18 +1,17 @@
-import logoAnimaginary from '@/images/logos/animaginary.svg'
-import logoCosmos from '@/images/logos/cosmos.svg'
-import logoHelioStream from '@/images/logos/helio-stream.svg'
-import logoOpenShuttle from '@/images/logos/open-shuttle.svg'
-import logoPlanetaria from '@/images/logos/planetaria.svg'
 import { GptInfo } from '@/types/gpt'
 import { filterSelectSchema } from '@/types/home'
-import { searchKeywordsSchema } from '@/types/search'
+import { searchKeywordsSchema, contentByQuerySchema } from '@/types/search'
 import { gptInfoSchema } from '@/types/gpt'
 import { mockContent, sampleGptInfo, sampleGptInfo1 } from './mock'
+import { Tags } from '@/types/tags'
+import { tagsSchema } from '@/types/tags'
 import {
   cardBannerArraySchema,
   categoriesSchema,
   categoriesForSelect,
+  categoryWithContentSchema,
 } from '@/types/category'
+import { profileSchema } from '@/types/profile'
 
 export async function getAllFilter() {
   const data = [
@@ -97,7 +96,41 @@ export async function getByDefaultCategory() {
 }
 
 export async function getByCategoryName(name: string, page: number) {
-  const result = cardBannerArraySchema.safeParse(mockContent)
+  const result = categoryWithContentSchema.safeParse({
+    content: mockContent,
+    name: name,
+    totalContent: 100,
+  })
+
+  if (!result.success) {
+    console.error('Validation error:', result.error.errors)
+    throw new Error('Invalid data format')
+  }
+
+  return { data: result.data }
+}
+
+export async function getByUserId(Id: string) {
+  const result = profileSchema.safeParse({
+    name: 'CHRISTINA MCKENNA',
+    content: mockContent,
+    totalBanner: 49,
+  })
+
+  if (!result.success) {
+    console.error('Validation error:', result.error.errors)
+    throw new Error('Invalid data format')
+  }
+
+  return { data: result.data }
+}
+
+export async function getByTagName(name: string, page: number) {
+  const result = tagsSchema.safeParse({
+    content: mockContent,
+    relatedTags: ['AI', 'Machine Learning', 'Content Creation'],
+    totalBanner: 100,
+  })
 
   if (!result.success) {
     console.error('Validation error:', result.error.errors)
@@ -190,7 +223,10 @@ export async function getSearchKeyword(key: string) {
 }
 
 export async function getBySearchQuery(query: string, page: number) {
-  const result = cardBannerArraySchema.safeParse(mockContent)
+  const result = contentByQuerySchema.safeParse({
+    content: mockContent,
+    totalContent: 100,
+  })
 
   if (!result.success) {
     console.error('Validation error:', result.error.errors)

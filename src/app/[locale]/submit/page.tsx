@@ -37,9 +37,6 @@ export default function Submit() {
         enter="transition-opacity duration-300"
         enterFrom="opacity-0"
         enterTo="opacity-100"
-        leave="transition-opacity duration-150"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
       >
         <Container className="mt-32">
           <div className="flex w-full flex-col items-center justify-center">

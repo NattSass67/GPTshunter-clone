@@ -129,6 +129,7 @@ const mockContent = [
 ]
 
 const sampleGptInfo1: GptInfo = {
+  userId: '123456789asdf',
   logo: logoAnimaginary,
   name: 'HIX Scholar',
   by: 'https://hix.ai',
@@ -182,6 +183,7 @@ const sampleGptInfo1: GptInfo = {
 }
 
 const sampleGptInfo: GptInfo = {
+  userId: '82347777789asdf',
   logo: logoOpenShuttle,
   name: 'AI Humanizer Pro',
   by: 'CHRISTINA MCKENNA',
