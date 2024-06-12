@@ -9,4 +9,8 @@ const submitSchema = z.object({
     links: linksSchema
 })
 
+export type Email = z.infer<typeof emailSchema>;
+export type Links = z.infer<typeof linksSchema>;
+export type SubmitForm = z.infer<typeof submitSchema>;
+
 export {emailSchema ,linksSchema ,submitSchema}

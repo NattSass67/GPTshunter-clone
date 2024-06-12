@@ -1,13 +1,5 @@
 import { z } from 'zod'
-import { CardBanner } from './category'
 import { cardBannerSchema } from './category'
-
-export interface HomeCarousel {
-  name: string
-  content: CardBanner[] // Adjust this type if you have a more specific type for content
-}
-
-export type FilterSelect = string[];
 
 const homeCarouselSchema = z.object({
   name: z.string(),
@@ -15,5 +7,8 @@ const homeCarouselSchema = z.object({
 })
 
 const filterSelectSchema = z.array(z.string())
+
+export type HomeCarousel = z.infer<typeof homeCarouselSchema>;
+export type FilterSelect = z.infer<typeof filterSelectSchema>;
 
 export { homeCarouselSchema, filterSelectSchema}

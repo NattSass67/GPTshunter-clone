@@ -45,6 +45,7 @@ export const fetchContent = () => {
         }, 2000)
       }
     } catch (error) {
+      console.error('Failed to fetch data:', error);
       dispatch(fetchSuccess()) // Dispatch loginFailure action if login encounters an error
     }
   }
@@ -65,6 +66,7 @@ export const fetchHomeFilterContent = (name: string) => {
         }, 2000)
       }
     } catch (error) {
+      console.error('Failed to fetch data:', error);
       dispatch(fetchSecondSuccess()) // Dispatch loginFailure action if login encounters an error
     }
   }
@@ -85,6 +87,7 @@ export const fetchCategoryContent = (name: string, page: number) => {
         }, 2000)
       }
     } catch (error) {
+      console.error('Failed to fetch data:', error);
       dispatch(categoryFunction.fetchSecondSuccess()) // Dispatch loginFailure action if login encounters an error
     }
   }
@@ -107,6 +110,7 @@ export const loadCategoryPage = () => {
         }, 2000)
       }
     } catch (error) {
+      console.error('Failed to fetch data:', error);
       dispatch(categoryFunction.fetchSuccess()) // Dispatch loginFailure action if login encounters an error
     }
   }
@@ -127,6 +131,7 @@ export const loadStoreInfoPage = (id: string) => {
         }, 2000)
       }
     } catch (error) {
+      console.error('Failed to fetch data:', error);
       dispatch(gptStoreFunction.fetchSuccess()) // Dispatch loginFailure action if login encounters an error
     }
   }
@@ -148,6 +153,7 @@ export const loadSearchPage = (query: string, page: number) => {
         }, 2000)
       }
     } catch (error) {
+      console.error('Failed to fetch data:', error);
       dispatch(searchFunction.fetchSuccess()) // Dispatch loginFailure action if login encounters an error
     }
   }

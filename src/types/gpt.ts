@@ -2,49 +2,6 @@ import { CardBanner } from './category'
 import { z } from 'zod'
 import { cardBannerSchema } from './category'
 
-export interface GptInfo {
-  name: string
-  logo: any
-  by: string
-  rate: number
-  totalRate: number
-  tags: string[]
-  tools: string[]
-  content: GptContentTopic[]
-  promptStarter: string[]
-  faq: GptFaq[]
-  more: CardBanner[]
-  alter: CardBanner[]
-  information: GptInformation
-  rank: number
-  toUrl: string
-}
-
-export interface GptContentTopic {
-  name: string
-  description: string
-}
-
-export interface GptPromtStarter {
-  name: string
-  description: string
-}
-
-export interface GptFaq {
-  question: string
-  answer: string
-}
-
-export interface GptInformation {
-  hunted: string
-  updated: string
-  crawled: string
-  category: string
-  chat: number
-  builder: string
-}
-
-//builder is user Id
 
 // Define GptContentTopic schema
 const gptContentTopicSchema = z.object({
@@ -86,6 +43,11 @@ const gptInfoSchema = z.object({
   rank: z.number(),
   toUrl: z.string(),
 })
+
+export type GptContentTopic = z.infer<typeof gptContentTopicSchema>;
+export type GptFaq = z.infer<typeof gptFaqSchema>;
+export type GptInformation = z.infer<typeof gptInformationSchema>;
+export type GptInfo = z.infer<typeof gptInfoSchema>;
 
 export {
   gptInformationSchema,

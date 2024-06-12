@@ -20,12 +20,11 @@ export default function Home(props: {
   searchParams: { page: string }
 }) {
   const dispatch = useAppDispatch()
-
   const [initLoading, setInitLoading] = useState(true)
   useEffect(() => {
     const timer = setTimeout(() => {
       setInitLoading(false)
-    }, 2000) // Set the delay to 1 second
+    }, 2000)
 
     // Cleanup the timer on component unmount
     return () => clearTimeout(timer)
@@ -47,7 +46,6 @@ export default function Home(props: {
         parseInt(props.searchParams.page),
       ),
     )
-    console.log(props)
   }, [props.searchParams.page])
 
   const cardList = data?.map((project, index) => (

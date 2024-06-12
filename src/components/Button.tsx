@@ -5,6 +5,12 @@ import { useAppDispatch, useAppSelector } from '@/session/store'
 import { KeyboardEvent, MouseEvent, useRef } from 'react'
 import { setFilterChoosen } from '@/session/home'
 import { fetchHomeFilterContent } from '@/session/manager'
+import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
+import { useState } from 'react'
+import { getSearchKeyword } from '@/service/request'
+import { usePathname } from 'next/navigation'
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
 const variantStyles = {
   primary:
@@ -160,11 +166,6 @@ export function FilterSelect() {
   )
 }
 
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
-import { useState } from 'react'
-import { getSearchKeyword } from '@/service/request'
-import { usePathname } from 'next/navigation'
-import { useEffect } from 'react'
 
 export function SearchBarRedirect() {
   const router = useRouter()
@@ -251,7 +252,6 @@ export function SearchBarRedirect() {
   )
 }
 
-import { useRouter } from 'next/navigation'
 
 export function Pagination(props: { url: string; page: number }) {
   const page = props.page
