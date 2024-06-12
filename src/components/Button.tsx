@@ -163,7 +163,6 @@ export function FilterSelect() {
   )
 }
 
-
 export function SearchBarRedirect() {
   const router = useRouter()
   const local = usePathname().split('/')[1]
@@ -181,7 +180,7 @@ export function SearchBarRedirect() {
         setQuery(object)
         router.push('/' + local + '/search/' + object + '?page=1')
       }}
-      className="search p-2 hover:bg-zinc-50 bg-white text-sm sm:text-base"
+      className="search bg-white p-2 text-sm hover:bg-zinc-50 sm:text-base"
     >
       {object}
     </div>
@@ -213,7 +212,7 @@ export function SearchBarRedirect() {
 
   return (
     <div className="relative relative mb-16 mt-4 flex w-full flex-col items-center">
-      <div className="absolute z-20 top-0 flex w-full max-w-2xl flex-col overflow-hidden rounded-3xl border border-zinc-300 bg-white shadow">
+      <div className="absolute top-0 z-20 flex w-full max-w-2xl flex-col overflow-hidden rounded-3xl border border-zinc-300 bg-white shadow">
         <div className="flex">
           <input
             autoFocus
@@ -242,22 +241,28 @@ export function SearchBarRedirect() {
           </a>
         </div>
         {keywordList.length != 0 && (
-          <div className="search w-full flex-col border-t bg-white">{keywordList}</div>
+          <div className="search w-full flex-col border-t bg-white">
+            {keywordList}
+          </div>
         )}
       </div>
     </div>
   )
 }
 
-
-export function Pagination(props: { url: string; page: number; totalBanner: number; bannerPerPage: number}) {
+export function Pagination(props: {
+  url: string
+  page: number
+  totalBanner: number
+  bannerPerPage: number
+}) {
   const page = props.page
   const router = useRouter()
   const url = props.url
   const switchPage = (nextPage: number) => {
     router.push(url + '/?page=' + nextPage.toString())
   }
-  const totalPage = Math.ceil(props.totalBanner / props.bannerPerPage);
+  const totalPage = Math.ceil(props.totalBanner / props.bannerPerPage)
 
   const foward = () => {
     router.push(url + '/?page=' + (page + 1).toString())
@@ -270,106 +275,120 @@ export function Pagination(props: { url: string; page: number; totalBanner: numb
     return (
       <>
         <div className="flex items-center gap-1">
-        {((page-1)>0) && <button
-            onClick={() => {}}
-            className="flex select-none items-center gap-2 rounded-full px-3 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-gray-400 transition-all disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none sm:px-6"
-            type="button"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="2"
-              stroke="currentColor"
-              aria-hidden="true"
-              className="h-4 w-4"
+          {page - 1 > 0 && (
+            <button
+              onClick={() => {}}
+              className="flex select-none items-center gap-2 rounded-full px-3 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-gray-400 transition-all disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none sm:px-6"
+              type="button"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
-              ></path>
-            </svg>
-            <div className="hidden sm:flex">Previous</div>
-          </button>}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="2"
+                stroke="currentColor"
+                aria-hidden="true"
+                className="h-4 w-4"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+                ></path>
+              </svg>
+              <div className="hidden sm:flex">Previous</div>
+            </button>
+          )}
           <div className="flex items-center gap-2">
-            {(page<=totalPage) && <button
-              className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full bg-zinc-800 text-center align-middle font-sans text-xs font-medium uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-              type="button"
-            >
-              <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
-                1
-              </span>
-            </button>}
-            {((page+1)<=totalPage) && <button
-              onClick={() => {
-                switchPage(2)
-              }}
-              className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-              type="button"
-            >
-              <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
-                2
-              </span>
-            </button>}
-            {((page+2)<=totalPage) && <button
-              onClick={() => {
-                switchPage(3)
-              }}
-              className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-              type="button"
-            >
-              <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
-                3
-              </span>
-            </button>}
-            {((page+3)<=totalPage) && <button
-              onClick={() => {
-                switchPage(4)
-              }}
-              className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-              type="button"
-            >
-              <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
-                4
-              </span>
-            </button>}
-            {((page+4)<=totalPage) && <button
-              onClick={() => {
-                switchPage(5)
-              }}
-              className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-              type="button"
-            >
-              <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
-                5
-              </span>
-            </button>}
+            {page <= totalPage && (
+              <button
+                className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full bg-zinc-800 text-center align-middle font-sans text-xs font-medium uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                type="button"
+              >
+                <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
+                  1
+                </span>
+              </button>
+            )}
+            {page + 1 <= totalPage && (
+              <button
+                onClick={() => {
+                  switchPage(2)
+                }}
+                className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                type="button"
+              >
+                <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
+                  2
+                </span>
+              </button>
+            )}
+            {page + 2 <= totalPage && (
+              <button
+                onClick={() => {
+                  switchPage(3)
+                }}
+                className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                type="button"
+              >
+                <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
+                  3
+                </span>
+              </button>
+            )}
+            {page + 3 <= totalPage && (
+              <button
+                onClick={() => {
+                  switchPage(4)
+                }}
+                className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                type="button"
+              >
+                <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
+                  4
+                </span>
+              </button>
+            )}
+            {page + 4 <= totalPage && (
+              <button
+                onClick={() => {
+                  switchPage(5)
+                }}
+                className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                type="button"
+              >
+                <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
+                  5
+                </span>
+              </button>
+            )}
           </div>
-          {((page+1)<=totalPage) && <button
-            onClick={() => {
-              foward()
-            }}
-            className="flex select-none items-center gap-2 rounded-full px-3 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none sm:px-6"
-            type="button"
-          >
-            <div className="hidden sm:flex">Next</div>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="2"
-              stroke="currentColor"
-              aria-hidden="true"
-              className="h-4 w-4"
+          {page + 1 <= totalPage && (
+            <button
+              onClick={() => {
+                foward()
+              }}
+              className="flex select-none items-center gap-2 rounded-full px-3 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none sm:px-6"
+              type="button"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-              ></path>
-            </svg>
-          </button>}
+              <div className="hidden sm:flex">Next</div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="2"
+                stroke="currentColor"
+                aria-hidden="true"
+                className="h-4 w-4"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                ></path>
+              </svg>
+            </button>
+          )}
         </div>
       </>
     )
@@ -379,9 +398,132 @@ export function Pagination(props: { url: string; page: number; totalBanner: numb
     return (
       <>
         <div className="flex items-center gap-1">
-        {((page-1)>0) && <button
+          {page - 1 > 0 && (
+            <button
+              onClick={() => {
+                switchPage(1)
+              }}
+              className="flex select-none items-center gap-2 rounded-full px-3 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none sm:px-6"
+              type="button"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="2"
+                stroke="currentColor"
+                aria-hidden="true"
+                className="h-4 w-4"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+                ></path>
+              </svg>
+              <div className="hidden sm:flex">Previous</div>
+            </button>
+          )}
+          <div className="flex items-center gap-2">
+            {page - 1 > 0 && (
+              <button
+                onClick={() => {
+                  switchPage(1)
+                }}
+                className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                type="button"
+              >
+                <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
+                  1
+                </span>
+              </button>
+            )}
+            <button
+              className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full bg-zinc-800 text-center align-middle font-sans text-xs font-medium uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+              type="button"
+            >
+              <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
+                2
+              </span>
+            </button>
+            {page + 1 <= totalPage && (
+              <button
+                onClick={() => {
+                  switchPage(3)
+                }}
+                className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                type="button"
+              >
+                <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
+                  3
+                </span>
+              </button>
+            )}
+            {page + 2 <= totalPage && (
+              <button
+                onClick={() => {
+                  switchPage(4)
+                }}
+                className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                type="button"
+              >
+                <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
+                  4
+                </span>
+              </button>
+            )}
+            {page + 3 <= totalPage && (
+              <button
+                onClick={() => {
+                  switchPage(5)
+                }}
+                className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                type="button"
+              >
+                <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
+                  5
+                </span>
+              </button>
+            )}
+          </div>
+          {page + 1 <= totalPage && (
+            <button
+              onClick={() => {
+                foward()
+              }}
+              className="flex select-none items-center gap-2 rounded-full px-3 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none sm:px-6"
+              type="button"
+            >
+              <div className="hidden sm:flex">Next</div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="2"
+                stroke="currentColor"
+                aria-hidden="true"
+                className="h-4 w-4"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                ></path>
+              </svg>
+            </button>
+          )}
+        </div>
+      </>
+    )
+  }
+
+  return (
+    <>
+      <div className="flex items-center gap-1">
+        {page - 1 > 0 && (
+          <button
             onClick={() => {
-              switchPage(1)
+              switchPage(page - 1)
             }}
             className="flex select-none items-center gap-2 rounded-full px-3 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none sm:px-6"
             type="button"
@@ -402,64 +544,74 @@ export function Pagination(props: { url: string; page: number; totalBanner: numb
               ></path>
             </svg>
             <div className="hidden sm:flex">Previous</div>
-          </button>}
-          <div className="flex items-center gap-2">
-          {((page-1)>0) && <button
+          </button>
+        )}
+        <div className="flex items-center gap-2">
+          {page - 2 > 0 && (
+            <button
               onClick={() => {
-                switchPage(1)
+                switchPage(page - 2)
               }}
               className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
               type="button"
             >
               <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
-                1
-              </span>
-            </button>}
-            <button
-              className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full bg-zinc-800 text-center align-middle font-sans text-xs font-medium uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-              type="button"
-            >
-              <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
-                2
+                {page - 2}
               </span>
             </button>
-            {((page+1)<=totalPage) && <button
+          )}
+          {page - 1 > 0 && (
+            <button
               onClick={() => {
-                switchPage(3)
+                switchPage(page - 1)
               }}
               className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
               type="button"
             >
               <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
-                3
+                {page - 1}
               </span>
-            </button>}
-            {((page+2)<=totalPage) &&<button
+            </button>
+          )}
+          <button
+            className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full bg-zinc-800 text-center align-middle font-sans text-xs font-medium uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            type="button"
+          >
+            <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
+              {page}
+            </span>
+          </button>
+          {page + 1 <= totalPage && (
+            <button
               onClick={() => {
-                switchPage(4)
+                switchPage(page + 1)
               }}
               className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
               type="button"
             >
               <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
-                4
+                {page + 1}
               </span>
-            </button>}
-            {((page+3)<=totalPage) &&<button
+            </button>
+          )}
+          {page + 2 <= totalPage && (
+            <button
               onClick={() => {
-                switchPage(5)
+                switchPage(page + 2)
               }}
               className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
               type="button"
             >
               <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
-                5
+                {page + 2}
               </span>
-            </button>}
-          </div>
-          {((page+1)<=totalPage) && <button
+            </button>
+          )}
+        </div>
+        {page + 1 <= totalPage && (
+          <button
             onClick={() => {
-              foward()
+              switchPage(page + 1)
             }}
             className="flex select-none items-center gap-2 rounded-full px-3 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none sm:px-6"
             type="button"
@@ -480,117 +632,8 @@ export function Pagination(props: { url: string; page: number; totalBanner: numb
                 d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
               ></path>
             </svg>
-          </button>}
-        </div>
-      </>
-    )
-  }
-
-  return (
-    <>
-      <div className="flex items-center gap-1">
-      {((page-1)>0) && <button
-          onClick={() => {
-            switchPage(page - 1)
-          }}
-          className="flex select-none items-center gap-2 rounded-full px-3 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none sm:px-6"
-          type="button"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="2"
-            stroke="currentColor"
-            aria-hidden="true"
-            className="h-4 w-4"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
-            ></path>
-          </svg>
-          <div className="hidden sm:flex">Previous</div>
-        </button>}
-        <div className="flex items-center gap-2">
-        {((page-2)>0) && <button
-            onClick={() => {
-              switchPage(page - 2)
-            }}
-            className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-            type="button"
-          >
-            <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
-              {page - 2}
-            </span>
-          </button>}
-          {((page-1)>0) && <button
-            onClick={() => {
-              switchPage(page - 1)
-            }}
-            className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-            type="button"
-          >
-            <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
-              {page - 1}
-            </span>
-          </button>}
-          <button
-            className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full bg-zinc-800 text-center align-middle font-sans text-xs font-medium uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-            type="button"
-          >
-            <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
-              {page}
-            </span>
           </button>
-          {((page+1)<=totalPage) && <button
-            onClick={() => {
-              switchPage(page + 1)
-            }}
-            className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-            type="button"
-          >
-            <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
-              {page + 1}
-            </span>
-          </button>}
-          {((page+2)<=totalPage) &&<button
-            onClick={() => {
-              switchPage(page + 2)
-            }}
-            className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-            type="button"
-          >
-            <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
-              {page + 2}
-            </span>
-          </button>}
-        </div>
-        {((page+1)<=totalPage) && <button
-          onClick={() => {
-            switchPage(page + 1)
-          }}
-          className="flex select-none items-center gap-2 rounded-full px-3 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none sm:px-6"
-          type="button"
-        >
-          <div className="hidden sm:flex">Next</div>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="2"
-            stroke="currentColor"
-            aria-hidden="true"
-            className="h-4 w-4"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-            ></path>
-          </svg>
-        </button>}
+        )}
       </div>
     </>
   )

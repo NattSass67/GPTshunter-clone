@@ -97,10 +97,10 @@ export default function Home(props: {
         <Container className="mt-16">
           <div className="w-full pb-12 pt-16 text-center">
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl">
-              The {totalBanner} best {decodeURIComponent(selected)} GPTs for 2024
+              Best {decodeURIComponent(selected)} GPTs
             </h1>
             <p className="mx-auto mt-4 max-w-3xl text-base text-zinc-500">
-              Discover the {totalBanner} best GPTs for {decodeURIComponent(selected)} on the official GPT store
+               {totalBanner} GPTs founded for {decodeURIComponent(selected)} on the official GPT store
             </p>
           </div>
           <div className="w-full">
