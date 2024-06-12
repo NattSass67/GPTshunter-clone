@@ -82,8 +82,11 @@ export default function Home(props: {
         <Container className="mt-16">
           <div className="w-full pb-12 pt-16 text-center">
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl">
-              All {totalBanner} GPTs built by {decodeURIComponent(username as string)} 
+              GPT built by {decodeURIComponent(username as string)} 
             </h1>
+            <p className="mx-auto mt-4 max-w-3xl text-center text-base text-zinc-500">
+                Founded {totalBanner} GPTs 
+            </p>
           </div>
           <div className="w-full">
             <hr />

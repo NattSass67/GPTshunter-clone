@@ -9,10 +9,12 @@ import { Loader } from '@/components/Loader'
 import { loadStoreInfoPage } from '@/session/manager'
 import { useAppDispatch, useAppSelector } from '@/session/store'
 import { CardBanner } from '@/types/category'
+import logoApply from '@/images/logos/apply.svg'
 import {
   Disclosure,
   DisclosureButton,
-  DisclosurePanel, Transition
+  DisclosurePanel,
+  Transition,
 } from '@headlessui/react'
 import { MinusIcon, PlusIcon } from '@heroicons/react/20/solid'
 import Image from 'next/image'
@@ -146,7 +148,13 @@ export default function Store(props: {
                     href={'/' + locale + '/profile/' + info?.userId}
                     className="flex hover:text-gray-400"
                   >
-                    <p className="mb-4 mt-2 text-sm sm:text-base">
+                    <p className="mb-4 mt-2 text-sm sm:text-base flex items-center gap-x-1">
+                      <Image
+                        src={logoApply}
+                        alt=""
+                        className="h-5 w-5"
+                        unoptimized
+                      />
                       By {info?.by}
                     </p>
                   </a>
