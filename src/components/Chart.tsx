@@ -29,7 +29,7 @@ export function BasicSparkLine(props: { data: number[] | null }) {
   )
 }
 
-export function MyChart({ data }: { data: GptTrend | undefined }) {
+export function MyChart({ data }: { data: GptTrend}) {
   const [maxHeight, setMaxHeight] = useState<number>(0)
   const containerRef = useRef<HTMLDivElement>(null)
 
@@ -52,10 +52,10 @@ export function MyChart({ data }: { data: GptTrend | undefined }) {
     return 0
   }
 
-  const firstHalfData = data?.slice(0, Math.ceil(data.length / 2))
-  const secondHalfData = data?.slice(Math.ceil(data.length / 2))
+  const firstHalfData = data.slice(0, Math.ceil(data.length / 2))
+  const secondHalfData = data.slice(Math.ceil(data.length / 2))
 
-  const listChartFirst = firstHalfData?.map((object, index) => (
+  const listChartFirst = firstHalfData.map((object, index) => (
     <li
       className="group relative flex h-full w-full flex-col justify-end px-0.5"
       key={index}
@@ -71,7 +71,7 @@ export function MyChart({ data }: { data: GptTrend | undefined }) {
     </li>
   ))
 
-  const listChartSecond = secondHalfData?.map((object, index) => (
+  const listChartSecond = secondHalfData.map((object, index) => (
     <li
       className="group relative flex h-full w-full flex-col justify-end px-0.5"
       key={index}
@@ -88,9 +88,7 @@ export function MyChart({ data }: { data: GptTrend | undefined }) {
   ))
 
   useEffect(() => {
-    if (data) {
       findMaxHeight(data)
-    }
   }, [data])
 
   return (

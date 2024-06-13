@@ -210,11 +210,11 @@ export default function Store(props: {
                       <p className=""> • Builder Profile</p>
                     </a>
                   </div>
-                  <div className="flex w-full flex-col justify-end gap-y-1 ">
+                  <div className="flex w-full flex-col justify-end gap-y-1 ">                                                                                                                                                                                                                                                                             
                     <p className="col-span-2 text-2xl font-semibold">
                       GPT Conversation Trend
                     </p>
-                    <MyChart data={info?.trend} />
+                    {info && <MyChart data={info.trend} />}
                   </div>
                 </div>
                 <Stats
