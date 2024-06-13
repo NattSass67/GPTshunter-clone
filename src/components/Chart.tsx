@@ -29,10 +29,42 @@ export function BasicSparkLine(props: { data: number[] | null }) {
   )
 }
 
-export function MyChart({ data }: { data: GptTrend | undefined }) {
+export function MyChart({ data1 }: { data1: GptTrend | undefined }) {
   const [maxHeight, setMaxHeight] = useState<number>(0)
   const containerRef = useRef<HTMLDivElement>(null)
 
+  const data= [
+    { value: 18, date: '2023-01-15' },
+    { value: 17, date: '2023-02-20' },
+    { value: 16, date: '2023-03-05' },
+    { value: 18, date: '2023-04-10' },
+    { value: 12, date: '2023-05-25' },
+    { value: 9, date: '2023-06-30' },
+    { value: 10, date: '2023-07-14' },
+    { value: 28, date: '2023-08-18' },
+    { value: 50, date: '2023-09-22' },
+    { value: 19, date: '2023-10-29' },
+    { value: 18, date: '2023-01-15' },
+    { value: 17, date: '2023-02-20' },
+    { value: 16, date: '2023-03-05' },
+    { value: 18, date: '2023-04-10' },
+    { value: 12, date: '2023-05-25' },
+    { value: 9, date: '2023-06-30' },
+    { value: 10, date: '2023-07-14' },
+    { value: 28, date: '2023-08-18' },
+    { value: 50, date: '2023-09-22' },
+    { value: 19, date: '2023-10-29' },
+    { value: 18, date: '2023-01-15' },
+    { value: 17, date: '2023-02-20' },
+    { value: 16, date: '2023-03-05' },
+    { value: 18, date: '2023-04-10' },
+    { value: 12, date: '2023-05-25' },
+    { value: 9, date: '2023-06-30' },
+    { value: 10, date: '2023-07-14' },
+    { value: 28, date: '2023-08-18' },
+    { value: 50, date: '2023-09-22' },
+    { value: 19, date: '2023-10-29' },
+  ]
   const findMaxHeight = (props: GptTrend) => {
     let max = props[0].value
     for (let i = 1; i < props.length; i++) {
