@@ -23,25 +23,25 @@ import { GptTrend } from '@/types/gpt'
 
 function Stats(props: { rate: number; rank: number }) {
   return (
-    <div className="rounded-lg text-center shadow">
+    <div className="rounded-lg text-center shadow dark:bg-zinc-800/50">
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 gap-px sm:grid-cols-2">
           <div className="rounded-lg px-4 py-6 sm:px-6 lg:px-8">
-            <p className="text-sm font-medium leading-6 text-gray-400">
+            <p className="text-sm font-medium leading-6 text-zinc-600 dark:text-zinc-400">
               GPT Store Rating
             </p>
             <p className="mt-2 flex items-baseline justify-center gap-x-2">
-              <span className="text-center text-4xl font-semibold tracking-tight text-zinc-800">
+              <span className="text-center text-4xl font-semibold tracking-tight text-zinc-800 dark:text-zinc-200">
                 {props.rate}
               </span>
             </p>
           </div>
           <div className="rounded-lg px-4 py-6 sm:px-6 lg:px-8">
-            <p className="text-sm font-medium leading-6 text-gray-400">
+            <p className="text-sm font-medium leading-6 text-zinc-600 dark:text-zinc-400">
               GPT Store Ranking
             </p>
             <p className="mt-2 flex items-baseline justify-center gap-x-2">
-              <span className="text-4xl font-semibold tracking-tight text-zinc-800">
+              <span className="text-4xl font-semibold tracking-tight text-zinc-800 dark:text-zinc-200">
                 #{props.rank}
               </span>
             </p>
@@ -66,13 +66,13 @@ export default function Store(props: {
 
   const content = info?.content.map((object, index) => (
     <div key={index}>
-      <p className="text-2xl font-semibold">{object.name}</p>
-      <p className="mt-4">{object.description}</p>
+      <p className="text-2xl font-semibold text-zinc-800 dark:text-zinc-200">{object.name}</p>
+      <p className="mt-4 text-zinc-600 dark:text-zinc-400">{object.description}</p>
     </div>
   ))
 
   const promptStart = info?.promptStarter.map((object, index) => (
-    <p className="" key={index}>
+    <p className="text-zinc-600 dark:text-zinc-400" key={index}>
       • {object}
     </p>
   ))
@@ -82,7 +82,7 @@ export default function Store(props: {
       {({ open }) => (
         <>
           <dt>
-            <DisclosureButton className="flex w-full items-start justify-between text-left text-zinc-800 hover:bg-zinc-50">
+            <DisclosureButton className="flex w-full items-start justify-between text-left text-zinc-800 dark:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-800/50">
               <span className="text-base font-semibold leading-7">
                 {object.question}
               </span>
@@ -96,7 +96,7 @@ export default function Store(props: {
             </DisclosureButton>
           </dt>
           <DisclosurePanel as="dd" className="mt-2 pr-12">
-            <p className="text-sm leading-7 text-gray-600 sm:text-base">
+            <p className="text-sm leading-7 text-zinc-600 sm:text-base dark:text-zinc-400">
               {object.answer}
             </p>
           </DisclosurePanel>
@@ -109,7 +109,7 @@ export default function Store(props: {
     <a
       key={index}
       href={'/' + locale + '/tags/' + object + '?page=1'}
-      className="flex-none rounded-full bg-zinc-100 px-3 py-1.5 text-zinc-800 hover:bg-zinc-200"
+      className="flex-none rounded-full bg-zinc-100 px-3 py-1.5 text-zinc-800 hover:bg-zinc-200 dark:bg-inherit dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-200"
     >
       <p className="text-center text-[14px]">{object}</p>
     </a>
@@ -118,7 +118,7 @@ export default function Store(props: {
   const tools = info?.tools?.map((object, index) => (
     <div
       key={index}
-      className="flex-none rounded-full bg-zinc-100 px-3 py-1.5 text-zinc-800"
+      className="flex-none rounded-full bg-zinc-100 px-3 py-1.5 text-zinc-800 dark:text-zinc-400 dark:bg-inherit" 
     >
       <p className="text-center text-[14px]">{object}</p>
     </div>
@@ -133,7 +133,7 @@ export default function Store(props: {
         enterTo="opacity-100"
       >
         <Container className="pt-32">
-          <div className="bg-white">
+          <div className="">
             <div className="mx-auto max-w-7xl">
               <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
                 <Image
@@ -141,13 +141,13 @@ export default function Store(props: {
                   alt=""
                   className="h-16 w-16 rounded-full"
                 />
-                <h1 className="mt-2 max-w-2xl text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl">
+                <h1 className="mt-2 max-w-2xl text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-200 sm:text-5xl">
                   {info?.name}
                 </h1>
                 <div className="flex">
                   <a
                     href={'/' + locale + '/profile/' + info?.userId}
-                    className="flex hover:text-gray-400"
+                    className="flex text-zinc-800 dark:text-zinc-200 hover:text-zinc-400"
                   >
                     <p className="mb-4 mt-2 text-sm sm:text-base flex items-center gap-x-1">
                       <Image
@@ -162,10 +162,10 @@ export default function Store(props: {
                 </div>
 
                 <hr />
-                <div className="my-10 grid max-w-2xl grid-cols-1 gap-8 text-sm leading-7 text-zinc-800 sm:text-base lg:max-w-none lg:grid-cols-2">
+                <div className="my-10 grid max-w-2xl grid-cols-1 gap-8 text-sm leading-7 sm:text-base lg:max-w-none lg:grid-cols-2">
                   {content}
                   <div>
-                    <p className="text-2xl font-semibold">
+                    <p className="text-2xl font-semibold text-zinc-800 dark:text-zinc-200">
                       GPT Prompt Starters
                     </p>
                     {promptStart}
@@ -175,27 +175,27 @@ export default function Store(props: {
                     {faqs}
                   </div>
                   <div className="grid grid-cols-2 gap-y-2">
-                    <p className="col-span-2 text-2xl font-semibold">
+                    <p className="col-span-2 text-2xl font-semibold text-zinc-800 dark:text-zinc-200">
                       {' '}
                       GPT Information
                     </p>
-                    <p className="text-sm sm:text-base ">
+                    <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
                       {' '}
                       • Hunted: {info?.information.hunted}
                     </p>
-                    <p className="text-sm sm:text-base ">
+                    <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
                       {' '}
                       • Updated: {info?.information.updated}
                     </p>
-                    <p className="text-sm sm:text-base ">
+                    <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
                       {' '}
                       • Crawled: {info?.information.crawled}
                     </p>
-                    <p className="text-sm sm:text-base ">
+                    <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
                       {' '}
                       • Category: {info?.information.category}
                     </p>
-                    <p className="text-sm sm:text-base ">
+                    <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
                       {' '}
                       • Chats:{' '}
                       {info?.information.chat
@@ -205,13 +205,13 @@ export default function Store(props: {
                     </p>
                     <a
                       href={'/' + locale + '/profile/' + info?.userId}
-                      className="text-sm hover:text-gray-400 sm:text-base "
+                      className="text-sm hover:text-zinc-500 sm:text-base text-zinc-600 dark:text-zinc-400"
                     >
                       <p className=""> • Builder Profile</p>
                     </a>
                   </div>
                   <div className="flex w-full flex-col justify-end gap-y-1 ">                                                                                                                                                                                                                                                                             
-                    <p className="col-span-2 text-2xl font-semibold">
+                    <p className="col-span-2 text-2xl font-semibold text-zinc-800 dark:text-zinc-200">
                       GPT Conversation Trend
                     </p>
                     {info && <MyChart data={info.trend} />}
@@ -222,7 +222,7 @@ export default function Store(props: {
                   rate={info?.rate as number}
                 />
                 <a href={info?.toUrl}>
-                  <p className="font semibold mt-4 w-full rounded-lg bg-zinc-800 p-4 text-center text-zinc-100 hover:bg-zinc-900">
+                  <p className="font semibold mt-4 w-full rounded-lg bg-zinc-800/50 hover:bg-zinc-800 p-4 text-center text-zinc-100">
                     Use {info?.name} on ChatGPT
                   </p>
                 </a>
@@ -230,13 +230,13 @@ export default function Store(props: {
             </div>
           </div>
           <div className="w-full py-8">
-            <p className="mt-4 text-lg font-bold tracking-tight text-gray-900">
+            <p className="mt-4 text-lg font-bold tracking-tight text-zinc-800 dark:text-zinc-200">
               Tags
             </p>
             <div className="no-scrollbar mx-0 mt-2 flex flex-row gap-x-2 overflow-x-auto">
               {tags}
             </div>
-            <p className="mt-4 text-lg font-bold tracking-tight text-gray-900">
+            <p className="mt-4 text-lg font-bold tracking-tight text-zinc-800 dark:text-zinc-200">
               Tools
             </p>
             <div className="no-scrollbar mx-0 mt-2 flex flex-row gap-x-2 overflow-x-auto">

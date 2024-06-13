@@ -65,22 +65,27 @@ export async function getByDefaultCategory() {
   const data = [
     {
       name: 'Featured GPTs on GPT Store',
+      totalContent: 100,
       content: mockContent,
     },
     {
       name: 'Trending GPTs on GPT Store',
+      totalContent: 100,
       content: mockContent,
     },
     {
       name: 'Best DALL·E GPTs on GPT Store',
+      totalContent: 100,
       content: mockContent,
     },
     {
       name: 'Best Writing GPTs on GPT Store',
+      totalContent: 100,
       content: mockContent,
     },
     {
       name: 'Best Productivity GPTs on GPT Store',
+      totalContent: 100,
       content: mockContent,
     },
   ]
@@ -110,7 +115,7 @@ export async function getByCategoryName(name: string, page: number) {
   return { data: result.data }
 }
 
-export async function getByUserId(Id: string) {
+export async function getByUserId(id: string) {
   const result = profileSchema.safeParse({
     name: 'CHRISTINA MCKENNA',
     content: mockContent,

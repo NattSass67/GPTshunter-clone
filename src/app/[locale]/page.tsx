@@ -151,7 +151,7 @@ export default function Home() {
                 <div className="grid grid-cols-1 min-[560px]:grid-cols-2 px-4 text-sm text-zinc-600 sm:text-base gap-x-4 ">
                   <a
                     href={'/' + local + '/submit'}
-                    className="flex items-center gap-x-2 hover:text-zinc-500"
+                    className="flex items-center gap-x-2 hover:text-zinc-500 dark:text-zinc-400"
                   >
                     <Image
                       src={logoSubmit}
@@ -163,7 +163,7 @@ export default function Home() {
                   </a>
                   <a
                     href="https://docs.google.com/forms/d/e/1FAIpQLScVIeiFq4TBx3R-rkR0oOaatZdJ3rKxNC1t9Qr9oXUmeCh8JQ/viewform"
-                    className="flex items-center gap-x-2 hover:text-zinc-500"
+                    className="flex items-center gap-x-2 hover:text-zinc-500 dark:text-zinc-400"
                   >
                     <Image
                       src={logoApply}
@@ -175,7 +175,7 @@ export default function Home() {
                   </a>
                   <a
                     href="https://www.webpilot.ai/post-gpts/"
-                    className="flex items-center gap-x-2 hover:text-zinc-500 min-[560px]:col-span-2 min-[560px]:justify-center"
+                    className="flex items-center gap-x-2 hover:text-zinc-500 min-[560px]:col-span-2 min-[560px]:justify-center dark:text-zinc-400"
                   >
                     <Image
                       src={logoAdd}
@@ -189,7 +189,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="mt-16 w-full border-t">
+          <div className="mt-16 w-full border-t border-zinc-300/50">
             <FilterSelect />
             <Carousel
               content={selectedFilterContent}
@@ -197,7 +197,7 @@ export default function Home() {
               isLoading={secondaryLoading}
             />
             <br></br>
-            <hr></hr>
+            <hr className='border-zinc-300/50 '/>
             {carouselList}
           </div>
         </Container>

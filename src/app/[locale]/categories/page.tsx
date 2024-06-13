@@ -7,7 +7,6 @@ import { useRouter, usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { Transition } from '@headlessui/react'
 import { useAppDispatch, useAppSelector } from '@/session/store'
-import { categoryFunction } from '@/session/category'
 import { useTranslations } from 'next-intl'
 import { loadCategoryPage } from '@/session/manager'
 import { Loader } from '@/components/Loader'
@@ -40,7 +39,7 @@ export default function Categories() {
       >
         <Container className="mt-16">
           <div className="w-full pt-16 text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl">
+            <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-200 sm:text-5xl">
               {t('title')}
             </h1>
             <p className="mx-auto mt-4 max-w-3xl text-base text-zinc-500">
@@ -63,9 +62,6 @@ export default function Categories() {
 
 
 function Home() {
-  const dispatch = useAppDispatch()
-  const t = useTranslations('Category')
-
   return (
     <div className="flex w-full flex-col text-center">
       <AllCategories />
@@ -75,7 +71,6 @@ function Home() {
 
 function AllCategories() {
   const local = usePathname().split('/')[1]
-  const dispatch = useAppDispatch()
   const allCategories = useAppSelector(
     (state) => state.categorySession.dropSelect,
   )
@@ -84,7 +79,7 @@ function AllCategories() {
     <a
       href={"/"+local+"/categories/"+object.name+"?page=1"}
       key={index}
-      className="w-1/2 flex-none p-4 hover:bg-zinc-50 lg:w-1/3 flex justify-between border text-sm sm:text-base"
+      className="w-full flex-none p-4 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-300/50 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 flex justify-between dark:text-zinc-200 text-sm sm:text-base"
     >
       <p className='font-semibold'>{object.name}</p>
       <p>{object.count}</p>
@@ -92,5 +87,5 @@ function AllCategories() {
     </a>
   ))
 
-  return <div className="w-full flex flex-wrap">{categoryList}</div>
+  return <div className="w-full grid grid-cols-2 sm:grid-cols-4 gap-2">{categoryList}</div>
 }

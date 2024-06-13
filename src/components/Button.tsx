@@ -79,8 +79,8 @@ export function FilterSelect() {
         key={index}
         className={`flex-none rounded-full px-3 py-1.5 ${
           choosedFilter === object
-            ? 'bg-zinc-800 text-white'
-            : 'bg-zinc-100 text-zinc-800'
+            ? 'bg-zinc-800 text-white dark:text-zinc-200'
+            : 'bg-zinc-100 text-zinc-800 dark:bg-inherit dark:text-zinc-400'
         }`}
       >
         <p className="text-center text-[14px] ">{object}</p>
@@ -91,7 +91,7 @@ export function FilterSelect() {
   return (
     <>
       <div className="relative mt-4 flex flex-col">
-        <div className="absolute left-0 top-0 z-10 h-12 w-12 -translate-x-1 bg-gradient-to-r from-white md:left-6"></div>
+        <div className="absolute left-0 top-0 z-10 h-12 w-12 -translate-x-1 bg-gradient-to-r dark:from-zinc-900 from-white md:left-6"></div>
         <button
           onClick={scrollLeft}
           aria-label="Save"
@@ -103,7 +103,7 @@ export function FilterSelect() {
             viewBox="0 0 1024 1024"
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
-            fill="#000000"
+            fill="#71717a"
           >
             <g id="SVGRepo_bgCarrier" strokeWidth="0" />
             <g
@@ -114,7 +114,7 @@ export function FilterSelect() {
             <g id="SVGRepo_iconCarrier">
               <path
                 d="M768 903.232l-50.432 56.768L256 512l461.568-448 50.432 56.768L364.928 512z"
-                fill="#000000"
+                fill="#71717a"
               />
             </g>
           </svg>
@@ -127,7 +127,7 @@ export function FilterSelect() {
           {filterList}
         </div>
 
-        <div className="absolute right-0 top-0 z-10 h-12 w-12 translate-x-1 bg-gradient-to-l from-white md:right-6">
+        <div className="absolute right-0 top-0 z-10 h-12 w-12 translate-x-1 bg-gradient-to-l dark:from-zinc-900 from-white md:right-6">
           {' '}
         </div>
         <button
@@ -142,7 +142,7 @@ export function FilterSelect() {
             className="icon"
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
-            fill="#000000"
+            fill="#71717a"
           >
             <g id="SVGRepo_bgCarrier" strokeWidth="0" />
             <g
@@ -153,7 +153,7 @@ export function FilterSelect() {
             <g id="SVGRepo_iconCarrier">
               <path
                 d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"
-                fill="#000000"
+                fill="#71717a"
               />
             </g>
           </svg>
@@ -180,7 +180,7 @@ export function SearchBarRedirect() {
         setQuery(object)
         router.push('/' + local + '/search/' + object + '?page=1')
       }}
-      className="search bg-white p-2 text-sm hover:bg-zinc-50 sm:text-base"
+      className="search bg-white p-2 text-sm hover:bg-zinc-700/100 dark:text-zinc-200 sm:text-base dark:bg-zinc-800/90"
     >
       {object}
     </div>
@@ -211,12 +211,12 @@ export function SearchBarRedirect() {
   }, [])
 
   return (
-    <div className="relative relative mb-16 mt-4 flex w-full flex-col items-center">
-      <div className="absolute top-0 z-20 flex w-full max-w-2xl flex-col overflow-hidden rounded-3xl border border-zinc-300 bg-white shadow">
+    <div className="relative mb-16 mt-4 flex w-full flex-col items-center">
+      <div className="absolute top-0 z-20 flex w-full max-w-2xl flex-col overflow-hidden rounded-3xl ring-zinc-100 ring-1 dark:ring-zinc-300/20 bg-white shadow dark:bg-zinc-800">
         <div className="flex">
           <input
             autoFocus
-            className="search flex w-full rounded-full bg-white/90 pl-3 text-sm text-zinc-800 focus:outline-none sm:text-base dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10"
+            className="search flex w-full rounded-full bg-white/90 pl-3 text-sm text-zinc-800 focus:outline-none sm:text-base dark:bg-zinc-800 dark:text-zinc-200"
             placeholder="Search..."
             value={query}
             onChange={(event) => {
@@ -232,7 +232,7 @@ export function SearchBarRedirect() {
               }
               router.push('/' + local + '/search/' + query + '?page=1')
             }}
-            className="group my-2 rounded-full px-3 py-0.5 transition hover:scale-110 sm:py-1.5 dark:bg-zinc-800/90 "
+            className="group my-2 rounded-full px-3 py-0.5 transition hover:scale-110 sm:py-1.5 dark:bg-zinc-800 "
           >
             <MagnifyingGlassIcon
               className="pointer-events-none h-5 w-5 text-zinc-500 group-hover:text-zinc-700"
@@ -241,7 +241,7 @@ export function SearchBarRedirect() {
           </a>
         </div>
         {keywordList.length != 0 && (
-          <div className="search w-full flex-col border-t bg-white">
+          <div className="search w-full flex-col border-t dark:border-zinc-300/20 bg-white dark:dark:bg-zinc-800">
             {keywordList}
           </div>
         )}
@@ -278,7 +278,7 @@ export function Pagination(props: {
           {page - 1 > 0 && (
             <button
               onClick={() => {}}
-              className="flex select-none items-center gap-2 rounded-full px-3 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-gray-400 transition-all disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none sm:px-6"
+              className="flex select-none items-center gap-2 text-zinc-800 dark:text-zinc-200 rounded-full px-3 py-3 text-center align-middle font-sans text-xs font-bold uppercase transition-all disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none sm:px-6"
               type="button"
             >
               <svg
@@ -302,7 +302,7 @@ export function Pagination(props: {
           <div className="flex items-center gap-2">
             {page <= totalPage && (
               <button
-                className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full bg-zinc-800 text-center align-middle font-sans text-xs font-medium uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full bg-zinc-800 text-center align-middle font-sans text-xs font-medium uppercase text-zinc-200 shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                 type="button"
               >
                 <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
@@ -315,7 +315,7 @@ export function Pagination(props: {
                 onClick={() => {
                   switchPage(2)
                 }}
-                className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-zinc-800 dark:text-zinc-200 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                 type="button"
               >
                 <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
@@ -328,7 +328,7 @@ export function Pagination(props: {
                 onClick={() => {
                   switchPage(3)
                 }}
-                className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-zinc-800 dark:text-zinc-200 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                 type="button"
               >
                 <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
@@ -341,7 +341,7 @@ export function Pagination(props: {
                 onClick={() => {
                   switchPage(4)
                 }}
-                className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-zinc-800 dark:text-zinc-200 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                 type="button"
               >
                 <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
@@ -354,7 +354,7 @@ export function Pagination(props: {
                 onClick={() => {
                   switchPage(5)
                 }}
-                className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-zinc-800 dark:text-zinc-200 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                 type="button"
               >
                 <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
@@ -368,7 +368,7 @@ export function Pagination(props: {
               onClick={() => {
                 foward()
               }}
-              className="flex select-none items-center gap-2 rounded-full px-3 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none sm:px-6"
+              className="flex select-none items-center gap-2 text-zinc-800 dark:text-zinc-200 rounded-full px-3 py-3 text-center align-middle font-sans text-xs font-bold uppercase transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none sm:px-6"
               type="button"
             >
               <div className="hidden sm:flex">Next</div>
@@ -403,7 +403,7 @@ export function Pagination(props: {
               onClick={() => {
                 switchPage(1)
               }}
-              className="flex select-none items-center gap-2 rounded-full px-3 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none sm:px-6"
+              className="flex select-none text-zinc-800 dark:text-zinc-200 items-center gap-2 rounded-full px-3 py-3 text-center align-middle font-sans text-xs font-bold uppercase transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none sm:px-6"
               type="button"
             >
               <svg
@@ -430,7 +430,7 @@ export function Pagination(props: {
                 onClick={() => {
                   switchPage(1)
                 }}
-                className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                className="relative h-10 max-h-[40px] w-10 max-w-[40px] text-zinc-800 dark:text-zinc-200 select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                 type="button"
               >
                 <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
@@ -439,7 +439,7 @@ export function Pagination(props: {
               </button>
             )}
             <button
-              className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full bg-zinc-800 text-center align-middle font-sans text-xs font-medium uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+              className="relative h-10 max-h-[40px] w-10 max-w-[40px] text-zinc-200 select-none rounded-full bg-zinc-800 text-center align-middle font-sans text-xs font-medium uppercase shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
               type="button"
             >
               <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
@@ -451,7 +451,7 @@ export function Pagination(props: {
                 onClick={() => {
                   switchPage(3)
                 }}
-                className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                className="relative text-zinc-800 dark:text-zinc-200 h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                 type="button"
               >
                 <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
@@ -464,7 +464,7 @@ export function Pagination(props: {
                 onClick={() => {
                   switchPage(4)
                 }}
-                className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                className="relative text-zinc-800 dark:text-zinc-200 h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                 type="button"
               >
                 <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
@@ -477,7 +477,7 @@ export function Pagination(props: {
                 onClick={() => {
                   switchPage(5)
                 }}
-                className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                className="relative h-10 max-h-[40px] w-10 text-zinc-800 dark:text-zinc-200 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                 type="button"
               >
                 <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
@@ -491,7 +491,7 @@ export function Pagination(props: {
               onClick={() => {
                 foward()
               }}
-              className="flex select-none items-center gap-2 rounded-full px-3 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none sm:px-6"
+              className="flex select-none items-center gap-2 text-zinc-800 dark:text-zinc-200 rounded-full px-3 py-3 text-center align-middle font-sans text-xs font-bold uppercase transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none sm:px-6"
               type="button"
             >
               <div className="hidden sm:flex">Next</div>
@@ -525,7 +525,7 @@ export function Pagination(props: {
             onClick={() => {
               switchPage(page - 1)
             }}
-            className="flex select-none items-center gap-2 rounded-full px-3 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none sm:px-6"
+            className="flex select-none text-zinc-800 dark:text-zinc-200 items-center gap-2 rounded-full px-3 py-3 text-center align-middle font-sans text-xs font-bold uppercase transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none sm:px-6"
             type="button"
           >
             <svg
@@ -552,7 +552,7 @@ export function Pagination(props: {
               onClick={() => {
                 switchPage(page - 2)
               }}
-              className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+              className="relative text-zinc-800 dark:text-zinc-200 h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
               type="button"
             >
               <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
@@ -565,7 +565,7 @@ export function Pagination(props: {
               onClick={() => {
                 switchPage(page - 1)
               }}
-              className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+              className="relative h-10 max-h-[40px] text-zinc-800 dark:text-zinc-200 w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
               type="button"
             >
               <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
@@ -574,7 +574,7 @@ export function Pagination(props: {
             </button>
           )}
           <button
-            className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full bg-zinc-800 text-center align-middle font-sans text-xs font-medium uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            className="relative h-10 text-zinc-200 max-h-[40px] w-10 max-w-[40px] select-none rounded-full bg-zinc-800 text-center align-middle font-sans text-xs font-medium uppercase shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
             type="button"
           >
             <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
@@ -586,7 +586,7 @@ export function Pagination(props: {
               onClick={() => {
                 switchPage(page + 1)
               }}
-              className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+              className="relative h-10 max-h-[40px] text-zinc-800 dark:text-zinc-200 w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
               type="button"
             >
               <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
@@ -599,7 +599,7 @@ export function Pagination(props: {
               onClick={() => {
                 switchPage(page + 2)
               }}
-              className="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+              className="relative h-10 max-h-[40px] text-zinc-800 dark:text-zinc-200 w-10 max-w-[40px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
               type="button"
             >
               <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
@@ -613,7 +613,7 @@ export function Pagination(props: {
             onClick={() => {
               switchPage(page + 1)
             }}
-            className="flex select-none items-center gap-2 rounded-full px-3 py-3 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none sm:px-6"
+            className="flex select-none text-zinc-800 dark:text-zinc-200 items-center gap-2 rounded-full px-3 py-3 text-center align-middle font-sans text-xs font-bold uppercase transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none sm:px-6"
             type="button"
           >
             <div className="hidden sm:flex">Next</div>

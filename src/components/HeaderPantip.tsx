@@ -63,7 +63,7 @@ function ButtonNavbar(props: { children: React.ReactNode; href: string }) {
   return (
     <>
       <button
-        className="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
+        className="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition text-zinc-800 dark:text-zinc-200 dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
         onClick={() => {
           router.push(props.href)
         }}
@@ -82,13 +82,13 @@ function ButtonChangeLang() {
       className="relative z-50 flex flex-col"
     >
       <Popover>
-        <PopoverButton className="group rounded-full bg-white/90 px-3 py-3 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition focus:outline-none dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20">
+        <PopoverButton className="group rounded-full text-zinc-800 dark:text-zinc-200 bg-white/90 px-3 py-3 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition focus:outline-none dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={2.0}
-            stroke="#3f3f46"
+            stroke="currentColor"
             className="size-4"
           >
             <path
@@ -110,24 +110,16 @@ function ButtonChangeLang() {
             anchor="bottom"
             className="z-50 divide-y divide-white/5 rounded-xl shadow-lg mt-2 bg-white/5 text-sm/6 [--anchor-gap:var(--spacing-5)]"
           >
-            <div className="z-20 flex flex-col rounded-lg bg-white">
+            <div className="z-20 flex flex-col rounded-lg bg-white dark:bg-zinc-800/50 ">
               <a
-                className={`flex w-12 justify-center hover:bg-zinc-100 ${local=='th' ? "text-zinc-400":"text-zinc-800"}`}
-                onClick={() => {
-                  if(local!='th'){
-                    router.push('/th')
-                  }
-                }}
+                href='/th'
+                className={`flex w-12 justify-center hover:bg-zinc-100 dark:hover:bg-zinc-800  ${local=='th' ? "text-zinc-400 dark:text-zinc-200":"text-zinc-800 dark:text-zinc-400"}`}
               >
                 TH
               </a>
               <a
-                className={`flex w-12 justify-center hover:bg-zinc-100 ${local=='en' ? "text-zinc-400":"text-zinc-800"}`}
-                onClick={() => {
-                  if(local!='en'){
-                    router.push('/en')
-                  }
-                }}
+                href='/en'
+                className={`flex w-12 justify-center hover:bg-zinc-100 dark:hover:bg-zinc-800 ${local=='en' ? "text-zinc-400 dark:text-zinc-200":"text-zinc-800 dark:text-zinc-400"}`}
               >
                 EN
               </a>
@@ -428,7 +420,7 @@ function ThemeToggle() {
     <button
       type="button"
       aria-label={mounted ? `Switch to ${otherTheme} theme` : 'Toggle theme'}
-      className="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
+      className="group rounded-full bg-white/90 px-2 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
       onClick={() => setTheme(otherTheme)}
     >
       <SunIcon className="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden [@media(prefers-color-scheme:dark)]:fill-teal-50 [@media(prefers-color-scheme:dark)]:stroke-teal-500 [@media(prefers-color-scheme:dark)]:group-hover:fill-teal-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-teal-600" />
@@ -586,7 +578,8 @@ export function HeaderPantip() {
     updateStyles()
     window.addEventListener('scroll', updateStyles, { passive: true })
     window.addEventListener('resize', updateStyles)
-    setTheme('light')
+    setTheme('dark')
+
     return () => {
       window.removeEventListener('scroll', updateStyles)
       window.removeEventListener('resize', updateStyles)
@@ -598,7 +591,7 @@ export function HeaderPantip() {
   return (
     <>
       <header
-        className="pointer-events-none fixed top-0 z-50 flex w-full flex-none flex-col bg-white pb-4 shadow"
+        className="pointer-events-none z-50 fixed top-0 flex w-full flex-none flex-col bg-white ring-zinc-100 ring-1 dark:ring-zinc-300/20 dark:bg-zinc-900 pb-4 shadow"
         // style={{
         //   height: 'var(--header-height)',
         //   marginBottom: 'var(--header-mb)',
@@ -619,31 +612,33 @@ export function HeaderPantip() {
                 'var(--header-inner-position)' as React.CSSProperties['position'],
             }}
           >
-            <div className="relative flex gap-4">
-              <div className="flex flex-1 gap-x-2">
+            <div className="flex gap-4">
+              <div className="flex flex-1 gap-x-2 relative">
                 {true && (
                   <AvatarContainer>
                     <Avatar />
                   </AvatarContainer>
                 )}
-                <h2 className="hidden items-center text-2xl font-bold text-zinc-800 min-[500px]:flex md:hidden lg:flex">
+                <h2 className="hidden items-center text-2xl font-bold text-zinc-800 dark:text-zinc-200 min-[500px]:flex md:hidden lg:flex">
                   GPTs Hunter
+
                 </h2>
               </div>
+              <div className="absolute top-20 right-4 pointer-events-auto"> <ThemeToggle /> </div>
               <div className="flex flex-col justify-end md:justify-center">
                 <DesktopNavigation className="pointer-events-auto hidden md:block" />
               </div>
               <div className="flex justify-end md:flex-1">
                 <div className="pointer-events-auto flex gap-x-2">
                   <ButtonChangeLang />
-                  <ButtonNavbar href="https://t.me/+rWwel19j-So2OWYx">
+                  <ButtonNavbar href="https://t.me/+rWwel19j-So2OWYx" >
                     <svg
                       width="64px"
                       height="64px"
                       viewBox="0 0 23 24"
                       xmlns="http://www.w3.org/2000/svg"
-                      fill="#3f3f46"
-                      className="h-4 w-4"
+                      fill="currentColor"
+                      className="h-5 w-4"
                     >
                       <g id="SVGRepo_bgCarrier" strokeWidth="0" />
                       <g
@@ -670,7 +665,7 @@ export function HeaderPantip() {
                       width="30"
                       height="30"
                       viewBox="0 0 30 30"
-                      fill="3f3f46"
+                      fill="currentColor"
                       className="h-4 w-4"
                     >
                       <path d="M26.37,26l-8.795-12.822l0.015,0.012L25.52,4h-2.65l-6.46,7.48L11.28,4H4.33l8.211,11.971L12.54,15.97L3.88,26h2.65 l7.182-8.322L19.42,26H26.37z M10.23,6l12.34,18h-2.1L8.12,6H10.23z"></path>
@@ -682,8 +677,8 @@ export function HeaderPantip() {
                       height="64px"
                       viewBox="0 0 900 1024"
                       xmlns="http://www.w3.org/2000/svg"
-                      fill="#3f3f46"
-                      stroke="#3f3f46"
+                      fill="currentColor"
+                      stroke="currentColor"
                       strokeWidth="17.408"
                       className="h-4 w-4"
                     >
@@ -695,7 +690,7 @@ export function HeaderPantip() {
                       ></g>
                       <g id="SVGRepo_iconCarrier">
                         <path
-                          fill="#3f3f46"
+                          fill="currentColor"
                           d="M768 192a192 192 0 1 1-8 383.808A256.128 256.128 0 0 1 512 768H320A256 256 0 0 1 64 512V160a32 32 0 0 1 32-32h640a32 32 0 0 1 32 32v32zm0 64v256a128 128 0 1 0 0-256zM96 832h640a32 32 0 1 1 0 64H96a32 32 0 1 1 0-64zm32-640v320a192 192 0 0 0 192 192h192a192 192 0 0 0 192-192V192H128z"
                         ></path>
                       </g>

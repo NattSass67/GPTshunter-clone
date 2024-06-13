@@ -39,7 +39,7 @@ Card.Link = function CardLink({
 }: React.ComponentPropsWithoutRef<typeof Link>) {
   return (
     <>
-      <div className="absolute inset-0 z-0 dark:bg-zinc-800/50" />
+      <div className="absolute inset-0 z-0" />
       <Link {...props}>
         <span className="absolute inset-0 sm:rounded-2xl" />
         <span className="relative">{children}</span>

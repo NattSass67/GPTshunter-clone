@@ -23,10 +23,10 @@ export function SubmitSimple() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="w-full rounded-lg bg-white p-6 md:p-10">
+      <div className="w-full rounded-lg bg-white dark:bg-zinc-900 p-6 md:p-10">
         <label className="mb-2 flex text-sm">* Email</label>
         <input
-          className="flex h-full w-full rounded-md mb-1 px-3 py-2 text-sm text-zinc-800 ring-1 ring-inset ring-gray-200 focus:outline-none focus:ring-gray-400 dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10"
+          className="flex h-full w-full rounded-md mb-1 px-3 py-2 text-sm text-zinc-800 ring-1 ring-inset ring-zinc-300 focus:outline-none focus:ring-gray-400 dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10"
           placeholder=""
           {...register('email')}
         />
@@ -39,7 +39,7 @@ export function SubmitSimple() {
           rows={8}
           id="links"
           placeholder={t('message')}
-          className="w-full resize-none rounded-md border-0 px-3 py-2 text-sm text-zinc-800 ring-1 ring-inset ring-gray-200 focus:outline-none focus:ring-gray-400"
+          className="w-full resize-none rounded-md dark:bg-zinc-800 px-3 py-2 text-sm text-zinc-800 dark:text-zinc-200 ring-1 ring-zinc-300 focus:outline-none focus:ring-gray-400 dark:ring-white/10"
           defaultValue={''}
           {...register('links')}
         />
@@ -50,7 +50,7 @@ export function SubmitSimple() {
         <div className="flex justify-end">
           <button
             type="submit"
-            className="rounded-lg bg-zinc-800 px-4 py-1.5 text-base font-semibold text-white shadow-sm hover:bg-zinc-900"
+            className="rounded-lg bg-zinc-800 px-4 py-1.5 text-base font-semibold text-white dark:text-zinc-200 shadow-sm hover:bg-zinc-900 "
           >
             Submit
           </button>

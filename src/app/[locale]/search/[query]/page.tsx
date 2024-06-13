@@ -47,7 +47,7 @@ export default function Home(props: {
     <Card
       as="div"
       key={index}
-      className={`w-1/2 flex-none p-4 hover:bg-zinc-50 lg:w-1/3`}
+      className={`w-1/2 flex-none p-4 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 lg:w-1/3`}
     >
       <Card.Link
         href={'/' + props.params.locale + '/gpt-store/' + project.id}
@@ -82,7 +82,7 @@ export default function Home(props: {
       >
         <Container className="mt-16">
           <div className="w-full pb-12 pt-16 ">
-            <h1 className="text-center text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl">
+            <h1 className="text-center text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-200 sm:text-5xl">
               {decodeURIComponent(props.params.query)}
             </h1>
             <p className="mx-auto mt-4 max-w-3xl text-center text-base text-zinc-500">
@@ -92,7 +92,7 @@ export default function Home(props: {
             <SearchBarRedirect />
           </div>
           <div className="w-full">
-            <hr />
+            <hr className="border-zinc-300/50"/>
             <Transition
               show={!isLoading}
               enter="transition-opacity duration-300"

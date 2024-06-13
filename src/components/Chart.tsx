@@ -64,7 +64,7 @@ export function MyChart({ data }: { data: GptTrend}) {
         className="w-full bg-zinc-700"
         style={{ height: `${calculateHeight(object.value)}px` }}
       ></div>
-      <div className="absolute left-0 top-0 z-50 hidden w-32 rounded-lg bg-white p-2 text-[12px] shadow group-hover:block">
+      <div className="absolute left-0 top-0 z-50 hidden w-32 rounded-lg bg-white p-2 text-[12px] shadow group-hover:block dark:bg-zinc-800/50">
         <p>{object.date}</p>
         <p>Conversations {object.value}K</p>
       </div>
@@ -80,7 +80,7 @@ export function MyChart({ data }: { data: GptTrend}) {
         className="w-full bg-zinc-700"
         style={{ height: `${calculateHeight(object.value)}px` }}
       ></div>
-      <div className="absolute right-0 top-0 z-50 hidden w-32 rounded-lg bg-white p-2 text-[12px] shadow group-hover:block">
+      <div className="absolute right-0 top-0 z-50 hidden w-32 rounded-lg bg-white p-2 text-[12px] shadow group-hover:block dark:bg-zinc-800/50">
         <p>{object.date}</p>
         <p>Conversations {object.value}K</p>
       </div>

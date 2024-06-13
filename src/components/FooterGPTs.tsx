@@ -45,7 +45,7 @@ const navigation = {
 
 export default function FooterGPT() {
   return (
-    <footer className="bg-white shadow mt-24" aria-labelledby="footer-heading">
+    <footer className="bg-white shadow mt-24 ring-zinc-100 ring-1 dark:ring-zinc-300/20 dark:bg-zinc-900 " aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
@@ -58,7 +58,7 @@ export default function FooterGPT() {
                 src="https://www.gptshunter.com/_nuxt/logo.DQOOruJz.png"
                 alt="Your Company"
               />
-              <span className="text-lg font-semibold text-zinc-800 sm:text-xl">
+              <span className="text-lg font-semibold text-zinc-800 sm:text-xl dark:text-zinc-200">
                 GPTs Hunter
               </span>
             </div>
@@ -71,7 +71,7 @@ export default function FooterGPT() {
                 <div key={item.name} className="mb-2">
                   <a
                     href={item.href}
-                    className="text-sm text-zinc-700 hover:text-teal-500 align-baseline"
+                    className="text-sm text-zinc-700 hover:text-teal-400 align-baseline dark:text-zinc-500"
                   >
                     {item.name}
                   </a>
@@ -89,7 +89,7 @@ export default function FooterGPT() {
                 <li key={item.name}>
                   <a
                     href={item.href}
-                    className="text-sm leading-6 text-zinc-700 hover:text-teal-500"
+                    className="text-sm leading-6 text-zinc-700 hover:text-teal-400 dark:text-zinc-500"
                   >
                     {item.name}
                   </a>
@@ -107,7 +107,7 @@ export default function FooterGPT() {
                 <li key={item.name}>
                   <a
                     href={item.href}
-                    className="text-sm leading-6 text-zinc-700 hover:text-teal-500"
+                    className="text-sm leading-6 text-zinc-700 hover:text-teal-400 dark:text-zinc-500"
                   >
                     {item.name}
                   </a>
@@ -125,7 +125,7 @@ export default function FooterGPT() {
                 <li key={item.name}>
                   <a
                     href={item.href}
-                    className="text-sm leading-6 text-zinc-700 hover:text-teal-500"
+                    className="text-sm leading-6 text-zinc-700 hover:text-teal-400 dark:text-zinc-500"
                   >
                     {item.name}
                   </a>

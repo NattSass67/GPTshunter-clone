@@ -53,7 +53,7 @@ export default function Home(props: {
     <a
       key={index}
       href={"/"+locale+"/tags/"+object+"?page=1"}
-      className="flex-none rounded-full bg-zinc-100 px-3 py-1.5 text-zinc-800 hover:bg-zinc-200"
+      className="flex-none rounded-full bg-zinc-100 px-3 py-1.5 text-zinc-800 hover:bg-zinc-800/50 dark:text-zinc-400 dark:bg-inherit dark:hover:text-zinc-200"
     >
       <p className="text-center text-[14px]">{object}</p>
     </a>
@@ -63,7 +63,7 @@ export default function Home(props: {
     <Card
       as="div"
       key={index}
-      className={`w-1/2 flex-none p-4 hover:bg-zinc-50 lg:w-1/3`}
+      className={`w-1/2 flex-none p-4 hover:bg-zinc-50 lg:w-1/3 dark:hover:bg-zinc-800/50`}
     >
       <Card.Link href={'/' + locale + '/gpt-store/' + project.id}></Card.Link>
       <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white">
@@ -96,7 +96,7 @@ export default function Home(props: {
       >
         <Container className="mt-16">
           <div className="w-full pb-12 pt-16 text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl">
+            <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-200">
               Best {decodeURIComponent(selected)} GPTs
             </h1>
             <p className="mx-auto mt-4 max-w-3xl text-base text-zinc-500">
@@ -104,7 +104,7 @@ export default function Home(props: {
             </p>
           </div>
           <div className="w-full">
-            <hr />
+            <hr className="border-zinc-300/50" />
             <Transition
               show={!isLoading}
               enter="transition-opacity duration-300"
@@ -134,7 +134,7 @@ export default function Home(props: {
                   />
                 </div>
                 <div>
-                  <p className="mt-4 text-lg font-bold tracking-tight text-gray-900">
+                  <p className="mt-4 text-lg font-bold tracking-tight text-zinc-800 dark:text-zinc-200">
                     You may also want to explore the related {decodeURIComponent(selected)} on the GPT store
                   </p>
                   <div className="no-scrollbar mx-0 mt-2 flex flex-row gap-x-2 overflow-x-auto">

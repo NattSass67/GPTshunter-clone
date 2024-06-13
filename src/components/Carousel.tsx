@@ -60,10 +60,10 @@ export function Carousel(props: {
     <Card
       as="div"
       key={index}
-      className={`w-1/2 flex-none p-4 hover:bg-zinc-50 lg:w-1/3`}
+      className={`w-1/2 flex-none p-4 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 lg:w-1/3 rounded-lg`}
     >
       <Card.Link href={"/"+local+"/gpt-store/"+project.id}></Card.Link>
-      <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white">
+      <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white ">
         <Image src={project.logo} alt="" className="h-8 w-8" unoptimized />
       </div>
       <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
@@ -86,14 +86,14 @@ export function Carousel(props: {
   return (
     <>
       <div className="relative mt-8 flex w-full flex-col">
-        <h2 className="absolute left-0 top-0 z-10 w-[250px] text-lg font-bold tracking-tight text-gray-900 sm:w-full sm:text-xl truncate">
+        <h2 className="absolute left-0 top-0 z-10 w-[250px] text-lg font-bold tracking-tight text-zinc-800 dark:text-zinc-200 sm:w-full sm:text-xl truncate">
           {props.title}
         </h2>
 
         <button
           onClick={scrollLeft}
           aria-label="Save"
-          className="absolute right-10 top-0 z-10 flex rounded-full px-2 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur"
+          className="absolute right-10 top-0 z-10 flex rounded-full px-2 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur hover:ring-zinc-300/50"
         >
           <svg
             width="16px"
@@ -101,7 +101,7 @@ export function Carousel(props: {
             viewBox="0 0 1024 1024"
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
-            fill="#000000"
+            fill="#71717a"
           >
             <g id="SVGRepo_bgCarrier" strokeWidth="0" />
             <g
@@ -112,14 +112,14 @@ export function Carousel(props: {
             <g id="SVGRepo_iconCarrier">
               <path
                 d="M768 903.232l-50.432 56.768L256 512l461.568-448 50.432 56.768L364.928 512z"
-                fill="#000000"
+                fill="#71717a"
               />
             </g>
           </svg>
         </button>
 
         {props.isLoading ? (
-          <div className="no-scrollbar mx-0 my-28 flex flex w-full justify-center ">
+          <div className="no-scrollbar mx-0 my-28 flex w-full justify-center ">
             <Loader />
           </div>
         ) : (
@@ -143,7 +143,7 @@ export function Carousel(props: {
         <button
           onClick={scrollRight}
           aria-label="Save"
-          className="absolute right-0 top-0 z-10 flex rounded-full px-2 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur"
+          className="absolute right-0 top-0 z-10 flex rounded-full px-2 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur hover:ring-zinc-300/50"
         >
           <svg
             width="16px"
@@ -152,7 +152,7 @@ export function Carousel(props: {
             className="icon"
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
-            fill="#000000"
+            fill="#71717a"
           >
             <g id="SVGRepo_bgCarrier" strokeWidth="0" />
             <g
@@ -163,7 +163,7 @@ export function Carousel(props: {
             <g id="SVGRepo_iconCarrier">
               <path
                 d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"
-                fill="#000000"
+                fill="#71717a"
               />
             </g>
           </svg>

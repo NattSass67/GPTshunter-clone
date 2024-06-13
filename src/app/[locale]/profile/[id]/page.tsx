@@ -48,7 +48,7 @@ export default function Home(props: {
     <Card
       as="div"
       key={index}
-      className={`w-1/2 flex-none p-4 hover:bg-zinc-50 lg:w-1/3`}
+      className={`w-1/2 flex-none p-4 hover:bg-zinc-50 lg:w-1/3 dark:hover:bg-zinc-800/50`}
     >
       <Card.Link href={'/' + locale + '/gpt-store/' + project.id}></Card.Link>
       <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white">
@@ -81,7 +81,7 @@ export default function Home(props: {
       >
         <Container className="mt-16">
           <div className="w-full pb-12 pt-16 text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl">
+            <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-200 sm:text-5xl">
               GPT built by {decodeURIComponent(username as string)} 
             </h1>
             <p className="mx-auto mt-4 max-w-3xl text-center text-base text-zinc-500">
@@ -89,7 +89,7 @@ export default function Home(props: {
             </p>
           </div>
           <div className="w-full">
-            <hr />
+            <hr className="border-zinc-300/50"/>
             <Transition
               show={!isLoading}
               enter="transition-opacity duration-300"

@@ -35,22 +35,22 @@ export default function Example() {
         leaveTo="opacity-0"
       >
         <Container className="pt-32">
-          <div className="bg-white">
+          <div className="bg-white dark:bg-zinc-900">
             <div className="mx-auto max-w-7xl">
               <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
                 <p className="text-base font-semibold leading-7 text-zinc-400">
                   Posted on Feb 18, 2024
                 </p>
-                <h1 className="mt-2 max-w-2xl text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl">
+                <h1 className="mt-2 max-w-2xl text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-200 sm:text-5xl">
                   {t('title')}
                 </h1>
-                <p className="mb-4 mt-2 max-w-lg text-sm text-zinc-800 sm:text-base">
+                <p className="mb-4 mt-2 max-w-lg text-sm text-zinc-600 sm:text-base dark:text-zinc-400">
                   {t('description')}
                 </p>
                 <hr />
-                <div className="my-10 grid max-w-xl grid-cols-1 gap-8 text-sm leading-7 text-zinc-800 sm:text-base lg:max-w-none lg:grid-cols-2">
+                <div className="my-10 grid max-w-xl grid-cols-1 gap-8 text-sm leading-7 text-zinc-600 sm:text-base lg:max-w-none lg:grid-cols-2 dark:text-zinc-400">
                   <div>
-                    <p className="text-2xl font-semibold">
+                    <p className="text-2xl font-semibold dark:text-zinc-200 text-zinc-800">
                       GPT Store Daily Trending Data Backup
                     </p>
                     <p className="mt-4">
@@ -62,7 +62,7 @@ export default function Example() {
                       For detailed insights and historical trends, visit:{' '}
                       <a
                         href="https://github.com/AINativeLab/gptstore-data-backup"
-                        className="underline underline-offset-2 hover:text-zinc-400"
+                        className="underline underline-offset-2 hover:text-zinc-500"
                       >
                         Here
                       </a>
@@ -74,7 +74,7 @@ export default function Example() {
                     />
                   </div>
                   <div>
-                    <p className="text-2xl font-semibold">
+                    <p className="text-2xl font-semibold dark:text-zinc-200 text-zinc-800">
                       Top 500 GPTs Daily Session Data Backup from GPT Store
                     </p>
                     <p className="mt-4">
@@ -88,7 +88,7 @@ export default function Example() {
                       Access this repository for in-depth analysis:{' '}
                       <a
                         href="https://github.com/AINativeLab/gptstore-data-backup"
-                        className="underline underline-offset-2 hover:text-zinc-400"
+                        className="underline underline-offset-2 hover:text-zinc-500"
                       >
                         Here
                       </a>
@@ -103,39 +103,39 @@ export default function Example() {
                 <hr />
                 <div className="mt-2 flex text-sm sm:text-base">
                   <div>
-                    <p className="mt-8 text-2xl font-semibold">
+                    <p className="mt-8 text-2xl font-semibold dark:text-zinc-200 text-zinc-800">
                       Download the Complete GPTs Dataset
                     </p>
-                    <p className="mt-4">
+                    <p className="mt-4 text-zinc-600 dark:text-zinc-400">
                       For those requiring access to the entire dataset of All
                       GPTs from our website, we offer a comprehensive solution.
                     </p>
-                    <p className="mt-4">
+                    <p className="mt-4 text-zinc-600 dark:text-zinc-400">
                       You can buy it for 1 month($99):{' '}
                       <a
                         href="https://store.ai.ls/checkout/buy/a9f28827-21c2-4d0f-9605-0a921ac2e44d"
-                        className="underline underline-offset-2 hover:text-zinc-400"
+                        className="underline underline-offset-2 hover:text-zinc-500"
                       >
                         Here
                       </a>
                     </p>
 
-                    <p className="mt-4">
+                    <p className="mt-4 text-zinc-600 dark:text-zinc-400">
                       You can also opt for a monthly payment ($90/mo) with
                       automatic renewal:{' '}
                       <a
                         href="https://store.ai.ls/buy/dc7c96a6-95c6-4b9b-9369-1861a060bfb1"
-                        className="underline underline-offset-2 hover:text-zinc-400"
+                        className="underline underline-offset-2 hover:text-zinc-500"
                       >
                         Here
                       </a>
                     </p>
-                    <p className="mt-4">
+                    <p className="mt-4 text-zinc-600 dark:text-zinc-400">
                       It should be noted that this product does not support
                       refunds. Please send your GitHub id to{' '}
                       <a
                         href="https://store.ai.ls/buy/dc7c96a6-95c6-4b9b-9369-1861a060bfb1"
-                        className="underline underline-offset-2 hover:text-zinc-400"
+                        className="underline underline-offset-2 hover:text-zinc-500"
                       >
                         hi@ai.ci
                       </a>{' '}
@@ -143,7 +143,7 @@ export default function Example() {
                       data.
                     </p>
                     <div>
-                      <p className="mt-8 text-2xl font-semibold">Sample</p>
+                      <p className="mt-8 text-2xl font-semibold dark:text-zinc-200 text-zinc-800">Sample</p>
                       <div>
                         <textarea
                           rows={40}

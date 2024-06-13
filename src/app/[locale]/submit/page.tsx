@@ -42,14 +42,14 @@ export default function Submit() {
           <div className="flex w-full flex-col items-center justify-center">
             <div className="w-full max-w-2xl">
               <div className="mb-6">
-                <h2 className="mx-auto max-w-2xl text-center text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl">
+                <h2 className="mx-auto max-w-2xl text-center text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-200">
                   {t('title')}
                 </h2>
                 <div
                   onClick={() => {
                     router.push('https://gapier.com/?utm_source=gptshunter')
                   }}
-                  className="mx-auto my-4 max-w-xl text-center text-lg leading-8 text-zinc-400 hover:text-zinc-700"
+                  className="mx-auto my-4 max-w-xl text-center text-lg leading-8 text-zinc-400 hover:text-zinc-600"
                 >
                   {t('description')}
                 </div>
