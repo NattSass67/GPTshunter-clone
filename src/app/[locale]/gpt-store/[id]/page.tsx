@@ -3,13 +3,13 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
 import { Carousel } from '@/components/Carousel'
-import { BasicSparkLine } from '@/components/Chart'
 import { Container } from '@/components/Container'
 import { Loader } from '@/components/Loader'
 import { loadStoreInfoPage } from '@/session/manager'
 import { useAppDispatch, useAppSelector } from '@/session/store'
 import { CardBanner } from '@/types/category'
 import logoApply from '@/images/logos/apply.svg'
+import { MyChart } from '@/components/Chart'
 import {
   Disclosure,
   DisclosureButton,
@@ -19,6 +19,7 @@ import {
 import { MinusIcon, PlusIcon } from '@heroicons/react/20/solid'
 import Image from 'next/image'
 import { useEffect } from 'react'
+import { GptTrend } from '@/types/gpt'
 
 function Stats(props: { rate: number; rank: number }) {
   return (
@@ -213,7 +214,7 @@ export default function Store(props: {
                     <p className="col-span-2 text-2xl font-semibold">
                       GPT Conversation Trend
                     </p>
-                    <BasicSparkLine data={null} />
+                    <MyChart data={info?.trend} />
                   </div>
                 </div>
                 <Stats

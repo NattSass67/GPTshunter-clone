@@ -2,6 +2,12 @@ import { CardBanner } from './category'
 import { z } from 'zod'
 import { cardBannerSchema } from './category'
 
+const trendSchema = z.array(
+  z.object({
+    value: z.number(),
+    date: z.string()
+  })
+);
 
 // Define GptContentTopic schema
 const gptContentTopicSchema = z.object({
@@ -43,16 +49,19 @@ const gptInfoSchema = z.object({
   information: gptInformationSchema,
   rank: z.number(),
   toUrl: z.string(),
+  trend: trendSchema,
 })
 
 export type GptContentTopic = z.infer<typeof gptContentTopicSchema>;
 export type GptFaq = z.infer<typeof gptFaqSchema>;
 export type GptInformation = z.infer<typeof gptInformationSchema>;
 export type GptInfo = z.infer<typeof gptInfoSchema>;
+export type GptTrend = z.infer<typeof trendSchema>;
 
 export {
   gptInformationSchema,
   gptContentTopicSchema,
   gptInfoSchema,
   gptFaqSchema,
+  trendSchema
 }
