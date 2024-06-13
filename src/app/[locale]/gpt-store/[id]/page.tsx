@@ -214,7 +214,7 @@ export default function Store(props: {
                     <p className="col-span-2 text-2xl font-semibold">
                       GPT Conversation Trend
                     </p>
-                    <MyChart data1={info?.trend} />
+                    <MyChart data={info?.trend} />
                   </div>
                 </div>
                 <Stats
