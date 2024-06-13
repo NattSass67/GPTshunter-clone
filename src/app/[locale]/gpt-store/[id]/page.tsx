@@ -161,7 +161,7 @@ export default function Store(props: {
                   </a>
                 </div>
 
-                <hr />
+                <hr className="border-zinc-300/50" />
                 <div className="my-10 grid max-w-2xl grid-cols-1 gap-8 text-sm leading-7 sm:text-base lg:max-w-none lg:grid-cols-2">
                   {content}
                   <div>
@@ -222,7 +222,7 @@ export default function Store(props: {
                   rate={info?.rate as number}
                 />
                 <a href={info?.toUrl}>
-                  <p className="font semibold mt-4 w-full rounded-lg bg-zinc-800/50 hover:bg-zinc-800 p-4 text-center text-zinc-100">
+                  <p className="font semibold mt-4 w-full rounded-lg dark:bg-zinc-800/50 dark:hover:bg-zinc-800 bg-zinc-800 hover:bg-zinc-900 p-4 text-center text-zinc-100">
                     Use {info?.name} on ChatGPT
                   </p>
                 </a>

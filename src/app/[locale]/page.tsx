@@ -189,7 +189,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="mt-16 w-full border-t border-zinc-300/50">
+          <div className="mt-12 w-full border-t border-zinc-300/50">
             <FilterSelect />
             <Carousel
               content={selectedFilterContent}

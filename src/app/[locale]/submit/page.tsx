@@ -49,7 +49,7 @@ export default function Submit() {
                   onClick={() => {
                     router.push('https://gapier.com/?utm_source=gptshunter')
                   }}
-                  className="mx-auto my-4 max-w-xl text-center text-lg leading-8 text-zinc-400 hover:text-zinc-600"
+                  className="mx-auto my-4 max-w-xl text-center text-base leading-8 text-zinc-400 hover:text-zinc-600"
                 >
                   {t('description')}
                 </div>

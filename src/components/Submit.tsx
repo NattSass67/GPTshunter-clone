@@ -50,7 +50,7 @@ export function SubmitSimple() {
         <div className="flex justify-end">
           <button
             type="submit"
-            className="rounded-lg bg-zinc-800 px-4 py-1.5 text-base font-semibold text-white dark:text-zinc-200 shadow-sm hover:bg-zinc-900 "
+            className="rounded-lg dark:bg-zinc-800/50 dark:hover:bg-zinc-800 bg-zinc-800 hover:bg-zinc-900 px-4 py-1.5 text-base font-semibold text-white dark:text-zinc-200 shadow-sm "
           >
             Submit
           </button>

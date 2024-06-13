@@ -81,7 +81,7 @@ export default function Home(props: {
         enterTo="opacity-100"
       >
         <Container className="mt-16">
-          <div className="w-full pb-12 pt-16 ">
+          <div className="w-full sm:pb-12 pb-8 pt-16 ">
             <h1 className="text-center text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-200 sm:text-5xl">
               {decodeURIComponent(props.params.query)}
             </h1>
