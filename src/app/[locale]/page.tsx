@@ -76,7 +76,7 @@ import { CardBanner } from '@/types/category'
 import { HomeCarousel } from '@/types/home'
 
 export default function Home() {
-  const local = usePathname().split('/')[1]
+  const locale = usePathname().split('/')[1]
 
   const t = useTranslations('Home')
 
@@ -105,7 +105,7 @@ export default function Home() {
   ))
 
   useEffect(() => {
-    dispatch(fetchContent())
+    dispatch(fetchContent(locale))
   }, [])
   //------------------loadingPage
   const [initLoading, setInitLoading] = useState(true)
@@ -150,7 +150,7 @@ export default function Home() {
               <div className="flex justify-center">
                 <div className="grid grid-cols-1 min-[560px]:grid-cols-2 px-4 text-sm text-zinc-600 sm:text-base gap-x-4 ">
                   <a
-                    href={'/' + local + '/submit'}
+                    href={'/' + locale + '/submit'}
                     className="flex items-center gap-x-2 hover:text-zinc-500 dark:text-zinc-400"
                   >
                     <Image

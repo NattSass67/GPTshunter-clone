@@ -1,9 +1,14 @@
-import { GptInfo } from '@/types/gpt'
 import { filterSelectSchema } from '@/types/home'
 import { searchKeywordsSchema, contentByQuerySchema } from '@/types/search'
 import { gptInfoSchema } from '@/types/gpt'
-import { mockContent, sampleGptInfo, sampleGptInfo1 } from './mock'
-import { Tags } from '@/types/tags'
+import {
+  mockContent,
+  sampleGptInfo,
+  sampleGptInfo1,
+  mockContentTH,
+  sampleGptInfoTH,
+  sampleGptInfoTH1
+} from './mock'
 import { tagsSchema } from '@/types/tags'
 import {
   cardBannerArraySchema,
@@ -49,8 +54,8 @@ export async function getAllFilter() {
   return { data: result.data }
 }
 
-export async function getByFilterSelected(name: string) {
-  const result = cardBannerArraySchema.safeParse(mockContent)
+export async function getByFilterSelected(name: string, locale: string) {
+  const result = cardBannerArraySchema.safeParse(locale == 'th' ? mockContentTH : mockContent)
 
   if (!result.success) {
     console.error('Validation error:', result.error.errors)
@@ -60,33 +65,33 @@ export async function getByFilterSelected(name: string) {
   return { data: result.data }
 }
 
-export async function getByDefaultCategory() {
+export async function getByDefaultCategory(locale: string) {
   //every category with content exist
   const data = [
     {
-      name: 'Featured GPTs on GPT Store',
+      name: locale != 'th' ? 'Featured GPTs on GPT Store':'Featured GPTs บน GPT Store',
       totalContent: 100,
-      content: mockContent,
+      content: locale == 'th' ? mockContentTH : mockContent,
     },
     {
-      name: 'Trending GPTs on GPT Store',
+      name: locale != 'th' ? 'Trending GPTs on GPT Store':'Trending GPTs บน GPT Store',
       totalContent: 100,
-      content: mockContent,
+      content: locale == 'th' ? mockContentTH : mockContent,
     },
     {
-      name: 'Best DALL·E GPTs on GPT Store',
+      name: locale != 'th' ? 'Best DALL·E GPTs on GPT Store':'DALL·E GPTs ที่ดีที่สุดบน GPT Store',
       totalContent: 100,
-      content: mockContent,
+      content: locale == 'th' ? mockContentTH : mockContent,
     },
     {
-      name: 'Best Writing GPTs on GPT Store',
+      name: locale != 'th' ? 'Best Writing GPTs on GPT Store':'Writing GPTs ที่ดีที่สุดบน GPT Store',
       totalContent: 100,
-      content: mockContent,
+      content: locale == 'th' ? mockContentTH : mockContent,
     },
     {
-      name: 'Best Productivity GPTs on GPT Store',
+      name: locale != 'th' ? 'Best Productivity GPTs on GPT Store':'Productivity GPTs ที่ดีที่สุดบน GPT Store',
       totalContent: 100,
-      content: mockContent,
+      content: locale == 'th' ? mockContentTH : mockContent,
     },
   ]
 
@@ -100,9 +105,13 @@ export async function getByDefaultCategory() {
   return { data: result.data }
 }
 
-export async function getByCategoryName(name: string, page: number) {
+export async function getByCategoryName(
+  name: string,
+  page: number,
+  locale: string,
+) {
   const result = categoryWithContentSchema.safeParse({
-    content: mockContent,
+    content: locale == 'th' ? mockContentTH : mockContent,
     name: name,
     totalContent: 100,
   })
@@ -115,10 +124,10 @@ export async function getByCategoryName(name: string, page: number) {
   return { data: result.data }
 }
 
-export async function getByUserId(id: string) {
+export async function getByUserId(id: string, locale: string) {
   const result = profileSchema.safeParse({
     name: 'CHRISTINA MCKENNA',
-    content: mockContent,
+    content: locale == 'th' ? mockContentTH : mockContent,
     totalBanner: 49,
   })
 
@@ -130,9 +139,9 @@ export async function getByUserId(id: string) {
   return { data: result.data }
 }
 
-export async function getByTagName(name: string, page: number) {
+export async function getByTagName(name: string, page: number, locale: string) {
   const result = tagsSchema.safeParse({
-    content: mockContent,
+    content: locale == 'th' ? mockContentTH : mockContent,
     relatedTags: ['AI', 'Machine Learning', 'Content Creation'],
     totalBanner: 100,
   })
@@ -191,9 +200,9 @@ export async function getExistCategory() {
   return { data: result.data }
 }
 
-export async function getGptByID(id: string) {
-  const result = gptInfoSchema.safeParse(sampleGptInfo)
-  const result1 = gptInfoSchema.safeParse(sampleGptInfo1)
+export async function getGptByID(id: string, locale: string) {
+  const result = locale=='th' ? gptInfoSchema.safeParse(sampleGptInfoTH) : gptInfoSchema.safeParse(sampleGptInfo)
+  const result1 = locale=='th' ? gptInfoSchema.safeParse(sampleGptInfoTH1) : gptInfoSchema.safeParse(sampleGptInfo1)
 
   if (!result.success) {
     console.error('Validation error:', result.error.errors)
@@ -227,9 +236,13 @@ export async function getSearchKeyword(key: string) {
   return { data: result.data }
 }
 
-export async function getBySearchQuery(query: string, page: number) {
+export async function getBySearchQuery(
+  query: string,
+  page: number,
+  locale: string,
+) {
   const result = contentByQuerySchema.safeParse({
-    content: mockContent,
+    content: locale == 'th' ? mockContentTH : mockContent,
     totalContent: 100,
   })
 

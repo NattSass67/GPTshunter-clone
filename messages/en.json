@@ -10,7 +10,9 @@
     "Category": {
       "title": "GPT Store Category",
       "description": "Explore GPT Store's Categories",
-      "message": "Please select GPT Categories"
+      "message": "Please select GPT Categories",
+      "best": "Best GPTs for",
+      "on-store": "on the GPT Store"
     }
     ,
     "Download": {
@@ -22,5 +24,12 @@
       "title": "Submit GPTs",
       "description": "The true uniqueness of GPT applications lies in the use of Actions, try gapier. ↗",
       "message": "One url per line. Please avoid submitting content related to politics, pornography, or violence."
-    }
+    },
+    "Info": {
+    "by": "by",
+    "use": "use",
+    "on": "on",
+    "more": "More custom GPTs by",
+    "alternative": "Best Alternative GPTs to"
+  }
   }

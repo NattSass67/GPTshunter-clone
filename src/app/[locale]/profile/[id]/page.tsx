@@ -40,7 +40,7 @@ export default function Home(props: {
   )
 
   useEffect(() => {
-    dispatch(loadProfilePage(id))
+    dispatch(loadProfilePage(id, locale))
   }, [])
 
 

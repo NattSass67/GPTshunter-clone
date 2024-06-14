@@ -9,7 +9,7 @@ import {
   getGptByID,
   getBySearchQuery,
   getByTagName,
-  getByUserId
+  getByUserId,
 } from '@/service/request'
 
 import {
@@ -29,13 +29,13 @@ import { gptStoreFunction } from './info-gpt'
 import { tagsFunction } from './tags'
 import { profileFunction } from './profile'
 
-export const fetchContent = () => {
+export const fetchContent = (locale: string) => {
   return async (dispatch: any) => {
     dispatch(fetchStart()) // Dispatch loginStart action to set loading state
     try {
       const filter = await getAllFilter()
-      const category = await getByDefaultCategory()
-      const homeFiltered = await getByFilterSelected('Featured')
+      const category = await getByDefaultCategory(locale)
+      const homeFiltered = await getByFilterSelected('Featured',locale)
       if (filter === null) {
         throw new Error('One or more required variables are null.')
       } else {
@@ -49,17 +49,17 @@ export const fetchContent = () => {
         }, 2000)
       }
     } catch (error) {
-      console.error('Failed to fetch data:', error);
+      console.error('Failed to fetch data:', error)
       dispatch(fetchSuccess()) // Dispatch loginFailure action if login encounters an error
     }
   }
 }
 
-export const fetchHomeFilterContent = (name: string) => {
+export const fetchHomeFilterContent = (name: string, locale: string) => {
   return async (dispatch: any) => {
     dispatch(fetchSecondStart()) // Dispatch loginStart action to set loading state
     try {
-      const content = await getByFilterSelected(name)
+      const content = await getByFilterSelected(name, locale)
       if (content === null) {
         throw new Error('One or more required variables are null.')
       } else {
@@ -70,17 +70,21 @@ export const fetchHomeFilterContent = (name: string) => {
         }, 2000)
       }
     } catch (error) {
-      console.error('Failed to fetch data:', error);
+      console.error('Failed to fetch data:', error)
       dispatch(fetchSecondSuccess()) // Dispatch loginFailure action if login encounters an error
     }
   }
 }
 
-export const fetchCategoryContent = (name: string, page: number) => {
+export const fetchCategoryContent = (
+  name: string,
+  page: number,
+  locale: string,
+) => {
   return async (dispatch: any) => {
     dispatch(categoryFunction.fetchSecondStart()) // Dispatch loginStart action to set loading state
     try {
-      const category = await getByCategoryName(name,page)
+      const category = await getByCategoryName(name, page, locale)
       if (category === null) {
         throw new Error('One or more required variables are null.')
       } else {
@@ -92,7 +96,7 @@ export const fetchCategoryContent = (name: string, page: number) => {
         }, 2000)
       }
     } catch (error) {
-      console.error('Failed to fetch data:', error);
+      console.error('Failed to fetch data:', error)
       dispatch(categoryFunction.fetchSecondSuccess()) // Dispatch loginFailure action if login encounters an error
     }
   }
@@ -114,17 +118,17 @@ export const loadCategoryPage = () => {
         }, 2000)
       }
     } catch (error) {
-      console.error('Failed to fetch data:', error);
+      console.error('Failed to fetch data:', error)
       dispatch(categoryFunction.fetchSuccess()) // Dispatch loginFailure action if login encounters an error
     }
   }
 }
 
-export const loadStoreInfoPage = (id: string) => {
+export const loadStoreInfoPage = (id: string, locale: string) => {
   return async (dispatch: any) => {
     dispatch(gptStoreFunction.fetchStart()) // Dispatch loginStart action to set loading state
     try {
-      const res = await getGptByID(id)
+      const res = await getGptByID(id, locale)
       if (res === null) {
         throw new Error('One or more required variables are null.')
       } else {
@@ -135,18 +139,17 @@ export const loadStoreInfoPage = (id: string) => {
         }, 2000)
       }
     } catch (error) {
-      console.error('Failed to fetch data:', error);
+      console.error('Failed to fetch data:', error)
       dispatch(gptStoreFunction.fetchSuccess()) // Dispatch loginFailure action if login encounters an error
     }
   }
 }
 
-
-export const loadSearchPage = (query: string, page: number) => {
+export const loadSearchPage = (query: string, page: number, locale: string) => {
   return async (dispatch: any) => {
     dispatch(searchFunction.fetchStart()) // Dispatch loginStart action to set loading state
     try {
-      const res = await getBySearchQuery(query, page)
+      const res = await getBySearchQuery(query, page, locale)
       if (res === null) {
         throw new Error('One or more required variables are null.')
       } else {
@@ -158,18 +161,21 @@ export const loadSearchPage = (query: string, page: number) => {
         }, 2000)
       }
     } catch (error) {
-      console.error('Failed to fetch data:', error);
+      console.error('Failed to fetch data:', error)
       dispatch(searchFunction.fetchSuccess()) // Dispatch loginFailure action if login encounters an error
     }
   }
 }
 
-
-export const loadTagsPage = (selected: string, page: number) => {
+export const loadTagsPage = (
+  selected: string,
+  page: number,
+  locale: string,
+) => {
   return async (dispatch: any) => {
     dispatch(tagsFunction.fetchStart()) // Dispatch loginStart action to set loading state
     try {
-      const filter = await getByTagName(selected,page)
+      const filter = await getByTagName(selected, page, locale)
       if (filter === null) {
         throw new Error('One or more required variables are null.')
       } else {
@@ -182,18 +188,17 @@ export const loadTagsPage = (selected: string, page: number) => {
         }, 2000)
       }
     } catch (error) {
-      console.error('Failed to fetch data:', error);
+      console.error('Failed to fetch data:', error)
       dispatch(tagsFunction.fetchSuccess()) // Dispatch loginFailure action if login encounters an error
     }
   }
 }
 
-
-export const loadProfilePage = (id: string) => {
+export const loadProfilePage = (id: string, locale: string) => {
   return async (dispatch: any) => {
     dispatch(profileFunction.fetchStart()) // Dispatch loginStart action to set loading state
     try {
-      const res = await getByUserId(id)
+      const res = await getByUserId(id, locale)
       if (res === null) {
         throw new Error('One or more required variables are null.')
       } else {
@@ -204,7 +209,7 @@ export const loadProfilePage = (id: string) => {
         }, 2000)
       }
     } catch (error) {
-      console.error('Failed to fetch data:', error);
+      console.error('Failed to fetch data:', error)
       dispatch(profileFunction.fetchSuccess()) // Dispatch loginFailure action if login encounters an error
     }
   }

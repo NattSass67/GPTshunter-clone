@@ -20,6 +20,8 @@ import { MinusIcon, PlusIcon } from '@heroicons/react/20/solid'
 import Image from 'next/image'
 import { useEffect } from 'react'
 import { GptTrend } from '@/types/gpt'
+import { useTranslations } from 'next-intl'
+import { title } from 'process'
 
 function Stats(props: { rate: number; rank: number }) {
   return (
@@ -55,13 +57,14 @@ function Stats(props: { rate: number; rank: number }) {
 export default function Store(props: {
   params: { locale: string; id: string }
 }) {
+  const t =useTranslations("Info")
   const loading = useAppSelector((state) => state.storeSession.loading)
   const info = useAppSelector((state) => state.storeSession.info)
   const dispatch = useAppDispatch()
   const { locale, id } = props.params
 
   useEffect(() => {
-    dispatch(loadStoreInfoPage(id))
+    dispatch(loadStoreInfoPage(id, locale))
   }, [])
 
   const content = info?.content.map((object, index) => (
@@ -156,7 +159,7 @@ export default function Store(props: {
                         className="h-5 w-5"
                         unoptimized
                       />
-                      By {info?.by}
+                      {t('by')} {info?.by}
                     </p>
                   </a>
                 </div>
@@ -223,7 +226,7 @@ export default function Store(props: {
                 />
                 <a href={info?.toUrl}>
                   <p className="font semibold mt-4 w-full rounded-lg dark:bg-zinc-800/50 dark:hover:bg-zinc-800 bg-zinc-800 hover:bg-zinc-900 p-4 text-center text-zinc-100">
-                    Use {info?.name} on ChatGPT
+                    {t('use')} {info?.name} {t('on')} ChatGPT
                   </p>
                 </a>
               </div>
@@ -244,12 +247,12 @@ export default function Store(props: {
             </div>
             <Carousel
               content={info?.more as CardBanner[]}
-              title={`More custom GPTs by ${info?.by}`}
+              title={`${t('more')} ${info?.by}`}
               isLoading={false}
             />
             <Carousel
               content={info?.alter as CardBanner[]}
-              title={`Best Alternative GPTs to ${info?.by}`}
+              title={`${t('alternative')} ${info?.name}`}
               isLoading={false}
             />
           </div>

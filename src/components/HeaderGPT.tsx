@@ -11,7 +11,6 @@ import {
 } from '@headlessui/react'
 
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
-//import { getSerch } from '@/services/request'
 import {
   Popover,
   PopoverButton,
@@ -27,15 +26,11 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
-
 import { Container } from './Container'
 import avatarImage from '@/images/GPTs.png'
 import { Bars3Icon } from '@heroicons/react/24/outline'
-
-const people = [
-  { id: 1, name: 'Leslie Alexander', url: '#' },
-  // More people...
-]
+import { useAppSelector, useAppDispatch } from '@/session/store'
+import { appFunction } from '@/session/app'
 
 function CloseIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -63,7 +58,7 @@ function ButtonNavbar(props: { children: React.ReactNode; href: string }) {
   return (
     <>
       <button
-        className="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition text-zinc-800 dark:text-zinc-200 dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
+        className="group rounded-full bg-white/90 px-3 py-2 text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20"
         onClick={() => {
           router.push(props.href)
         }}
@@ -76,13 +71,10 @@ function ButtonNavbar(props: { children: React.ReactNode; href: string }) {
 
 function ButtonChangeLang() {
   const local = usePathname().split('/')[1]
-  const router = useRouter()
   return (
-    <div
-      className="relative z-50 flex flex-col"
-    >
+    <div className="relative z-50 flex flex-col">
       <Popover>
-        <PopoverButton className="group rounded-full text-zinc-800 dark:text-zinc-200 bg-white/90 px-3 py-3 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition focus:outline-none dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20">
+        <PopoverButton className="group rounded-full bg-white/90 px-3 py-3 text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition focus:outline-none dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -108,18 +100,26 @@ function ButtonChangeLang() {
         >
           <PopoverPanel
             anchor="bottom"
-            className="z-50 divide-y divide-white/5 rounded-xl shadow-lg mt-2 bg-white/5 text-sm/6 [--anchor-gap:var(--spacing-5)]"
+            className="z-50 mt-2 divide-y divide-white/5 rounded-xl bg-white/5 text-sm/6 shadow-lg [--anchor-gap:var(--spacing-5)]"
           >
             <div className="z-20 flex flex-col rounded-lg bg-white dark:bg-zinc-800/50 ">
               <a
-                href='/th'
-                className={`flex w-12 justify-center hover:bg-zinc-100 dark:hover:bg-zinc-800  ${local=='th' ? "text-zinc-400 dark:text-zinc-200":"text-zinc-800 dark:text-zinc-400"}`}
+                href="/th"
+                className={`flex w-12 justify-center hover:bg-zinc-100 dark:hover:bg-zinc-800  ${
+                  local == 'th'
+                    ? 'text-zinc-400 dark:text-zinc-200'
+                    : 'text-zinc-800 dark:text-zinc-400'
+                }`}
               >
                 TH
               </a>
               <a
-                href='/en'
-                className={`flex w-12 justify-center hover:bg-zinc-100 dark:hover:bg-zinc-800 ${local=='en' ? "text-zinc-400 dark:text-zinc-200":"text-zinc-800 dark:text-zinc-400"}`}
+                href="/en"
+                className={`flex w-12 justify-center hover:bg-zinc-100 dark:hover:bg-zinc-800 ${
+                  local == 'en'
+                    ? 'text-zinc-400 dark:text-zinc-200'
+                    : 'text-zinc-800 dark:text-zinc-400'
+                }`}
               >
                 EN
               </a>
@@ -237,20 +237,6 @@ export function SearchBar() {
         </Dialog>
       </Transition>
     </>
-  )
-}
-
-function ChevronDownIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
-  return (
-    <svg viewBox="0 0 8 6" aria-hidden="true" {...props}>
-      <path
-        d="M1.75 1.75 4 4.25l2.25-2.5"
-        fill="none"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
   )
 }
 
@@ -393,7 +379,6 @@ function NavItem({
 }
 
 function DesktopNavigation(props: React.ComponentPropsWithoutRef<'nav'>) {
-  const [search, setSearchString] = useState('')
   const local = usePathname().split('/')[1]
   return (
     <nav {...props}>
@@ -411,6 +396,7 @@ function ThemeToggle() {
   let { resolvedTheme, setTheme } = useTheme()
   let otherTheme = resolvedTheme === 'dark' ? 'light' : 'dark'
   let [mounted, setMounted] = useState(false)
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     setMounted(true)
@@ -421,7 +407,10 @@ function ThemeToggle() {
       type="button"
       aria-label={mounted ? `Switch to ${otherTheme} theme` : 'Toggle theme'}
       className="group rounded-full bg-white/90 px-2 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
-      onClick={() => setTheme(otherTheme)}
+      onClick={() => {
+        setTheme(otherTheme)
+        dispatch(appFunction.setTheme(otherTheme))
+      }}
     >
       <SunIcon className="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden [@media(prefers-color-scheme:dark)]:fill-teal-50 [@media(prefers-color-scheme:dark)]:stroke-teal-500 [@media(prefers-color-scheme:dark)]:group-hover:fill-teal-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-teal-600" />
       <MoonIcon className="hidden h-6 w-6 fill-zinc-700 stroke-zinc-500 transition dark:block [@media(prefers-color-scheme:dark)]:group-hover:stroke-zinc-400 [@media_not_(prefers-color-scheme:dark)]:fill-teal-400/10 [@media_not_(prefers-color-scheme:dark)]:stroke-teal-500" />
@@ -478,12 +467,13 @@ function Avatar({
   )
 }
 
-export function HeaderPantip() {
+export function HeaderGPT() {
   let isHomePage = usePathname() === '/'
   let { resolvedTheme, setTheme } = useTheme()
   let headerRef = useRef<React.ElementRef<'div'>>(null)
   let avatarRef = useRef<React.ElementRef<'div'>>(null)
   let isInitial = useRef(true)
+  const theme = useAppSelector((state) => state.appSession.theme)
 
   useEffect(() => {
     let downDelay = avatarRef.current?.offsetTop ?? 0
@@ -578,7 +568,7 @@ export function HeaderPantip() {
     updateStyles()
     window.addEventListener('scroll', updateStyles, { passive: true })
     window.addEventListener('resize', updateStyles)
-    setTheme('dark')
+    setTheme(theme)
 
     return () => {
       window.removeEventListener('scroll', updateStyles)
@@ -591,7 +581,7 @@ export function HeaderPantip() {
   return (
     <>
       <header
-        className="pointer-events-none z-50 fixed top-0 flex w-full flex-none flex-col bg-white ring-zinc-100 ring-1 dark:ring-zinc-300/20 dark:bg-zinc-900 pb-4 shadow"
+        className="pointer-events-none fixed top-0 z-50 flex w-full flex-none flex-col bg-white pb-4 shadow ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20"
         // style={{
         //   height: 'var(--header-height)',
         //   marginBottom: 'var(--header-mb)',
@@ -613,25 +603,27 @@ export function HeaderPantip() {
             }}
           >
             <div className="flex gap-4">
-              <div className="flex flex-1 gap-x-2 relative">
+              <div className="relative flex flex-1 gap-x-2">
                 {true && (
                   <AvatarContainer>
                     <Avatar />
                   </AvatarContainer>
                 )}
-                <h2 className="hidden items-center text-2xl font-bold text-zinc-800 dark:text-zinc-200 min-[500px]:flex md:hidden lg:flex">
+                <h2 className="hidden items-center text-2xl font-bold text-zinc-800 min-[500px]:flex md:hidden lg:flex dark:text-zinc-200">
                   GPTs Hunter
-
                 </h2>
               </div>
-              <div className="absolute top-20 right-4 pointer-events-auto"> <ThemeToggle /> </div>
+              <div className="pointer-events-auto absolute right-4 top-20">
+                {' '}
+                <ThemeToggle />{' '}
+              </div>
               <div className="flex flex-col justify-end md:justify-center">
                 <DesktopNavigation className="pointer-events-auto hidden md:block" />
               </div>
               <div className="flex justify-end md:flex-1">
                 <div className="pointer-events-auto flex gap-x-2">
                   <ButtonChangeLang />
-                  <ButtonNavbar href="https://t.me/+rWwel19j-So2OWYx" >
+                  <ButtonNavbar href="https://t.me/+rWwel19j-So2OWYx">
                     <svg
                       width="64px"
                       height="64px"

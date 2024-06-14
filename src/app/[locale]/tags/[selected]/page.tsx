@@ -43,9 +43,9 @@ export default function Home(props: {
 
   useEffect(() => {
     if(props.searchParams.page){
-      dispatch(loadTagsPage(selected, parseInt(props.searchParams.page)))
+      dispatch(loadTagsPage(selected, parseInt(props.searchParams.page),locale))
     }else{
-      dispatch(loadTagsPage(selected, 1))
+      dispatch(loadTagsPage(selected, 1, locale))
     }
   }, [props.searchParams.page])
 

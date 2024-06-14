@@ -46,6 +46,7 @@ export function FilterSelect() {
     (state) => state.homeSession.filterSelect,
   )
 
+  const locale = usePathname().split('/')[1]
   const dispatch = useAppDispatch()
   const choosedFilter = useAppSelector(
     (state) => state.homeSession.filterChoosen,
@@ -54,7 +55,7 @@ export function FilterSelect() {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const onFilterClick = (name: string) => {
     dispatch(setFilterChoosen(name))
-    dispatch(fetchHomeFilterContent(name))
+    dispatch(fetchHomeFilterContent(name, locale))
   }
 
   const scrollLeft = () => {

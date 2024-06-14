@@ -1,22 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { Category,CardBanner } from '@/types/category'
 
-interface CategoryState {
+interface AppState {
   loading: boolean
   secondaryLoading: boolean
-  dropSelect: Category[]
-  dropChoosen: string
-  filteredContent: CardBanner[]         
-  totalBanner: number
+  theme: string
 }
 
-const initialState: CategoryState = {
+const initialState: AppState = {
   loading: false,
   secondaryLoading: false,
-  dropSelect: [],
-  dropChoosen: '',
-  filteredContent: [],
-  totalBanner: 0
+  theme: "dark",                                               
 }
 
 /* eslint no-param-reassign: ["error", { "props": true, "ignorePropertyModificationsFor": ["state"] }] */
@@ -36,21 +29,12 @@ const sessionSlice = createSlice({
     fetchSecondSuccess(state) {
       state.secondaryLoading = false // Set loading state to false when login succeeds
     },
-    setFilteredContent(state, action) {
-      state.filteredContent = action.payload
+    setTheme(state, action) {
+      state.theme = action.payload
     },
-    setDropChoosen(state, action) {
-      state.dropChoosen = action.payload
-    },
-    setExistCategory(state, action) {
-      state.dropSelect = action.payload
-    },
-    setTotalBanner(state, action) {
-        state.totalBanner = action.payload
-      },
   },
 })
 
-export const categoryFunction = sessionSlice.actions
+export const appFunction = sessionSlice.actions
 
 export default sessionSlice.reducer

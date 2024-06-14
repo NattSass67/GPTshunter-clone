@@ -13,6 +13,7 @@ import { CardBanner } from '@/types/category'
 import { Transition } from '@headlessui/react'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 
 export default function Home(props: {
@@ -21,6 +22,9 @@ export default function Home(props: {
 }) {
   const dispatch = useAppDispatch()
   const [initLoading, setInitLoading] = useState(true)
+  const {locale, selected}= props.params
+  const t = useTranslations('Category')
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setInitLoading(false)
@@ -43,9 +47,9 @@ export default function Home(props: {
 
   useEffect(() => {
     if(props.searchParams.page){
-      dispatch(fetchCategoryContent(props.params.selected, parseInt(props.searchParams.page)))
+      dispatch(fetchCategoryContent(props.params.selected, parseInt(props.searchParams.page), locale))
     } else {
-      dispatch(fetchCategoryContent(props.params.selected, 1))
+      dispatch(fetchCategoryContent(props.params.selected, 1, locale))
     }
   }, [props.searchParams.page])
 
@@ -92,7 +96,7 @@ export default function Home(props: {
               {props.params.selected}
             </h1>
             <p className="mx-auto mt-4 max-w-3xl text-base text-zinc-400">
-              Best GPTs For {props.params.selected} On The GPT Store
+              {t('best')} {props.params.selected} {t('on-store')}
             </p>
           </div>
           <div className="w-full">
