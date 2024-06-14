@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react'
 import { Transition } from '@headlessui/react'
 import { Loader } from '@/components/Loader'
 import { useTranslations } from 'next-intl'
+import logoApply from '@/images/logos/apply.svg'
 
 export default function Example() {
   const [initLoading, setInitLoading] = useState(true)
@@ -40,107 +41,129 @@ export default function Example() {
                 <p className="text-base font-semibold leading-7 text-zinc-400">
                   Posted on Feb 18, 2024
                 </p>
-                <h1 className="mt-2 max-w-2xl text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-200 sm:text-5xl">
+                <h1 className="mt-2 max-w-2xl text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-200">
                   {t('title')}
                 </h1>
                 <p className="mb-4 mt-2 max-w-lg text-sm text-zinc-600 sm:text-base dark:text-zinc-400">
                   {t('description')}
                 </p>
                 <hr />
-                <div className="my-10 grid max-w-xl grid-cols-1 gap-8 text-sm leading-7 text-zinc-600 sm:text-base lg:max-w-none lg:grid-cols-2 dark:text-zinc-400">
-                  <div>
-                    <p className="text-2xl font-semibold dark:text-zinc-200 text-zinc-800">
+                <div className="my-10 grid max-w-xl grid-cols-1 gap-8 text-sm leading-7 text-zinc-600 sm:text-base lg:max-w-none lg:grid-cols-3 dark:text-zinc-400">
+                  <div className="lg:col-span-2">
+                    <p className="text-2xl font-bold text-zinc-800 sm:text-3xl dark:text-zinc-200">
                       {t('backup')}
                     </p>
-                    <p className="mt-4">
-                      {t('backup-description')}
-                    </p>
-                    <p className="my-4">
-                      {t('backup-link')}:{' '}
+                    <p className="mt-4">{t('backup-description')}</p>
+                    <p className="my-4 flex items-center gap-x-1">
+                      {t('backup-link')}
                       <a
                         href="https://github.com/AINativeLab/gptstore-data-backup"
                         className="underline underline-offset-2 hover:text-zinc-500"
                       >
-                        {t('here')}
+                        <Image
+                          src={logoApply}
+                          alt=""
+                          className="h-5 w-5 hover:opacity-50"
+                          unoptimized
+                        />
                       </a>
                     </p>
+                  </div>
+                  <div>
                     <Image
                       src={sample1}
                       alt=""
-                      className="h-auto w-full rounded-lg shadow"
+                      className="max-h-64 w-full rounded-lg object-cover object-top shadow-xl"
                     />
                   </div>
-                  <div>
-                    <p className="text-2xl font-semibold dark:text-zinc-200 text-zinc-800">
+                  <div className="lg:col-span-2">
+                    <p className="text-2xl font-bold text-zinc-800 sm:text-3xl dark:text-zinc-200 ">
                       {t('500-gpt')}
                     </p>
-                    <p className="mt-4">
-                      {t('500-description')}
-                    </p>
-                    <p className="my-4">
-                      {t('500-link')}:{' '}
+                    <p className="mt-4">{t('500-description')}</p>
+                    <p className="my-4 flex items-center gap-x-1">
+                      {t('500-link')}
                       <a
                         href="https://github.com/AINativeLab/gptstore-data-backup"
                         className="underline underline-offset-2 hover:text-zinc-500"
                       >
-                       {t('here')}
+                        <Image
+                          src={logoApply}
+                          alt=""
+                          className="h-5 w-5 hover:opacity-50"
+                          unoptimized
+                        />
                       </a>
                     </p>
+                  </div>
+                  <div>
                     <Image
                       src={sample}
                       alt=""
-                      className="h-auto w-full rounded-lg shadow"
+                      className="h-64 w-full rounded-lg object-cover object-top shadow-xl"
                     />
                   </div>
                 </div>
                 <hr />
-                <div className="mt-2 flex text-sm sm:text-base">
-                  <div>
-                    <p className="mt-8 text-2xl font-semibold dark:text-zinc-200 text-zinc-800">
+                <div className="mt-2 grid grid-cols-1 text-sm sm:text-base lg:grid-cols-3">
+                  <div className="col-span-3">
+                    <p className="mt-8 text-2xl font-bold text-zinc-800 sm:text-3xl dark:text-zinc-200">
                       {t('download')}
                     </p>
                     <p className="mt-4 text-zinc-600 dark:text-zinc-400">
                       {t('download-description')}
                     </p>
-                    <p className="mt-4 text-zinc-600 dark:text-zinc-400">
-                        {t('1-month')}
+                    <p className="mt-4 flex items-center gap-x-1 text-zinc-600 dark:text-zinc-400">
+                      {t('1-month')}
                       <a
                         href="https://store.ai.ls/checkout/buy/a9f28827-21c2-4d0f-9605-0a921ac2e44d"
                         className="underline underline-offset-2 hover:text-zinc-500"
                       >
-                        {t('here')}
+                        <Image
+                          src={logoApply}
+                          alt=""
+                          className="h-5 w-5 hover:opacity-50"
+                          unoptimized
+                        />
                       </a>
                     </p>
 
-                    <p className="mt-4 text-zinc-600 dark:text-zinc-400">
-                      {t('renewal')}:{' '}
+                    <p className="flex items-center gap-x-1 text-zinc-600 dark:text-zinc-400">
+                      {t('renewal')}{' '}
                       <a
                         href="https://store.ai.ls/buy/dc7c96a6-95c6-4b9b-9369-1861a060bfb1"
                         className="underline underline-offset-2 hover:text-zinc-500"
                       >
-                        {t('here')}
+                        <Image
+                          src={logoApply}
+                          alt=""
+                          className="h-5 w-5 hover:opacity-50"
+                          unoptimized
+                        />
                       </a>
                     </p>
-                    <p className="mt-4 text-zinc-600 dark:text-zinc-400">
+                    <p className="mt-4 text-zinc-600 dark:text-zinc-400 ">
                       {t('note-1')}{' '}
                       <a
                         href="https://store.ai.ls/buy/dc7c96a6-95c6-4b9b-9369-1861a060bfb1"
-                        className="underline underline-offset-2 hover:text-zinc-500"
+                        className="underline underline-offset-2 hover:opacity-50"
                       >
                         hi@ai.ci
                       </a>{' '}
                       {t('note-2')}
                     </p>
+                  </div>
+                  <div className="col-span-1 lg:col-span-3">
+                    <p className="mt-8 text-2xl sm:text-3xl font-bold text-zinc-800 dark:text-zinc-200">
+                      {t('sample')}
+                    </p>
                     <div>
-                      <p className="mt-8 text-2xl font-semibold dark:text-zinc-200 text-zinc-800">{t('sample')}</p>
-                      <div>
-                        <textarea
-                          rows={40}
-                          className="no-scrollbar mt-4 w-full resize-none rounded-2xl bg-zinc-800 p-4 text-sm text-zinc-50 focus:outline-none sm:text-base "
-                          readOnly
-                          value={jsonString}
-                        />
-                      </div>
+                      <textarea
+                        rows={40}
+                        className="no-scrollbar mt-4 w-full resize-none rounded-2xl bg-zinc-800 p-4 text-sm text-zinc-50 focus:outline-none sm:text-base "
+                        readOnly
+                        value={jsonString}
+                      />
                     </div>
                   </div>
                 </div>
@@ -304,5 +327,4 @@ const jsonObject = [
   },
 ]
 
-const jsonString = JSON.stringify(jsonObject, null, 2) // Pretty-print with 2 spaces 
-  
+const jsonString = JSON.stringify(jsonObject, null, 2) // Pretty-print with 2 spaces
