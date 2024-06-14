@@ -6,8 +6,9 @@ import { useAppDispatch, useAppSelector } from '@/session/store'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 import Link from 'next/link'
-import { usePathname, useRouter } from 'next/navigation'
+import { useRouter,usePathname } from 'next/navigation'
 import { KeyboardEvent, useEffect, useRef, useState } from 'react'
+import { useAppRoute } from '@/service/custom'
 
 const variantStyles = {
   primary:
@@ -165,8 +166,7 @@ export function FilterSelect() {
 }
 
 export function SearchBarRedirect() {
-  const router = useRouter()
-  const local = usePathname().split('/')[1]
+  const router = useAppRoute()
   const [query, setQuery] = useState<string>('')
   const [keyword, setKeyword] = useState<string[]>([])
   const onSearchChange = async (key: string) => {
@@ -179,7 +179,7 @@ export function SearchBarRedirect() {
       key={index}
       onClick={() => {
         setQuery(object)
-        router.push('/' + local + '/search/' + object + '?page=1')
+        router.push('/search/' + object + '?page=1')
       }}
       className="search bg-white p-2 text-sm hover:bg-zinc-700/100 dark:text-zinc-200 sm:text-base dark:bg-zinc-800/90"
     >
@@ -193,7 +193,7 @@ export function SearchBarRedirect() {
       if (query.length == 0) {
         return
       }
-      router.push('/' + local + '/search/' + query + '?page=1')
+      router.push('/search/' + query + '?page=1')
     }
   }
 
@@ -231,7 +231,7 @@ export function SearchBarRedirect() {
               if (query.length == 0) {
                 return
               }
-              router.push('/' + local + '/search/' + query + '?page=1')
+              router.push('/search/' + query + '?page=1')
             }}
             className="group my-2 rounded-full px-3 py-0.5 transition hover:scale-110 sm:py-1.5 dark:bg-zinc-800 "
           >

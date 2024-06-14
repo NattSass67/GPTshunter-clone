@@ -46,12 +46,9 @@ export default function Submit() {
                   {t('title')}
                 </h2>
                 <div
-                  onClick={() => {
-                    router.push('https://gapier.com/?utm_source=gptshunter')
-                  }}
-                  className="mx-auto my-4 max-w-xl text-center text-base leading-8 text-zinc-400 hover:text-zinc-600"
+                  className="mx-auto my-4 max-w-2xl text-center text-base leading-8 text-zinc-400 hover:text-zinc-600"
                 >
-                  {t('description')}
+                  <a href='https://gapier.com/?utm_source=gptshunter'>{t('description')}</a>
                 </div>
               </div>
               <SubmitSimple />

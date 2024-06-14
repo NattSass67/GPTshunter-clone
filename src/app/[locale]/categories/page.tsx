@@ -3,7 +3,7 @@
 'use client'
 
 import { Container } from '@/components/Container'
-import { useRouter, usePathname } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { Transition } from '@headlessui/react'
 import { useAppDispatch, useAppSelector } from '@/session/store'
@@ -70,14 +70,14 @@ function Home() {
 }
 
 function AllCategories() {
-  const local = usePathname().split('/')[1]
+  const locale = usePathname().split('/')[1]
   const allCategories = useAppSelector(
     (state) => state.categorySession.dropSelect,
   )
 
   const categoryList = allCategories.map((object, index) => (
     <a
-      href={"/"+local+"/categories/"+object.name+"?page=1"}
+      href={"/"+locale+"/categories/"+object.name+"?page=1"}
       key={index}
       className="w-full flex-none p-4 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-300/50 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 flex justify-between dark:text-zinc-200 text-sm sm:text-base"
     >

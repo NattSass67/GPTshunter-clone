@@ -17,9 +17,8 @@ export default function Example() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setInitLoading(false)
-    }, 2000) // Set the delay to 1 second
+    }, 2000)
 
-    // Cleanup the timer on component unmount
     return () => clearTimeout(timer)
   }, [])
 
