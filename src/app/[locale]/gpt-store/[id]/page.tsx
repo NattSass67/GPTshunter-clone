@@ -53,12 +53,10 @@ function Stats(props: { rate: number; rank: number }) {
   )
 }
 
-export default function Store(props: {
-  params: { id: string }
-}) {
-  const router=useAppRoute()
-  const locale=router.locale
-  const t =useTranslations("Info")
+export default function Store(props: { params: { id: string } }) {
+  const router = useAppRoute()
+  const locale = router.locale
+  const t = useTranslations('Info')
   const loading = useAppSelector((state) => state.storeSession.loading)
   const info = useAppSelector((state) => state.storeSession.info)
   const dispatch = useAppDispatch()
@@ -69,9 +67,14 @@ export default function Store(props: {
   }, [])
 
   const content = info?.content.map((object, index) => (
-    <div key={index}>
-      <p className="text-2xl font-semibold text-zinc-800 dark:text-zinc-200">{object.name}</p>
-      <p className="mt-4 text-zinc-600 dark:text-zinc-400">{object.description}</p>
+    <div key={index} className="mb-8">
+      <p className="text-2xl font-semibold text-zinc-800 dark:text-zinc-200">
+        {object.name}
+      </p>
+      <p className="mt-4 text-zinc-600 dark:text-zinc-400">
+        {object.description}
+      </p>
+      <hr className="mt-8 border-zinc-300 dark:border-zinc-300/50" />
     </div>
   ))
 
@@ -86,7 +89,7 @@ export default function Store(props: {
       {({ open }) => (
         <>
           <dt>
-            <DisclosureButton className="flex w-full items-start justify-between text-left text-zinc-800 dark:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-800/50">
+            <DisclosureButton className="flex w-full items-start justify-between text-left text-zinc-800 hover:bg-zinc-50 dark:text-zinc-200 dark:hover:bg-zinc-800/50">
               <span className="text-base font-semibold leading-7">
                 {object.question}
               </span>
@@ -122,7 +125,7 @@ export default function Store(props: {
   const tools = info?.tools?.map((object, index) => (
     <div
       key={index}
-      className="flex-none rounded-full bg-zinc-100 px-3 py-1.5 text-zinc-800 dark:text-zinc-400 dark:bg-inherit" 
+      className="flex-none rounded-full bg-zinc-100 px-3 py-1.5 text-zinc-800 dark:bg-inherit dark:text-zinc-400"
     >
       <p className="text-center text-[14px]">{object}</p>
     </div>
@@ -145,15 +148,15 @@ export default function Store(props: {
                   alt=""
                   className="h-16 w-16 rounded-full"
                 />
-                <h1 className="mt-2 max-w-2xl text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-200 sm:text-5xl">
+                <h1 className="mt-2 max-w-2xl text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-200">
                   {info?.name}
                 </h1>
                 <div className="flex">
                   <a
                     href={'/' + locale + '/profile/' + info?.userId}
-                    className="flex text-zinc-800 dark:text-zinc-200 hover:text-zinc-400"
+                    className="flex text-zinc-800 hover:text-zinc-400 dark:text-zinc-200"
                   >
-                    <p className="mb-4 mt-2 text-sm sm:text-base flex items-center gap-x-1">
+                    <p className="mb-4 mt-2 flex items-center gap-x-1 text-sm sm:text-base">
                       <Image
                         src={logoApply}
                         alt=""
@@ -165,71 +168,82 @@ export default function Store(props: {
                   </a>
                 </div>
 
-                <hr className="border-zinc-300/50" />
-                <div className="my-10 grid max-w-2xl grid-cols-1 gap-8 text-sm leading-7 sm:text-base lg:max-w-none lg:grid-cols-2">
-                  {content}
-                  <div>
-                    <p className="text-2xl font-semibold text-zinc-800 dark:text-zinc-200">
-                      GPT Prompt Starters
-                    </p>
-                    {promptStart}
+                <hr className="border-zinc-300 dark:border-zinc-300/50" />
+                <div className="my-10 grid max-w-2xl grid-cols-1 lg:gap-8 text-sm leading-7 sm:text-base lg:max-w-none lg:grid-cols-5">
+                  <div className="col-span-3">
+                    {content}
+                    <div className="mb-8">
+                      <p className="text-2xl font-semibold text-zinc-800 dark:text-zinc-200">
+                        GPT Prompt Starters
+                      </p>
+                      {promptStart}
+                      <hr className="mt-8 border-zinc-300 dark:border-zinc-300/50" />
+                    </div>
+                    <div className="mb-8">
+                      <p className="text-2xl font-semibold">
+                        {info?.name} FAQs
+                      </p>
+                      {faqs}
+                      <hr className="mt-8 border-zinc-300 dark:border-zinc-300/50" />
+                    </div>
+                    <div className="grid grid-cols-2 gap-y-2">
+                      <p className="col-span-2 text-2xl font-semibold text-zinc-800 dark:text-zinc-200">
+                        {' '}
+                        GPT Information
+                      </p>
+                      <p className="text-sm text-zinc-600 sm:text-base dark:text-zinc-400">
+                        {' '}
+                        • Hunted: {info?.information.hunted}
+                      </p>
+                      <p className="text-sm text-zinc-600 sm:text-base dark:text-zinc-400">
+                        {' '}
+                        • Updated: {info?.information.updated}
+                      </p>
+                      <p className="text-sm text-zinc-600 sm:text-base dark:text-zinc-400">
+                        {' '}
+                        • Crawled: {info?.information.crawled}
+                      </p>
+                      <p className="text-sm text-zinc-600 sm:text-base dark:text-zinc-400">
+                        {' '}
+                        • Category: {info?.information.category}
+                      </p>
+                      <p className="text-sm text-zinc-600 sm:text-base dark:text-zinc-400">
+                        {' '}
+                        • Chats:{' '}
+                        {info?.information.chat
+                          ? Math.floor(info?.information.chat / 1000)
+                          : 0}
+                        K+
+                      </p>
+                      <a
+                        href={'/' + locale + '/profile/' + info?.userId}
+                        className="text-sm text-zinc-600 hover:text-zinc-500 sm:text-base dark:text-zinc-400"
+                      >
+                        <p className=""> • Builder Profile</p>
+                      </a>
+                      <a href={info?.toUrl} className="col-span-2">
+                        <p className="font semibold mt-6 w-full rounded-lg bg-zinc-800 p-4 text-center text-zinc-100 hover:bg-zinc-900 dark:bg-zinc-800/50 dark:hover:bg-zinc-800">
+                          {t('use')} {info?.name} {t('on')} ChatGPT
+                        </p>
+                      </a>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-2xl font-semibold">{info?.name} FAQs</p>
-                    {faqs}
-                  </div>
-                  <div className="grid grid-cols-2 gap-y-2">
-                    <p className="col-span-2 text-2xl font-semibold text-zinc-800 dark:text-zinc-200">
-                      {' '}
-                      GPT Information
-                    </p>
-                    <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
-                      {' '}
-                      • Hunted: {info?.information.hunted}
-                    </p>
-                    <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
-                      {' '}
-                      • Updated: {info?.information.updated}
-                    </p>
-                    <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
-                      {' '}
-                      • Crawled: {info?.information.crawled}
-                    </p>
-                    <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
-                      {' '}
-                      • Category: {info?.information.category}
-                    </p>
-                    <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
-                      {' '}
-                      • Chats:{' '}
-                      {info?.information.chat
-                        ? Math.floor(info?.information.chat / 1000)
-                        : 0}
-                      K+
-                    </p>
-                    <a
-                      href={'/' + locale + '/profile/' + info?.userId}
-                      className="text-sm hover:text-zinc-500 sm:text-base text-zinc-600 dark:text-zinc-400"
-                    >
-                      <p className=""> • Builder Profile</p>
-                    </a>
-                  </div>
-                  <div className="flex w-full flex-col justify-end gap-y-1 ">                                                                                                                                                                                                                                                                             
-                    <p className="col-span-2 text-2xl font-semibold text-zinc-800 dark:text-zinc-200">
-                      GPT Conversation Trend
-                    </p>
-                    {info && <MyChart data={info.trend} />}
+                  <div className="lg:col-span-2 flex w-full flex-col gap-y-4 mt-4 lg:mt-0">
+                    <div className="flex flex-col gap-y-4 lg:sticky lg:top-28">
+                      <div className="rounded-lg p-6 shadow dark:bg-zinc-800/50 w-full">
+                        <p className="col-span-2 text-2xl font-semibold text-zinc-800 dark:text-zinc-200">
+                          GPT Conversation Trend
+                        </p>
+                        {info && <MyChart data={info.trend} />}
+                      </div>
+                      <Stats
+                        rank={info?.rank as number}
+                        rate={info?.rate as number}
+                      />
+                    </div>
                   </div>
                 </div>
-                <Stats
-                  rank={info?.rank as number}
-                  rate={info?.rate as number}
-                />
-                <a href={info?.toUrl}>
-                  <p className="font semibold mt-4 w-full rounded-lg dark:bg-zinc-800/50 dark:hover:bg-zinc-800 bg-zinc-800 hover:bg-zinc-900 p-4 text-center text-zinc-100">
-                    {t('use')} {info?.name} {t('on')} ChatGPT
-                  </p>
-                </a>
+                <hr className="mt-8 border-zinc-300 dark:border-zinc-300/50" />
               </div>
             </div>
           </div>

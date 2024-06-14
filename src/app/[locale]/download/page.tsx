@@ -47,7 +47,7 @@ export default function Example() {
                 <p className="mb-4 mt-2 max-w-lg text-sm text-zinc-600 sm:text-base dark:text-zinc-400">
                   {t('description')}
                 </p>
-                <hr />
+                <hr className="dark:border-zinc-300/50 mt-8 border-zinc-300" />
                 <div className="my-10 grid max-w-2xl grid-cols-1 gap-8 text-sm leading-7 text-zinc-600 sm:text-base lg:max-w-none lg:grid-cols-3 dark:text-zinc-400">
                   <div className="lg:col-span-2">
                     <p className="text-2xl font-bold text-zinc-800 sm:text-3xl dark:text-zinc-200">
@@ -106,7 +106,7 @@ export default function Example() {
                     />
                   </div>
                 </div>
-                <hr />
+                <hr className="dark:border-zinc-300/50 mt-8 border-zinc-300" />
                 <div className="mt-2 grid grid-cols-1 text-sm sm:text-base lg:grid-cols-3">
                   <div className="col-span-3">
                     <p className="mt-8 text-2xl font-bold text-zinc-800 sm:text-3xl dark:text-zinc-200">
