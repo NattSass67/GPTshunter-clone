@@ -10,6 +10,7 @@ import { useAppDispatch, useAppSelector } from '@/session/store'
 import { useTranslations } from 'next-intl'
 import { loadCategoryPage } from '@/session/manager'
 import { Loader } from '@/components/Loader'
+import { useAppRoute } from '@/service/custom'
 
 export default function Categories() {
   const [initLoading, setInitLoading] = useState(true)
@@ -70,7 +71,8 @@ function Home() {
 }
 
 function AllCategories() {
-  const locale = usePathname().split('/')[1]
+  const router=useAppRoute()
+  const locale=router.locale
   const allCategories = useAppSelector(
     (state) => state.categorySession.dropSelect,
   )

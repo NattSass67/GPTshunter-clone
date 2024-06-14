@@ -1,4 +1,4 @@
-import { cardBannerArraySchema, cardBannerSchema } from './category'
+import { cardBannerSchema } from './category'
 import { z } from 'zod'
 
 const profileSchema = z.object({
@@ -9,3 +9,4 @@ const profileSchema = z.object({
 
 export type Profile = z.infer<typeof profileSchema >;
 export {profileSchema}
+        

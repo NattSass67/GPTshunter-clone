@@ -14,11 +14,16 @@ import logoComment from '@/images/logos/comment.svg'
 import Image from 'next/image'
 import { formatNumber } from '@/service/format'
 import { loadSearchPage } from '@/session/manager'
+import { useAppRoute } from '@/service/custom'
+import { useTranslations } from 'next-intl'
 
 export default function Home(props: {
-  params: { locale: string; query: string }
+  params: { query: string }
   searchParams: { page: string }
 }) {
+  const t = useTranslations("Search")
+  const router=useAppRoute()
+  const locale=router.locale
   const [initLoading, setInitLoading] = useState(true)
   const dispatch = useAppDispatch()
   const isLoading = useAppSelector((state) => state.searchSession.loading)
@@ -37,9 +42,9 @@ export default function Home(props: {
 
   useEffect(() => {
     if(props.searchParams.page) {
-      dispatch(loadSearchPage(props.params.query, parseInt(props.searchParams.page)))
+      dispatch(loadSearchPage(props.params.query, parseInt(props.searchParams.page),locale))
     }else{
-      dispatch(loadSearchPage(props.params.query, 1))
+      dispatch(loadSearchPage(props.params.query, 1, locale))
     }
   }, [props.searchParams.page])
 
@@ -50,7 +55,7 @@ export default function Home(props: {
       className={`w-1/2 flex-none p-4 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 lg:w-1/3`}
     >
       <Card.Link
-        href={'/' + props.params.locale + '/gpt-store/' + project.id}
+        href={'/' + locale + '/gpt-store/' + project.id}
       ></Card.Link>
       <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white">
         <Image src={project.logo} alt="" className="h-8 w-8" unoptimized />
@@ -86,7 +91,7 @@ export default function Home(props: {
               {decodeURIComponent(props.params.query)}
             </h1>
             <p className="mx-auto mt-4 max-w-3xl text-center text-base text-zinc-500">
-              Discover The Best GPTs For{' '}
+              {t('discover')}{' '}
               {decodeURIComponent(props.params.query)}
             </p>
             <SearchBarRedirect />

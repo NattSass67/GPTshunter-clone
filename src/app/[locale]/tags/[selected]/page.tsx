@@ -14,13 +14,18 @@ import { Container } from '@/components/Container'
 import { Transition } from '@headlessui/react'
 import { CardBanner } from '@/types/category'
 import { Pagination } from '@/components/Button'
+import { useAppRoute } from '@/service/custom'
+import { useTranslations } from 'next-intl'
 
 export default function Home(props: {
-  params: { locale: string; selected: string }
+  params: { selected: string }
   searchParams: { page: string }
 }) {
+  const t =useTranslations("Tag")
+  const router = useAppRoute()
+  const locale = router.locale
   const pathName = usePathname()
-  const { selected, locale } = props.params
+  const { selected } = props.params
   const dispatch = useAppDispatch()
   const [initLoading, setInitLoading] = useState<boolean>(true)
   useEffect(() => {
@@ -97,10 +102,10 @@ export default function Home(props: {
         <Container className="mt-16">
           <div className="w-full pb-12 pt-16 text-center">
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-200">
-              Best {decodeURIComponent(selected)} GPTs
+              {t('best-front')} {decodeURIComponent(selected)} GPTs {t('best-back')}
             </h1>
             <p className="mx-auto mt-4 max-w-3xl text-base text-zinc-500">
-               {totalBanner} GPTs founded for {decodeURIComponent(selected)} on the official GPT store
+               {totalBanner} GPTs {t('founded')} {decodeURIComponent(selected)} {t('on')} official GPT store
             </p>
           </div>
           <div className="w-full">
@@ -135,7 +140,7 @@ export default function Home(props: {
                 </div>
                 <div>
                   <p className="mt-4 text-lg font-bold tracking-tight text-zinc-800 dark:text-zinc-200">
-                    You may also want to explore the related {decodeURIComponent(selected)} on the GPT store
+                  {t('related')} {decodeURIComponent(selected)} {t('on')} GPT store
                   </p>
                   <div className="no-scrollbar mx-0 mt-2 flex flex-row gap-x-2 overflow-x-auto">
                     {tags}

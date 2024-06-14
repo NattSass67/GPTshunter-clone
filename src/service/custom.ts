@@ -8,11 +8,15 @@ const useAppRoute = () => {
 
   const push = (path: string) => {
     router.push("/"+locale + path)
-  }
+  }                       
 
   return {
     push,
+    locale: locale
   }
 }
 
+
 export {useAppRoute}
+
+

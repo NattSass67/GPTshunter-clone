@@ -44,6 +44,16 @@
     "use": "use",
     "on": "on",
     "more": "More custom GPTs by",
-    "alternative": "Best Alternative GPTs to"
-  }
-  }
+      "alternative": "Best Alternative GPTs to"
+    },
+    "Tag": {
+      "founded": "founded for",
+      "on": "on the",
+      "best-front": "Best",
+      "best-back": "",
+      "related": "You may also want to explore the related"
+    },
+    "Search": {
+      "discover": "Discover The Best GPTs For"
+    }
+}

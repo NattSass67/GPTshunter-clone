@@ -10,6 +10,7 @@ import { useAppDispatch, useAppSelector } from '@/session/store'
 import { CardBanner } from '@/types/category'
 import logoApply from '@/images/logos/apply.svg'
 import { MyChart } from '@/components/Chart'
+import { useAppRoute } from '@/service/custom'
 import {
   Disclosure,
   DisclosureButton,
@@ -19,9 +20,7 @@ import {
 import { MinusIcon, PlusIcon } from '@heroicons/react/20/solid'
 import Image from 'next/image'
 import { useEffect } from 'react'
-import { GptTrend } from '@/types/gpt'
 import { useTranslations } from 'next-intl'
-import { title } from 'process'
 
 function Stats(props: { rate: number; rank: number }) {
   return (
@@ -55,13 +54,15 @@ function Stats(props: { rate: number; rank: number }) {
 }
 
 export default function Store(props: {
-  params: { locale: string; id: string }
+  params: { id: string }
 }) {
+  const router=useAppRoute()
+  const locale=router.locale
   const t =useTranslations("Info")
   const loading = useAppSelector((state) => state.storeSession.loading)
   const info = useAppSelector((state) => state.storeSession.info)
   const dispatch = useAppDispatch()
-  const { locale, id } = props.params
+  const { id } = props.params
 
   useEffect(() => {
     dispatch(loadStoreInfoPage(id, locale))

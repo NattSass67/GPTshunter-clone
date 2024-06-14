@@ -13,13 +13,15 @@ import { Transition } from '@headlessui/react'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { useAppRoute } from '@/service/custom'
 
 export default function Home(props: {
-  params: { locale: string; id: string }
+  params: { id: string }
   searchParams: { page: string }
 }) {
-  const pathName = usePathname()
-  const { id, locale } = props.params
+  const router=useAppRoute()
+  const { id } = props.params
+  const locale = router.locale
   const dispatch = useAppDispatch()
   const [initLoading, setInitLoading] = useState<boolean>(true)
   useEffect(() => {

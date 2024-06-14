@@ -15,14 +15,17 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
+import { useAppRoute } from '@/service/custom'
 
 export default function Home(props: {
-  params: { locale: string; selected: string }
+  params: { selected: string }
   searchParams: { page: string }
 }) {
   const dispatch = useAppDispatch()
   const [initLoading, setInitLoading] = useState(true)
-  const {locale, selected}= props.params
+  const {selected}= props.params
+  const router=useAppRoute()
+  const locale= router.locale
   const t = useTranslations('Category')
 
   useEffect(() => {
@@ -47,9 +50,9 @@ export default function Home(props: {
 
   useEffect(() => {
     if(props.searchParams.page){
-      dispatch(fetchCategoryContent(props.params.selected, parseInt(props.searchParams.page), locale))
+      dispatch(fetchCategoryContent(selected, parseInt(props.searchParams.page), locale))
     } else {
-      dispatch(fetchCategoryContent(props.params.selected, 1, locale))
+      dispatch(fetchCategoryContent(selected, 1, locale))
     }
   }, [props.searchParams.page])
 
@@ -60,7 +63,7 @@ export default function Home(props: {
       className={`w-1/2 flex-none p-4 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 lg:w-1/3`}
     >
       <Card.Link
-        href={'/' + props.params.locale + '/gpt-store/' + project.id}
+        href={'/' + locale + '/gpt-store/' + project.id}
       ></Card.Link>
       <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white">
         <Image src={project.logo} alt="" className="h-8 w-8" unoptimized />
@@ -93,10 +96,10 @@ export default function Home(props: {
         <Container className="mt-16">
           <div className="w-full pb-12 pt-16 text-center">
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-200">
-              {props.params.selected}
+              {selected}
             </h1>
             <p className="mx-auto mt-4 max-w-3xl text-base text-zinc-400">
-              {t('best')} {props.params.selected} {t('on-store')}
+              {t('best')} {selected} {t('on-store')}
             </p>
           </div>
           <div className="w-full">
