@@ -51,20 +51,18 @@ export default function Example() {
                 <div className="my-10 grid max-w-xl grid-cols-1 gap-8 text-sm leading-7 text-zinc-600 sm:text-base lg:max-w-none lg:grid-cols-2 dark:text-zinc-400">
                   <div>
                     <p className="text-2xl font-semibold dark:text-zinc-200 text-zinc-800">
-                      GPT Store Daily Trending Data Backup
+                      {t('backup')}
                     </p>
                     <p className="mt-4">
-                      GPT Store's daily data is meticulously scraped and saved
-                      on GitHub. This allows you to explore the daily GPTs
-                      trends in the archive folder.
+                      {t('backup-description')}
                     </p>
                     <p className="my-4">
-                      For detailed insights and historical trends, visit:{' '}
+                      {t('backup-link')}:{' '}
                       <a
                         href="https://github.com/AINativeLab/gptstore-data-backup"
                         className="underline underline-offset-2 hover:text-zinc-500"
                       >
-                        Here
+                        {t('here')}
                       </a>
                     </p>
                     <Image
@@ -75,22 +73,18 @@ export default function Example() {
                   </div>
                   <div>
                     <p className="text-2xl font-semibold dark:text-zinc-200 text-zinc-800">
-                      Top 500 GPTs Daily Session Data Backup from GPT Store
+                      {t('500-gpt')}
                     </p>
                     <p className="mt-4">
-                      We consistently gather and back up data from our database
-                      to provide a comprehensive view of the top 500 GPTs based
-                      on daily session counts. This data is crucial for
-                      understanding the ever-evolving landscape of best GPTs and
-                      their usage patterns.
+                      {t('500-description')}
                     </p>
                     <p className="my-4">
-                      Access this repository for in-depth analysis:{' '}
+                      {t('500-link')}:{' '}
                       <a
                         href="https://github.com/AINativeLab/gptstore-data-backup"
                         className="underline underline-offset-2 hover:text-zinc-500"
                       >
-                        Here
+                       {t('here')}
                       </a>
                     </p>
                     <Image
@@ -104,46 +98,42 @@ export default function Example() {
                 <div className="mt-2 flex text-sm sm:text-base">
                   <div>
                     <p className="mt-8 text-2xl font-semibold dark:text-zinc-200 text-zinc-800">
-                      Download the Complete GPTs Dataset
+                      {t('download')}
                     </p>
                     <p className="mt-4 text-zinc-600 dark:text-zinc-400">
-                      For those requiring access to the entire dataset of All
-                      GPTs from our website, we offer a comprehensive solution.
+                      {t('download-description')}
                     </p>
                     <p className="mt-4 text-zinc-600 dark:text-zinc-400">
-                      You can buy it for 1 month($99):{' '}
+                        {t('1-month')}
                       <a
                         href="https://store.ai.ls/checkout/buy/a9f28827-21c2-4d0f-9605-0a921ac2e44d"
                         className="underline underline-offset-2 hover:text-zinc-500"
                       >
-                        Here
+                        {t('here')}
                       </a>
                     </p>
 
                     <p className="mt-4 text-zinc-600 dark:text-zinc-400">
-                      You can also opt for a monthly payment ($90/mo) with
-                      automatic renewal:{' '}
+                      {t('renewal')}:{' '}
                       <a
                         href="https://store.ai.ls/buy/dc7c96a6-95c6-4b9b-9369-1861a060bfb1"
                         className="underline underline-offset-2 hover:text-zinc-500"
                       >
-                        Here
+                        {t('here')}
                       </a>
                     </p>
                     <p className="mt-4 text-zinc-600 dark:text-zinc-400">
-                      It should be noted that this product does not support
-                      refunds. Please send your GitHub id to{' '}
+                      {t('note-1')}{' '}
                       <a
                         href="https://store.ai.ls/buy/dc7c96a6-95c6-4b9b-9369-1861a060bfb1"
                         className="underline underline-offset-2 hover:text-zinc-500"
                       >
                         hi@ai.ci
                       </a>{' '}
-                      to get invited to our GitHub data repo before downloading
-                      data.
+                      {t('note-2')}
                     </p>
                     <div>
-                      <p className="mt-8 text-2xl font-semibold dark:text-zinc-200 text-zinc-800">Sample</p>
+                      <p className="mt-8 text-2xl font-semibold dark:text-zinc-200 text-zinc-800">{t('sample')}</p>
                       <div>
                         <textarea
                           rows={40}

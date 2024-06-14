@@ -100,3 +100,4 @@ export function MyChart({ data }: { data: GptTrend}) {
     </div>
   )
 }
+         

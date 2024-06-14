@@ -17,7 +17,21 @@
     ,
     "Download": {
       "title": "Download Daily GPTs Data on the GPT Store",
-      "description": "GPTs Hunter stands as the most extensive GPTs directory to date. We're proud to present two major open-source data projects"
+      "description": "GPTs Hunter stands as the most extensive GPTs directory to date. We're proud to present two major open-source data projects",
+      "backup": "GPT Store daily trending data backup",
+      "backup-description": "GPT Store's daily data is meticulously scraped and saved on GitHub. This allows you to explore the daily GPTs trends in the archive folder. in thai version",
+      "backup-link": "For detailed insights and historical trends, visit",
+      "500-gpt": "Top 500 GPTs daily session data backup from GPT Store",
+      "500-description": "We consistently gather and back up data from our database to provide a comprehensive view of the top 500 GPTs based on daily session counts. This data is crucial for understanding the ever-evolving landscape of best GPTs and their usage patterns.",
+      "500-link": "Access this repository for in-depth analysis",
+      "download": "Download the Complete GPTs Dataset",
+      "here":"here",
+      "download-description": "For those requiring access to the entire dataset of All GPTs from our website, we offer a comprehensive solution.",
+      "1-month": "You can buy it for 1 month($99)",
+      "renewal": "You can also opt for a monthly payment ($90/mo) with automatic renewal",
+      "note-1": "It should be noted that this product does not support refunds. Please send your GitHub id to ",
+      "note-2": " to get invited to our GitHub data repo before downloading data.",
+      "sample": "Sample"
     }
     ,
     "Submit": {
