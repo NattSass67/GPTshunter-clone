@@ -48,24 +48,25 @@ export default function Example() {
                   {t('description')}
                 </p>
                 <hr />
-                <div className="my-10 grid max-w-xl grid-cols-1 gap-8 text-sm leading-7 text-zinc-600 sm:text-base lg:max-w-none lg:grid-cols-3 dark:text-zinc-400">
+                <div className="my-10 grid max-w-2xl grid-cols-1 gap-8 text-sm leading-7 text-zinc-600 sm:text-base lg:max-w-none lg:grid-cols-3 dark:text-zinc-400">
                   <div className="lg:col-span-2">
                     <p className="text-2xl font-bold text-zinc-800 sm:text-3xl dark:text-zinc-200">
                       {t('backup')}
                     </p>
                     <p className="mt-4">{t('backup-description')}</p>
-                    <p className="my-4 flex items-center gap-x-1">
+                    <p className="my-4 flex items-center gap-x-1 flex-wrap">
                       {t('backup-link')}
                       <a
                         href="https://github.com/AINativeLab/gptstore-data-backup"
-                        className="underline underline-offset-2 hover:text-zinc-500"
+                        className="underline underline-offset-2 hover:text-zinc-500 flex"
                       >
                         <Image
                           src={logoApply}
                           alt=""
-                          className="h-5 w-5 hover:opacity-50"
+                          className="h-5 w-5"
                           unoptimized
                         />
+                        Click
                       </a>
                     </p>
                   </div>
@@ -73,26 +74,27 @@ export default function Example() {
                     <Image
                       src={sample1}
                       alt=""
-                      className="max-h-64 w-full rounded-lg object-cover object-top shadow-xl"
+                      className="lg:max-h-64 h-auto w-full rounded-lg object-cover object-top shadow-lg"
                     />
                   </div>
-                  <div className="lg:col-span-2">
+                  <div className="lg:col-span-2 mt-4 lg:mt-0">
                     <p className="text-2xl font-bold text-zinc-800 sm:text-3xl dark:text-zinc-200 ">
                       {t('500-gpt')}
                     </p>
                     <p className="mt-4">{t('500-description')}</p>
-                    <p className="my-4 flex items-center gap-x-1">
+                    <p className="my-4 flex items-center gap-x-1 flex-wrap">
                       {t('500-link')}
                       <a
                         href="https://github.com/AINativeLab/gptstore-data-backup"
-                        className="underline underline-offset-2 hover:text-zinc-500"
+                        className="underline underline-offset-2 hover:text-zinc-500 flex"
                       >
                         <Image
                           src={logoApply}
                           alt=""
-                          className="h-5 w-5 hover:opacity-50"
+                          className="h-5 w-5"
                           unoptimized
                         />
+                        Click
                       </a>
                     </p>
                   </div>
@@ -100,7 +102,7 @@ export default function Example() {
                     <Image
                       src={sample}
                       alt=""
-                      className="h-64 w-full rounded-lg object-cover object-top shadow-xl"
+                      className="lg:max-h-64 w-full h-auto rounded-lg object-cover object-top shadow-lg"
                     />
                   </div>
                 </div>
@@ -113,33 +115,35 @@ export default function Example() {
                     <p className="mt-4 text-zinc-600 dark:text-zinc-400">
                       {t('download-description')}
                     </p>
-                    <p className="mt-4 flex items-center gap-x-1 text-zinc-600 dark:text-zinc-400">
+                    <p className="mt-4 flex flex-wrap items-center gap-x-1 text-zinc-600 dark:text-zinc-400">
                       {t('1-month')}
                       <a
                         href="https://store.ai.ls/checkout/buy/a9f28827-21c2-4d0f-9605-0a921ac2e44d"
-                        className="underline underline-offset-2 hover:text-zinc-500"
+                        className="underline underline-offset-2 hover:text-zinc-500 flex"
                       >
                         <Image
                           src={logoApply}
                           alt=""
-                          className="h-5 w-5 hover:opacity-50"
+                          className="h-5 w-5"
                           unoptimized
                         />
+                        Click
                       </a>
                     </p>
 
-                    <p className="flex items-center gap-x-1 text-zinc-600 dark:text-zinc-400">
+                    <p className="flex flex-wrap items-center gap-x-1 text-zinc-600 dark:text-zinc-400">
                       {t('renewal')}{' '}
                       <a
                         href="https://store.ai.ls/buy/dc7c96a6-95c6-4b9b-9369-1861a060bfb1"
-                        className="underline underline-offset-2 hover:text-zinc-500"
+                        className="underline underline-offset-2 hover:text-zinc-500 flex"
                       >
                         <Image
                           src={logoApply}
                           alt=""
-                          className="h-5 w-5 hover:opacity-50"
+                          className="h-5 w-5"
                           unoptimized
                         />
+                        Click
                       </a>
                     </p>
                     <p className="mt-4 text-zinc-600 dark:text-zinc-400 ">
