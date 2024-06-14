@@ -11,7 +11,6 @@ import { useAppDispatch, useAppSelector } from '@/session/store'
 import { CardBanner } from '@/types/category'
 import { Transition } from '@headlessui/react'
 import Image from 'next/image'
-import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useAppRoute } from '@/service/custom'
 

@@ -3,7 +3,6 @@
 'use client'
 
 import { Container } from '@/components/Container'
-import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { Transition } from '@headlessui/react'
 import { useAppDispatch, useAppSelector } from '@/session/store'

@@ -1,10 +1,5 @@
 'use client'
-import { type Metadata } from 'next'
 
-import { Card } from '@/components/Card'
-import { SimpleLayout } from '@/components/SimpleLayout'
-import { type ArticleWithSlug, getAllArticles } from '@/lib/articles'
-import { formatDate } from '@/lib/formatDate'
 import { Container } from '@/components/Container'
 import { SubmitSimple } from '@/components/Submit'
 import { useRouter } from 'next/navigation'
