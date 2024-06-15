@@ -25,7 +25,7 @@ import { useTranslations } from 'next-intl'
 
 function Stats(props: { rate: number; rank: number; total: number }) {
   return (
-    <div className="rounded-lg text-center shadow dark:bg-zinc-800/50 ring-1 ring-zinc-100 dark:ring-zinc-300/50">
+    <div className="rounded-lg text-center shadow dark:bg-zinc-800/50 ring-1 ring-zinc-300 dark:ring-zinc-300/50">
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-3 gap-px sm:grid-cols-3">
           <div className="rounded-lg px-4 py-6 sm:px-6 lg:px-8">
@@ -218,13 +218,13 @@ export default function Store(props: { params: { id: string } }) {
                   </div>
                   <div className="mt-4 flex w-full flex-col gap-y-4 lg:col-span-2 lg:mt-0">
                     <div className="flex flex-col gap-y-4 lg:sticky lg:top-28">
-                      <div className="w-full rounded-lg p-6 shadow dark:bg-zinc-800/50 ring-1 ring-zinc-100 dark:ring-zinc-300/50">
+                      <div className="w-full rounded-lg p-6 shadow dark:bg-zinc-800/50 ring-1 ring-zinc-300 dark:ring-zinc-300/50">
                         <p className="col-span-2 text-2xl font-semibold text-zinc-800 dark:text-zinc-200">
                           GPT Conversation Trend
                         </p>
                         {info && <MyChart data={info.trend} />}
                       </div>
-                      <div className="flex flex-col rounded-lg p-6 shadow dark:bg-zinc-800/50 ring-1 ring-zinc-100 dark:ring-zinc-300/50">
+                      <div className="flex flex-col rounded-lg p-6 shadow dark:bg-zinc-800/50 ring-1 ring-zinc-300 dark:ring-zinc-300/50">
                         <p className="text-2xl font-semibold text-zinc-800 dark:text-zinc-200">
                           {' '}
                           GPT Information
