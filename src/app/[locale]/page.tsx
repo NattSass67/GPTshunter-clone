@@ -189,7 +189,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="mt-12 w-full border-t border-zinc-300/50">
+          <div className="mt-12 w-full border-t border-zinc-300 dark:border-zinc-300/50">
             <FilterSelect />
             <Carousel
               content={selectedFilterContent}
@@ -197,7 +197,7 @@ export default function Home() {
               isLoading={secondaryLoading}
             />
             <br></br>
-            <hr className='border-zinc-300/50 '/>
+            <hr className='border-zinc-300 dark:border-zinc-300/50 '/>
             {carouselList}
           </div>
         </Container>

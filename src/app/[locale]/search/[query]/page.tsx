@@ -97,7 +97,7 @@ export default function Home(props: {
             <SearchBarRedirect />
           </div>
           <div className="w-full">
-            <hr className="border-zinc-300/50"/>
+            <hr className="border-zinc-300 dark:border-zinc-300/50"/>
             <Transition
               show={!isLoading}
               enter="transition-opacity duration-300"
