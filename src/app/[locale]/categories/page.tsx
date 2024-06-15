@@ -88,5 +88,5 @@ function AllCategories() {
     </a>
   ))
 
-  return <div className="w-full grid grid-cols-2 sm:grid-cols-4 gap-2">{categoryList}</div>
+  return <div className="w-full grid grid-cols-2 lg:grid-cols-4 gap-2">{categoryList}</div>
 }
