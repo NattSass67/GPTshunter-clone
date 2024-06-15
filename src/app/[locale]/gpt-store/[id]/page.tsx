@@ -97,7 +97,7 @@ export default function Store(props: { params: { id: string } }) {
       <p className="mt-4 text-zinc-600 dark:text-zinc-400">
         {object.description}
       </p>
-      <hr className="mt-8 border-zinc-300 dark:border-zinc-300/50" />
+      <hr className="mt-8 border-zinc-300/50" />
     </div>
   ))
 
@@ -175,7 +175,7 @@ export default function Store(props: { params: { id: string } }) {
                   {info?.name}
                 </h1>
 
-                <hr className="border-zinc-300 dark:border-zinc-300/50" />
+                <hr className="border-zinc-300/50" />
                 <div className="my-8 grid max-w-2xl grid-cols-1 text-sm leading-7 sm:text-base lg:max-w-none lg:grid-cols-5 lg:gap-8">
                   <div className="col-span-3">
                     <Stats
@@ -199,21 +199,21 @@ export default function Store(props: { params: { id: string } }) {
                         </p>
                       </a>
                     </div>
-                    <hr className="mb-8 border-zinc-300 dark:border-zinc-300/50" />
+                    <hr className="mb-8 border-zinc-300/50" />
                     {content}
                     <div className="mb-8">
                       <p className="text-2xl font-semibold text-zinc-800 dark:text-zinc-200">
                         GPT Prompt Starters
                       </p>
                       {promptStart}
-                      <hr className="mt-8 border-zinc-300 dark:border-zinc-300/50" />
+                      <hr className="mt-8 border-zinc-300/50" />
                     </div>
                     <div className="mb-2">
                       <p className="text-2xl font-semibold">
                         {info?.name} FAQs
                       </p>
                       {faqs}
-                      <hr className="mt-8 border-zinc-300 lg:hidden dark:border-zinc-300/50" />
+                      <hr className="mt-8 lg:hidden border-zinc-300/50" />
                     </div>
                   </div>
                   <div className="mt-4 flex w-full flex-col gap-y-4 lg:col-span-2 lg:mt-0">
@@ -287,7 +287,7 @@ export default function Store(props: { params: { id: string } }) {
                     </div>
                   </div>
                 </div>
-                <hr className="mt-8 border-zinc-300 dark:border-zinc-300/50" />
+                <hr className="mt-8 border-zinc-300/50" />
               </div>
             </div>
           </div>
