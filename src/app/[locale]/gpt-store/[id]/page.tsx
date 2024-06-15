@@ -11,6 +11,7 @@ import { CardBanner } from '@/types/category'
 import logoApply from '@/images/logos/apply.svg'
 import { MyChart } from '@/components/Chart'
 import { useAppRoute } from '@/service/custom'
+import { capitalizeFirstLetter } from '@/service/format'
 import {
   Disclosure,
   DisclosureButton,
@@ -228,7 +229,7 @@ export default function Store(props: { params: { id: string } }) {
                           {' '}
                           GPT Information
                         </p>
-                        <div className='flex flex-row flex-wrap gap-x-4'>
+                        {info && <div className='flex flex-row flex-wrap gap-x-4'>
                           <p className="text-sm text-zinc-600 sm:text-base dark:text-zinc-400 w-48">
                             {' '}
                             • Hunted: {info?.information.hunted}
@@ -248,12 +249,12 @@ export default function Store(props: { params: { id: string } }) {
                                 '/' +
                                 locale +
                                 '/categories/' +
-                                info?.information.category +
+                                capitalizeFirstLetter(info?.information.category) +
                                 '?page=1'
                               }
                               className="flex items-center gap-x-1 hover:opacity-75"
                             >
-                              {info?.information.category}{' '}
+                              {capitalizeFirstLetter(info?.information.category)}{' '}
                               <Image
                                 src={logoApply}
                                 alt=""
@@ -276,7 +277,7 @@ export default function Store(props: { params: { id: string } }) {
                           >
                             <p className=""> • Builder Profile</p>
                           </a>
-                        </div>
+                        </div>}
                       </div>
                       <a href={info?.toUrl} className="col-span-2">
                         <p className="font semibold w-full rounded-lg bg-zinc-800 p-4 text-center text-zinc-100 hover:bg-zinc-900 dark:bg-zinc-800/50 dark:hover:bg-zinc-800">
