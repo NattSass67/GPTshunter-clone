@@ -24,7 +24,7 @@ import { useTranslations } from 'next-intl'
 
 function Stats(props: { rate: number; rank: number; total: number }) {
   return (
-    <div className="rounded-lg text-center shadow-md dark:bg-zinc-800/50">
+    <div className="rounded-lg text-center shadow dark:bg-zinc-800/50 ring-1 ring-zinc-100 dark:ring-zinc-300/50">
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-3 gap-px sm:grid-cols-3">
           <div className="rounded-lg px-4 py-6 sm:px-6 lg:px-8">
@@ -138,7 +138,7 @@ export default function Store(props: { params: { id: string } }) {
     <a
       key={index}
       href={'/' + locale + '/tags/' + object + '?page=1'}
-      className="flex-none rounded-full bg-zinc-100 px-3 py-1.5 text-zinc-800 hover:bg-zinc-200 dark:bg-inherit dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-200"
+      className=" flex-none rounded-full bg-zinc-100 px-3 py-1.5 text-zinc-800 hover:bg-zinc-200 dark:bg-zinc-800/50 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-200"
     >
       <p className="text-center text-[14px]">{object}</p>
     </a>
@@ -147,7 +147,7 @@ export default function Store(props: { params: { id: string } }) {
   const tools = info?.tools?.map((object, index) => (
     <div
       key={index}
-      className="flex-none rounded-full bg-zinc-100 px-3 py-1.5 text-zinc-800 dark:bg-inherit dark:text-zinc-400"
+      className="flex-none rounded-full bg-zinc-100 px-3 py-1.5 text-zinc-800 dark:bg-zinc-800/50 dark:text-zinc-400"
     >
       <p className="text-center text-[14px]">{object}</p>
     </div>
@@ -217,13 +217,13 @@ export default function Store(props: { params: { id: string } }) {
                   </div>
                   <div className="mt-4 flex w-full flex-col gap-y-4 lg:col-span-2 lg:mt-0">
                     <div className="flex flex-col gap-y-4 lg:sticky lg:top-28">
-                      <div className="w-full rounded-lg p-6 shadow-md dark:bg-zinc-800/50">
+                      <div className="w-full rounded-lg p-6 shadow dark:bg-zinc-800/50 ring-1 ring-zinc-100 dark:ring-zinc-300/50">
                         <p className="col-span-2 text-2xl font-semibold text-zinc-800 dark:text-zinc-200">
                           GPT Conversation Trend
                         </p>
                         {info && <MyChart data={info.trend} />}
                       </div>
-                      <div className="flex flex-col rounded-lg p-6 shadow-md dark:bg-zinc-800/50">
+                      <div className="flex flex-col rounded-lg p-6 shadow dark:bg-zinc-800/50 ring-1 ring-zinc-100 dark:ring-zinc-300/50">
                         <p className="text-2xl font-semibold text-zinc-800 dark:text-zinc-200">
                           {' '}
                           GPT Information
@@ -294,13 +294,13 @@ export default function Store(props: { params: { id: string } }) {
             <p className="mt-4 text-lg font-bold tracking-tight text-zinc-800 dark:text-zinc-200">
               Tags
             </p>
-            <div className="no-scrollbar mx-0 mt-2 flex flex-row gap-x-2 overflow-x-auto sm:flex-wrap sm:overflow-hidden">
+            <div className="no-scrollbar mx-0 mt-2 flex flex-row gap-2 overflow-x-auto sm:flex-wrap sm:overflow-hidden">
               {tags}
             </div>
             <p className="mt-4 text-lg font-bold tracking-tight text-zinc-800 dark:text-zinc-200">
               Tools
             </p>
-            <div className="no-scrollbar mx-0 mt-2 flex flex-row gap-x-2 overflow-x-auto sm:flex-wrap sm:overflow-hidden">
+            <div className="no-scrollbar mx-0 mt-2 flex flex-row gap-2 overflow-x-auto sm:flex-wrap sm:overflow-hidden">
               {tools}
             </div>
             <Carousel

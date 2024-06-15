@@ -58,7 +58,7 @@ export default function Example() {
                       {t('backup-link')}
                       <a
                         href="https://github.com/AINativeLab/gptstore-data-backup"
-                        className="underline underline-offset-2 hover:opacity-50 flex"
+                        className="underline underline-offset-2 hover:opacity-50 flex items-center"
                       >
                         <Image
                           src={logoApply}
@@ -86,7 +86,7 @@ export default function Example() {
                       {t('500-link')}
                       <a
                         href="https://github.com/AINativeLab/gptstore-data-backup"
-                        className="underline underline-offset-2 hover:opacity-50 flex"
+                        className="underline underline-offset-2 hover:opacity-50 flex items-center"
                       >
                         <Image
                           src={logoApply}
@@ -119,7 +119,7 @@ export default function Example() {
                       {t('1-month')}
                       <a
                         href="https://store.ai.ls/checkout/buy/a9f28827-21c2-4d0f-9605-0a921ac2e44d"
-                        className="underline underline-offset-2 hover:opacity-50 flex"
+                        className="underline underline-offset-2 hover:opacity-50 flex items-center"
                       >
                         <Image
                           src={logoApply}
@@ -135,7 +135,7 @@ export default function Example() {
                       {t('renewal')}{' '}
                       <a
                         href="https://store.ai.ls/buy/dc7c96a6-95c6-4b9b-9369-1861a060bfb1"
-                        className="underline underline-offset-2 hover:opacity-50 flex"
+                        className="underline underline-offset-2 hover:opacity-50 flex items-center"
                       >
                         <Image
                           src={logoApply}

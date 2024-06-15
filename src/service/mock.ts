@@ -332,7 +332,18 @@ const sampleGptInfo: GptInfo = {
   by: 'CHRISTINA MCKENNA',
   rate: 4.5,
   totalRate: 1000,
-  tags: ['AI', 'Machine Learning', 'Natural Language Processing'],
+  tags: [
+    "Deep Learning",
+    "Neural Networks",
+    "AI Ethics",
+    "Data Science",
+    "Computer Vision",
+    "Reinforcement Learning",
+    "Text Mining",
+    "Speech Recognition",
+    "Language Models",
+    "Transfer Learning"
+],
   tools: ['browser', 'dalle', 'python'],
   content: [
     {
@@ -419,7 +430,18 @@ const sampleGptInfoTH: GptInfo = {
   by: 'CHRISTINA MCKENNA',
   rate: 4.5,
   totalRate: 1000,
-  tags: ['AI', 'Machine Learning', 'Natural Language Processing'],
+  tags: [
+    "Deep Learning",
+    "Neural Networks",
+    "AI Ethics",
+    "Data Science",
+    "Computer Vision",
+    "Reinforcement Learning",
+    "Text Mining",
+    "Speech Recognition",
+    "Language Models",
+    "Transfer Learning"
+],
   tools: ['browser', 'dalle', 'python'],
   content: [
     {

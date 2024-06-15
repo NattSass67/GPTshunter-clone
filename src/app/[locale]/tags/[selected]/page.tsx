@@ -58,7 +58,7 @@ export default function Home(props: {
     <a
       key={index}
       href={"/"+locale+"/tags/"+object+"?page=1"}
-      className="flex-none rounded-full bg-zinc-100 px-3 py-1.5 text-zinc-800 hover:bg-zinc-800/50 dark:text-zinc-400 dark:bg-inherit dark:hover:text-zinc-200"
+      className="flex-none rounded-full bg-zinc-100 px-3 py-1.5 text-zinc-800 hover:bg-zinc-800/50 dark:text-zinc-400 dark:bg-zinc-800/50 dark:hover:text-zinc-200"
     >
       <p className="text-center text-[14px]">{object}</p>
     </a>
@@ -142,7 +142,7 @@ export default function Home(props: {
                   <p className="mt-4 text-lg font-bold tracking-tight text-zinc-800 dark:text-zinc-200">
                   {t('related')} {decodeURIComponent(selected)} {t('on')} GPT store
                   </p>
-                  <div className="no-scrollbar mx-0 mt-2 flex flex-row gap-x-2 overflow-x-auto">
+                  <div className="no-scrollbar mx-0 mt-2 flex flex-row gap-2 overflow-x-auto sm:flex-wrap sm:overflow-hidden">
                     {tags}
                   </div>
                 </div>

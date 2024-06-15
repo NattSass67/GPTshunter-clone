@@ -7,7 +7,7 @@ import {
   sampleGptInfo1,
   mockContentTH,
   sampleGptInfoTH,
-  sampleGptInfoTH1
+  sampleGptInfoTH1,
 } from './mock'
 import { tagsSchema } from '@/types/tags'
 import {
@@ -55,7 +55,9 @@ export async function getAllFilter() {
 }
 
 export async function getByFilterSelected(name: string, locale: string) {
-  const result = cardBannerArraySchema.safeParse(locale == 'th' ? mockContentTH : mockContent)
+  const result = cardBannerArraySchema.safeParse(
+    locale == 'th' ? mockContentTH : mockContent,
+  )
 
   if (!result.success) {
     console.error('Validation error:', result.error.errors)
@@ -69,27 +71,42 @@ export async function getByDefaultCategory(locale: string) {
   //every category with content exist
   const data = [
     {
-      name: locale != 'th' ? 'Featured GPTs on GPT Store':'Featured GPTs บน GPT Store',
+      name:
+        locale != 'th'
+          ? 'Featured GPTs on GPT Store'
+          : 'Featured GPTs บน GPT Store',
       totalContent: 100,
       content: locale == 'th' ? mockContentTH : mockContent,
     },
     {
-      name: locale != 'th' ? 'Trending GPTs on GPT Store':'Trending GPTs บน GPT Store',
+      name:
+        locale != 'th'
+          ? 'Trending GPTs on GPT Store'
+          : 'Trending GPTs บน GPT Store',
       totalContent: 100,
       content: locale == 'th' ? mockContentTH : mockContent,
     },
     {
-      name: locale != 'th' ? 'Best DALL·E GPTs on GPT Store':'DALL·E GPTs ที่ดีที่สุดบน GPT Store',
+      name:
+        locale != 'th'
+          ? 'Best DALL·E GPTs on GPT Store'
+          : 'DALL·E GPTs ที่ดีที่สุดบน GPT Store',
       totalContent: 100,
       content: locale == 'th' ? mockContentTH : mockContent,
     },
     {
-      name: locale != 'th' ? 'Best Writing GPTs on GPT Store':'Writing GPTs ที่ดีที่สุดบน GPT Store',
+      name:
+        locale != 'th'
+          ? 'Best Writing GPTs on GPT Store'
+          : 'Writing GPTs ที่ดีที่สุดบน GPT Store',
       totalContent: 100,
       content: locale == 'th' ? mockContentTH : mockContent,
     },
     {
-      name: locale != 'th' ? 'Best Productivity GPTs on GPT Store':'Productivity GPTs ที่ดีที่สุดบน GPT Store',
+      name:
+        locale != 'th'
+          ? 'Best Productivity GPTs on GPT Store'
+          : 'Productivity GPTs ที่ดีที่สุดบน GPT Store',
       totalContent: 100,
       content: locale == 'th' ? mockContentTH : mockContent,
     },
@@ -142,7 +159,18 @@ export async function getByUserId(id: string, locale: string) {
 export async function getByTagName(name: string, page: number, locale: string) {
   const result = tagsSchema.safeParse({
     content: locale == 'th' ? mockContentTH : mockContent,
-    relatedTags: ['AI', 'Machine Learning', 'Content Creation'],
+    relatedTags: [
+      'Deep Learning',
+      'Neural Networks',
+      'AI Ethics',
+      'Data Science',
+      'Computer Vision',
+      'Reinforcement Learning',
+      'Text Mining',
+      'Speech Recognition',
+      'Language Models',
+      'Transfer Learning',
+    ],
     totalBanner: 100,
   })
 
@@ -201,8 +229,14 @@ export async function getExistCategory() {
 }
 
 export async function getGptByID(id: string, locale: string) {
-  const result = locale=='th' ? gptInfoSchema.safeParse(sampleGptInfoTH) : gptInfoSchema.safeParse(sampleGptInfo)
-  const result1 = locale=='th' ? gptInfoSchema.safeParse(sampleGptInfoTH1) : gptInfoSchema.safeParse(sampleGptInfo1)
+  const result =
+    locale == 'th'
+      ? gptInfoSchema.safeParse(sampleGptInfoTH)
+      : gptInfoSchema.safeParse(sampleGptInfo)
+  const result1 =
+    locale == 'th'
+      ? gptInfoSchema.safeParse(sampleGptInfoTH1)
+      : gptInfoSchema.safeParse(sampleGptInfo1)
 
   if (!result.success) {
     console.error('Validation error:', result.error.errors)
