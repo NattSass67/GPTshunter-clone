@@ -210,7 +210,7 @@ export default function Store(props: { params: { id: string } }) {
                   <hr className="my-8 border-zinc-300 dark:border-zinc-300/50" />
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                    <div className="h-full rounded-2xl bg-zinc-50 p-8 dark:bg-zinc-800/50">
+                    <div className="rounded-2xl bg-zinc-50 p-8 dark:bg-zinc-800/50">
                       <p className="text-2xl font-semibold text-zinc-800 dark:text-zinc-200">
                         Introduction to {info?.name}
                       </p>
@@ -218,19 +218,19 @@ export default function Store(props: { params: { id: string } }) {
                         {info?.introduction}
                       </p>
                     </div>
-                    <div className="h-full rounded-2xl bg-zinc-50 p-8 dark:bg-zinc-800/50">
+                    <div className="rounded-2xl bg-zinc-50 p-8 dark:bg-zinc-800/50">
                       <p className="mb-4 text-2xl font-semibold text-zinc-800 dark:text-zinc-200">
                         GPT Prompt Starters
                       </p>
                       {promptStart}
                     </div>
-                    <div className="h-full rounded-2xl bg-zinc-50 p-8 dark:bg-zinc-800/50">
+                    <div className="rounded-2xl bg-zinc-50 p-8 dark:bg-zinc-800/50">
                       <p className="text-2xl font-semibold">
                         {info?.name} FAQs
                       </p>
                       {faqs}
                     </div>
-                    <div className="flex flex-col h-full rounded-2xl bg-zinc-50 p-8 dark:bg-zinc-800/50">
+                    <div className="flex flex-col rounded-2xl bg-zinc-50 p-8 dark:bg-zinc-800/50">
                       <p className="text-2xl font-semibold text-zinc-800 dark:text-zinc-200 mb-4">
                         GPT Information
                       </p>
