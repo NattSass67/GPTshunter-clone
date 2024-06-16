@@ -61,7 +61,7 @@ export function MyChart({ data }: { data: GptTrend}) {
       key={index}
     >
       <div
-        className="w-full bg-zinc-600"
+        className="w-full bg-zinc-800/90 dark:bg-zinc-600"
         style={{ height: `${calculateHeight(object.value)}px` }}
       ></div>
       <div className="absolute left-0 top-0 z-20 hidden w-32 rounded-lg bg-white/90 p-2 text-[12px] shadow group-hover:block dark:bg-zinc-800/50">
@@ -77,7 +77,7 @@ export function MyChart({ data }: { data: GptTrend}) {
       key={index}
     >
       <div
-        className="w-full bg-zinc-600"
+        className="w-full bg-zinc-800/90 dark:bg-zinc-600"
         style={{ height: `${calculateHeight(object.value)}px` }}
       ></div>
       <div className="absolute right-0 top-0 z-20 hidden w-32 rounded-lg bg-white/90 p-2 text-[12px] shadow group-hover:block dark:bg-zinc-800/50">

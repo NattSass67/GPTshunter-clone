@@ -41,7 +41,8 @@ const gptInfoSchema = z.object({
   totalRate: z.number(),
   tags: z.array(z.string()),
   tools: z.array(z.string()),
-  content: z.array(gptContentTopicSchema),
+  description: z.string(),
+  introduction: z.string(),
   promptStarter: z.array(z.string()), // Assuming promptStarter is an array of strings
   faq: z.array(gptFaqSchema),
   more: z.array(cardBannerSchema),

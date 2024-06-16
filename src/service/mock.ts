@@ -9,7 +9,8 @@ const mockContentTH = [
   {
     id: '1f',
     name: 'Planetaria',
-    description: 'สร้างเทคโนโลยีเพื่อเสริมพลังให้กับพลเรือนในการสำรวจอวกาศในแบบของพวกเขาเอง',
+    description:
+      'สร้างเทคโนโลยีเพื่อเสริมพลังให้กับพลเรือนในการสำรวจอวกาศในแบบของพวกเขาเอง',
     link: { href: 'http://planetaria.tech', label: 'planetaria.tech' },
     logo: logoPlanetaria,
     rate: 5,
@@ -18,7 +19,8 @@ const mockContentTH = [
   {
     id: '1daf',
     name: 'Animaginary',
-    description: 'ไลบรารีแอนิเมชันเว็บประสิทธิภาพสูง เขียนด้วยมือใน WASM ที่ได้รับการปรับให้เหมาะสม',
+    description:
+      'ไลบรารีแอนิเมชันเว็บประสิทธิภาพสูง เขียนด้วยมือใน WASM ที่ได้รับการปรับให้เหมาะสม',
     link: { href: '#', label: 'github.com' },
     logo: logoAnimaginary,
     rate: 5,
@@ -27,7 +29,8 @@ const mockContentTH = [
   {
     id: '1f',
     name: 'HelioStream',
-    description: 'ไลบรารีการสตรีมวิดีโอแบบเรียลไทม์ ที่ปรับให้เหมาะสมสำหรับการส่งผ่านระหว่างดวงดาว',
+    description:
+      'ไลบรารีการสตรีมวิดีโอแบบเรียลไทม์ ที่ปรับให้เหมาะสมสำหรับการส่งผ่านระหว่างดวงดาว',
     link: { href: '#', label: 'github.com' },
     logo: logoHelioStream,
     rate: 5,
@@ -45,7 +48,8 @@ const mockContentTH = [
   {
     id: '1',
     name: 'OpenShuttle',
-    description: 'โครงร่างสำหรับจรวดลำแรกที่ผมออกแบบและประสบความสำเร็จในการเข้าสู่วงโคจร',
+    description:
+      'โครงร่างสำหรับจรวดลำแรกที่ผมออกแบบและประสบความสำเร็จในการเข้าสู่วงโคจร',
     link: { href: '#', label: 'github.com' },
     logo: logoOpenShuttle,
     rate: 5,
@@ -54,7 +58,8 @@ const mockContentTH = [
   {
     id: '18',
     name: 'Planetaria',
-    description: 'สร้างเทคโนโลยีเพื่อเสริมพลังให้กับพลเรือนในการสำรวจอวกาศในแบบของพวกเขาเอง',
+    description:
+      'สร้างเทคโนโลยีเพื่อเสริมพลังให้กับพลเรือนในการสำรวจอวกาศในแบบของพวกเขาเอง',
     link: { href: 'http://planetaria.tech', label: 'planetaria.tech' },
     logo: logoPlanetaria,
     rate: 5,
@@ -63,7 +68,8 @@ const mockContentTH = [
   {
     id: '14655',
     name: 'Animaginary',
-    description: 'ไลบรารีแอนิเมชันเว็บประสิทธิภาพสูง เขียนด้วยมือใน WASM ที่ได้รับการปรับให้เหมาะสม',
+    description:
+      'ไลบรารีแอนิเมชันเว็บประสิทธิภาพสูง เขียนด้วยมือใน WASM ที่ได้รับการปรับให้เหมาะสม',
     link: { href: '#', label: 'github.com' },
     logo: logoAnimaginary,
     rate: 5,
@@ -72,7 +78,8 @@ const mockContentTH = [
   {
     id: '1',
     name: 'HelioStream',
-    description: 'ไลบรารีการสตรีมวิดีโอแบบเรียลไทม์ ที่ปรับให้เหมาะสมสำหรับการส่งผ่านระหว่างดวงดาว',
+    description:
+      'ไลบรารีการสตรีมวิดีโอแบบเรียลไทม์ ที่ปรับให้เหมาะสมสำหรับการส่งผ่านระหว่างดวงดาว',
     link: { href: '#', label: 'github.com' },
     logo: logoHelioStream,
     rate: 5,
@@ -90,7 +97,8 @@ const mockContentTH = [
   {
     id: '1ng',
     name: 'OpenShuttle',
-    description: 'โครงร่างสำหรับจรวดลำแรกที่ผมออกแบบและประสบความสำเร็จในการเข้าสู่วงโคจร',
+    description:
+      'โครงร่างสำหรับจรวดลำแรกที่ผมออกแบบและประสบความสำเร็จในการเข้าสู่วงโคจร',
     link: { href: '#', label: 'github.com' },
     logo: logoOpenShuttle,
     rate: 5,
@@ -108,13 +116,14 @@ const mockContentTH = [
   {
     id: '1000',
     name: 'OpenShuttle',
-    description: 'โครงร่างสำหรับจรวดลำแรกที่ผมออกแบบและประสบความสำเร็จในการเข้าสู่วงโคจร',
+    description:
+      'โครงร่างสำหรับจรวดลำแรกที่ผมออกแบบและประสบความสำเร็จในการเข้าสู่วงโคจร',
     link: { href: '#', label: 'github.com' },
     logo: logoOpenShuttle,
     rate: 5,
     comments: 2.3,
   },
-];
+]
 
 const mockContent = [
   {
@@ -248,18 +257,10 @@ const sampleGptInfo1: GptInfo = {
   totalRate: 1000,
   tags: ['AI', 'Machine Learning', 'Natural Language Processing'],
   tools: ['browser', 'dalle', 'python'],
-  content: [
-    {
-      name: 'Introduction to AI Humanizer Pro',
-      description:
-        'AI Humanizer Pro is a cutting-edge AI-powered tool that leverages advanced GPT technology to help users create content that appears 100% human-generated. By utilizing this sophisticated bot, you can effectively humanize your AI-generated text, ensuring it bypasses even the most stringent AI detection systems on the market.',
-    },
-    {
-      name: 'GPT Description',
-      description:
-        'Best AI humanizer to help you get 100% human score. Humanize your AI-generated content maintaining content meaning and quality intact. FREE credits & Multiple languages support available.',
-    },
-  ],
+  introduction:
+    'AI Humanizer Pro is a cutting-edge AI-powered tool that leverages advanced GPT technology to help users create content that appears 100% human-generated. By utilizing this sophisticated bot, you can effectively humanize your AI-generated text, ensuring it bypasses even the most stringent AI detection systems on the market.',
+  description:
+    'Best AI humanizer to help you get 100% human score. Humanize your AI-generated content maintaining content meaning and quality intact. FREE credits & Multiple languages support available.',
   promptStarter: [
     'Can you explain this Math concept?',
     'How do I approach this Science problem?',
@@ -333,30 +334,22 @@ const sampleGptInfo: GptInfo = {
   rate: 4.5,
   totalRate: 1000,
   tags: [
-    "Deep Learning",
-    "Neural Networks",
-    "AI Ethics",
-    "Data Science",
-    "Computer Vision",
-    "Reinforcement Learning",
-    "Text Mining",
-    "Speech Recognition",
-    "Language Models",
-    "Transfer Learning"
-],
-  tools: ['browser', 'dalle', 'python'],
-  content: [
-    {
-      name: 'Introduction to AI Humanizer Pro',
-      description:
-        'AI Humanizer Pro is a cutting-edge AI-powered tool that leverages advanced GPT technology to help users create content that appears 100% human-generated. By utilizing this sophisticated bot, you can effectively humanize your AI-generated text, ensuring it bypasses even the most stringent AI detection systems on the market.',
-    },
-    {
-      name: 'GPT Description',
-      description:
-        'Best AI humanizer to help you get 100% human score. Humanize your AI-generated content maintaining content meaning and quality intact. FREE credits & Multiple languages support available.',
-    },
+    'Deep Learning',
+    'Neural Networks',
+    'AI Ethics',
+    'Data Science',
+    'Computer Vision',
+    'Reinforcement Learning',
+    'Text Mining',
+    'Speech Recognition',
+    'Language Models',
+    'Transfer Learning',
   ],
+  tools: ['browser', 'dalle', 'python'],
+  introduction:
+    'AI Humanizer Pro is a cutting-edge AI-powered tool that leverages advanced GPT technology to help users create content that appears 100% human-generated. By utilizing this sophisticated bot, you can effectively humanize your AI-generated text, ensuring it bypasses even the most stringent AI detection systems on the market.',
+  description:
+    'Best AI humanizer to help you get 100% human score. Humanize your AI-generated content maintaining content meaning and quality intact. FREE credits & Multiple languages support available.',
   promptStarter: [
     'Can you explain this Math concept?',
     'How do I approach this Science problem?',
@@ -422,7 +415,6 @@ const sampleGptInfo: GptInfo = {
   ],
 }
 
-
 const sampleGptInfoTH: GptInfo = {
   userId: '82347777789asdf',
   logo: logoOpenShuttle,
@@ -431,35 +423,27 @@ const sampleGptInfoTH: GptInfo = {
   rate: 4.5,
   totalRate: 1000,
   tags: [
-    "Deep Learning",
-    "Neural Networks",
-    "AI Ethics",
-    "Data Science",
-    "Computer Vision",
-    "Reinforcement Learning",
-    "Text Mining",
-    "Speech Recognition",
-    "Language Models",
-    "Transfer Learning"
-],
-  tools: ['browser', 'dalle', 'python'],
-  content: [
-    {
-      name: 'Introduction to AI Humanizer Pro',
-      description:
-       'AI Humanizer Pro เป็นเครื่องมือที่ขับเคลื่อนด้วย AI ขั้นสูงที่ใช้เทคโนโลยี GPT ที่ทันสมัยเพื่อช่วยให้ผู้ใช้สร้างเนื้อหาที่ดูเหมือนถูกสร้างโดยมนุษย์ 100% โดยการใช้บอทที่ซับซ้อนนี้ คุณสามารถทำให้ข้อความที่สร้างโดย AI ของคุณดูเหมือนมนุษย์จริง ๆ และผ่านระบบตรวจจับ AI ที่เข้มงวดที่สุดในตลาด',
-    },
-    {
-      name: 'GPT Description',
-      description:
-        'ตัวช่วยปรับข้อความ AI ให้เหมือนมนุษย์ที่ดีที่สุด ช่วยให้คุณได้คะแนนความเป็นมนุษย์ 100% ทำให้เนื้อหาที่สร้างโดย AI ของคุณมีความหมายและคุณภาพคงเดิม เครดิตฟรีและการรองรับหลายภาษา',
-    },
+    'Deep Learning',
+    'Neural Networks',
+    'AI Ethics',
+    'Data Science',
+    'Computer Vision',
+    'Reinforcement Learning',
+    'Text Mining',
+    'Speech Recognition',
+    'Language Models',
+    'Transfer Learning',
   ],
+  tools: ['browser', 'dalle', 'python'],
+  introduction:
+    'AI Humanizer Pro เป็นเครื่องมือที่ขับเคลื่อนด้วย AI ขั้นสูงที่ใช้เทคโนโลยี GPT ที่ทันสมัยเพื่อช่วยให้ผู้ใช้สร้างเนื้อหาที่ดูเหมือนถูกสร้างโดยมนุษย์ 100% โดยการใช้บอทที่ซับซ้อนนี้ คุณสามารถทำให้ข้อความที่สร้างโดย AI ของคุณดูเหมือนมนุษย์จริง ๆ และผ่านระบบตรวจจับ AI ที่เข้มงวดที่สุดในตลาด',
+  description:
+    'ตัวช่วยปรับข้อความ AI ให้เหมือนมนุษย์ที่ดีที่สุด ช่วยให้คุณได้คะแนนความเป็นมนุษย์ 100% ทำให้เนื้อหาที่สร้างโดย AI ของคุณมีความหมายและคุณภาพคงเดิม เครดิตฟรีและการรองรับหลายภาษา',
   promptStarter: [
     'คุณสามารถอธิบายแนวคิดคณิตศาสตร์นี้ได้ไหม?',
     'ฉันควรแก้ปัญหาวิทยาศาสตร์นี้อย่างไร?',
     'ฉันติดอยู่กับสมการนี้ มีคำแนะนำไหม?',
-    'มีการศึกษาเกี่ยวกับประโยชน์ของอาหารที่เป็นพืชเป็นหลักบ้างไหม?'
+    'มีการศึกษาเกี่ยวกับประโยชน์ของอาหารที่เป็นพืชเป็นหลักบ้างไหม?',
   ],
   faq: [
     {
@@ -519,7 +503,6 @@ const sampleGptInfoTH: GptInfo = {
     { value: 19, date: '2023-10-29' },
   ],
 }
-
 
 const sampleGptInfoTH1: GptInfo = {
   userId: '123456789asdf',
@@ -530,23 +513,15 @@ const sampleGptInfoTH1: GptInfo = {
   totalRate: 1000,
   tags: ['AI', 'Machine Learning', 'Natural Language Processing'],
   tools: ['browser', 'dalle', 'python'],
-  content: [
-    {
-      name: 'Introduction to AI Humanizer Pro',
-      description:
-       'AI Humanizer Pro เป็นเครื่องมือที่ขับเคลื่อนด้วย AI ขั้นสูงที่ใช้เทคโนโลยี GPT ที่ทันสมัยเพื่อช่วยให้ผู้ใช้สร้างเนื้อหาที่ดูเหมือนถูกสร้างโดยมนุษย์ 100% โดยการใช้บอทที่ซับซ้อนนี้ คุณสามารถทำให้ข้อความที่สร้างโดย AI ของคุณดูเหมือนมนุษย์จริง ๆ และผ่านระบบตรวจจับ AI ที่เข้มงวดที่สุดในตลาด',
-    },
-    {
-      name: 'GPT Description',
-      description:
-        'ตัวช่วยปรับข้อความ AI ให้เหมือนมนุษย์ที่ดีที่สุด ช่วยให้คุณได้คะแนนความเป็นมนุษย์ 100% ทำให้เนื้อหาที่สร้างโดย AI ของคุณมีความหมายและคุณภาพคงเดิม เครดิตฟรีและการรองรับหลายภาษา',
-    },
-  ],
+  introduction:
+    'AI Humanizer Pro เป็นเครื่องมือที่ขับเคลื่อนด้วย AI ขั้นสูงที่ใช้เทคโนโลยี GPT ที่ทันสมัยเพื่อช่วยให้ผู้ใช้สร้างเนื้อหาที่ดูเหมือนถูกสร้างโดยมนุษย์ 100% โดยการใช้บอทที่ซับซ้อนนี้ คุณสามารถทำให้ข้อความที่สร้างโดย AI ของคุณดูเหมือนมนุษย์จริง ๆ และผ่านระบบตรวจจับ AI ที่เข้มงวดที่สุดในตลาด',
+  description:
+    'ตัวช่วยปรับข้อความ AI ให้เหมือนมนุษย์ที่ดีที่สุด ช่วยให้คุณได้คะแนนความเป็นมนุษย์ 100% ทำให้เนื้อหาที่สร้างโดย AI ของคุณมีความหมายและคุณภาพคงเดิม เครดิตฟรีและการรองรับหลายภาษา',
   promptStarter: [
     'คุณสามารถอธิบายแนวคิดคณิตศาสตร์นี้ได้ไหม?',
     'ฉันควรแก้ปัญหาวิทยาศาสตร์นี้อย่างไร?',
     'ฉันติดอยู่กับสมการนี้ มีคำแนะนำไหม?',
-    'มีการศึกษาเกี่ยวกับประโยชน์ของอาหารที่เป็นพืชเป็นหลักบ้างไหม?'
+    'มีการศึกษาเกี่ยวกับประโยชน์ของอาหารที่เป็นพืชเป็นหลักบ้างไหม?',
   ],
   faq: [
     {
@@ -607,5 +582,11 @@ const sampleGptInfoTH1: GptInfo = {
   ],
 }
 
-
-export { mockContent, sampleGptInfo, sampleGptInfo1, mockContentTH, sampleGptInfoTH, sampleGptInfoTH1 }
+export {
+  mockContent,
+  sampleGptInfo,
+  sampleGptInfo1,
+  mockContentTH,
+  sampleGptInfoTH,
+  sampleGptInfoTH1,
+}
