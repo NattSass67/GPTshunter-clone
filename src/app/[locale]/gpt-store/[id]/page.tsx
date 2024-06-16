@@ -218,13 +218,13 @@ export default function Store(props: { params: { id: string } }) {
                         {info?.introduction}
                       </p>
                     </div>
-                    <div className="mb-8 h-full rounded-2xl bg-zinc-50 p-8 dark:bg-zinc-800/50">
+                    <div className="h-full rounded-2xl bg-zinc-50 p-8 dark:bg-zinc-800/50">
                       <p className="mb-4 text-2xl font-semibold text-zinc-800 dark:text-zinc-200">
                         GPT Prompt Starters
                       </p>
                       {promptStart}
                     </div>
-                    <div className="mb-8 h-full rounded-2xl bg-zinc-50 p-8 dark:bg-zinc-800/50">
+                    <div className="h-full rounded-2xl bg-zinc-50 p-8 dark:bg-zinc-800/50">
                       <p className="text-2xl font-semibold">
                         {info?.name} FAQs
                       </p>
