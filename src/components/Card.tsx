@@ -133,7 +133,7 @@ export function MyCustomCard({ project }: { project: CardBanner }) {
   return (
     <Card
       as="div"
-      className={`w-full flex-none flex-col overflow-hidden rounded-2xl p-4 shadow-lg dark:bg-zinc-800/50`}
+      className={`w-full flex-none flex-col overflow-hidden rounded-2xl p-4 shadow-lg border border-zinc-300/50 dark:border-none dark:bg-zinc-800/50`}
     >
       <div className="h-56 w-full">
         <div className="relative z-10 mt-8 flex h-16 w-full items-center justify-center">
