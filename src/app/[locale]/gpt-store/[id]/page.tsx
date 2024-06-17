@@ -26,7 +26,7 @@ import { useTranslations } from 'next-intl'
 
 function Stats(props: { rate: number; rank: number; total: number }) {
   return (
-    <div className="overflow-hidden rounded-2xl text-center">
+    <div className="overflow-hidden rounded-b-2xl text-center">
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-3 gap-x-1 sm:grid-cols-3">
           <div className="bg-zinc-50 px-4 py-4 sm:px-6 sm:py-6 lg:px-8 dark:bg-zinc-800/50">
@@ -46,7 +46,7 @@ function Stats(props: { rate: number; rank: number; total: number }) {
                   clipRule="evenodd"
                 />
               </svg>
-              <span className="text-center text-2xl font-semibold tracking-tight sm:text-4xl">
+              <span className="text-center text-2xl font-semibold tracking-tight sm:text-3xl">
                 {props.rate}
               </span>
             </p>
@@ -56,7 +56,7 @@ function Stats(props: { rate: number; rank: number; total: number }) {
               Reviews
             </p>
             <p className="mt-2 flex items-baseline justify-center gap-x-2">
-              <span className="text-2xl font-semibold tracking-tight text-zinc-800 sm:text-4xl dark:text-zinc-200">
+              <span className="text-2xl font-semibold tracking-tight text-zinc-800 sm:text-3xl dark:text-zinc-200">
                 {props.total}
               </span>
             </p>
@@ -66,7 +66,7 @@ function Stats(props: { rate: number; rank: number; total: number }) {
               Ranking
             </p>
             <p className="mt-2 flex items-baseline justify-center gap-x-2">
-              <span className="text-2xl font-semibold tracking-tight text-zinc-800 sm:text-4xl dark:text-zinc-200">
+              <span className="text-2xl font-semibold tracking-tight text-zinc-800 sm:text-3xl dark:text-zinc-200">
                 #{props.rank}
               </span>
             </p>
@@ -200,10 +200,7 @@ export default function Store(props: { params: { id: string } }) {
 
                 <div className="my-8 flex max-w-2xl flex-col text-sm leading-7 sm:text-base lg:max-w-none ">
                   <hr className="mb-8 border-zinc-300 dark:border-zinc-300/50" />
-                  <div className="mb-2 w-full px-4 sm:px-16">
-                    <p className="text-center text-xl font-semibold text-zinc-800 sm:text-2xl dark:text-zinc-200">
-                      GPT Conversation Trend
-                    </p>
+                  <div className="mb-1 w-full rounded-t-2xl bg-zinc-50 px-4 pt-4 sm:px-16 dark:bg-zinc-800/50">
                     {info && <MyChart data={info.trend} />}
                   </div>
                   <Stats
@@ -212,7 +209,12 @@ export default function Store(props: { params: { id: string } }) {
                     total={info?.totalRate as number}
                   />
                   <hr className="my-8 border-zinc-300 dark:border-zinc-300/50" />
-
+                  <h1 className="mt-8 text-center text-3xl font-bold  tracking-tight text-zinc-800 sm:text-4xl dark:text-zinc-200">
+                    About
+                  </h1>
+                  <p className="mt-2 mb-8 text-center text-zinc-500">
+                    {t('about')} {info?.name}
+                  </p>
                   <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
                     <div className="rounded-2xl bg-zinc-50 p-8 dark:bg-zinc-800/50">
                       <p className="text-2xl font-semibold text-zinc-800 dark:text-zinc-200">
@@ -221,18 +223,6 @@ export default function Store(props: { params: { id: string } }) {
                       <p className="mt-4 text-zinc-600 dark:text-zinc-400">
                         {info?.introduction}
                       </p>
-                    </div>
-                    <div className="rounded-2xl bg-zinc-50 p-8 dark:bg-zinc-800/50">
-                      <p className="mb-4 text-2xl font-semibold text-zinc-800 dark:text-zinc-200">
-                        GPT Prompt Starters
-                      </p>
-                      {promptStart}
-                    </div>
-                    <div className="rounded-2xl bg-zinc-50 p-8 dark:bg-zinc-800/50">
-                      <p className="text-2xl font-semibold">
-                        {info?.name} FAQs
-                      </p>
-                      {faqs}
                     </div>
                     <div className="flex flex-col rounded-2xl bg-zinc-50 p-8 dark:bg-zinc-800/50">
                       <p className="mb-4 text-2xl font-semibold text-zinc-800 dark:text-zinc-200">
@@ -291,6 +281,18 @@ export default function Store(props: { params: { id: string } }) {
                         </div>
                       )}
                     </div>
+                    <div className="rounded-2xl bg-zinc-50 p-8 dark:bg-zinc-800/50">
+                      <p className="mb-4 text-2xl font-semibold text-zinc-800 dark:text-zinc-200">
+                        GPT Prompt Starters
+                      </p>
+                      {promptStart}
+                    </div>
+                    <div className="rounded-2xl bg-zinc-50 p-8 dark:bg-zinc-800/50">
+                      <p className="text-2xl font-semibold">
+                        {info?.name} FAQs
+                      </p>
+                      {faqs}
+                    </div>
                   </div>
                 </div>
                 <hr className="mt-8 border-zinc-300 dark:border-zinc-300/50" />
@@ -298,14 +300,26 @@ export default function Store(props: { params: { id: string } }) {
             </div>
           </div>
           <div className="w-full py-8">
+            <h1 className="mt-8 text-center text-3xl font-bold  tracking-tight text-zinc-800 sm:text-4xl dark:text-zinc-200">
+              More GPTs
+            </h1>
+            <p className="mt-2 text-center  text-zinc-500">
+              {t('more')} {info?.by}
+            </p>
             <Carousel
               content={info?.more as CardBanner[]}
-              title={`${t('more')} ${info?.by}`}
+              title={``}
               isLoading={false}
             />
+            <h1 className="mt-24 text-center text-3xl font-bold  tracking-tight text-zinc-800 sm:text-4xl dark:text-zinc-200">
+              Alternative GPTs
+            </h1>
+            <p className="mt-2 text-center  text-zinc-500">
+              {t('alternative')} {info?.name}
+            </p>
             <Carousel
               content={info?.alter as CardBanner[]}
-              title={`${t('alternative')} ${info?.name}`}
+              title={``}
               isLoading={false}
             />
             <p className="mt-4 text-lg font-bold tracking-tight text-zinc-800 dark:text-zinc-200">
@@ -331,3 +345,4 @@ export default function Store(props: { params: { id: string } }) {
     </>
   )
 }
+  

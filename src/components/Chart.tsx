@@ -29,7 +29,7 @@ export function BasicSparkLine(props: { data: number[] | null }) {
   )
 }
 
-export function MyChart({ data }: { data: GptTrend}) {
+export function MyChart({ data }: { data: GptTrend }) {
   const [maxHeight, setMaxHeight] = useState<number>(0)
   const containerRef = useRef<HTMLDivElement>(null)
 
@@ -88,16 +88,23 @@ export function MyChart({ data }: { data: GptTrend}) {
   ))
 
   useEffect(() => {
-      findMaxHeight(data)
+    findMaxHeight(data)
   }, [data])
 
   return (
-    <div ref={containerRef} className="mt-4 h-28 w-full">
-      <ul className="flex h-full">
-        {listChartFirst}
-        {listChartSecond}
-      </ul>
-    </div>
+    <>
+     <p className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
+        Conversations today
+      </p>
+      <p className="text-2xl font-semibold text-zinc-800 sm:text-3xl dark:text-zinc-200">
+        {data[data.length-1].value}K+
+      </p>
+      <div ref={containerRef} className="mt-4 h-28 w-full">
+        <ul className="flex h-full">
+          {listChartFirst}
+          {listChartSecond}
+        </ul>
+      </div>
+    </>
   )
 }
-         

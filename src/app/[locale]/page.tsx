@@ -197,7 +197,7 @@ export default function Home() {
               isLoading={secondaryLoading}
             />
             <br></br>
-            <hr className='border-zinc-300 dark:border-zinc-300/50 '/>
+            <hr className='border-zinc-300 dark:border-zinc-300/50 mb-8'/>
             {carouselList}
           </div>
         </Container>

@@ -43,8 +43,9 @@
     "by": "By",
     "use": "Use",
     "on": "on",
-    "more": "More custom GPTs by",
-      "alternative": "Best Alternative GPTs to"
+    "more": "Other custom GPTs by",
+    "alternative": "Best Alternative GPTs to",
+    "about": "About"
     },
     "Tag": {
       "founded": "founded for",

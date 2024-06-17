@@ -127,15 +127,13 @@ Card.Eyebrow = function CardEyebrow<T extends React.ElementType = 'p'>({
   )
 }
 
-export function MyCustomCard(
-  {project}:{project:CardBanner}
-) {
-  const router=useAppRoute()
-  const locale=router.locale
+export function MyCustomCard({ project }: { project: CardBanner }) {
+  const router = useAppRoute()
+  const locale = router.locale
   return (
     <Card
       as="div"
-      className={`flex-none flex-col overflow-hidden rounded-2xl p-4 shadow-lg dark:bg-zinc-800/50 w-full`}
+      className={`w-full flex-none flex-col overflow-hidden rounded-2xl p-4 shadow-lg dark:bg-zinc-800/50`}
     >
       <div className="h-56 w-full">
         <div className="relative z-10 mt-8 flex h-16 w-full items-center justify-center">
@@ -151,16 +149,8 @@ export function MyCustomCard(
       </div>
 
       <div className="w-full">
-        <div className="mt-2 flex w-full justify-center">
-          <a
-            href={'/' + locale + '/gpt-store/' + project.id}
-            className="rounded-lg bg-zinc-800 px-4 py-2 text-sm font-semibold text-zinc-200 hover:bg-zinc-900 dark:hover:bg-zinc-800/50"
-          >
-            View More
-          </a>
-        </div>
         <div className="w-full">
-          <hr className="mt-4 dark:border-zinc-300/10 border-zinc-300/30" />
+          <hr className="mt-4 border-zinc-300/30 dark:border-zinc-300/10" />
         </div>
         <div className="grid w-full grid-cols-2 gap-x-2 ">
           <div className="mt-2 flex flex-col items-center justify-center gap-x-1">
@@ -179,6 +169,17 @@ export function MyCustomCard(
               Comments
             </p>
           </div>
+        </div>
+        <div className="w-full">
+          <hr className="mt-4 border-zinc-300/30 dark:border-zinc-300/10" />
+        </div>
+        <div className="mt-2 flex w-full justify-center">
+          <a
+            href={'/' + locale + '/gpt-store/' + project.id}
+            className="rounded-lg bg-zinc-800 px-4 py-2 w-full text-center text-sm font-semibold text-zinc-200 hover:bg-zinc-900 dark:hover:bg-zinc-800/50"
+          >
+            View on GPT Store
+          </a>
         </div>
       </div>
     </Card>

@@ -64,7 +64,7 @@ export function Carousel(props: {
 
   return (
     <>
-      <div className="relative mt-8 flex w-full flex-col">
+      <div className="relative flex w-full flex-col">
         <h2 className="absolute left-0 top-0 z-10 w-[250px] truncate text-lg font-bold tracking-tight text-zinc-800 sm:w-full sm:text-xl dark:text-zinc-200">
           {props.title}
         </h2>
@@ -72,7 +72,7 @@ export function Carousel(props: {
         <button
           onClick={scrollLeft}
           aria-label="Save"
-          className="absolute right-10 top-0 z-10 flex rounded-full px-2 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur hover:ring-zinc-300/50"
+          className="absolute left-0 top-1/2 z-10 flex rounded-full px-2 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 bg-white/90 dark:bg-zinc-800 hover:ring-zinc-300/50"
         >
           <svg
             width="16px"
@@ -121,7 +121,7 @@ export function Carousel(props: {
         <button
           onClick={scrollRight}
           aria-label="Save"
-          className="absolute right-0 top-0 z-10 flex rounded-full px-2 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur hover:ring-zinc-300/50"
+          className="absolute right-0 top-1/2 z-10 flex rounded-full px-2 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 bg-white/90 dark:bg-zinc-800 hover:ring-zinc-300/50"
         >
           <svg
             width="16px"

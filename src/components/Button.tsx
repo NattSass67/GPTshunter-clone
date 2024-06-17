@@ -92,7 +92,7 @@ export function FilterSelect() {
 
   return (
     <>
-      <div className="relative mt-4 flex flex-col">
+      <div className="relative my-4 flex flex-col">
         <div className="absolute left-0 top-0 z-10 h-12 w-12 -translate-x-1 bg-gradient-to-r dark:from-zinc-900 from-white md:left-6"></div>
         <button
           onClick={scrollLeft}
