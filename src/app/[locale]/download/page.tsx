@@ -37,20 +37,20 @@ export default function Example() {
         <Container className="pt-32">
           <div className="bg-white dark:bg-zinc-900">
             <div className="mx-auto max-w-7xl">
-              <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
-                <p className="text-base font-semibold leading-7 text-zinc-400">
+              <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none text-sm sm:text-base">
+                <p className="text-sm sm:text-base font-semibold leading-7 text-zinc-400">
                   Posted on Feb 18, 2024
                 </p>
-                <h1 className="mt-2 max-w-2xl text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-200">
+                <h1 className="mt-2 max-w-2xl text-3xl font-bold tracking-tight text-zinc-800 sm:text-4xl dark:text-zinc-200">
                   {t('title')}
                 </h1>
-                <p className="mb-4 mt-2 max-w-lg text-sm text-zinc-600 sm:text-base dark:text-zinc-400">
+                <p className="mb-4 mt-2 max-w-lg text-zinc-600 dark:text-zinc-400">
                   {t('description')}
                 </p>
                 <hr className="dark:border-zinc-300/20 mt-8 border-zinc-300" />
-                <div className="my-10 grid max-w-2xl grid-cols-1 gap-8 text-sm leading-7 text-zinc-600 sm:text-base lg:max-w-none lg:grid-cols-3 dark:text-zinc-400">
+                <div className="my-10 grid max-w-2xl grid-cols-1 gap-8 leading-7 text-zinc-600 lg:max-w-none lg:grid-cols-3 dark:text-zinc-400">
                   <div className="lg:col-span-2">
-                    <p className="text-2xl font-bold text-zinc-800 sm:text-3xl dark:text-zinc-200">
+                    <p className="text-xl font-bold text-zinc-800 sm:text-2xl dark:text-zinc-200">
                       {t('backup')}
                     </p>
                     <p className="mt-4">{t('backup-description')}</p>
@@ -78,7 +78,7 @@ export default function Example() {
                     />
                   </div>
                   <div className="lg:col-span-2 mt-4 lg:mt-0">
-                    <p className="text-2xl font-bold text-zinc-800 sm:text-3xl dark:text-zinc-200 ">
+                    <p className="text-xl font-bold text-zinc-800 sm:text-2xl dark:text-zinc-200 ">
                       {t('500-gpt')}
                     </p>
                     <p className="mt-4">{t('500-description')}</p>
@@ -107,9 +107,9 @@ export default function Example() {
                   </div>
                 </div>
                 <hr className="dark:border-zinc-300/20 mt-8 border-zinc-300" />
-                <div className="mt-2 grid grid-cols-1 text-sm sm:text-base lg:grid-cols-3">
+                <div className="mt-2 grid grid-cols-1 lg:grid-cols-3">
                   <div className="col-span-3">
-                    <p className="mt-8 text-2xl font-bold text-zinc-800 sm:text-3xl dark:text-zinc-200">
+                    <p className="mt-8 text-xl font-bold text-zinc-800 sm:text-2xl dark:text-zinc-200">
                       {t('download')}
                     </p>
                     <p className="mt-4 text-zinc-600 dark:text-zinc-400">
@@ -158,7 +158,7 @@ export default function Example() {
                     </p>
                   </div>
                   <div className="col-span-1 lg:col-span-3">
-                    <p className="mt-8 text-2xl sm:text-3xl font-bold text-zinc-800 dark:text-zinc-200">
+                    <p className="mt-8 text-xl sm:text-2xl font-bold text-zinc-800 dark:text-zinc-200">
                       {t('sample')}
                     </p>
                     <div>

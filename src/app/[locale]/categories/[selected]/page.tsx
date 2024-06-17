@@ -80,7 +80,7 @@ export default function Home(props: {
             <h1 className="text-3xl font-bold tracking-tight text-zinc-800 sm:text-4xl dark:text-zinc-200">
               {selected}
             </h1>
-            <p className="mx-auto mt-4 max-w-3xl text-base text-zinc-400">
+            <p className="mx-auto mt-4 max-w-3xl text-base text-zinc-500">
               {t('best')} {selected} {t('on-store')}
             </p>
           </div>
