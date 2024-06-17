@@ -53,13 +53,11 @@ export function Carousel(props: {
       })
     }
   }
-  const router = useRouter()
 
   let CardList = props.content?.map((project, index) => (
     <div key={index} className="w-full md:w-1/2 lg:w-1/3 px-4 flex-none">
           <MyCustomCard project={project} />
     </div>
-
   ))
 
   return (

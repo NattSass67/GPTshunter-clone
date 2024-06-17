@@ -276,7 +276,7 @@ export default function Store(props: { params: { id: string } }) {
                             href={'/' + locale + '/profile/' + info?.userId}
                             className="w-48 text-sm text-zinc-600 hover:text-zinc-500 sm:text-base dark:text-zinc-400"
                           >
-                            <p className=""> • Builder Profile</p>
+                            <p className=""> • Creator Profile</p>
                           </a>
                         </div>
                       )}
