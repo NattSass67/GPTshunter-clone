@@ -98,7 +98,7 @@ export default function Home(props: {
               enterFrom="opacity-0"
               enterTo="opacity-100"
             >
-              <div className="relative mt-4 flex justify-center">
+              <div className="relative mt-8 flex justify-center">
                 {cardList ? (
                   <Pagination
                     page={

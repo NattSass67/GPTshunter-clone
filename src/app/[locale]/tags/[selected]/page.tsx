@@ -105,7 +105,7 @@ export default function Home(props: {
               enterTo="opacity-100"
             >
               <div>
-                <div className="relative mt-4 flex justify-center">
+                <div className="relative mt-8 flex justify-center">
                   <Pagination
                     page={
                       props.searchParams.page
