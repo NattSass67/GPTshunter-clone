@@ -154,7 +154,7 @@ export function MyCustomCard(
         <div className="mt-2 flex w-full justify-center">
           <a
             href={'/' + locale + '/gpt-store/' + project.id}
-            className="rounded-lg bg-zinc-800 px-4 py-2 text-sm font-semibold pointer-events-auto text-zinc-200 hover:bg-zinc-900 dark:hover:bg-zinc-800/50"
+            className="rounded-lg bg-zinc-800 px-4 py-2 text-sm font-semibold text-zinc-200 hover:bg-zinc-900 dark:hover:bg-zinc-800/50"
           >
             View More
           </a>

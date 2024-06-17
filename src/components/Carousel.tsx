@@ -113,7 +113,7 @@ export function Carousel(props: {
         >
           <div
             ref={scrollContainerRef}
-            className={`no-scrollbar mx-0 mt-12 flex w-full flex-row overflow-x-auto pt-2 pb-8 pointer-events-none`}
+            className={`no-scrollbar mx-0 mt-12 flex w-full flex-row overflow-x-auto pt-2 pb-8`}
           >
             {CardList}
           </div>

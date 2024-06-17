@@ -9,9 +9,11 @@ import { Loader } from '@/components/Loader'
 import { SearchBarRedirect } from '@/components/Button'
 import { useAppSelector, useAppDispatch } from '@/session/store'
 import { Card } from '@/components/Card'
+import { CardBanner } from '@/types/category'
 import logoStar from '@/images/logos/star.svg'
 import logoComment from '@/images/logos/comment.svg'
 import Image from 'next/image'
+import { MyCustomCard } from '@/components/Card'
 import { formatNumber } from '@/service/format'
 import { loadSearchPage } from '@/session/manager'
 import { useAppRoute } from '@/service/custom'
@@ -48,34 +50,10 @@ export default function Home(props: {
     }
   }, [props.searchParams.page])
 
-  const cardList = content?.map((project, index) => (
-    <Card
-      as="div"
-      key={index}
-      className={`w-1/2 flex-none p-4 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 lg:w-1/3`}
-    >
-      <Card.Link
-        href={'/' + locale + '/gpt-store/' + project.id}
-      ></Card.Link>
-      <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white">
-        <Image src={project.logo} alt="" className="h-8 w-8" unoptimized />
-      </div>
-      <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
-        {project.name}
-      </h2>
-      <Card.Description>{project.description}</Card.Description>
-      <div className="flex gap-x-4">
-        <div className="mt-2 flex items-center gap-x-1">
-          <Image src={logoStar} alt="" className="h-4 w-4" unoptimized />{' '}
-          {formatNumber(project.rate)}
-        </div>
-        <div className="mt-2 flex items-center gap-x-1">
-          <Image src={logoComment} alt="" className="h-4 w-4" unoptimized />{' '}
-          {formatNumber(project.comments)}K
-        </div>
-      </div>
-    </Card>
-  ))
+  const cardList = content?.map((project:CardBanner, index) => (
+    <MyCustomCard project={project} key={index} />
+   ))
+ 
 
   return (
     <>
@@ -97,14 +75,14 @@ export default function Home(props: {
             <SearchBarRedirect />
           </div>
           <div className="w-full">
-            <hr className="border-zinc-300 dark:border-zinc-300/50"/>
+            <hr className="border-zinc-300 dark:border-zinc-300/50 mb-4"/>
             <Transition
               show={!isLoading}
               enter="transition-opacity duration-300"
               enterFrom="opacity-0"
               enterTo="opacity-100"
             >
-              <div className="relative flex flex-wrap">
+              <div className="relative grid w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {cardList ? (
                   cardList
                 ) : (
