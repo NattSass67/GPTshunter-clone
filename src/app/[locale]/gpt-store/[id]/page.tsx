@@ -212,12 +212,12 @@ export default function Store(props: { params: { id: string } }) {
                   <h1 className="mt-8 text-center text-3xl font-bold  tracking-tight text-zinc-800 sm:text-4xl dark:text-zinc-200">
                     About
                   </h1>
-                  <p className="mt-2 mb-8 text-center text-zinc-500">
+                  <p className="mt-2 mb-12 text-center text-zinc-500">
                     {t('about')} {info?.name}
                   </p>
                   <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
                     <div className="rounded-2xl bg-zinc-50 p-8 dark:bg-zinc-800/50">
-                      <p className="text-2xl font-semibold text-zinc-800 dark:text-zinc-200">
+                      <p className="text-xl font-semibold text-zinc-800 dark:text-zinc-200">
                         Introduction to {info?.name}
                       </p>
                       <p className="mt-4 text-zinc-600 dark:text-zinc-400">
@@ -225,7 +225,7 @@ export default function Store(props: { params: { id: string } }) {
                       </p>
                     </div>
                     <div className="flex flex-col rounded-2xl bg-zinc-50 p-8 dark:bg-zinc-800/50">
-                      <p className="mb-4 text-2xl font-semibold text-zinc-800 dark:text-zinc-200">
+                      <p className="mb-4 text-xl font-semibold text-zinc-800 dark:text-zinc-200">
                         GPT Information
                       </p>
                       {info && (
@@ -282,13 +282,13 @@ export default function Store(props: { params: { id: string } }) {
                       )}
                     </div>
                     <div className="rounded-2xl bg-zinc-50 p-8 dark:bg-zinc-800/50">
-                      <p className="mb-4 text-2xl font-semibold text-zinc-800 dark:text-zinc-200">
+                      <p className="mb-4 text-xl font-semibold text-zinc-800 dark:text-zinc-200">
                         GPT Prompt Starters
                       </p>
                       {promptStart}
                     </div>
                     <div className="rounded-2xl bg-zinc-50 p-8 dark:bg-zinc-800/50">
-                      <p className="text-2xl font-semibold">
+                      <p className="text-xl font-semibold">
                         {info?.name} FAQs
                       </p>
                       {faqs}
@@ -345,4 +345,3 @@ export default function Store(props: { params: { id: string } }) {
     </>
   )
 }
-  
