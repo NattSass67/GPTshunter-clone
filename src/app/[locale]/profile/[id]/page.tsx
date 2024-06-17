@@ -13,12 +13,14 @@ import { Transition } from '@headlessui/react'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { useAppRoute } from '@/service/custom'
+import { MyCustomCard } from '@/components/Card'
+
 
 export default function Home(props: {
   params: { id: string }
   searchParams: { page: string }
 }) {
-  const router=useAppRoute()
+  const router = useAppRoute()
   const { id } = props.params
   const locale = router.locale
   const dispatch = useAppDispatch()
@@ -34,7 +36,9 @@ export default function Home(props: {
 
   const isLoading = useAppSelector((state) => state.profileSession.loading)
   const username = useAppSelector((state) => state.profileSession.profile?.name)
-  const totalBanner = useAppSelector((state) => state.profileSession.profile?.totalBanner)
+  const totalBanner = useAppSelector(
+    (state) => state.profileSession.profile?.totalBanner,
+  )
 
   const data: CardBanner[] | undefined = useAppSelector(
     (state) => state.profileSession.profile?.content,
@@ -44,32 +48,8 @@ export default function Home(props: {
     dispatch(loadProfilePage(id, locale))
   }, [])
 
-
-  const cardList = data?.map((project, index) => (
-    <Card
-      as="div"
-      key={index}
-      className={`w-1/2 flex-none p-4 hover:bg-zinc-50 lg:w-1/3 dark:hover:bg-zinc-800/50`}
-    >
-      <Card.Link href={'/' + locale + '/gpt-store/' + project.id}></Card.Link>
-      <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white">
-        <Image src={project.logo} alt="" className="h-8 w-8" unoptimized />
-      </div>
-      <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
-        {project.name}
-      </h2>
-      <Card.Description>{project.description}</Card.Description>
-      <div className="flex gap-x-4">
-        <div className="mt-2 flex items-center gap-x-1">
-          <Image src={logoStar} alt="" className="h-4 w-4" unoptimized />{' '}
-          {formatNumber(project.rate)}
-        </div>
-        <div className="mt-2 flex items-center gap-x-1">
-          <Image src={logoComment} alt="" className="h-4 w-4" unoptimized />{' '}
-          {formatNumber(project.comments)}K
-        </div>
-      </div>
-    </Card>
+  const cardList = data?.map((project:CardBanner, index) => (
+   <MyCustomCard project={project} key={index} />
   ))
 
   return (
@@ -82,22 +62,24 @@ export default function Home(props: {
       >
         <Container className="mt-16">
           <div className="w-full pb-12 pt-16 text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-200 sm:text-5xl">
-              GPT built by {decodeURIComponent(username as string)} 
+            <h1 className="text-3xl font-bold tracking-tight text-zinc-800 sm:text-4xl dark:text-zinc-200">
+              GPT built by {decodeURIComponent(username as string)}
             </h1>
             <p className="mx-auto mt-4 max-w-3xl text-center text-base text-zinc-500">
-                Founded {totalBanner} GPTs 
+              Founded {totalBanner} GPTs
             </p>
           </div>
           <div className="w-full">
-            <hr className="border-zinc-300 dark:border-zinc-300/50"/>
+            <hr className="mb-4 border-zinc-300 dark:border-zinc-300/50" />
             <Transition
               show={!isLoading}
               enter="transition-opacity duration-300"
               enterFrom="opacity-0"
               enterTo="opacity-100"
             >
-              <div className="relative flex flex-wrap">{cardList}</div>
+              <div className="relative grid w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {cardList}
+              </div>
             </Transition>
             {isLoading && (
               <div className="mt-20">

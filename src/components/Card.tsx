@@ -1,5 +1,9 @@
+import { useAppRoute } from '@/service/custom'
 import Link from 'next/link'
 import clsx from 'clsx'
+import Image from 'next/image'
+import { CardBanner } from '@/types/category'
+import { formatNumber } from '@/service/format'
 
 function ChevronRightIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -71,7 +75,7 @@ Card.Description = function CardDescription({
   children: React.ReactNode
 }) {
   return (
-    <p className="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400 line-clamp-2">
+    <p className="relative z-10 mt-2 line-clamp-2 text-sm text-zinc-600 dark:text-zinc-400">
       {children}
     </p>
   )
@@ -120,5 +124,63 @@ Card.Eyebrow = function CardEyebrow<T extends React.ElementType = 'p'>({
       )}
       {children}
     </Component>
+  )
+}
+
+export function MyCustomCard(
+  {project}:{project:CardBanner}
+) {
+  const router=useAppRoute()
+  const locale=router.locale
+  return (
+    <Card
+      as="div"
+      className={`flex-none flex-col overflow-hidden rounded-2xl p-4 shadow-lg dark:bg-zinc-800/50 w-full`}
+    >
+      <div className="h-56 w-full">
+        <div className="relative z-10 mt-8 flex h-16 w-full items-center justify-center">
+          <Image src={project.logo} alt="" className="h-16 w-16" unoptimized />
+        </div>
+        {/* <div className="absolute top-0 w-full h-20 bg-zinc-700 left-0 "></div> */}
+        <h2 className="mt-6 w-full text-center text-base font-semibold text-zinc-800 dark:text-zinc-100">
+          {project.name}
+        </h2>
+        <p className="line-clamp-3 text-center text-sm text-zinc-600 dark:text-zinc-400">
+          {project.description}
+        </p>
+      </div>
+
+      <div className="w-full">
+        <div className="mt-2 flex w-full justify-center">
+          <a
+            href={'/' + locale + '/gpt-store/' + project.id}
+            className="rounded-lg bg-zinc-800 px-4 py-2 text-sm font-semibold pointer-events-auto text-zinc-200 hover:bg-zinc-900 dark:hover:bg-zinc-800/50"
+          >
+            View More
+          </a>
+        </div>
+        <div className="w-full">
+          <hr className="mt-4 dark:border-zinc-300/10 border-zinc-300/30" />
+        </div>
+        <div className="grid w-full grid-cols-2 gap-x-2 ">
+          <div className="mt-2 flex flex-col items-center justify-center gap-x-1">
+            <div className="flex items-center text-xl font-semibold">
+              {formatNumber(project.rate)}
+            </div>
+            <p className="text-sm font-semibold text-zinc-600 dark:text-zinc-400">
+              Rating
+            </p>
+          </div>
+          <div className="mt-2 flex flex-col items-center justify-center gap-x-1">
+            <div className="flex items-center text-xl font-semibold">
+              {formatNumber(project.comments)}K
+            </div>
+            <p className="text-sm font-semibold text-zinc-600 dark:text-zinc-400">
+              Comments
+            </p>
+          </div>
+        </div>
+      </div>
+    </Card>
   )
 }

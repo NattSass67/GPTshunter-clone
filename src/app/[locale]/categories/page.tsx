@@ -39,7 +39,7 @@ export default function Categories() {
       >
         <Container className="mt-16">
           <div className="w-full pt-16 text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-200 sm:text-5xl">
+            <h1 className="text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-200 sm:text-4xl">
               {t('title')}
             </h1>
             <p className="mx-auto mt-4 max-w-3xl text-base text-zinc-500">

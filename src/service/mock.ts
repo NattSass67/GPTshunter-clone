@@ -168,7 +168,7 @@ const mockContent = [
   },
   {
     id: '1',
-    name: 'OpenShuttle',
+    name: 'Prompt Builder',
     description:
       'The schematics for the first rocket I designed that successfully made it to orbit.',
     link: { href: '#', label: 'github.com' },
@@ -198,7 +198,7 @@ const mockContent = [
   },
   {
     id: '1',
-    name: 'HelioStream',
+    name: 'AutoHotkey Script Assistant',
     description:
       'Real-time video streaming library, optimized for interstellar transmission.',
     link: { href: '#', label: 'github.com' },

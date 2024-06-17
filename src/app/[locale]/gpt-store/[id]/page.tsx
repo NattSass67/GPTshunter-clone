@@ -12,6 +12,7 @@ import logoApply from '@/images/logos/apply.svg'
 import { MyChart } from '@/components/Chart'
 import { useAppRoute } from '@/service/custom'
 import { capitalizeFirstLetter } from '@/service/format'
+import { MyCustomCard } from '@/components/Card'
 import {
   Disclosure,
   DisclosureButton,
@@ -106,9 +107,9 @@ export default function Store(props: { params: { id: string } }) {
               </span>
               <span className="ml-6 flex h-7 items-center">
                 {open ? (
-                  <MinusIcon className="h-6 w-6" aria-hidden="true" />
+                  <MinusIcon className="h-5 w-5" aria-hidden="true" />
                 ) : (
-                  <PlusIcon className="h-6 w-6" aria-hidden="true" />
+                  <PlusIcon className="h-5 w-5" aria-hidden="true" />
                 )}
               </span>
             </DisclosureButton>
@@ -177,11 +178,11 @@ export default function Store(props: { params: { id: string } }) {
                 </p>
                 <div className="mb-8 grid max-w-96 grid-cols-2 gap-x-2 text-sm sm:text-base">
                   <a href={info?.toUrl} className="">
-                    <p className="rounded-lg bg-zinc-800 p-4 text-center text-zinc-100 hover:bg-zinc-900 dark:bg-zinc-800/50 dark:hover:bg-zinc-800">
+                    <p className="rounded-lg bg-zinc-800 p-4 text-center text-zinc-100 hover:bg-zinc-900 dark:bg-zinc-800/50 dark:hover:bg-zinc-800 dark:ring-1 dark:ring-zinc-300/20">
                       {t('use')} {t('on')} ChatGPT
                     </p>
                   </a>
-                  <a href={info?.toUrl} className="">
+                  <a  href={'/' + locale + '/profile/' + info?.userId} className="">
                     <p className="flex items-center justify-center gap-x-1 rounded-lg  p-4 text-center text-zinc-800 shadow hover:bg-zinc-50 dark:bg-zinc-800/50 dark:text-zinc-100 dark:hover:bg-zinc-800">
                       <Image
                         src={logoApply}

@@ -7,7 +7,7 @@ import logoOpenShuttle from '@/images/logos/open-shuttle.svg'
 import logoPlanetaria from '@/images/logos/planetaria.svg'
 import logoStar from '@/images/logos/star.svg'
 import logoComment from '@/images/logos/comment.svg'
-import { Card } from '@/components/Card'
+import { Card, MyCustomCard } from '@/components/Card'
 import Image from 'next/image'
 import { formatNumber } from '@/service/format'
 import { object } from 'zod'
@@ -17,13 +17,12 @@ import { useRouter } from 'next/navigation'
 import { CardBanner } from '@/types/category'
 import { usePathname } from 'next/navigation'
 
-
 export function Carousel(props: {
   content: CardBanner[] | null
   title: string
   isLoading: boolean
 }) {
-  const local = usePathname().split('/')[1]
+  const locale = usePathname().split('/')[1]
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const reset = () => {
     if (scrollContainerRef.current) {
@@ -57,36 +56,16 @@ export function Carousel(props: {
   const router = useRouter()
 
   let CardList = props.content?.map((project, index) => (
-    <Card
-      as="div"
-      key={index}
-      className={`w-1/2 flex-none p-4 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 lg:w-1/3 rounded-lg`}
-    >
-      <Card.Link href={"/"+local+"/gpt-store/"+project.id}></Card.Link>
-      <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white ">
-        <Image src={project.logo} alt="" className="h-8 w-8" unoptimized />
-      </div>
-      <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
-        {project.name}
-      </h2>
-      <Card.Description>{project.description}</Card.Description>
-      <div className="flex gap-x-4">
-        <div className="mt-2 flex items-center gap-x-1">
-          <Image src={logoStar} alt="" className="h-4 w-4" unoptimized />{' '}
-          {formatNumber(project.rate)}
-        </div>
-        <div className="mt-2 flex items-center gap-x-1">
-          <Image src={logoComment} alt="" className="h-4 w-4" unoptimized />{' '}
-          {formatNumber(project.comments)}K
-        </div>
-      </div>
-    </Card>
+    <div key={index} className="w-full md:w-1/2 lg:w-1/3 px-4 flex-none">
+          <MyCustomCard project={project} />
+    </div>
+
   ))
 
   return (
     <>
       <div className="relative mt-8 flex w-full flex-col">
-        <h2 className="absolute left-0 top-0 z-10 w-[250px] text-lg font-bold tracking-tight text-zinc-800 dark:text-zinc-200 sm:w-full sm:text-xl truncate">
+        <h2 className="absolute left-0 top-0 z-10 w-[250px] truncate text-lg font-bold tracking-tight text-zinc-800 sm:w-full sm:text-xl dark:text-zinc-200">
           {props.title}
         </h2>
 
@@ -134,12 +113,11 @@ export function Carousel(props: {
         >
           <div
             ref={scrollContainerRef}
-            className={`no-scrollbar mx-0 mt-12 flex w-full flex-row overflow-x-auto`}
+            className={`no-scrollbar mx-0 mt-12 flex w-full flex-row overflow-x-auto pt-2 pb-8 pointer-events-none`}
           >
             {CardList}
           </div>
         </Transition>
-
         <button
           onClick={scrollRight}
           aria-label="Save"

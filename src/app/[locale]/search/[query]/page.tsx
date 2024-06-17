@@ -87,7 +87,7 @@ export default function Home(props: {
       >
         <Container className="mt-16">
           <div className="w-full sm:pb-12 pb-8 pt-16 ">
-            <h1 className="text-center text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-200 sm:text-5xl">
+            <h1 className="text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-200 sm:text-4xl">
               {decodeURIComponent(props.params.query)}
             </h1>
             <p className="mx-auto mt-4 max-w-3xl text-center text-base text-zinc-500">
