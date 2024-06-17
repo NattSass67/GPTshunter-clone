@@ -85,7 +85,7 @@ export default function Home(props: {
             </p>
           </div>
           <div className="w-full">
-            <hr className="border-zinc-300/50 mb-4" />
+            <hr className="border-zinc-300/20 mb-4" />
             <Transition
               show={!isLoading}
               enter="transition-opacity duration-300"

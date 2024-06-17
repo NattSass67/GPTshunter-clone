@@ -16,6 +16,7 @@ import { CardBanner } from '@/types/category'
 import { Pagination } from '@/components/Button'
 import { useAppRoute } from '@/service/custom'
 import { useTranslations } from 'next-intl'
+import { MyCustomCard } from '@/components/Card'
 
 export default function Home(props: {
   params: { selected: string }
@@ -64,32 +65,9 @@ export default function Home(props: {
     </a>
   ))
 
-  const cardList = data?.map((project, index) => (
-    <Card
-      as="div"
-      key={index}
-      className={`w-1/2 flex-none p-4 hover:bg-zinc-50 lg:w-1/3 dark:hover:bg-zinc-800/50`}
-    >
-      <Card.Link href={'/' + locale + '/gpt-store/' + project.id}></Card.Link>
-      <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white">
-        <Image src={project.logo} alt="" className="h-8 w-8" unoptimized />
-      </div>
-      <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
-        {project.name}
-      </h2>
-      <Card.Description>{project.description}</Card.Description>
-      <div className="flex gap-x-4">
-        <div className="mt-2 flex items-center gap-x-1">
-          <Image src={logoStar} alt="" className="h-4 w-4" unoptimized />{' '}
-          {formatNumber(project.rate)}
-        </div>
-        <div className="mt-2 flex items-center gap-x-1">
-          <Image src={logoComment} alt="" className="h-4 w-4" unoptimized />{' '}
-          {formatNumber(project.comments)}K
-        </div>
-      </div>
-    </Card>
-  ))
+  const cardList = data?.map((project:CardBanner, index) => (
+    <MyCustomCard project={project} key={index} />
+   ))
 
   return (
     <>
@@ -101,7 +79,7 @@ export default function Home(props: {
       >
         <Container className="mt-16">
           <div className="w-full pb-12 pt-16 text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-200">
+            <h1 className="text-3xl font-bold tracking-tight text-zinc-800 sm:text-4xl dark:text-zinc-200">
               {t('best-front')} {decodeURIComponent(selected)} GPTs {t('best-back')}
             </h1>
             <p className="mx-auto mt-4 max-w-3xl text-base text-zinc-500">
@@ -109,14 +87,16 @@ export default function Home(props: {
             </p>
           </div>
           <div className="w-full">
-            <hr className="border-zinc-300 dark:border-zinc-300/50" />
+            <hr className="border-zinc-300 dark:border-zinc-300/20 mb-4 " />
             <Transition
               show={!isLoading}
               enter="transition-opacity duration-300"
               enterFrom="opacity-0"
               enterTo="opacity-100"
             >
-              <div className="relative flex flex-wrap">{cardList}</div>
+              <div className="relative grid w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {cardList}
+              </div>
             </Transition>
             <Transition
               show={!isLoading}

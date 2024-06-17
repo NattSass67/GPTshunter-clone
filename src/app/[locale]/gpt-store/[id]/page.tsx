@@ -199,7 +199,7 @@ export default function Store(props: { params: { id: string } }) {
                 </div>
 
                 <div className="my-8 flex max-w-2xl flex-col text-sm leading-7 sm:text-base lg:max-w-none ">
-                  <hr className="mb-8 border-zinc-300 dark:border-zinc-300/50" />
+                  <hr className="mb-8 border-zinc-300 dark:border-zinc-300/20" />
                   <div className="mb-1 w-full rounded-t-2xl bg-zinc-50 px-4 pt-4 sm:px-16 dark:bg-zinc-800/50">
                     {info && <MyChart data={info.trend} />}
                   </div>
@@ -208,7 +208,7 @@ export default function Store(props: { params: { id: string } }) {
                     rate={info?.rate as number}
                     total={info?.totalRate as number}
                   />
-                  <hr className="my-8 border-zinc-300 dark:border-zinc-300/50" />
+                  <hr className="my-8 border-zinc-300 dark:border-zinc-300/20" />
                   <h1 className="mt-8 text-center text-3xl font-bold  tracking-tight text-zinc-800 sm:text-4xl dark:text-zinc-200">
                     About
                   </h1>
@@ -295,7 +295,7 @@ export default function Store(props: { params: { id: string } }) {
                     </div>
                   </div>
                 </div>
-                <hr className="mt-8 border-zinc-300 dark:border-zinc-300/50" />
+                <hr className="mt-8 border-zinc-300 dark:border-zinc-300/20" />
               </div>
             </div>
           </div>
