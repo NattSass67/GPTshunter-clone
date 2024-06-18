@@ -1,19 +1,9 @@
 'use client'
 import { useRef, useEffect, useState } from 'react'
-import logoAnimaginary from '@/images/logos/animaginary.svg'
-import logoCosmos from '@/images/logos/cosmos.svg'
-import logoHelioStream from '@/images/logos/helio-stream.svg'
-import logoOpenShuttle from '@/images/logos/open-shuttle.svg'
-import logoPlanetaria from '@/images/logos/planetaria.svg'
-import logoStar from '@/images/logos/star.svg'
-import logoComment from '@/images/logos/comment.svg'
+
 import { Card, MyCustomCard } from '@/components/Card'
-import Image from 'next/image'
-import { formatNumber } from '@/service/format'
-import { object } from 'zod'
 import { Transition } from '@headlessui/react'
 import { Loader } from './Loader'
-import { useRouter } from 'next/navigation'
 import { CardBanner } from '@/types/category'
 import { usePathname } from 'next/navigation'
 
@@ -111,7 +101,7 @@ export function Carousel(props: {
         >
           <div
             ref={scrollContainerRef}
-            className={`no-scrollbar mx-0 mt-12 flex w-full flex-row overflow-x-auto pt-2 pb-8`}
+            className={`no-scrollbar mx-0 mt-12 flex w-full flex-row overflow-x-auto pt-2 pb-8 `}
           >
             {CardList}
           </div>
