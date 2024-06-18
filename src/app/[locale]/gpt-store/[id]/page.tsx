@@ -327,14 +327,14 @@ export default function Store(props: { params: { id: string } }) {
                 </div>
                 <div className="fixed bottom-0 left-0 right-0 z-20 flex h-20 w-full flex-row items-center justify-between border-t border-t-zinc-300/20 bg-white px-6 sm:px-8 lg:hidden dark:bg-zinc-900">
                   <div>
-                    <p className="text-center text-xl font-semibold">
+                    <p className="text-xl font-semibold">
                       {t('use')} {t('on')} ChatGPT
                     </p>
                     <a
                       href={
                         'https://docs.google.com/forms/d/e/1FAIpQLSc5wpE7xFGuwiICqSgLKVVkQN1v4hJVkzYJ59Nn1E9F3A426Q/viewform'
                       }
-                      className="text-center text-zinc-800 hover:opacity-75 dark:text-zinc-200 "
+                      className="text-zinc-800 hover:opacity-75 dark:text-zinc-200 "
                     >
                       <p className="text-sm">Become a verified curator ↗</p>
                     </a>
