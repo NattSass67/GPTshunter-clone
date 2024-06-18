@@ -7,7 +7,7 @@ export function LayoutGPTs({ children }: { children: React.ReactNode }) {
     <>
       <div className="fixed inset-0 flex justify-center sm:px-8">
         <div className="flex w-full max-w-7xl lg:px-8">
-          <div className="w-full border-x border-zinc-100 bg-white dark:border-zinc-300/20 dark:bg-zinc-900" />
+          <div className="w-full border-x border-zinc-200 bg-white dark:border-zinc-300/20 dark:bg-zinc-900" />
         </div>
       </div>
       <div className="relative flex w-full flex-col">

@@ -12,7 +12,6 @@ import logoApply from '@/images/logos/apply.svg'
 import { MyChart } from '@/components/Chart'
 import { useAppRoute } from '@/service/custom'
 import { capitalizeFirstLetter } from '@/service/format'
-import { MyCustomCard } from '@/components/Card'
 import {
   Disclosure,
   DisclosureButton,
@@ -26,10 +25,10 @@ import { useTranslations } from 'next-intl'
 
 function Stats(props: { rate: number; rank: number; total: number }) {
   return (
-    <div className="overflow-hidden rounded-b-2xl text-center">
+    <div className="overflow-hidden rounded-b-2xl text-center shadow-lg border border-zinc-300/50 dark:border-none">
       <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-3 gap-x-1 sm:grid-cols-3">
-          <div className="bg-zinc-50 px-4 py-4 sm:px-6 sm:py-6 lg:px-8 dark:bg-zinc-800/50">
+        <div className="grid grid-cols-3 sm:grid-cols-3">
+          <div className="bg-white px-4 py-4 sm:px-6 sm:py-6 lg:px-8 dark:bg-zinc-800/50">
             <p className="text-sm font-medium leading-6 text-zinc-600 dark:text-zinc-400">
               Rating
             </p>
@@ -51,7 +50,7 @@ function Stats(props: { rate: number; rank: number; total: number }) {
               </span>
             </p>
           </div>
-          <div className="bg-zinc-50 px-4 py-4 sm:px-6 sm:py-6 lg:px-8 dark:bg-zinc-800/50">
+          <div className="bg-white px-4 py-4 sm:px-6 sm:py-6 lg:px-8 dark:bg-zinc-800/50">
             <p className="text-sm font-medium leading-6 text-zinc-600 dark:text-zinc-400">
               Reviews
             </p>
@@ -61,7 +60,7 @@ function Stats(props: { rate: number; rank: number; total: number }) {
               </span>
             </p>
           </div>
-          <div className="bg-zinc-50 px-4 py-4 sm:px-6 sm:py-6 lg:px-8 dark:bg-zinc-800/50">
+          <div className="bg-white px-4 py-4 sm:px-6 sm:py-6 lg:px-8 dark:bg-zinc-800/50">
             <p className="text-sm font-medium leading-6 text-zinc-600 dark:text-zinc-400">
               Ranking
             </p>
@@ -186,7 +185,7 @@ export default function Store(props: { params: { id: string } }) {
                     href={'/' + locale + '/profile/' + info?.userId}
                     className=""
                   >
-                    <p className="flex items-center justify-center gap-x-1 rounded-lg  p-4 text-center text-zinc-800 shadow hover:bg-zinc-50 dark:bg-zinc-800/50 dark:text-zinc-100 dark:hover:bg-zinc-800">
+                    <p className="flex items-center justify-center gap-x-1 rounded-lg  p-4 text-center text-zinc-800 shadow-md bg-white hover:bg-zinc-50 dark:bg-zinc-800/50 dark:text-zinc-100 dark:hover:bg-zinc-800">
                       <Image
                         src={logoApply}
                         alt=""
@@ -198,9 +197,9 @@ export default function Store(props: { params: { id: string } }) {
                   </a>
                 </div>
 
-                <div className="my-8 flex max-w-2xl flex-col text-sm leading-7 sm:text-base lg:max-w-none ">
+                <div className="my-8 flex max-w-2xl flex-col text-sm leading-7 sm:text-base lg:max-w-none">
                   <hr className="mb-8 border-zinc-300 dark:border-zinc-300/20" />
-                  <div className="mb-1 w-full rounded-t-2xl bg-zinc-50 px-4 pt-4 sm:px-16 dark:bg-zinc-800/50">
+                  <div className="mb-1 w-full rounded-t-2xl shadow-lg px-4 pt-4 sm:px-16 border border-zinc-300/50 dark:border-none dark:bg-zinc-800/50">
                     {info && <MyChart data={info.trend} />}
                   </div>
                   <Stats
@@ -216,7 +215,7 @@ export default function Store(props: { params: { id: string } }) {
                     {t('about')} {info?.name}
                   </p>
                   <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
-                    <div className="rounded-2xl bg-zinc-50 p-8 dark:bg-zinc-800/50">
+                    <div className="rounded-2xl shadow-lg bg-white border border-zinc-300/50 dark:border-none p-8 dark:bg-zinc-800/50">
                       <p className="text-xl font-semibold text-zinc-800 dark:text-zinc-200">
                         Introduction to {info?.name}
                       </p>
@@ -224,7 +223,7 @@ export default function Store(props: { params: { id: string } }) {
                         {info?.introduction}
                       </p>
                     </div>
-                    <div className="flex flex-col rounded-2xl bg-zinc-50 p-8 dark:bg-zinc-800/50">
+                    <div className="flex flex-col rounded-2xl p-8 bg-white dark:bg-zinc-800/50 shadow-lg border border-zinc-300/50 dark:border-none">
                       <p className="mb-4 text-xl font-semibold text-zinc-800 dark:text-zinc-200">
                         GPT Information
                       </p>
@@ -281,13 +280,13 @@ export default function Store(props: { params: { id: string } }) {
                         </div>
                       )}
                     </div>
-                    <div className="rounded-2xl bg-zinc-50 p-8 dark:bg-zinc-800/50">
+                    <div className="rounded-2xl p-8 bg-white dark:bg-zinc-800/50 shadow-lg border border-zinc-300/50 dark:border-none">
                       <p className="mb-4 text-xl font-semibold text-zinc-800 dark:text-zinc-200">
                         GPT Prompt Starters
                       </p>
                       {promptStart}
                     </div>
-                    <div className="rounded-2xl bg-zinc-50 p-8 dark:bg-zinc-800/50">
+                    <div className="rounded-2xl bg-white p-8 dark:bg-zinc-800/50 shadow-lg border border-zinc-300/50 dark:border-none">
                       <p className="text-xl font-semibold">
                         {info?.name} FAQs
                       </p>
@@ -311,7 +310,8 @@ export default function Store(props: { params: { id: string } }) {
               title={``}
               isLoading={false}
             />
-            <h1 className="mt-24 text-center text-3xl font-bold  tracking-tight text-zinc-800 sm:text-4xl dark:text-zinc-200">
+            <hr className="border-zinc-300 dark:border-zinc-300/20" />
+            <h1 className="mt-16 text-center text-3xl font-bold  tracking-tight text-zinc-800 sm:text-4xl dark:text-zinc-200">
               Alternative GPTs
             </h1>
             <p className="mt-2 text-center  text-zinc-500">
@@ -344,4 +344,4 @@ export default function Store(props: { params: { id: string } }) {
       )}
     </>
   )
-}
+}                
