@@ -45,7 +45,7 @@ export function Carousel(props: {
   }
 
   let CardList = props.content?.map((project, index) => (
-    <div key={index} className="w-full md:w-1/2 px-4 flex-none">
+    <div key={index} className="w-full md:w-1/2 lg:w-1/3 px-4 flex-none">
           <MyCustomCard project={project} />
     </div>
   ))

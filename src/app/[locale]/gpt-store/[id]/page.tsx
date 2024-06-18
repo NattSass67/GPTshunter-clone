@@ -185,9 +185,6 @@ export default function Store(props: { params: { id: string } }) {
                           rate={info?.rate as number}
                           total={info?.totalRate as number}
                         />
-                        <div className="mb-1 mt-4 w-full overflow-hidden bg-white rounded-2xl border border-zinc-300/50 px-8 pt-4 shadow-lg sm:pt-6 dark:border-none dark:bg-zinc-800/50">
-                          {info && <MyChart data={info.trend} />}
-                        </div>
                       </div>
                       <hr className="border-zinc-300 dark:border-zinc-300/20" />
                       <p className="text-xl font-semibold text-zinc-800 dark:text-zinc-200">
@@ -233,6 +230,9 @@ export default function Store(props: { params: { id: string } }) {
                         <p className="mb-2 text-xl font-semibold text-zinc-800 dark:text-zinc-200">
                           GPT Information
                         </p>
+                        <div className="mb-6 mt-2 w-full max-w-xl overflow-hidden rounded-2xl border border-zinc-300/50 bg-white px-4 sm:px-8 pt-4 shadow-lg sm:pt-6 dark:border-none dark:bg-zinc-800/50">
+                          {info && <MyChart data={info.trend} />}
+                        </div>
                         {info && (
                           <div className="grid grid-cols-2 gap-x-4 ">
                             <p className="flex w-48 items-center gap-2 text-sm text-zinc-600 sm:text-base dark:text-zinc-400">
