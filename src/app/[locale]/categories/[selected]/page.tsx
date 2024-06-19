@@ -4,9 +4,6 @@ import { Pagination } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import { Loader } from '@/components/Loader'
-import logoComment from '@/images/logos/comment.svg'
-import logoStar from '@/images/logos/star.svg'
-import { formatNumber } from '@/service/format'
 import { fetchCategoryContent } from '@/session/manager'
 import { useAppDispatch, useAppSelector } from '@/session/store'
 import { CardBanner } from '@/types/category'
@@ -80,7 +77,7 @@ export default function Home(props: {
             <h1 className="text-3xl font-bold tracking-tight text-zinc-800 sm:text-4xl dark:text-zinc-200">
               {selected}
             </h1>
-            <p className="mx-auto mt-4 max-w-3xl text-base text-zinc-500">
+            <p className="mx-auto mt-2 max-w-3xl text-lg text-zinc-500">
               {t('best')} {selected} {t('on-store')}
             </p>
           </div>

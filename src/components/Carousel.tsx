@@ -52,11 +52,11 @@ export function Carousel(props: {
 
   return (
     <>
-      <div className="relative flex w-full flex-col">
-        <h2 className="absolute left-0 top-0 z-10 w-[250px] truncate text-lg font-bold tracking-tight text-zinc-800 sm:w-full sm:text-xl dark:text-zinc-200">
+      <div className="relative flex w-full flex-col pt-5">
+        <h2 className="z-10 text-2xl mb-5 font-semibold text-wrap tracking-tight text-zinc-800 w-full dark:text-zinc-200">
           {props.title}
         </h2>
-
+ 
         <button
           onClick={scrollLeft}
           aria-label="Save"
@@ -101,7 +101,7 @@ export function Carousel(props: {
         >
           <div
             ref={scrollContainerRef}
-            className={`no-scrollbar mx-0 mt-12 flex w-full flex-row overflow-x-auto pt-2 pb-8 `}
+            className={`no-scrollbar flex w-full flex-row overflow-x-auto pt-2 pb-5 `}
           >
             {CardList}
           </div>

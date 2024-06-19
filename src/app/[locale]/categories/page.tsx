@@ -42,7 +42,7 @@ export default function Categories() {
             <h1 className="text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-200 sm:text-4xl">
               {t('title')}
             </h1>
-            <p className="mx-auto mt-4 max-w-3xl text-base text-zinc-500">
+            <p className="mx-auto mt-2 max-w-3xl text-lg text-zinc-500">
               {t('description')}
             </p>
           </div>

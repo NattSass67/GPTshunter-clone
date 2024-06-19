@@ -61,7 +61,7 @@ export function MyChart({ data }: { data: GptTrend }) {
       key={index}
     >
       <div
-        className="w-full bg-zinc-800/90 dark:bg-zinc-600"
+        className="w-full bg-zinc-800 dark:bg-zinc-600"
         style={{ height: `${calculateHeight(object.value)}px` }}
       ></div>
       <div className="absolute left-0 top-0 z-20 hidden w-32 rounded-lg bg-white/90 p-2 text-[12px] shadow group-hover:block dark:bg-zinc-800/50">
@@ -77,7 +77,7 @@ export function MyChart({ data }: { data: GptTrend }) {
       key={index}
     >
       <div
-        className="w-full bg-zinc-800/90 dark:bg-zinc-600"
+        className="w-full bg-zinc-800 dark:bg-zinc-600"
         style={{ height: `${calculateHeight(object.value)}px` }}
       ></div>
       <div className="absolute right-0 top-0 z-20 hidden w-32 rounded-lg bg-white/90 p-2 text-[12px] shadow group-hover:block dark:bg-zinc-800/50">
@@ -93,19 +93,25 @@ export function MyChart({ data }: { data: GptTrend }) {
 
   return (
     <>
-     <p className="text-sm font-medium text-zinc-600 dark:text-zinc-400 px-6">
-        Conversations today
-      </p>
-      <p className="mt-2 text-2xl font-semibold text-zinc-800 dark:text-zinc-200 px-6">
-        {data[data.length-1].value}K+
-      </p>
-      <div ref={containerRef} className="mt-4 h-28 w-full">
-        <ul className="flex h-full">
-          {listChartFirst}
-          {listChartSecond}
-        </ul>
+      <div className="relative w-full border-b border-zinc-400 pt-12 dark:border-zinc-300/50">
+        <p className="absolute top-0 px-6 text-sm font-medium text-zinc-600 dark:text-zinc-400">
+          Conversations today
+        </p>
+        <p className="absolute top-4 mt-2 px-6 text-2xl font-semibold text-zinc-800 dark:text-zinc-200">
+          {data[data.length - 1].value}K+
+        </p>
+        <div ref={containerRef} className="mt-4 h-32 w-full relative">
+          <div className='absolute inset-0 flex flex-col justify-end'>
+            <div className='h-1/3 flex-none border-t border-zinc-400/20 dark:border-zinc-300/5 text-[9px]'><p>{Math.ceil(maxHeight)}</p></div>
+            <div className='h-1/3 flex-none border-t border-zinc-400/20 dark:border-zinc-300/5 text-[9px]'><p>{Math.ceil(maxHeight*2/3)}</p></div>
+            <div className='h-1/3 flex-none border-t border-zinc-400/20 dark:border-zinc-300/5 text-[9px]'><p>{Math.ceil(maxHeight*1/3)}</p></div>
+          </div>
+          <ul className="flex h-full pl-3 pr-0.5">
+            {listChartFirst}
+            {listChartSecond}
+          </ul>
+        </div>
       </div>
     </>
   )
 }
-                  

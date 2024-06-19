@@ -68,7 +68,7 @@ export default function Home(props: {
             <h1 className="text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-200 sm:text-4xl">
               {decodeURIComponent(props.params.query)}
             </h1>
-            <p className="mx-auto mt-4 max-w-3xl text-center text-base text-zinc-500">
+            <p className="mx-auto mt-2 max-w-3xl text-center text-lg text-zinc-500">
               {t('discover')}{' '}
               {decodeURIComponent(props.params.query)}
             </p>
