@@ -22,7 +22,7 @@ export default function Home(props: {
   params: { selected: string }
   searchParams: { page: string }
 }) {
-  const t =useTranslations("Tag")
+  const t = useTranslations('Tag')
   const router = useAppRoute()
   const locale = router.locale
   const pathName = usePathname()
@@ -42,15 +42,16 @@ export default function Home(props: {
   const relatedTags = useAppSelector((state) => state.tagsSession.relatedTags)
   const totalBanner = useAppSelector((state) => state.tagsSession.totalBanner)
 
-
   const data: CardBanner[] | null = useAppSelector(
     (state) => state.tagsSession.filteredContent,
   )
 
   useEffect(() => {
-    if(props.searchParams.page){
-      dispatch(loadTagsPage(selected, parseInt(props.searchParams.page),locale))
-    }else{
+    if (props.searchParams.page) {
+      dispatch(
+        loadTagsPage(selected, parseInt(props.searchParams.page), locale),
+      )
+    } else {
       dispatch(loadTagsPage(selected, 1, locale))
     }
   }, [props.searchParams.page])
@@ -58,16 +59,16 @@ export default function Home(props: {
   const tags = relatedTags?.map((object, index) => (
     <a
       key={index}
-      href={"/"+locale+"/tags/"+object+"?page=1"}
-      className="flex-none rounded-full bg-zinc-100 px-3 py-1.5 text-zinc-800 hover:bg-zinc-800/50 dark:text-zinc-400 dark:bg-zinc-800/50 dark:hover:text-zinc-200"
+      href={'/' + locale + '/tags/' + object + '?page=1'}
+      className="flex-none rounded-full bg-zinc-100 px-3 py-1.5 text-zinc-800 hover:bg-zinc-800/50 dark:bg-zinc-800/50 dark:text-zinc-400 dark:hover:text-zinc-200"
     >
       <p className="text-center text-[14px]">{object}</p>
     </a>
   ))
 
-  const cardList = data?.map((project:CardBanner, index) => (
+  const cardList = data?.map((project: CardBanner, index) => (
     <MyCustomCard project={project} key={index} />
-   ))
+  ))
 
   return (
     <>
@@ -80,21 +81,23 @@ export default function Home(props: {
         <Container className="mt-16">
           <div className="w-full pb-12 pt-16 text-center">
             <h1 className="text-3xl font-bold tracking-tight text-zinc-800 sm:text-4xl dark:text-zinc-200">
-              {t('best-front')} {decodeURIComponent(selected)} GPTs {t('best-back')}
+              {t('best-front')} {decodeURIComponent(selected)} GPTs{' '}
+              {t('best-back')}
             </h1>
-            <p className="mx-auto mt-4 max-w-3xl text-base text-zinc-500">
-               {totalBanner} GPTs {t('founded')} {decodeURIComponent(selected)} {t('on')} official GPT store
+            <p className="mx-auto mt-2 max-w-3xl text-lg text-zinc-500">
+              {totalBanner} GPTs {t('founded')} {decodeURIComponent(selected)}{' '}
+              {t('on')} official GPT store
             </p>
           </div>
           <div className="w-full">
-            <hr className="border-zinc-300 dark:border-zinc-300/20 mb-4 " />
+            <hr className="mb-4 border-zinc-300 dark:border-zinc-300/20 " />
             <Transition
               show={!isLoading}
               enter="transition-opacity duration-300"
               enterFrom="opacity-0"
               enterTo="opacity-100"
             >
-              <div className="relative grid w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="relative grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {cardList}
               </div>
             </Transition>
@@ -115,14 +118,14 @@ export default function Home(props: {
                     url={pathName}
                     totalBanner={totalBanner}
                     bannerPerPage={12}
-
                   />
                 </div>
                 <div>
-                  <p className="mt-4 text-lg font-bold tracking-tight text-zinc-800 dark:text-zinc-200">
-                  {t('related')} {decodeURIComponent(selected)} {t('on')} GPT store
+                  <p className="mb-3 mt-8 text-2xl font-semibold text-zinc-800 dark:text-zinc-200">
+                    {t('related')} {decodeURIComponent(selected)} {t('on')} GPT
+                    store
                   </p>
-                  <div className="no-scrollbar mx-0 mt-2 flex flex-row gap-2 overflow-x-auto sm:flex-wrap sm:overflow-hidden">
+                  <div className="no-scrollbar mx-0 flex flex-row gap-2 overflow-x-auto sm:flex-wrap sm:overflow-hidden">
                     {tags}
                   </div>
                 </div>

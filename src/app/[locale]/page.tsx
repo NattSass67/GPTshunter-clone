@@ -196,8 +196,7 @@ export default function Home() {
               title={selectedFilter}
               isLoading={secondaryLoading}
             />
-            <br></br>
-            <hr className='border-zinc-300 dark:border-zinc-300/20 mb-8'/>
+            <hr className='border-zinc-300 dark:border-zinc-300/20 my-5'/>
             {carouselList}
           </div>
         </Container>

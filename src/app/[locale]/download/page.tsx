@@ -37,8 +37,8 @@ export default function Example() {
         <Container className="pt-32">
           <div className="bg-white dark:bg-zinc-900">
             <div className="mx-auto max-w-7xl">
-              <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none text-sm sm:text-base">
-                <p className="text-sm sm:text-base font-semibold leading-7 text-zinc-400">
+              <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none text-base">
+                <p className="text-sm font-semibold leading-7 text-zinc-400">
                   Posted on Feb 18, 2024
                 </p>
                 <h1 className="mt-2 max-w-2xl text-3xl font-bold tracking-tight text-zinc-800 sm:text-4xl dark:text-zinc-200">
@@ -48,13 +48,13 @@ export default function Example() {
                   {t('description')}
                 </p>
                 <hr className="dark:border-zinc-300/20 mt-8 border-zinc-300" />
-                <div className="my-10 grid max-w-2xl grid-cols-1 gap-8 leading-7 text-zinc-600 lg:max-w-none lg:grid-cols-3 dark:text-zinc-400">
-                  <div className="lg:col-span-2">
-                    <p className="text-xl font-bold text-zinc-800 sm:text-2xl dark:text-zinc-200">
+                <div className="my-10 grid max-w-2xl grid-cols-1 gap-y-11 lg:gap-x-8 leading-7 text-zinc-600 lg:max-w-none lg:grid-cols-5 dark:text-zinc-400">
+                  <div className="lg:col-span-3">
+                    <p className="mb-3 text-2xl font-semibold text-zinc-800 dark:text-zinc-200">
                       {t('backup')}
                     </p>
-                    <p className="mt-4">{t('backup-description')}</p>
-                    <p className="my-4 flex items-center gap-x-1 flex-wrap">
+                    <p className="mb-3">{t('backup-description')}</p>
+                    <p className="flex items-center gap-x-1 flex-wrap">
                       {t('backup-link')}
                       <a
                         href="https://github.com/AINativeLab/gptstore-data-backup"
@@ -70,19 +70,19 @@ export default function Example() {
                       </a>
                     </p>
                   </div>
-                  <div>
+                  <div className='col-span-2'>
                     <Image
                       src={sample1}
                       alt=""
                       className="lg:max-h-64 h-auto w-full rounded-lg object-cover object-top shadow-lg"
                     />
                   </div>
-                  <div className="lg:col-span-2 mt-4 lg:mt-0">
-                    <p className="text-xl font-bold text-zinc-800 sm:text-2xl dark:text-zinc-200 ">
+                  <div className="lg:col-span-3 lg:mt-0">
+                    <p className="text-2xl mb-3 font-semibold text-zinc-800  dark:text-zinc-200 ">
                       {t('500-gpt')}
                     </p>
-                    <p className="mt-4">{t('500-description')}</p>
-                    <p className="my-4 flex items-center gap-x-1 flex-wrap">
+                    <p className="mb-3">{t('500-description')}</p>
+                    <p className="flex items-center gap-x-1 flex-wrap">
                       {t('500-link')}
                       <a
                         href="https://github.com/AINativeLab/gptstore-data-backup"
@@ -98,7 +98,7 @@ export default function Example() {
                       </a>
                     </p>
                   </div>
-                  <div>
+                  <div className="col-span-2">
                     <Image
                       src={sample}
                       alt=""
@@ -106,16 +106,16 @@ export default function Example() {
                     />
                   </div>
                 </div>
-                <hr className="dark:border-zinc-300/20 mt-8 border-zinc-300" />
-                <div className="mt-2 grid grid-cols-1 lg:grid-cols-3">
-                  <div className="col-span-3">
-                    <p className="mt-8 text-xl font-bold text-zinc-800 sm:text-2xl dark:text-zinc-200">
+                <hr className="dark:border-zinc-300/20 my-11 border-zinc-300" />
+                <div className=" flex flex-col gap-11">
+                  <div className="">
+                    <p className="mb-3 text-2xl font-semibold text-zinc-800 dark:text-zinc-200">
                       {t('download')}
                     </p>
-                    <p className="mt-4 text-zinc-600 dark:text-zinc-400">
+                    <p className="mb-3 text-zinc-600 dark:text-zinc-400">
                       {t('download-description')}
                     </p>
-                    <p className="mt-4 flex flex-wrap items-center gap-x-1 text-zinc-600 dark:text-zinc-400">
+                    <p className="flex flex-wrap items-center gap-x-1 text-zinc-600 dark:text-zinc-400">
                       {t('1-month')}
                       <a
                         href="https://store.ai.ls/checkout/buy/a9f28827-21c2-4d0f-9605-0a921ac2e44d"
@@ -131,7 +131,7 @@ export default function Example() {
                       </a>
                     </p>
 
-                    <p className="flex flex-wrap items-center gap-x-1 text-zinc-600 dark:text-zinc-400">
+                    <p className="flex mb-3 flex-wrap items-center gap-x-1 text-zinc-600 dark:text-zinc-400">
                       {t('renewal')}{' '}
                       <a
                         href="https://store.ai.ls/buy/dc7c96a6-95c6-4b9b-9369-1861a060bfb1"
@@ -146,7 +146,7 @@ export default function Example() {
                         Click
                       </a>
                     </p>
-                    <p className="mt-4 text-zinc-600 dark:text-zinc-400 ">
+                    <p className="text-zinc-600 dark:text-zinc-400 ">
                       {t('note-1')}{' '}
                       <a
                         href="https://store.ai.ls/buy/dc7c96a6-95c6-4b9b-9369-1861a060bfb1"
@@ -157,8 +157,8 @@ export default function Example() {
                       {t('note-2')}
                     </p>
                   </div>
-                  <div className="col-span-1 lg:col-span-3">
-                    <p className="mt-8 text-xl sm:text-2xl font-bold text-zinc-800 dark:text-zinc-200">
+                  <div className="">
+                    <p className="mb-3 text-2xl font-semibold text-zinc-800 dark:text-zinc-200">
                       {t('sample')}
                     </p>
                     <div>
