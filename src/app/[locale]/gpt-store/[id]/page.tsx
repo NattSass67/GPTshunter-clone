@@ -215,15 +215,15 @@ export default function Store(props: { params: { id: string } }) {
                         </div>
                         {info && (
                           <div className="grid grid-cols-1 gap-x-4 gap-y-3 lg:grid-cols-2 ">
-                            <p className="flex w-48 items-center gap-4 text-base text-zinc-600 dark:text-zinc-400">
+                            <p className="flex items-center gap-4 text-base text-zinc-600 dark:text-zinc-400">
                               <CrosshairsIcon height={24} width={24} /> Hunted:{' '}
                               {info?.information.hunted}
                             </p>
-                            <p className="flex w-48 items-center gap-4 text-base text-zinc-600 dark:text-zinc-400">
+                            <p className="flex items-center gap-4 text-base text-zinc-600 dark:text-zinc-400">
                               <UpdateIcon height={24} width={24} /> Updated:{' '}
                               {info?.information.updated}
                             </p>
-                            <p className="flex w-48 items-center gap-4 text-base text-zinc-600 dark:text-zinc-400">
+                            <p className="flex items-center gap-4 text-base text-zinc-600 dark:text-zinc-400">
                               <CrawlIcon height={24} width={24} /> Crawled:{' '}
                               {info?.information.crawled}
                             </p>
@@ -239,7 +239,7 @@ export default function Store(props: { params: { id: string } }) {
                               }
                               className="flex items-center hover:opacity-75"
                             >
-                              <p className="flex w-48 items-center gap-4 text-base text-zinc-600 dark:text-zinc-400">
+                              <p className="flex items-center gap-4 text-base text-zinc-600 dark:text-zinc-400">
                                 <CategoryIcon height={24} width={24} />
                                 Category:{' '}
                                 {capitalizeFirstLetter(
@@ -247,7 +247,7 @@ export default function Store(props: { params: { id: string } }) {
                                 )}
                               </p>
                             </a>
-                            <p className="flex w-48 items-center gap-4 text-base text-zinc-600 dark:text-zinc-400">
+                            <p className="flex items-center gap-4 text-base text-zinc-600 dark:text-zinc-400">
                               <ChatIcon height={24} width={24} /> Chats:{' '}
                               {info?.information.chat
                                 ? Math.floor(info?.information.chat / 1000)
@@ -256,7 +256,7 @@ export default function Store(props: { params: { id: string } }) {
                             </p>
                             <a
                               href={'/' + locale + '/profile/' + info?.userId}
-                              className="flex w-48 items-center gap-4 text-base text-zinc-600 hover:text-zinc-500 dark:text-zinc-400"
+                              className="flex items-center gap-4 text-base text-zinc-600 hover:text-zinc-500 dark:text-zinc-400"
                             >
                               <ProfileIcon height={24} width={24} />{' '}
                               <p className=""> Creator Profile</p>
