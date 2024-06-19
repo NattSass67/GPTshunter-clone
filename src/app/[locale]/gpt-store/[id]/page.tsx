@@ -31,6 +31,7 @@ import { MinusIcon, PlusIcon } from '@heroicons/react/20/solid'
 import Image from 'next/image'
 import { useEffect } from 'react'
 import { useTranslations } from 'next-intl'
+import { FaqDropDown } from '@/components/Button'
 
 function Stats(props: { rate: number; rank: number; total: number }) {
   return (
@@ -105,31 +106,8 @@ export default function Store(props: { params: { id: string } }) {
   ))
 
   const faqs = info?.faq.map((object, index) => (
-    <Disclosure as="div" key={index} className="pt-4">
-      {({ open }) => (
-        <>
-          <dt>
-            <DisclosureButton className="flex w-full items-start justify-between text-left text-zinc-800 hover:bg-zinc-50 dark:text-zinc-200 dark:hover:bg-zinc-800/50">
-              <span className="text-base font-semibold leading-7">
-                {object.question}
-              </span>
-              <span className="ml-6 flex h-7 items-center">
-                {open ? (
-                  <MinusIcon className="h-5 w-5" aria-hidden="true" />
-                ) : (
-                  <PlusIcon className="h-5 w-5" aria-hidden="true" />
-                )}
-              </span>
-            </DisclosureButton>
-          </dt>
-          <DisclosurePanel as="dd" className="mt-2 pr-12">
-            <p className=" text-base leading-7 text-zinc-600 dark:text-zinc-400">
-              {object.answer}
-            </p>
-          </DisclosurePanel>
-        </>
-      )}
-    </Disclosure>
+    <div className='w-full border-zinc-300/10 mt-3' key={index}> <FaqDropDown object={object}/></div>
+   
   ))
 
   const tags = info?.tags.map((object, index) => (
@@ -174,8 +152,8 @@ export default function Store(props: { params: { id: string } }) {
                   </h1>
                 </div>
 
-                <hr className="my-8 border-zinc-300 dark:border-zinc-300/20" />
-                <div className="my-11 grid max-w-2xl grid-cols-1 gap-y-8 text-base leading-7 md:gap-x-4 lg:max-w-none lg:grid-cols-5">
+                <hr className="mt-8 border-zinc-300 dark:border-zinc-300/20" />
+                <div className="py-11 grid max-w-2xl grid-cols-1 gap-y-8 text-base leading-7 md:gap-x-4 lg:max-w-none lg:grid-cols-5">
                   <div className="col-span-3">
                     <div className="flex flex-col gap-11">
                       <div>
