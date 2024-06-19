@@ -5,14 +5,13 @@ import { Card, MyCustomCard } from '@/components/Card'
 import { Transition } from '@headlessui/react'
 import { Loader } from './Loader'
 import { CardBanner } from '@/types/category'
-import { usePathname } from 'next/navigation'
+
 
 export function Carousel(props: {
   content: CardBanner[] | null
   title: string
   isLoading: boolean
 }) {
-  const locale = usePathname().split('/')[1]
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const reset = () => {
     if (scrollContainerRef.current) {
@@ -53,7 +52,7 @@ export function Carousel(props: {
   return (
     <>
       <div className="relative flex w-full flex-col pt-5">
-        <h2 className="z-10 text-2xl mb-5 font-semibold text-wrap tracking-tight text-zinc-800 w-full dark:text-zinc-200">
+        <h2 className="z-10 text-2xl mb-5 font-semibold text-wrap text-zinc-800 w-full dark:text-zinc-200">
           {props.title}
         </h2>
  
