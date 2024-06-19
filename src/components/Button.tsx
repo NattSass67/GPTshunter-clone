@@ -675,11 +675,11 @@ export function FaqDropDown({
         <Transition
           show={isExpanded}
           enter="duration-150"
-          enterFrom="opacity-0 -translate-y-2"
+          enterFrom="opacity-0 -translate-y-1"
           enterTo="opacity-100 translate-y-0"
           leave="duration-150"
           leaveFrom="opacity-100 translate-y-0"
-          leaveTo="opacity-0 -translate-y-2"
+          leaveTo="opacity-0 -translate-y-1"
         >
           <div className="py-2.5">
             <p className="text-base text-zinc-600 dark:text-zinc-400">
